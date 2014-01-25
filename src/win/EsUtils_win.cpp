@@ -56,15 +56,22 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
+
+
 GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, int w, int h)
+{
+    return CreateGLWindowWithContext(delegate, title, w, h, GetModuleHandle(NULL));
+}
+
+GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, int w, int h, HINSTANCE hInstance)
 {
     WNDCLASS wndclass = { 0 };
     DWORD wStyle = 0;
     RECT windowRect;
-    HINSTANCE hInstance = GetModuleHandle(NULL);
     HDC hDC = 0;
 
-    wndclass.style = CS_OWNDC;
+    //wndclass.style = CS_HREDRAW | CS_VREDRAW;
+    wndclass.style = CS_OWNDC;    
     wndclass.lpfnWndProc = (WNDPROC)ESWindowProc;
     wndclass.hInstance = hInstance;
     wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
@@ -73,12 +80,12 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
     if (!RegisterClass(&wndclass))
         return FALSE;
 
-    wStyle = WS_VISIBLE | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_CAPTION;
+    wStyle = WS_VISIBLE | WS_BORDER | WS_SYSMENU | WS_CAPTION;
 
     windowRect.left = 0;
     windowRect.top = 0;
     windowRect.right = w;
-    windowRect.left = h;
+    windowRect.bottom = h;
 
     AdjustWindowRect(&windowRect, wStyle, FALSE);
 
@@ -86,8 +93,8 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
         "ogles2.0",
         title,
         wStyle,
-        0,
-        0,
+        10,
+        10,
         windowRect.right - windowRect.left,
         windowRect.bottom - windowRect.top,
         NULL,
@@ -99,7 +106,7 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
     if (delegate->window == NULL)
         return GL_FALSE;
 
-    //ShowWindow(delegate->window, TRUE);
+    ShowWindow(delegate->window, TRUE);
 
     hDC = GetDC(delegate->window);
 
