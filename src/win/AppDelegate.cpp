@@ -5,3 +5,8 @@ void AppDelegate::Update(float dt)
 {
 
 }
+
+void AppDelegate::Render()
+{
+
+}

@@ -9,6 +9,9 @@
 LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     LRESULT  lRet = 1;
+
+    AppDelegate* ad = (AppDelegate*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
+
     switch (uMsg)
     {
     case WM_CREATE:
@@ -16,6 +19,8 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_PAINT:
     {
+                     ad->Render();
+                     ValidateRect(ad->window, NULL);
     }
         break;
     case WM_KEYDOWN:
@@ -48,122 +53,102 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     }
         break;
     }
-    return lRet;
+    return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
 GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, int w, int h)
-{{
-    const char CLASS_NAME[] = "Sample Window Class";
-
-    WNDCLASS wc = {};
-
-    wc.lpfnWndProc = ESWindowProc;
-    HINSTANCE hInstance = wc.hInstance = GetModuleHandle(NULL);
-    wc.lpszClassName = CLASS_NAME;
-
-    RegisterClass(&wc);
-
-    // Create the window.
-
-    HWND hwnd = CreateWindowEx(
-        0,                              // Optional window styles.
-        CLASS_NAME,                     // Window class
-        "Learn to Program Windows",    // Window text
-        WS_OVERLAPPEDWINDOW,            // Window style
-
-        // Size and position
-        CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-
-        NULL,       // Parent window    
-        NULL,       // Menu
-        hInstance,  // Instance handle
-        NULL        // Additional application data
-        );
-
-    if (hwnd == NULL)
-    {
-        return 0;
-    }
-
-    ShowWindow(hwnd, SW_SHOW);
-    return 0;
-}
-    WNDCLASS wndclass = {0};
-    DWORD windowStyle = 0;
+{
+    WNDCLASS wndclass = { 0 };
+    DWORD wStyle = 0;
     RECT windowRect;
     HINSTANCE hInstance = GetModuleHandle(NULL);
+    HDC hDC = 0;
 
     wndclass.style = CS_OWNDC;
     wndclass.lpfnWndProc = (WNDPROC)ESWindowProc;
     wndclass.hInstance = hInstance;
     wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-    wndclass.lpszClassName = WINDOW_CLASS;
-    RegisterClass(&wndclass);
+    wndclass.lpszClassName = "ogles2.0";
 
-    windowStyle = WS_VISIBLE | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_CAPTION;
-    SetRect(&windowRect, 0, 0, w, h);
-    //AdjustWindowRectEx(&windowRect, WS_CAPTION | WS_SYSMENU, false, 0);
-    AdjustWindowRect(&windowRect, windowStyle, FALSE);
+    if (!RegisterClass(&wndclass))
+        return FALSE;
 
-    HWND window = CreateWindowEx(
-        0,
-        WINDOW_CLASS,
+    wStyle = WS_VISIBLE | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_CAPTION;
+
+    windowRect.left = 0;
+    windowRect.top = 0;
+    windowRect.right = w;
+    windowRect.left = h;
+
+    AdjustWindowRect(&windowRect, wStyle, FALSE);
+
+    delegate->window = CreateWindow(
+        "ogles2.0",
         title,
-        //windowStyle,
-        WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-//        windowRect.left, windowRect.top, windowRect.right, windowRect.bottom,
+        wStyle,
+        0,
+        0,
+        windowRect.right - windowRect.left,
+        windowRect.bottom - windowRect.top,
         NULL,
         NULL,
         hInstance,
         NULL);
-    //HWND window = CreateWindowEx(0, WINDOW_CLASS, title, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 0, 0, GetModuleHandle(0), 0);
-    ShowWindow(window, TRUE);
-    delegate->window = window;
+    SetWindowLongPtr(delegate->window, GWL_USERDATA, (LONG)(LONG_PTR)delegate);
 
-    HDC hDC = 0;
-    hDC = GetDC(window);
+    if (delegate->window == NULL)
+        return GL_FALSE;
+
+    //ShowWindow(delegate->window, TRUE);
+
+    hDC = GetDC(delegate->window);
+
+    EGLDisplay			eglDisplay = 0;
+    EGLConfig			eglConfig = 0;
+    EGLSurface			eglSurface = 0;
+    EGLContext			eglContext = 0;
+    EGLNativeWindowType	eglWindow = 0;
+
     if (!hDC)
     {
         MessageBox(0, ("Failed to create the device context"), ("Error"), MB_OK | MB_ICONEXCLAMATION);
-        return FALSE;
     }
-    EGLDisplay eglDisplay = eglGetDisplay(hDC);
+    eglDisplay = eglGetDisplay(hDC);
+    if (eglDisplay == EGL_NO_DISPLAY)
+        eglDisplay = eglGetDisplay((EGLNativeDisplayType)EGL_DEFAULT_DISPLAY);
     EGLint iMajorVersion, iMinorVersion;
     if (!eglInitialize(eglDisplay, &iMajorVersion, &iMinorVersion))
     {
         MessageBox(0, ("eglInitialize() failed."), ("Error"), MB_OK | MB_ICONEXCLAMATION);
     }
     eglBindAPI(EGL_OPENGL_ES_API);
-    EGLint iConfigs;
-    EGLConfig eglConfig = 0;
+
     const EGLint pi32ConfigAttribs[] =
     {
-        EGL_LEVEL, 
-        0,
-        EGL_SURFACE_TYPE, 
-        EGL_WINDOW_BIT,
-        EGL_RENDERABLE_TYPE, 
-        EGL_OPENGL_ES2_BIT,
-        EGL_NATIVE_RENDERABLE, 
-        EGL_FALSE,
-        EGL_DEPTH_SIZE, 
-        EGL_DONT_CARE,
+        EGL_LEVEL, 0,
+        EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+        EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+        EGL_NATIVE_RENDERABLE, EGL_FALSE,
+        EGL_DEPTH_SIZE, EGL_DONT_CARE,
         EGL_NONE
     };
-    eglChooseConfig(eglDisplay, pi32ConfigAttribs, &eglConfig, 1, &iConfigs);
-    EGLSurface eglSurface = eglCreateWindowSurface(eglDisplay, eglConfig, window, NULL);
+    EGLint iConfigs;
+    if (!eglChooseConfig(eglDisplay, pi32ConfigAttribs, &eglConfig, 1, &iConfigs) || (iConfigs != 1))
+    {
+        MessageBox(0, ("eglChooseConfig() failed."), ("Error"), MB_OK | MB_ICONEXCLAMATION);
+    }
+    eglSurface = eglCreateWindowSurface(eglDisplay, eglConfig, eglWindow, NULL);
     if (eglSurface == EGL_NO_SURFACE)
     {
-        eglGetError();
+        eglGetError(); // Clear error
         eglSurface = eglCreateWindowSurface(eglDisplay, eglConfig, NULL, NULL);
     }
     EGLint ai32ContextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE };
-    EGLContext eglContext = eglCreateContext(eglDisplay, eglConfig, NULL, ai32ContextAttribs);
+    eglContext = eglCreateContext(eglDisplay, eglConfig, NULL, ai32ContextAttribs);
     eglMakeCurrent(eglDisplay, eglSurface, eglSurface, eglContext);
 
 
-    //SetWindowLongPtr(window, GWL_USERDATA, (LONG)(LONG_PTR)context);
+
 
     return GL_TRUE;
 }

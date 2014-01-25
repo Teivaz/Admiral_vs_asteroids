@@ -9,6 +9,7 @@
 #endif
 
 using namespace FileUtils;
+using std::string;
 
 void OpenFile(const char* file, char** outdata, size_t& size, location loc)
 {
@@ -29,5 +30,58 @@ void OpenFile(const char* file, char** outdata, size_t& size, location loc)
 	}
 #else
 
+	size = 0;
+	*outdata = nullptr;
+	
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	CFBundleRef bundle = CFBundleGetMainBundle();
+	CFURLRef bundleUrl = CFBundleCopyBundleURL(bundle);
+	CFStringRef sr = CFURLCopyFileSystemPath(bundleUrl, kCFURLPOSIXPathStyle);
+	char rootPath[1024];
+	CFStringGetCString(sr, rootPath, sizeof(rootPath), kCFStringEncodingASCII)
+	string path = rootPath;
+	
+	switch (loc)
+	{
+		case app:
+		AppendPath(path, file);
+		break;
+		
+		case documents:
+		AppendPath(path, "../Documents");
+		AppendPath(path, file);
+		break;
+		
+		case lib:
+		AppendPath(path, "../Library");
+		AppendPath(path, file);
+		break;
+		
+		default:
+		return;
+		
+	}
+	NSString *docPath = [NSString stringWithCString:path.c_str()
+										   encoding:[NSString defaultCStringEncoding]];
+	NSString *dataFile = [NSString stringWithContentsOfFile:docPath 
+                                               usedEncoding:NSUTF8StringEncoding 
+                                                      error:NULL];
+
+
+
 #endif
+}
+
+void AppendPath(string& src, const string& path0) {
+	if(src.empty()) {
+		src = path0;
+	} else {
+		char lastChar = src[src.size() - 1];
+		if(lastChar == '/' || lastChar == '\\') {
+			src += path0;
+		} else {
+			src.append("/");
+			src.append(path0);
+		}
+	}
 }
