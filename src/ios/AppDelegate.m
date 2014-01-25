@@ -57,5 +57,21 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+}
 
 @end
