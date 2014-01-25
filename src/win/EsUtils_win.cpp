@@ -103,11 +103,11 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
 
     hDC = GetDC(delegate->window);
 
-    EGLDisplay			eglDisplay = 0;
+    EGLDisplay& eglDisplay = delegate->display;
     EGLConfig			eglConfig = 0;
-    EGLSurface			eglSurface = 0;
-    EGLContext			eglContext = 0;
-    EGLNativeWindowType	eglWindow = 0;
+    EGLSurface& eglSurface = delegate->surface;
+    EGLContext eglContext = 0;
+    EGLNativeWindowType	eglWindow = delegate->window;
 
     if (!hDC)
     {
