@@ -5,4 +5,6 @@
 #include <Windows.h>
 #endif
 
+#include "lodepng.h"
+#include "json/json.h"
 #include <vector>

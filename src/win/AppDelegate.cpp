@@ -1,5 +1,7 @@
 #include "Precompiled.h"
 #include "AppDelegate.h"
+#include "FileUtils.h"
+
 
 char* pszFragShader = "\
     void main (void)\
@@ -93,6 +95,17 @@ void AppDelegate::Init()
     glBindBuffer(GL_ARRAY_BUFFER, ui32Vbo);
     unsigned int uiSize = 3 * (sizeof(GLfloat)* 3); // Calc afVertices size (3 vertices * 
     glBufferData(GL_ARRAY_BUFFER, uiSize, afVertices, GL_STATIC_DRAW);
+
+
+    Json::Reader reader;
+    unsigned char *imageData;
+    unsigned int w, h;
+    char* data;
+    size_t size;
+    FileUtils::OpenFile("../../release/she.png", &data, size, FileUtils::app);
+    unsigned ret = lodepng_decode32(&imageData, &w, &h, (const unsigned char*)data, size);
+    printf("%s", lodepng_error_text(ret));
+    delete[] data;
 
 }
 

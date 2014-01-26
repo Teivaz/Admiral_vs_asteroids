@@ -5,6 +5,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="libs">
+      <UniqueIdentifier>{e33896a5-a8dc-4248-a085-7c45b1f5e325}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -17,6 +20,7 @@
     <ClCompile Include="..\..\src\win\AppDelegate.cpp">
       <Filter>win</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\FileUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Precompiled.h" />
@@ -26,5 +30,6 @@
     <ClInclude Include="..\..\src\win\AppDelegate.h">
       <Filter>win</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\FileUtils.h" />
   </ItemGroup>
 </Project>

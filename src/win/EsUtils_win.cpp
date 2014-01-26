@@ -106,7 +106,7 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
     if (delegate->window == NULL)
         return GL_FALSE;
 
-    ShowWindow(delegate->window, TRUE);
+    //ShowWindow(delegate->window, TRUE);
 
     hDC = GetDC(delegate->window);
 
