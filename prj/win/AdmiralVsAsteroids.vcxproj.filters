@@ -5,8 +5,20 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="libs">
+    <Filter Include="game">
       <UniqueIdentifier>{e33896a5-a8dc-4248-a085-7c45b1f5e325}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Controllers">
+      <UniqueIdentifier>{ad4f8f99-8e12-49fb-9567-7eb28a0f65fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Entities">
+      <UniqueIdentifier>{3d122578-2dc5-4ec1-b6ce-77160f455009}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{00b032b5-c625-4058-b852-67e23386d879}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\States">
+      <UniqueIdentifier>{ad3a4dfb-cf70-4243-af10-cc8eb2a289e9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -20,7 +32,21 @@
     <ClCompile Include="..\..\src\win\AppDelegate.cpp">
       <Filter>win</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\FileUtils.cpp" />
+    <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp">
+      <Filter>game\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\FileUtils.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp">
+      <Filter>game\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\States\StateMachine.cpp">
+      <Filter>game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\States\GameplayState.cpp">
+      <Filter>game\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Precompiled.h" />
@@ -30,6 +56,41 @@
     <ClInclude Include="..\..\src\win\AppDelegate.h">
       <Filter>win</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\FileUtils.h" />
+    <ClInclude Include="..\..\src\game\Controllers\TextureManager.h">
+      <Filter>game\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\CustomGLTypes.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\FileUtils.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\VectorGeometry.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\CVec2.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\CVec3.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\Singleton.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h">
+      <Filter>game\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\Shader.h">
+      <Filter>game\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\States\State.h">
+      <Filter>game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\States\StateMachine.h">
+      <Filter>game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\States\GameplayState.h">
+      <Filter>game\States</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

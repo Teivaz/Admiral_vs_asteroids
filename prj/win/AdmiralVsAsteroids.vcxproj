@@ -11,18 +11,33 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\FileUtils.cpp" />
+    <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp" />
+    <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp" />
+    <ClCompile Include="..\..\src\game\States\GameplayState.cpp" />
+    <ClCompile Include="..\..\src\game\States\StateMachine.cpp" />
     <ClCompile Include="..\..\src\Precompiled.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Precompiled.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\src\utils\FileUtils.cpp" />
     <ClCompile Include="..\..\src\win\AppDelegate.cpp" />
     <ClCompile Include="..\..\src\win\EsUtils_win.cpp" />
     <ClCompile Include="..\..\src\win\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\FileUtils.h" />
+    <ClInclude Include="..\..\src\game\Controllers\Shader.h" />
+    <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h" />
+    <ClInclude Include="..\..\src\game\Controllers\TextureManager.h" />
+    <ClInclude Include="..\..\src\game\States\GameplayState.h" />
+    <ClInclude Include="..\..\src\game\States\State.h" />
+    <ClInclude Include="..\..\src\game\States\StateMachine.h" />
     <ClInclude Include="..\..\src\Precompiled.h" />
+    <ClInclude Include="..\..\src\utils\CustomGLTypes.h" />
+    <ClInclude Include="..\..\src\utils\CVec2.h" />
+    <ClInclude Include="..\..\src\utils\CVec3.h" />
+    <ClInclude Include="..\..\src\utils\FileUtils.h" />
+    <ClInclude Include="..\..\src\utils\Singleton.h" />
+    <ClInclude Include="..\..\src\utils\VectorGeometry.h" />
     <ClInclude Include="..\..\src\win\AppDelegate.h" />
     <ClInclude Include="..\..\src\win\EsUtils_win.h" />
   </ItemGroup>
@@ -78,7 +93,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -98,7 +113,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
