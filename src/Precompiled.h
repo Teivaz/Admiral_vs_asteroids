@@ -8,3 +8,19 @@
 #include "lodepng.h"
 #include "json/json.h"
 #include <vector>
+#include <string>
+#include <map>
+
+#include "utils/CustomGLTypes.h"
+#include "utils/Singleton.h"
+
+using std::string;
+
+
+#ifdef _DEBUG
+#define ASSERT(x) _ASSERT(x)
+#define PLOG(x) printf(x)
+#else
+#define PLOG(x)
+#define ASSERT(x)
+#endif

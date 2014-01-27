@@ -13,7 +13,7 @@ using std::string;
 namespace FileUtils
 {
 
-    void OpenFile(const char* file, char** outdata, size_t& size, location loc)
+    void LoadFile(const char* file, char** outdata, size_t& size, location loc)
     {
 #ifdef WIN32
         if (loc == app)
@@ -21,12 +21,12 @@ namespace FileUtils
             size = 0;
             *outdata = nullptr;
             std::string fileName(file);
-            FILE* f = fopen(fileName.c_str(), "r");
+            FILE* f = fopen(fileName.c_str(), "rb");
             if (f == nullptr)
                 return;
             fseek(f, 0, SEEK_END);
             size = ftell(f);
-            fseek(f, 0, SEEK_SET);
+            rewind(f);
             *outdata = new char[size];
             fread(*outdata, 1, size, f);
             fclose(f);
