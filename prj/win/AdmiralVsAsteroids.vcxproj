@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\GameObject.cpp" />
     <ClCompile Include="..\..\src\game\States\GameplayState.cpp" />
     <ClCompile Include="..\..\src\game\States\StateMachine.cpp" />
     <ClCompile Include="..\..\src\Precompiled.cpp">
@@ -28,6 +29,7 @@
     <ClInclude Include="..\..\src\game\Controllers\Shader.h" />
     <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\TextureManager.h" />
+    <ClInclude Include="..\..\src\game\Objects\GameObject.h" />
     <ClInclude Include="..\..\src\game\States\GameplayState.h" />
     <ClInclude Include="..\..\src\game\States\State.h" />
     <ClInclude Include="..\..\src\game\States\StateMachine.h" />
@@ -93,7 +95,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -113,7 +115,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
