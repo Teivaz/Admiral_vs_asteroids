@@ -9,11 +9,6 @@ public:
         , program(sp)
     {}
 
-    ShaderProgram operator ()(ShaderProgram)
-    {
-        return program;
-    }
-
     const VertexShader          vertex;
     const FragmentShader        fragment;
     const ShaderProgram         program;

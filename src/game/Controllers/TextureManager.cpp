@@ -44,7 +44,7 @@ void TextureManager::_loadTexture(const string& name, char** pixels, unsigned in
 {
     char* data;
     size_t size;
-    FileUtils::LoadFile("name", &data, size, FileUtils::app);
+    FileUtils::LoadFile(name.c_str(), &data, size, FileUtils::app);
     unsigned error = lodepng_decode32((unsigned char**)pixels, w, h, (const unsigned char*)data, size);
     PLOG("%s", lodepng_error_text(error));
     ASSERT(error == 0);

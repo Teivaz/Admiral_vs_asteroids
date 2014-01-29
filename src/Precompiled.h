@@ -13,7 +13,7 @@
 #include <map>
 
 #include "utils/CustomGLTypes.h"
-#include "utils/Singleton.h"
+#include "utils/VectorGeometry.h"
 
 using namespace sigslot;
 
@@ -26,3 +26,5 @@ using std::string;
 #define PLOG(x)
 #define ASSERT(x)
 #endif
+
+#include "utils/Singleton.h"

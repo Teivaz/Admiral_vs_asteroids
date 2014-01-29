@@ -1,5 +1,7 @@
 #pragma once
 
+class GameObject;
+
 class State
 {
 public:
@@ -7,7 +9,6 @@ public:
 
     virtual void                update(float dt) = 0;
     virtual void                render() = 0;
-
     virtual void                onEnter() = 0;
     virtual void                onFinish() = 0;
     virtual void                pause(bool) = 0;

@@ -1,0 +1,29 @@
+{
+"VertexShader":"
+	attribute vec2 vPos;
+	attribute vec2 vTexPos;
+
+	uniform sampler2D uv_texture;
+
+	varying vec2 texCoord;
+	
+	void main()
+	{
+		texCoord = vec2(vTexPos.x, 1.0 - vTexPos.y);
+		gl_Position =  vec4(vPos, 1.0, 1.0);
+	}
+"
+,
+"FragmentShader":"
+	precision mediump float;
+		
+	uniform sampler2D uv_texture;
+	varying vec2 texCoord;
+
+	void main()
+	{
+		gl_FragColor = texture2D(uv_texture, texCoord);
+		//gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+	}
+"
+}

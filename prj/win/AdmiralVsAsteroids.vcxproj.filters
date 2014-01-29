@@ -20,6 +20,9 @@
     <Filter Include="game\Objects">
       <UniqueIdentifier>{3d122578-2dc5-4ec1-b6ce-77160f455009}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\Objects\Shape">
+      <UniqueIdentifier>{9ad4764d-20a5-4c7c-9ce8-4a06839acb79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -48,6 +51,15 @@
       <Filter>game\States</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp">
+      <Filter>game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\Painter.cpp">
+      <Filter>game\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp">
+      <Filter>game\Objects\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Sprite.cpp">
       <Filter>game\Objects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -96,6 +108,15 @@
       <Filter>game\States</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\GameObject.h">
+      <Filter>game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\Painter.h">
+      <Filter>game\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h">
+      <Filter>game\Objects\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Sprite.h">
       <Filter>game\Objects</Filter>
     </ClInclude>
   </ItemGroup>

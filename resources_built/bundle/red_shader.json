@@ -1,0 +1,19 @@
+{
+"VertexShader":"
+	attribute vec2 vPos;
+
+	void main()
+	{
+		gl_Position =  vec4(vPos, 1.0, 1.0);
+	}
+"
+,
+"FragmentShader":"
+	precision mediump float;
+	
+	void main()
+	{
+		gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+	}
+"
+}

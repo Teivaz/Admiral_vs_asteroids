@@ -20,7 +20,8 @@ namespace FileUtils
         {
             size = 0;
             *outdata = nullptr;
-            std::string fileName(file);
+            string fileName("../../resources_built/bundle/");
+            AppendPath(fileName, file);
             FILE* f = fopen(fileName.c_str(), "rb");
             if (f == nullptr)
                 return;

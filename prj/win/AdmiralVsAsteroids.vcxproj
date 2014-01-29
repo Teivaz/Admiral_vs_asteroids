@@ -11,9 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\game\Controllers\Painter.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Sprite.cpp" />
     <ClCompile Include="..\..\src\game\States\GameplayState.cpp" />
     <ClCompile Include="..\..\src\game\States\StateMachine.cpp" />
     <ClCompile Include="..\..\src\Precompiled.cpp">
@@ -26,10 +29,13 @@
     <ClCompile Include="..\..\src\win\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\game\Controllers\Painter.h" />
     <ClInclude Include="..\..\src\game\Controllers\Shader.h" />
     <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\TextureManager.h" />
     <ClInclude Include="..\..\src\game\Objects\GameObject.h" />
+    <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h" />
+    <ClInclude Include="..\..\src\game\Objects\Sprite.h" />
     <ClInclude Include="..\..\src\game\States\GameplayState.h" />
     <ClInclude Include="..\..\src\game\States\State.h" />
     <ClInclude Include="..\..\src\game\States\StateMachine.h" />

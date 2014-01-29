@@ -10,4 +10,6 @@ public:
     void Init();
     void Update(float dt);
     void Render();
+private:
+    bool m_initialized = false;
 };
