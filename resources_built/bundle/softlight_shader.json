@@ -1,0 +1,49 @@
+{
+"VertexShader":"
+	attribute vec2 a_position;
+	attribute vec2 a_texturePosition;
+
+	uniform vec3 u_blendColor;
+	uniform sampler2D u_texture;
+
+	varying vec2 v_texturePosition;
+	
+	void main()
+	{
+		v_texturePosition = a_texturePosition;
+		gl_Position =  vec4(a_position, 1.0, 1.0);
+	}
+"
+,
+"FragmentShader":"
+	precision mediump float;
+		
+	uniform vec3 u_blendColor;
+	uniform sampler2D u_texture;
+
+	varying vec2 v_texturePosition;
+
+	float softBlend(float a, float b)
+	{
+		return (
+				(a < 0.5) 
+				?
+				(2.0 * b * a + b * b * (1.0 - 2.0 * a)) 
+				:
+				(sqrt(b) * (2.0 * a - 1.0) + 2.0 * b * (1.0 - a))
+				);
+	}
+
+	void main()
+	{
+		vec4 fragmentColor = texture2D(u_texture, v_texturePosition);
+		
+		gl_FragColor = vec4(
+			softBlend(fragmentColor.r, u_blendColor.r),
+			softBlend(fragmentColor.g, u_blendColor.g),
+			softBlend(fragmentColor.b, u_blendColor.b),
+			fragmentColor.a
+			);
+	}
+"
+}

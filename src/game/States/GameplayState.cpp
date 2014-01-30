@@ -28,10 +28,10 @@ void GameplayState::render()
 
 void GameplayState::onEnter()
 {
-    ShaderManager::GetInstance()->getShader(shaders::k_simple_shader);
+    auto s = ShaderManager::GetInstance()->getShader(shaders::k_simple);
     auto t = TextureManager::GetInstance()->getTexture(textures::k_stars_back);
-    Painter::GetInstance()->add(new Sprite(t, vec2f(0), vec2f(1)));
-    t = TextureManager::GetInstance()->getTexture(textures::k_stars_level2);
+    Painter::GetInstance()->add(new Sprite(t, vec2f(0), vec2f(1), s));
+    t = TextureManager::GetInstance()->getTexture("star_flare_penta.png");
     Painter::GetInstance()->add(new Sprite(t, vec2f(0), vec2f(1)));
 }
 

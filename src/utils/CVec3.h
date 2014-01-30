@@ -66,7 +66,7 @@ public:
 		x += value.x;
 		y += value.y;
 		z += value.z;
-		return this;
+		return *this;
 	}
 
 	CVec3& operator +=(T value)
@@ -74,7 +74,7 @@ public:
 		x += value;
 		y += value;
 		z += value;
-		return this;
+		return *this;
 	}
 
 	CVec3 operator -(CVec3 value)
@@ -92,7 +92,7 @@ public:
 		x -= value.x;
 		y -= value.y;
 		z -= value.z;
-		return this;
+		return *this;
 	}
 
 	CVec3& operator -=(T value)
@@ -100,7 +100,7 @@ public:
 		x -= value;
 		y -= value;
 		z -= value;
-		return this;
+		return *this;
 	}
 
 };

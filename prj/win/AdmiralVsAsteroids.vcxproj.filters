@@ -23,6 +23,9 @@
     <Filter Include="game\Objects\Shape">
       <UniqueIdentifier>{9ad4764d-20a5-4c7c-9ce8-4a06839acb79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\Objects\Stars">
+      <UniqueIdentifier>{47c9c25e-0d3a-4d34-a2f9-0c84cfd42364}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -61,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\Sprite.cpp">
       <Filter>game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Stars\Star.cpp">
+      <Filter>game\Objects\Stars</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\Sprite.h">
       <Filter>game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Stars\Star.h">
+      <Filter>game\Objects\Stars</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

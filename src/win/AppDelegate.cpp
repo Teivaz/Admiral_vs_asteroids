@@ -11,8 +11,8 @@
 void AppDelegate::Init()
 {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_ALPHA);
     glEnable(GL_BLEND);
+
     Painter::SetInstance(new Painter(display, surface));
     StateMachine::SetInstance(new StateMachine);
     ShaderManager::SetInstance(new ShaderManager);
@@ -38,6 +38,9 @@ void AppDelegate::Render()
     {
         return;
     }
+
+    glClear(GL_COLOR_BUFFER_BIT);
     Painter::GetInstance()->render();
     StateMachine::GetInstance()->render();
+    eglSwapBuffers(display, surface);
 }

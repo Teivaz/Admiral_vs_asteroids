@@ -62,6 +62,17 @@ Shader* ShaderManager::_createShader(const char* vertexShaderSource, const char*
     ASSERT(compileStatus && "Error compiling vertex shader.");
     glCompileShader(fs);
     glGetShaderiv(fs, GL_COMPILE_STATUS, &compileStatus);
+
+#if 0
+    GLint infoLen = 0;
+    glGetShaderiv(fs, GL_INFO_LOG_LENGTH, &infoLen);
+    char* infoLog = new char[infoLen];
+    glGetShaderInfoLog(fs, infoLen, NULL, infoLog);
+    printf("Error compiling shader:\n%s\n", infoLog);
+    delete[] infoLog;
+
+#endif
+
     ASSERT(compileStatus && "Error compiling fragment shader.");
     ShaderProgram program = glCreateProgram();
     glAttachShader(program, vs);

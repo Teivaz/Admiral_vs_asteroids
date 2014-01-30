@@ -40,12 +40,10 @@ void Painter::render()
     {
         _sort();
     }
-    glClear(GL_COLOR_BUFFER_BIT);
     for (GameObject* o : m_objects)
     {
         o->render();
     }
-    eglSwapBuffers(m_display, m_surface);
 }
 
 void Painter::_sort()

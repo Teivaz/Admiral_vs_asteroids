@@ -17,6 +17,7 @@
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Sprite.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Stars\Star.cpp" />
     <ClCompile Include="..\..\src\game\States\GameplayState.cpp" />
     <ClCompile Include="..\..\src\game\States\StateMachine.cpp" />
     <ClCompile Include="..\..\src\Precompiled.cpp">
@@ -36,6 +37,7 @@
     <ClInclude Include="..\..\src\game\Objects\GameObject.h" />
     <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h" />
     <ClInclude Include="..\..\src\game\Objects\Sprite.h" />
+    <ClInclude Include="..\..\src\game\Objects\Stars\Star.h" />
     <ClInclude Include="..\..\src\game\States\GameplayState.h" />
     <ClInclude Include="..\..\src\game\States\State.h" />
     <ClInclude Include="..\..\src\game\States\StateMachine.h" />

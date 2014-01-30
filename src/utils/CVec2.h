@@ -61,7 +61,7 @@ public:
 	{
 		x += value.x;
 		y += value.y;
-		return this;
+		return *this;
 	}
 
 	// Should be implicit?
@@ -69,7 +69,7 @@ public:
 	{
 		x += value;
 		y += value;
-		return this;
+		return *this;
 	}
 
 	CVec2 operator -(CVec2 value)
@@ -87,7 +87,7 @@ public:
 	{
 		x -= value.x;
 		y -= value.y;
-		return this;
+		return *this;
 	}
 
 	// Should be implicit?
@@ -95,7 +95,7 @@ public:
 	{
 		x -= value;
 		y -= value;
-		return this;
+		return *this;
 	}
 
 	//-- Comparison
