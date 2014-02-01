@@ -23,25 +23,24 @@
 
 	varying vec2 v_texturePosition;
 
-	float softBlend(float a, float b)
+	float softBlend(float a, float base)
 	{
 		return (
 				(a < 0.5) 
 				?
-				(2.0 * b * a + b * b * (1.0 - 2.0 * a)) 
+				(2.0 * base * a + base * base * (1.0 - 2.0 * a)) 
 				:
-				(sqrt(b) * (2.0 * a - 1.0) + 2.0 * b * (1.0 - a))
+				(sqrt(base) * (2.0 * a - 1.0) + 2.0 * base * (1.0 - a))
 				);
 	}
-
 	void main()
 	{
 		vec4 fragmentColor = texture2D(u_texture, v_texturePosition);
-		
+		float luma = (0.2126*fragmentColor.r) + (0.7152*fragmentColor.g) + (0.0722*fragmentColor.b);
 		gl_FragColor = vec4(
-			softBlend(fragmentColor.r, u_blendColor.r),
-			softBlend(fragmentColor.g, u_blendColor.g),
-			softBlend(fragmentColor.b, u_blendColor.b),
+			softBlend(u_blendColor.r, fragmentColor.r * fragmentColor.a),
+			softBlend(u_blendColor.g, fragmentColor.g * fragmentColor.a),
+			softBlend(u_blendColor.b, fragmentColor.b * fragmentColor.a),
 			fragmentColor.a
 			);
 	}
