@@ -46,7 +46,7 @@ public:
 
 	//-- Arifmetics
 
-	CVec2 operator +(CVec2 value)
+	CVec2 operator +(const CVec2& value) const
 	{
 		return CVec2(x + value.x, y + value.y);
 	}
@@ -100,7 +100,7 @@ public:
 
 	//-- Comparison
 
-	bool operator ==(CVec2 value)
+	bool operator ==(const CVec2& value) const
 	{
 		return (x == value.x) && (y == value.y);
 	}

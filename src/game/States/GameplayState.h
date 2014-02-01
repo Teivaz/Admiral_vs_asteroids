@@ -1,6 +1,8 @@
 #pragma once
 #include "State.h"
 
+//class 
+
 class GameplayState : public State
 {
 public:
@@ -17,4 +19,8 @@ public:
 
 private:
     bool                        m_isFinished = false;
+
+
+    GameObject*                 m_star = nullptr;
+
 };

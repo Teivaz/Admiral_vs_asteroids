@@ -128,5 +128,8 @@
     <ClInclude Include="..\..\src\game\Objects\Stars\Star.h">
       <Filter>game\Objects\Stars</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\CMat3.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

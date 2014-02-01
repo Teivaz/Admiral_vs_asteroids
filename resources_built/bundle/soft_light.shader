@@ -3,6 +3,7 @@
 	attribute vec2 a_position;
 	attribute vec2 a_texturePosition;
 
+	uniform mat3 u_transformation;
 	uniform vec3 u_blendColor;
 	uniform sampler2D u_texture;
 
@@ -11,7 +12,8 @@
 	void main()
 	{
 		v_texturePosition = a_texturePosition;
-		gl_Position =  vec4(a_position, 1.0, 1.0);
+		vec3 pos = vec3(a_position, 1.0) * u_transformation;
+		gl_Position =  vec4(pos, 1.0);
 	}
 "
 ,

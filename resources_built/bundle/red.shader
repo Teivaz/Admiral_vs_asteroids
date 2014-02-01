@@ -2,9 +2,12 @@
 "VertexShader":"
 	attribute vec2 a_position;
 
+	uniform vec3 u_blendColor;
+	
 	void main()
 	{
-		gl_Position =  vec4(a_position, 1.0, 1.0);
+		vec3 pos = vec3(a_position, 1.0) * u_transformation;
+		gl_Position =  vec4(pos, 1.0);
 	}
 "
 ,

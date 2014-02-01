@@ -170,7 +170,7 @@ void WindowLoop(AppDelegate* delegate)
     {
         int gotMsg = (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) != 0);
         DWORD curTime = GetTickCount();
-        float deltaTime = (float)(curTime - lastTime) / 1000.0f;
+        float deltaTime = (float)(curTime - lastTime);
         lastTime = curTime;
 
         if (gotMsg)

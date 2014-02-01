@@ -6,6 +6,7 @@ class Shader;
 class GameObject : public has_slots<>
 {
 public:
+    void init(ShaderProgram); 
     virtual ~GameObject();
     virtual void                    render();
     virtual void                    update(float) = 0;
@@ -50,31 +51,20 @@ public:
     {
         return m_rotation;
     }
-    inline void                     setPosition(const vec2f& p)
-    {
-        m_position = p;
-    }
-    inline void                     setScale(const vec2f& s)
-    {
-        m_scale = s;
-    }
-    inline void                     setRotation(float r)
-    {
-        m_rotation = r;
-    }
-    inline void                     adjustPosition(const vec2f& p)
-    {
-        m_position += p;
-    }
-    inline void                     adjustScale(const vec2f& s)
-    {
-        m_scale += s;
-    }
-    inline void                     adjustRotation(float r)
-    {
-        m_rotation += r;
-    }
+    void                            setPosition(const vec2f& p);
+    void                            setScale(const vec2f& s);
+    void                            setRotation(float r);
+    void                            adjustPosition(const vec2f& p);
+    void                            adjustScale(const vec2f& s);
+    void                            adjustRotation(float r);
     //******************************************************
+
+private:
+    void                            _bindAttributes();
+    void                            _calculateTransformation();
+
+    bool                            m_transformationIsDirty = true;
+
 protected:
     Texture                         m_texture = 0;
     ShaderProgram                   m_shader = 0;
@@ -83,7 +73,16 @@ protected:
     DrawMode                        m_mode = GL_TRIANGLE_FAN;
     GLsizei                         m_vertsCount = 0;
 
+    // Shader attributes and uniforms
+    GLuint                          m_attributePosition = 0;
+    GLuint                          m_attributeTexturePosition = 0;
+    GLuint                          m_uniformTexture = 0;
+    GLuint                          m_uniformTransformation = 0;
+
+
+
     vec2f                           m_position = 0.0f;
     vec2f                           m_scale = 1.0f;
     float                           m_rotation = 0.0f;
+    mat3f                           m_transformationMatrix;
 };

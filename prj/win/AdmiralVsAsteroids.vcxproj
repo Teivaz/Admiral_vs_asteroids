@@ -42,6 +42,7 @@
     <ClInclude Include="..\..\src\game\States\State.h" />
     <ClInclude Include="..\..\src\game\States\StateMachine.h" />
     <ClInclude Include="..\..\src\Precompiled.h" />
+    <ClInclude Include="..\..\src\utils\CMat3.h" />
     <ClInclude Include="..\..\src\utils\CustomGLTypes.h" />
     <ClInclude Include="..\..\src\utils\CVec2.h" />
     <ClInclude Include="..\..\src\utils\CVec3.h" />
