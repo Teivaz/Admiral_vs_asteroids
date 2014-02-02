@@ -38,6 +38,7 @@ public:
 
 class SeparateShape : public Shape
 {
+public:
     SeparateShape();
     SeparateShape(const std::vector<vec2f>& verts, const std::vector<vec2f>& tex);
     virtual ~SeparateShape();

@@ -23,6 +23,7 @@ public:
     ~SpriteManager();
 
     Sprite*                 createSprite(const string& name, bool autorender = true);
+    Sprite*                 createSprite(const string& name, vec2f position, vec2f size, bool autorender = true);
     void                    loadAtlas(const string& name);
 
 private:

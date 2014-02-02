@@ -31,6 +31,23 @@ Sprite* SpriteManager::createSprite(const string& name, bool autorender/* = true
     return sprite;
 }
 
+Sprite* SpriteManager::createSprite(const string& name, vec2f position, vec2f size, bool autorender/* = true*/)
+{
+    auto it = m_spriteRectMap.find(name);
+    if (it == m_spriteRectMap.end())
+    {
+        ASSERT(false && "Sprite not found in existing atlases");
+        return nullptr;
+    }
+    it->second.lb;
+    Sprite* sprite = new Sprite(it->second.tex, it->second.lb, it->second.ur, ShaderManager::GetInstance()->getShader(shaders::k_simple), position, size);
+    if (autorender)
+    {
+        Painter::GetInstance()->add(sprite);
+    }
+    return sprite;
+}
+
 void SpriteManager::loadAtlas(const string& name)
 {
     char* data;

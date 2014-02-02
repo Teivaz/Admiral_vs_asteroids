@@ -7,7 +7,8 @@ class Shape;
 class GameObject : public has_slots<>
 {
 public:
-    void init(ShaderProgram, Shape*);
+    void init(ShaderProgram, Shape*, Texture);
+    void setShader(ShaderProgram);
     virtual ~GameObject();
     virtual void                    render();
     virtual void                    update(float) = 0;

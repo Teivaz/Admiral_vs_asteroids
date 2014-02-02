@@ -10,11 +10,17 @@ GameObject::~GameObject()
     delete m_shape;
 }
 
-void GameObject::init(ShaderProgram shader, Shape* shape)
+void GameObject::init(ShaderProgram shader, Shape* shape, Texture tex)
 {
     if (m_shape)
         delete m_shape;
     m_shape = shape;
+    setShader(shader);
+    m_texture = tex;
+}
+
+void GameObject::setShader(ShaderProgram shader)
+{
     m_shader = shader;
     m_uniformTexture = glGetUniformLocation(shader, "u_texture");
     m_uniformTransformation = glGetUniformLocation(shader, "u_transformation");

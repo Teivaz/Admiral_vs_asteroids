@@ -4,7 +4,8 @@
 class Sprite: public GameObject
 {
 public:
-    Sprite(Texture, vec2f lb, vec2f ur, ShaderProgram);
+    Sprite(Texture, vec2f textureLeftBottom, vec2f textureUpRight, ShaderProgram);
+    Sprite(Texture, vec2f textureLeftBottom, vec2f textureUpRight, ShaderProgram, vec2f position, vec2f size);
     virtual ~Sprite();
     virtual void                    update(float);
     virtual void                    render();

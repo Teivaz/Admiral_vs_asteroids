@@ -107,7 +107,7 @@ void SeparateShape::create(const std::vector<vec2f>& verts, const std::vector<ve
     }
     glGenBuffers(1, &m_vbo);
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glBufferData(GL_ARRAY_BUFFER, m_count*sizeof(vec2f)*2, verts.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_count*sizeof(vec2f)*2, data.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
     _createSequentialIbo();
 }
