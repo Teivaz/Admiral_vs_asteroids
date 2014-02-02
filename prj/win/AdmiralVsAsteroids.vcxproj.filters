@@ -29,6 +29,24 @@
     <Filter Include="game\Objects\GUI">
       <UniqueIdentifier>{4d206b08-5a99-4dcf-bea5-29f20a387053}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\Objects\Scene">
+      <UniqueIdentifier>{3fd1a9ba-fde4-4b70-b7ce-e6751a3eb81d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Controllers\Painter">
+      <UniqueIdentifier>{81bf4ec4-8b54-4929-9fbe-673b497d876f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Controllers\Shader">
+      <UniqueIdentifier>{438ca06c-dfd2-4700-80f9-33b8dc6cde2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Controllers\Texture">
+      <UniqueIdentifier>{19f75a77-a8d0-441b-96c8-2811adfa73d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Controllers\Sprite">
+      <UniqueIdentifier>{19648a74-cc00-4e2d-b156-837d8fb44a81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Controllers\Touch">
+      <UniqueIdentifier>{15023c84-a648-4780-908d-eab2cdc5bdfb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -41,14 +59,8 @@
     <ClCompile Include="..\..\src\win\AppDelegate.cpp">
       <Filter>win</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp">
-      <Filter>game\Controllers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\utils\FileUtils.cpp">
       <Filter>utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp">
-      <Filter>game\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\States\StateMachine.cpp">
       <Filter>game\States</Filter>
@@ -59,9 +71,6 @@
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp">
       <Filter>game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\game\Controllers\Painter.cpp">
-      <Filter>game\Controllers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp">
       <Filter>game\Objects\Shape</Filter>
     </ClCompile>
@@ -70,9 +79,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\Stars\Star.cpp">
       <Filter>game\Objects\Stars</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\game\Controllers\SpriteManager.cpp">
-      <Filter>game\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\GUI\GuiManager.cpp">
       <Filter>game\Objects\GUI</Filter>
@@ -89,6 +95,24 @@
     <ClCompile Include="..\..\src\game\Objects\GUI\Widget.cpp">
       <Filter>game\Objects\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\Painter.cpp">
+      <Filter>game\Controllers\Painter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp">
+      <Filter>game\Controllers\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp">
+      <Filter>game\Controllers\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\SpriteManager.cpp">
+      <Filter>game\Controllers\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\TouchReceiver.cpp">
+      <Filter>game\Controllers\Touch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\TouchManager.cpp">
+      <Filter>game\Controllers\Touch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Precompiled.h" />
@@ -97,9 +121,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\win\AppDelegate.h">
       <Filter>win</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\game\Controllers\TextureManager.h">
-      <Filter>game\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\CustomGLTypes.h">
       <Filter>utils</Filter>
@@ -119,12 +140,6 @@
     <ClInclude Include="..\..\src\utils\Singleton.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h">
-      <Filter>game\Controllers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\game\Controllers\Shader.h">
-      <Filter>game\Controllers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game\States\State.h">
       <Filter>game\States</Filter>
     </ClInclude>
@@ -137,9 +152,6 @@
     <ClInclude Include="..\..\src\game\Objects\GameObject.h">
       <Filter>game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\game\Controllers\Painter.h">
-      <Filter>game\Controllers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h">
       <Filter>game\Objects\Shape</Filter>
     </ClInclude>
@@ -151,9 +163,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\utils\CMat3.h">
       <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\game\Controllers\SpriteManager.h">
-      <Filter>game\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\GUI\GuiManager.h">
       <Filter>game\Objects\GUI</Filter>
@@ -169,6 +178,30 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\GUI\Widget.h">
       <Filter>game\Objects\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\Painter.h">
+      <Filter>game\Controllers\Painter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\Shader.h">
+      <Filter>game\Controllers\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h">
+      <Filter>game\Controllers\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\TextureManager.h">
+      <Filter>game\Controllers\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\SpriteManager.h">
+      <Filter>game\Controllers\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\Touch.h">
+      <Filter>game\Controllers\Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\TouchReceiver.h">
+      <Filter>game\Controllers\Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\TouchManager.h">
+      <Filter>game\Controllers\Touch</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

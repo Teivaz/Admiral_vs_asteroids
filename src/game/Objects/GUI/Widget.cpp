@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "Widget.h"
 #include "../Sprite.h"
+#include "Controllers/Touch.h"
 
 Widget::Widget()
 {
@@ -90,4 +91,22 @@ void Widget::render()
 void Widget::_setParent(Widget* parent)
 {
     m_parent = parent;
+}
+
+void Widget::onTouchBegan(Touch* t)
+{
+    if (t->isConsumed())
+        return;
+    for (Widget* w : m_children)
+    {
+        w->onTouchBegan(t);
+    }
+}
+
+void Widget::onTouchMoved(Touch* t)
+{
+}
+
+void Widget::onTouchEnded(Touch* t)
+{
 }

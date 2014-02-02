@@ -11,11 +11,18 @@ public:
     virtual void                setScale(const vec2f&);
     virtual void                render();
 
-    bool                        isPointInside(const vec2f&);
-    void                        setPressed(bool s)
+    bool                        isPressed()
     {
-        m_pressed = s;
+        return m_pressed;
     }
+    
+    virtual void                onTouchBegan(Touch*);
+    virtual void                onTouchMoved(Touch*);
+    virtual void                onTouchEnded(Touch*);
+
+private:
+    bool                        _isPointInside(const vec2f&);
+    void                        _onButton(bool);
 
 private:
     Sprite*                     m_spriteIdle = nullptr;

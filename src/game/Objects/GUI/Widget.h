@@ -1,8 +1,9 @@
 #pragma once
+#include "Controllers/TouchReceiver.h"
 
 class Sprite;
 
-class Widget
+class Widget : public TouchReceiver
 {
 public:
     typedef std::list<Widget*> WidgetList_t;
@@ -26,6 +27,10 @@ public:
     virtual void                setPosition(const vec2f&);
     virtual void                setScale(const vec2f&);
     virtual void                render();
+
+    virtual void                onTouchBegan(Touch*);
+    virtual void                onTouchMoved(Touch*);
+    virtual void                onTouchEnded(Touch*);
 
     const string&               getName() const;
     void                        addChild(Widget*);

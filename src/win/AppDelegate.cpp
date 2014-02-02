@@ -9,6 +9,7 @@
 #include "Controllers/Painter.h"
 #include "Controllers/SpriteManager.h"
 #include "Objects/GUI/GuiManager.h"
+#include "Controllers/TouchManager.h"
 
 void AppDelegate::Init()
 {
@@ -21,6 +22,7 @@ void AppDelegate::Init()
     TextureManager::SetInstance(new TextureManager);
     SpriteManager::SetInstance(new SpriteManager);
     GuiManager::SetInstance(new GuiManager);
+    TouchManager::SetInstance(new TouchManager);
 
     RECT rectangle;
     GetClientRect(window, &rectangle);
@@ -57,45 +59,38 @@ void AppDelegate::Render()
 }
 
 
-void AppDelegate::onTouchPressed(int x, int y, bool leftButton, bool RightButton)
+void AppDelegate::onTouchPressed(int x, int y)
 {
-    State* state = StateMachine::GetInstance()->getCurrentState();
-    if (state)
+    vec2f pos = vec2f(x, m_screen.y - y);
+    pos.x /= m_screen.x;
+    pos.y /= m_screen.y;
+    pos *= 2.0f;
+    pos -= 1.0f;
+    TouchManager::GetInstance()->onTouchBegan(pos);
+}
+
+void AppDelegate::onTouchMoved(int x, int y)
+{
+    vec2f pos = vec2f(x, m_screen.y - y);
+    pos.x /= m_screen.x;
+    pos.y /= m_screen.y;
+    pos *= 2.0f;
+    pos -= 1.0f;
+    TouchManager::GetInstance()->onTouchMoved(pos);
+    pos = abs(pos);
+    if (pos.x > 1 || pos.y > 1)
     {
-        vec2f pos = vec2f(x, m_screen.y - y);
-        pos.x /= m_screen.x;
-        pos.y /= m_screen.y;
-        pos *= 2.0f;
-        pos -= 1.0f;
-        state->onTouchPressed(pos, leftButton, RightButton);
+        TouchManager::GetInstance()->onTouchEnded(pos);
     }
 }
 
-void AppDelegate::onTouchMoved(int x, int y, bool leftButton, bool RightButton)
+void AppDelegate::onTouchReleased(int x, int y)
 {
-    State* state = StateMachine::GetInstance()->getCurrentState();
-    if (state)
-    {
-        vec2f pos = vec2f(x, m_screen.y - y);
-        pos.x /= m_screen.x;
-        pos.y /= m_screen.y;
-        pos *= 2.0f;
-        pos -= 1.0f;
-        state->onTouchMoved(pos, leftButton, RightButton);
-    }
-}
-
-void AppDelegate::onTouchReleased(int x, int y, bool leftButton, bool RightButton)
-{
-    State* state = StateMachine::GetInstance()->getCurrentState();
-    if (state)
-    {
-        vec2f pos = vec2f(x, m_screen.y - y);
-        pos.x /= m_screen.x;
-        pos.y /= m_screen.y;
-        pos *= 2.0f;
-        pos -= 1.0f;
-        state->onTouchReleased(pos, leftButton, RightButton);
-    }
+    vec2f pos = vec2f(x, m_screen.y - y);
+    pos.x /= m_screen.x;
+    pos.y /= m_screen.y;
+    pos *= 2.0f;
+    pos -= 1.0f;
+    TouchManager::GetInstance()->onTouchEnded(pos);
 }
 

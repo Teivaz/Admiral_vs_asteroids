@@ -11,9 +11,9 @@ public:
     void Update(float dt);
     void Render();
     
-    void onTouchPressed(int x, int y, bool leftButton, bool RightButton);
-    void onTouchMoved(int x, int y, bool leftButton, bool RightButton);
-    void onTouchReleased(int x, int y, bool leftButton, bool RightButton);
+    void onTouchPressed(int x, int y);
+    void onTouchMoved(int x, int y);
+    void onTouchReleased(int x, int y);
 
 private:
     bool m_initialized = false;

@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "ButtonWidget.h"
 #include "../Sprite.h"
+#include "Controllers/Touch.h"
 
 ButtonWidget::ButtonWidget(Sprite* idle, Sprite* pressed, const string& name)
 : m_spriteIdle(idle)
@@ -42,7 +43,38 @@ void ButtonWidget::render()
     Widget::render();
 }
 
-bool ButtonWidget::isPointInside(const vec2f& pt)
+bool ButtonWidget::_isPointInside(const vec2f& pt)
 {
     return m_spriteIdle->isPointInside(pt);
+}
+
+void ButtonWidget::onTouchBegan(Touch* t)
+{
+    if (t->isConsumed())
+        return;
+    if (_isPointInside(t->startPoint()))
+    {
+        t->consume(this);
+        _onButton(true);
+    }
+    else
+    {
+        Widget::onTouchBegan(t);
+    }
+}
+
+void ButtonWidget::onTouchMoved(Touch* t)
+{
+    Widget::onTouchBegan(t);
+}
+
+void ButtonWidget::onTouchEnded(Touch* t)
+{
+    _onButton(false);
+    Widget::onTouchEnded(t);
+}
+
+void ButtonWidget::_onButton(bool value)
+{
+    m_pressed = value;
 }

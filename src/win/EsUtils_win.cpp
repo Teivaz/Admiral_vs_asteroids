@@ -39,21 +39,23 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONDOWN:
     {
                            // Touched
-                           ad->onTouchPressed(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), MK_LBUTTON & wParam, MK_RBUTTON & wParam);
+                           ad->onTouchPressed(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
     }
         break;
 
     case WM_LBUTTONUP:
     {
                          // Touch release
-                         ad->onTouchReleased(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), MK_LBUTTON & wParam, MK_RBUTTON & wParam);
+                         ad->onTouchReleased(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
     }
         break;
 
+    case WM_SETCURSOR:
     case WM_MOUSEMOVE:
     {
                          // Touch drag
-                         ad->onTouchMoved(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), MK_LBUTTON & wParam, MK_RBUTTON & wParam);
+                         if (MK_LBUTTON & wParam)
+                             ad->onTouchMoved(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
     }
         break;
     }

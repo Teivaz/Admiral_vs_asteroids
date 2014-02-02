@@ -17,15 +17,15 @@ public:
     virtual void                onFinish();
     virtual void                pause(bool);
     virtual bool                isFinished() const;
-
-    virtual void                onTouchPressed(vec2f, bool leftButton, bool RightButton);
-    virtual void                onTouchMoved(vec2f, bool leftButton, bool RightButton);
-    virtual void                onTouchReleased(vec2f, bool leftButton, bool RightButton);
+    
+private:
+    void                        _setMovingSpeed(vec2f);
 
 private:
     bool                        m_isFinished = false;
 
-
+    vec2f                       m_movingDirection;
+    float                       m_movingSpeed = 0;
     Sprite*                     m_star = nullptr;
     Widget*                     m_gui = nullptr;
 };

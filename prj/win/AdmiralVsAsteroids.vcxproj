@@ -15,6 +15,8 @@
     <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\SpriteManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp" />
+    <ClCompile Include="..\..\src\game\Controllers\TouchManager.cpp" />
+    <ClCompile Include="..\..\src\game\Controllers\TouchReceiver.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\BasicWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\ButtonWidget.cpp" />
@@ -41,6 +43,9 @@
     <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\SpriteManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\TextureManager.h" />
+    <ClInclude Include="..\..\src\game\Controllers\Touch.h" />
+    <ClInclude Include="..\..\src\game\Controllers\TouchManager.h" />
+    <ClInclude Include="..\..\src\game\Controllers\TouchReceiver.h" />
     <ClInclude Include="..\..\src\game\Objects\GameObject.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\BasicWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\ButtonWidget.h" />

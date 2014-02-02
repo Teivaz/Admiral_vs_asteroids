@@ -13,8 +13,4 @@ public:
     virtual void                onFinish() = 0;
     virtual void                pause(bool) = 0;
     virtual bool                isFinished() const = 0;
-
-    virtual void                onTouchPressed(vec2f, bool leftButton, bool RightButton) = 0;
-    virtual void                onTouchMoved(vec2f, bool leftButton, bool RightButton) = 0;
-    virtual void                onTouchReleased(vec2f, bool leftButton, bool RightButton) = 0;
 };
