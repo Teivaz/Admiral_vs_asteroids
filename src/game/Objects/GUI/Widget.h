@@ -8,19 +8,6 @@ class Widget : public TouchReceiver
 public:
     typedef std::list<Widget*> WidgetList_t;
 
-    enum EAllignX
-    {
-        ELeft,
-        ECenterX,
-        ERight
-    };
-    enum EAllignY
-    {
-        ETop,
-        ECenterY,
-        EBottom
-    };
-
     Widget();
     virtual ~Widget();
 

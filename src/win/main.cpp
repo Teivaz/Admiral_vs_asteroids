@@ -7,7 +7,7 @@
 int main(int argn, char** argv)
 {
     AppDelegate delegate;
-    CreateGLWindowWithContext(&delegate, "Hello", 1136, 640);
+    CreateGLWindowWithContext(&delegate, "Admiral vs Asteroids", 1136, 640);
     delegate.Init();
     WindowLoop(&delegate);
 

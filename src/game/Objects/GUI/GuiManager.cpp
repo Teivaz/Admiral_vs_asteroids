@@ -102,6 +102,17 @@ ButtonWidget* GuiManager::_createButtonWidget(const Json::Value& widget)
     return new ButtonWidget(spriteIdle, spritePressed, name);
 }
 
+SliderWidget* GuiManager::_createSliderWidget(const Json::Value& widget)
+{
+    const string name(widget["name"].asString());
+    const string spriteName(widget["sprite"].asString());
+    Sprite* sprite = _loadSpriteForWidget(spriteName, widget);
+    const vec2f travel(static_cast<float>(widget["travel"]["x"].asDouble()),
+                       static_cast<float>(widget["travel"]["y"].asDouble()));
+    float value = static_cast<float>(widget["default"].asDouble());
+    return new SliderWidget(sprite, name, _scaleToScreen(travel), value);
+}
+
 Widget* GuiManager::createWidget(const Json::Value& value)
 {
     const string type(value.get("type","").asString());
@@ -115,7 +126,7 @@ Widget* GuiManager::createWidget(const Json::Value& value)
     }
     else if (type == "SliderWidget")
     {
-        return nullptr;
+        return _createSliderWidget(value);
     }
     else
     {

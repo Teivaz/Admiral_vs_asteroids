@@ -20,6 +20,7 @@ public:
 protected:
     ButtonWidget*           _createButtonWidget(const Json::Value& widget);
     BasicWidget*            _createBasicWidget(const Json::Value& widget);
+    SliderWidget*           _createSliderWidget(const Json::Value& widget);
 
     Sprite*                 _loadSpriteForWidget(const string& name, const Json::Value& widget);
 
