@@ -9,6 +9,7 @@
 #include "Controllers/SpriteManager.h"
 #include "Objects/GUI/GuiManager.h"
 #include "Objects/GUI/Widget.h"
+#include "Objects/GUI/ButtonWidget.h"
 
 GameplayState::GameplayState()
 {
@@ -60,4 +61,21 @@ void GameplayState::pause(bool)
 bool GameplayState::isFinished() const
 {
     return m_isFinished;
+}
+
+void GameplayState::onTouchPressed(vec2f pos, bool leftButton, bool RightButton)
+{
+    ButtonWidget* b = static_cast<ButtonWidget*>(m_gui->findChildByName("fire!"));
+    b->setPressed(b->isPointInside(pos));
+}
+
+void GameplayState::onTouchMoved(vec2f, bool leftButton, bool RightButton)
+{
+
+}
+
+void GameplayState::onTouchReleased(vec2f, bool leftButton, bool RightButton)
+{
+    ButtonWidget* b = static_cast<ButtonWidget*>(m_gui->findChildByName("fire!"));
+    b->setPressed(false);
 }

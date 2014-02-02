@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "EsUtils_win.h"
 #include "AppDelegate.h"
+#include <windowsx.h>
 
 #define WINDOW_CLASS "opengles2.0"
 
@@ -38,18 +39,21 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONDOWN:
     {
                            // Touched
+                           ad->onTouchPressed(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), MK_LBUTTON & wParam, MK_RBUTTON & wParam);
     }
         break;
 
     case WM_LBUTTONUP:
     {
                          // Touch release
+                         ad->onTouchReleased(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), MK_LBUTTON & wParam, MK_RBUTTON & wParam);
     }
         break;
 
     case WM_MOUSEMOVE:
     {
                          // Touch drag
+                         ad->onTouchMoved(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), MK_LBUTTON & wParam, MK_RBUTTON & wParam);
     }
         break;
     }

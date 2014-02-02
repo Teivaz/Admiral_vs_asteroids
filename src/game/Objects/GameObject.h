@@ -7,14 +7,24 @@ class Shape;
 class GameObject : public has_slots<>
 {
 public:
-    void init(ShaderProgram, Shape*, Texture);
-    void setShader(ShaderProgram);
     virtual ~GameObject();
     virtual void                    render();
     virtual void                    update(float) = 0;
-    virtual void                    bindAttributes() = 0;
+
+    virtual void                    setPosition(const vec2f& p);
+    virtual void                    setScale(const vec2f& s);
+    virtual void                    setRotation(float r);
+    virtual void                    adjustPosition(const vec2f& p);
+    virtual void                    adjustScale(const vec2f& s);
+    virtual void                    adjustRotation(float r);
+
+
 
     //******************************************************
+    void init(ShaderProgram, Shape*, Texture);
+    void setShader(ShaderProgram);
+    virtual void                    bindAttributes() = 0;
+
     inline Texture                  getTexture() const
     {
         return m_texture;
@@ -27,11 +37,7 @@ public:
     {
         return m_mode;
     }
-
     GLsizei                         getVertsCount() const;
-
-    //******************************************************
-
     inline const vec2f&             getPosition() const
     {
         return m_position;
@@ -44,16 +50,9 @@ public:
     {
         return m_rotation;
     }
-    void                            setPosition(const vec2f& p);
-    void                            setScale(const vec2f& s);
-    void                            setRotation(float r);
-    void                            adjustPosition(const vec2f& p);
-    void                            adjustScale(const vec2f& s);
-    void                            adjustRotation(float r);
     //******************************************************
 
     // sort purpose
-
     inline bool operator <(const GameObject& obj) const
     {
         return m_renderLayer < obj.m_renderLayer;

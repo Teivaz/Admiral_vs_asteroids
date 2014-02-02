@@ -18,6 +18,10 @@ public:
     virtual void                pause(bool);
     virtual bool                isFinished() const;
 
+    virtual void                onTouchPressed(vec2f, bool leftButton, bool RightButton);
+    virtual void                onTouchMoved(vec2f, bool leftButton, bool RightButton);
+    virtual void                onTouchReleased(vec2f, bool leftButton, bool RightButton);
+
 private:
     bool                        m_isFinished = false;
 

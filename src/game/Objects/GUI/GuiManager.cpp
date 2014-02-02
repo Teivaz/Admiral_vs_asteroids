@@ -29,16 +29,14 @@ vec2f GuiManager::_scaleToScreen(vec2f size)
     return vec2f(size.x / static_cast<float>(m_screenSize.x), size.y / static_cast<float>(m_screenSize.y))*2.0;
 }
 
-BasicWidget* GuiManager::_createBasicWidget(const Json::Value& widget)
+Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::Value& widget)
 {
     const vec2f anchor(widget["anchor"]["x"].asDouble(), widget["anchor"]["y"].asDouble());
     const vec2f scale(widget["scale"]["x"].asDouble(), widget["scale"]["y"].asDouble());
     const vec2f offset(widget["offset"]["x"].asDouble(), widget["offset"]["y"].asDouble());
-    const string name(widget["name"].asString());
-    const string spriteName(widget["sprite"].asString());
     const string verticalAllign(widget["allign"]["y"].asString());
     const string horizontalAllign(widget["allign"]["x"].asString());
-    
+
     vec2i originalSize = SpriteManager::GetInstance()->getSpriteSize(spriteName);
     vec2f relativeSize = _scaleToScreen(vec2f(scale.x * originalSize.x, scale.y * originalSize.y));
     vec2f relativeOffset = _scaleToScreen(offset);
@@ -77,15 +75,28 @@ BasicWidget* GuiManager::_createBasicWidget(const Json::Value& widget)
         ASSERT(false && "Wrong allign mode");
     }
 
-    Sprite* sprite = SpriteManager::GetInstance()->createSprite(spriteName, -vec2f(relativeSize.x*anchor.x, relativeSize.y*anchor.y), relativeSize, false, 0);
+    Sprite* sprite = SpriteManager::GetInstance()->createSprite(spriteName, -vec2f(relativeSize.x*anchor.x, relativeSize.y*anchor.y), relativeSize, false, -100);
     sprite->setPosition(relativePosition);
     sprite->adjustPosition(relativeOffset);
+    return sprite;
+}
+
+BasicWidget* GuiManager::_createBasicWidget(const Json::Value& widget)
+{
+    const string name(widget["name"].asString());
+    const string spriteName(widget["sprite"].asString());
+    Sprite* sprite = _loadSpriteForWidget(spriteName, widget);
     return new BasicWidget(sprite, name);
 }
 
-BasicWidget* GuiManager::_createBasicWidget(const string& name, Sprite* sprite)
+ButtonWidget* GuiManager::_createButtonWidget(const Json::Value& widget)
 {
-    return nullptr;
+    const string name(widget["name"].asString());
+    const string spriteNameIdle(widget["sprite"].asString());
+    Sprite* spriteIdle = _loadSpriteForWidget(spriteNameIdle, widget);
+    const string spriteNamePressed(widget["sprite_selected"].asString());
+    Sprite* spritePressed = _loadSpriteForWidget(spriteNamePressed, widget);
+    return new ButtonWidget(spriteIdle, spritePressed, name);
 }
 
 Widget* GuiManager::createWidget(const Json::Value& value)
@@ -97,7 +108,7 @@ Widget* GuiManager::createWidget(const Json::Value& value)
     }
     else if (type == "ButtonWidget")
     {
-        return nullptr;
+        return _createButtonWidget(value);
     }
     else if (type == "SliderWidget")
     {

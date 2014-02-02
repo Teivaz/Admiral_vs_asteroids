@@ -16,6 +16,9 @@ public:
         return m_size;
     }
 
+    bool isPointInside(const vec2f& pt);
+
 private:
     vec2f                           m_size;
+    vec2f                           m_origin;
 };

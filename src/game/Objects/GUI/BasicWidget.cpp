@@ -10,33 +10,19 @@ BasicWidget::BasicWidget(Sprite* sprite, const string& name)
 
 BasicWidget::~BasicWidget()
 {
-
+    delete m_sprite;
 }
 
-Sprite* BasicWidget::getSprite()
+void BasicWidget::setPosition(const vec2f& p)
 {
-    return m_sprite;
+    m_sprite->setPosition(p);
+    Widget::setPosition(p);
 }
 
-void BasicWidget::setAnchor(vec2f anchor)
-{
-    vec2f size = m_sprite->getSize();
-    m_sprite->setPosition(vec2f(size.x * anchor.x, size.y * anchor.y));
-}
-
-void BasicWidget::setAllign(EAllignX, EAllignY)
-{
-
-}
-
-void BasicWidget::setOffset(vec2f)
-{
-
-}
-
-void BasicWidget::setScale(vec2f s)
+void BasicWidget::setScale(const vec2f& s)
 {
     m_sprite->setScale(s);
+    Widget::setScale(s);
 }
 
 void BasicWidget::render()

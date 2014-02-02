@@ -23,10 +23,8 @@ public:
     Widget();
     virtual ~Widget();
 
-    virtual void                setAnchor(vec2f);
-    virtual void                setAllign(EAllignX, EAllignY);
-    virtual void                setOffset(vec2f);
-    virtual void                setScale(vec2f);
+    virtual void                setPosition(const vec2f&);
+    virtual void                setScale(const vec2f&);
     virtual void                render();
 
     const string&               getName() const;

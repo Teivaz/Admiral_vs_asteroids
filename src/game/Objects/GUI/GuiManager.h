@@ -18,8 +18,10 @@ public:
     Widget*                 createWidget(const Json::Value& root);
 
 protected:
-    BasicWidget*            _createBasicWidget(const string& name, Sprite* sprite);
+    ButtonWidget*           _createButtonWidget(const Json::Value& widget);
     BasicWidget*            _createBasicWidget(const Json::Value& widget);
+
+    Sprite*                 _loadSpriteForWidget(const string& name, const Json::Value& widget);
 
     vec2f                   _scaleToScreen(vec2f);
 

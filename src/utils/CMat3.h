@@ -174,6 +174,13 @@ public:
         return a1*b2*c3 + a2*b3*c1 + a3*b1*c2 - a3*b2*c1 - a2*b1*c3 - a1*b3*c2;
     }
 
+    CVec3<T> operator *(const CVec3<T>& vec) const
+    {
+        return CVec3<T>(
+            (a1*vec.x + a2*vec.y + a3*vec.z),
+            (b1*vec.x + b2*vec.y + b3*vec.z),
+            (c1*vec.x + c2*vec.y + c3*vec.z));
+    }
 
 };
 

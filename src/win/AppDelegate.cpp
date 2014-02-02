@@ -24,7 +24,8 @@ void AppDelegate::Init()
 
     RECT rectangle;
     GetClientRect(window, &rectangle);
-    GuiManager::GetInstance()->setAppSize(rectangle.right - rectangle.left, rectangle.bottom - rectangle.top);
+    m_screen = vec2i(rectangle.right - rectangle.left, rectangle.bottom - rectangle.top);
+    GuiManager::GetInstance()->setAppSize(m_screen.x, m_screen.y);
 
     SpriteManager::GetInstance()->loadAtlas("sprites.json");
 
@@ -54,3 +55,47 @@ void AppDelegate::Render()
     StateMachine::GetInstance()->render();
     eglSwapBuffers(display, surface);
 }
+
+
+void AppDelegate::onTouchPressed(int x, int y, bool leftButton, bool RightButton)
+{
+    State* state = StateMachine::GetInstance()->getCurrentState();
+    if (state)
+    {
+        vec2f pos = vec2f(x, m_screen.y - y);
+        pos.x /= m_screen.x;
+        pos.y /= m_screen.y;
+        pos *= 2.0f;
+        pos -= 1.0f;
+        state->onTouchPressed(pos, leftButton, RightButton);
+    }
+}
+
+void AppDelegate::onTouchMoved(int x, int y, bool leftButton, bool RightButton)
+{
+    State* state = StateMachine::GetInstance()->getCurrentState();
+    if (state)
+    {
+        vec2f pos = vec2f(x, m_screen.y - y);
+        pos.x /= m_screen.x;
+        pos.y /= m_screen.y;
+        pos *= 2.0f;
+        pos -= 1.0f;
+        state->onTouchMoved(pos, leftButton, RightButton);
+    }
+}
+
+void AppDelegate::onTouchReleased(int x, int y, bool leftButton, bool RightButton)
+{
+    State* state = StateMachine::GetInstance()->getCurrentState();
+    if (state)
+    {
+        vec2f pos = vec2f(x, m_screen.y - y);
+        pos.x /= m_screen.x;
+        pos.y /= m_screen.y;
+        pos *= 2.0f;
+        pos -= 1.0f;
+        state->onTouchReleased(pos, leftButton, RightButton);
+    }
+}
+

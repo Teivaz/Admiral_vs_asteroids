@@ -9,47 +9,26 @@ Widget::Widget()
 
 Widget::~Widget()
 {
-}
-
-void Widget::setAnchor(vec2f anchor)
-{
-}
-
-void Widget::setAllign(EAllignX x, EAllignY y)
-{
-    switch (x)
+    for (Widget* child : m_children)
     {
-    case ELeft:
-        break;
-
-    case ECenterX:
-        break;
-
-    case ERight:
-    default:
-        break;
-    }
-    switch (y)
-    {
-    case ETop:
-        break;
-
-    case ECenterY:
-        break;
-
-    case EBottom:
-    default:
-        break;
+        delete child;
     }
 }
 
-void Widget::setOffset(vec2f)
+void Widget::setPosition(const vec2f& p)
 {
-
+    for (Widget* child : m_children)
+    {
+        child->setPosition(p);
+    }
 }
 
-void Widget::setScale(vec2f s)
+void Widget::setScale(const vec2f& s)
 {
+    for (Widget* child : m_children)
+    {
+        child->setScale(s);
+    }
 }
 
 void Widget::addChild(Widget* w)
@@ -86,9 +65,13 @@ Widget* Widget::findChildByName(const string& name, bool deep/* = false*/)
     }
     return nullptr;
 }
+
 void Widget::removeFromParent(Widget*)
 {
-
+    auto it = std::find(m_parent->m_children.begin(), m_parent->m_children.end(), this);
+    if (it != m_parent->m_children.end())
+        m_parent->m_children.erase(it);
+    m_parent = nullptr;
 }
 
 const string& Widget::getName() const

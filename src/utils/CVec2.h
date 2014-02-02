@@ -106,6 +106,13 @@ public:
         return CVec2(x * value, y * value);
     }
 
+    CVec2& operator *=(T value)
+    {
+        x *= value;
+        y *= value;
+        return *this;
+    }
+
     CVec2 operator *(const CVec2& value) const
     {
         return CVec2(x * value.x, y * value.y);

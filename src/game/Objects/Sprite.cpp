@@ -5,7 +5,8 @@
 
 Sprite::Sprite(Texture tex, vec2f lb, vec2f ur, ShaderProgram sp)
 {
-    m_size = vec2f(abs(lb.x - ur.x), abs(lb.y - ur.y));
+    m_size = abs(lb - ur);
+    m_origin = vec2f(min(lb.x, ur.x), min(lb.y, ur.y));
     std::vector<vec2f> verts(4);
     verts[1] = lb;
     verts[0] = vec2f(lb.x, ur.y);
@@ -18,6 +19,7 @@ Sprite::Sprite(Texture tex, vec2f lb, vec2f ur, ShaderProgram sp)
 Sprite::Sprite(Texture tex, vec2f textureLeftBottom, vec2f textureUpRight, ShaderProgram sp, vec2f position, vec2f size)
 {
     m_size = size;
+    m_origin = position;
     std::vector<vec2f> texVerts(4);
     texVerts[1] = textureLeftBottom;
     texVerts[0] = vec2f(textureLeftBottom.x, textureUpRight.y);
@@ -35,6 +37,15 @@ Sprite::Sprite(Texture tex, vec2f textureLeftBottom, vec2f textureUpRight, Shade
 
 Sprite::~Sprite()
 {
+}
+
+bool Sprite::isPointInside(const vec2f& pt)
+{
+    vec3f lb = vec3f(m_origin.x, m_origin.y, 1);
+    vec3f ur = vec3f(m_size.x + m_origin.x, m_size.y + m_origin.y, 1);
+    lb = m_transformationMatrix * lb;
+    ur = m_transformationMatrix * ur;
+    return ((pt.x > lb.x) && (pt.y > lb.y) && (pt.x < ur.x) && (pt.y < ur.y));
 }
 
 void Sprite::render()

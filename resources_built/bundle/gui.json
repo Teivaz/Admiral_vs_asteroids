@@ -68,10 +68,10 @@
 			"x": "left",
 			"y": "bottom"
 		},
-		"offset":
+		"offset": // pixels
 		{
-			"x": -100,
-			"y": 0.0
+			"x": 0,
+			"y": 0
 		}
 	},
 	{
@@ -81,13 +81,13 @@
 		"sprite_selected": "button_fire_pressed.png",
 		"anchor": 
 		{
-			"x": 0.5,
-			"y": 0.0			
+			"x": 0.0,
+			"y": 1.0			
 		},
-		"size":
+		"scale":
 		{
-			"x": 0.1,
-			"y": 0.1
+			"x": 1.0,
+			"y": 1.0
 		},
 		"allign":
 		{
@@ -96,8 +96,8 @@
 		},
 		"offset":
 		{
-			"x": 0.0,
-			"y": 0.02
+			"x": -227,
+			"y": 125	
 		}
 
 	}
