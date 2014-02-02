@@ -10,7 +10,7 @@
 	
 	void main()
 	{
-		v_texturePosition = vec2(a_texturePosition.x, 1.0 - a_texturePosition.y);
+		v_texturePosition = a_texturePosition;
 		vec3 pos = vec3(a_position, 1.0) * u_transformation;
 		gl_Position =  vec4(pos, 1.0);
 	}

@@ -78,7 +78,7 @@ void SpriteManager::loadAtlas(const string& name)
             float y = static_cast<float>(frame["y"].asInt()) / texSize.y;
             float w = static_cast<float>(frame["w"].asInt()) / texSize.x;
             float h = static_cast<float>(frame["h"].asInt()) / texSize.y;
-            m_spriteRectMap[spriteName] = SpriteRect(vec2f(x,1.0f-y), vec2f(x+w,1.0f-y-h), tex);
+            m_spriteRectMap[spriteName] = SpriteRect(vec2f(x,y), vec2f(x+w,y+h), tex);
         }        
     }
 }
