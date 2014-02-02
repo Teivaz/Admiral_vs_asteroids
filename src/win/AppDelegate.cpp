@@ -8,6 +8,7 @@
 #include "Controllers/TextureManager.h"
 #include "Controllers/Painter.h"
 #include "Controllers/SpriteManager.h"
+#include "Objects/GUI/GuiManager.h"
 
 void AppDelegate::Init()
 {
@@ -19,8 +20,13 @@ void AppDelegate::Init()
     ShaderManager::SetInstance(new ShaderManager);
     TextureManager::SetInstance(new TextureManager);
     SpriteManager::SetInstance(new SpriteManager);
+    GuiManager::SetInstance(new GuiManager);
 
-    SpriteManager::GetInstance()->loadAtlas("sprites.js");
+    RECT rectangle;
+    GetClientRect(window, &rectangle);
+    GuiManager::GetInstance()->setAppSize(rectangle.right - rectangle.left, rectangle.bottom - rectangle.top);
+
+    SpriteManager::GetInstance()->loadAtlas("sprites.json");
 
     //GameplayState s;
     StateMachine::GetInstance()->pushState(new GameplayState);

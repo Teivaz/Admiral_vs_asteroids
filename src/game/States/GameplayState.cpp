@@ -7,6 +7,8 @@
 #include "Objects/Sprite.h"
 #include "game/Objects/Sprite.h"
 #include "Controllers/SpriteManager.h"
+#include "Objects/GUI/GuiManager.h"
+#include "Objects/GUI/Widget.h"
 
 GameplayState::GameplayState()
 {
@@ -25,11 +27,14 @@ void GameplayState::update(float dt)
 
 void GameplayState::render()
 {
-
+    m_gui->render();
 }
 
 void GameplayState::onEnter()
 {
+
+    SpriteManager::GetInstance()->createSprite(sprites::k_stars_back, -1, 2, true, 1);
+
     auto simpleShader = ShaderManager::GetInstance()->getShader(shaders::k_simple);
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
     Sprite* s = SpriteManager::GetInstance()->createSprite(sprites::k_knob, 0, 1.1);
@@ -38,6 +43,8 @@ void GameplayState::onEnter()
     m_star->setPosition(-m_star->getSize() / 2);
     m_star->setShader(softShader);
     Painter::GetInstance()->add(m_star);
+
+    m_gui = GuiManager::GetInstance()->LoadGui("gui.json");
 }
 
 void GameplayState::onFinish()

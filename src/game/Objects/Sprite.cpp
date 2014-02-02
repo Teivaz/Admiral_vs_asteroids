@@ -7,10 +7,10 @@ Sprite::Sprite(Texture tex, vec2f lb, vec2f ur, ShaderProgram sp)
 {
     m_size = vec2f(abs(lb.x - ur.x), abs(lb.y - ur.y));
     std::vector<vec2f> verts(4);
-    verts[0] = lb;
-    verts[1] = vec2f(lb.x, ur.y);
-    verts[2] = ur;
-    verts[3] = vec2f(ur.x, lb.y);
+    verts[1] = lb;
+    verts[0] = vec2f(lb.x, ur.y);
+    verts[3] = ur;
+    verts[2] = vec2f(ur.x, lb.y);
     SimpleShape* shape = new SimpleShape(verts);
     init(sp, shape, tex);
 }
@@ -19,10 +19,10 @@ Sprite::Sprite(Texture tex, vec2f textureLeftBottom, vec2f textureUpRight, Shade
 {
     m_size = size;
     std::vector<vec2f> texVerts(4);
-    texVerts[0] = textureLeftBottom;
-    texVerts[1] = vec2f(textureLeftBottom.x, textureUpRight.y);
-    texVerts[2] = textureUpRight;
-    texVerts[3] = vec2f(textureUpRight.x, textureLeftBottom.y);
+    texVerts[1] = textureLeftBottom;
+    texVerts[0] = vec2f(textureLeftBottom.x, textureUpRight.y);
+    texVerts[3] = textureUpRight;
+    texVerts[2] = vec2f(textureUpRight.x, textureLeftBottom.y);
 
     std::vector<vec2f> verts(4);
     verts[0] = position;

@@ -101,6 +101,16 @@ public:
 		return (x == value.x) && (y == value.y);
 	}
 
+    CVec2 operator *(T value) const
+    {
+        return CVec2(x * value, y * value);
+    }
+
+    CVec2 operator *(const CVec2& value) const
+    {
+        return CVec2(x * value.x, y * value.y);
+    }
+
     CVec2 operator /(T value) const
     {
         return CVec2(x / value, y / value);
@@ -122,4 +132,11 @@ public:
         x /= l;
         y /= l;
     }
+
 };
+
+template<typename T>
+CVec2<T> abs(const CVec2<T>& vec)
+{
+    return CVec2<T>(abs(vec.x), abs(vec.y));
+}

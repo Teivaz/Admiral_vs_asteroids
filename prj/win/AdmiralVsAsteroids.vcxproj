@@ -16,6 +16,11 @@
     <ClCompile Include="..\..\src\game\Controllers\SpriteManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\GUI\BasicWidget.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\GUI\ButtonWidget.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\GUI\GuiManager.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\GUI\SliderWidget.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\GUI\Widget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Sprite.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Stars\Star.cpp" />
@@ -37,6 +42,11 @@
     <ClInclude Include="..\..\src\game\Controllers\SpriteManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\TextureManager.h" />
     <ClInclude Include="..\..\src\game\Objects\GameObject.h" />
+    <ClInclude Include="..\..\src\game\Objects\GUI\BasicWidget.h" />
+    <ClInclude Include="..\..\src\game\Objects\GUI\ButtonWidget.h" />
+    <ClInclude Include="..\..\src\game\Objects\GUI\GuiManager.h" />
+    <ClInclude Include="..\..\src\game\Objects\GUI\SliderWidget.h" />
+    <ClInclude Include="..\..\src\game\Objects\GUI\Widget.h" />
     <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h" />
     <ClInclude Include="..\..\src\game\Objects\Sprite.h" />
     <ClInclude Include="..\..\src\game\Objects\Stars\Star.h" />

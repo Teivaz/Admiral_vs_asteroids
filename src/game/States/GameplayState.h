@@ -2,6 +2,7 @@
 #include "State.h"
 
 class Sprite;
+class Widget;
 
 class GameplayState : public State
 {
@@ -22,5 +23,5 @@ private:
 
 
     Sprite*                     m_star = nullptr;
-
+    Widget*                     m_gui = nullptr;
 };

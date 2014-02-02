@@ -7,23 +7,23 @@ class SpriteManager : public Singleton<SpriteManager>
 {
     struct SpriteRect
     {
-        SpriteRect()
-        :lb(0), ur(0), tex(0)
-        {};
-        SpriteRect(vec2f _lb, vec2f _ur, Texture _tex)
-        : lb(_lb), ur(_ur), tex(_tex)
+        SpriteRect(){};
+        SpriteRect(vec2f _lb, vec2f _ur, Texture _tex, vec2i originalSize)
+            : lb(_lb), ur(_ur), tex(_tex), sizePx(originalSize)
         {};
         vec2f lb;
         vec2f ur;
         Texture tex;
+        vec2i sizePx;
     };
 
 public:
     SpriteManager();
     ~SpriteManager();
 
-    Sprite*                 createSprite(const string& name, bool autorender = true);
-    Sprite*                 createSprite(const string& name, vec2f position, vec2f size, bool autorender = true);
+    vec2i                   getSpriteSize(const string& name);
+    Sprite*                 createSprite(const string& name, bool autorender = true, int renderLayer = 0);
+    Sprite*                 createSprite(const string& name, vec2f position, vec2f size, bool autorender = true, int renderLayer = 0);
     void                    loadAtlas(const string& name);
 
 private:

@@ -26,6 +26,9 @@
     <Filter Include="game\Objects\Stars">
       <UniqueIdentifier>{47c9c25e-0d3a-4d34-a2f9-0c84cfd42364}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\Objects\GUI">
+      <UniqueIdentifier>{4d206b08-5a99-4dcf-bea5-29f20a387053}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -70,6 +73,21 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game\Controllers\SpriteManager.cpp">
       <Filter>game\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\GUI\GuiManager.cpp">
+      <Filter>game\Objects\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\GUI\BasicWidget.cpp">
+      <Filter>game\Objects\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\GUI\ButtonWidget.cpp">
+      <Filter>game\Objects\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\GUI\SliderWidget.cpp">
+      <Filter>game\Objects\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\GUI\Widget.cpp">
+      <Filter>game\Objects\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +154,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Controllers\SpriteManager.h">
       <Filter>game\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\GUI\GuiManager.h">
+      <Filter>game\Objects\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\GUI\BasicWidget.h">
+      <Filter>game\Objects\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\GUI\ButtonWidget.h">
+      <Filter>game\Objects\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\GUI\SliderWidget.h">
+      <Filter>game\Objects\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\GUI\Widget.h">
+      <Filter>game\Objects\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
