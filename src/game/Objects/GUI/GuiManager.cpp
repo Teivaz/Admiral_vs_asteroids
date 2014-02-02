@@ -31,9 +31,12 @@ vec2f GuiManager::_scaleToScreen(vec2f size)
 
 Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::Value& widget)
 {
-    const vec2f anchor(widget["anchor"]["x"].asDouble(), widget["anchor"]["y"].asDouble());
-    const vec2f scale(widget["scale"]["x"].asDouble(), widget["scale"]["y"].asDouble());
-    const vec2f offset(widget["offset"]["x"].asDouble(), widget["offset"]["y"].asDouble());
+    const vec2f anchor(static_cast<float>(widget["anchor"]["x"].asDouble()),
+                       static_cast<float>(widget["anchor"]["y"].asDouble()));
+    const vec2f scale( static_cast<float>(widget["scale"]["x"].asDouble()),
+                       static_cast<float>(widget["scale"]["y"].asDouble()));
+    const vec2f offset(static_cast<float>(widget["offset"]["x"].asDouble()), 
+                       static_cast<float>(widget["offset"]["y"].asDouble()));
     const string verticalAllign(widget["allign"]["y"].asString());
     const string horizontalAllign(widget["allign"]["x"].asString());
 

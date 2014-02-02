@@ -74,7 +74,8 @@ void SpriteManager::loadAtlas(const string& name)
     delete[] data;
     Json::Value meta = root.get("meta", Json::Value(""));
     Json::Value texName = meta.get("image", Json::Value(""));
-    vec2f texSize = vec2f(meta["size"]["w"].asInt(), meta["size"]["h"].asInt());
+    vec2f texSize = vec2f(static_cast<float>(meta["size"]["w"].asInt()), 
+                          static_cast<float>(meta["size"]["h"].asInt()));
     Texture tex = TextureManager::GetInstance()->getTexture(texName.asString());
     ASSERT(tex);
     Json::Value frames = root.get("frames", Json::Value(""));

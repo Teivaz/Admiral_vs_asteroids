@@ -18,6 +18,7 @@ public:
     virtual void                pause(bool);
     virtual bool                isFinished() const;
     
+    void                        onButton(bool);
 private:
     void                        _setMovingSpeed(vec2f);
 

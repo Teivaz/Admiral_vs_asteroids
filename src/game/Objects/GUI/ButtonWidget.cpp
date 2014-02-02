@@ -14,6 +14,7 @@ ButtonWidget::~ButtonWidget()
 {
     delete m_spriteIdle;
     delete m_spritePressed;
+    delete m_callback;
 }
 
 void ButtonWidget::setPosition(const vec2f& p)
@@ -65,16 +66,24 @@ void ButtonWidget::onTouchBegan(Touch* t)
 
 void ButtonWidget::onTouchMoved(Touch* t)
 {
-    Widget::onTouchBegan(t);
 }
 
 void ButtonWidget::onTouchEnded(Touch* t)
 {
     _onButton(false);
-    Widget::onTouchEnded(t);
 }
 
 void ButtonWidget::_onButton(bool value)
 {
     m_pressed = value;
+    if (m_callback)
+    {
+        (*m_callback)(value);
+    }
+}
+
+void ButtonWidget::setCallback(CallbackFunctor* c)
+{
+    ASSERT(m_callback == nullptr && "Single callback only avaliable");
+    m_callback = c;
 }

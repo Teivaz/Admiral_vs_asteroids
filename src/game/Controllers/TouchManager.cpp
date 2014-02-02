@@ -60,7 +60,7 @@ void TouchManager::removeReceiever(TouchReceiver* r)
 
 Touch* TouchManager::_resolveTouch(const vec2f& point, bool erase/* = true*/)
 {
-    // This will do for win as it has no multitouch
+    // This will do for Windows as it has no multitouch
     if (m_touches.empty())
     {
         return nullptr;

@@ -61,7 +61,7 @@ void AppDelegate::Render()
 
 void AppDelegate::onTouchPressed(int x, int y)
 {
-    vec2f pos = vec2f(x, m_screen.y - y);
+    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;
@@ -71,7 +71,7 @@ void AppDelegate::onTouchPressed(int x, int y)
 
 void AppDelegate::onTouchMoved(int x, int y)
 {
-    vec2f pos = vec2f(x, m_screen.y - y);
+    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;
@@ -86,7 +86,7 @@ void AppDelegate::onTouchMoved(int x, int y)
 
 void AppDelegate::onTouchReleased(int x, int y)
 {
-    vec2f pos = vec2f(x, m_screen.y - y);
+    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;

@@ -12,6 +12,18 @@
 #include "Objects/GUI/ButtonWidget.h"
 #include "Controllers/TouchManager.h"
 
+class ButtonCallBack : public ButtonWidget::CallbackFunctor
+{
+public:
+    ButtonCallBack(GameplayState*_state) :state(_state){}
+    virtual void operator()(bool btn)
+    {
+        state->onButton(btn);
+    }
+private:
+    GameplayState* state;
+};
+
 GameplayState::GameplayState()
 {
 
@@ -47,6 +59,11 @@ void GameplayState::onEnter()
 
     m_gui = GuiManager::GetInstance()->LoadGui("gui.json");
     TouchManager::GetInstance()->addReceiever(m_gui);
+    ButtonWidget* btn = static_cast<ButtonWidget*>(m_gui->findChildByName("fire!"));
+    if (btn)
+    {
+        btn->setCallback(new ButtonCallBack(this));
+    }
 }
 
 void GameplayState::onFinish()
@@ -67,4 +84,9 @@ bool GameplayState::isFinished() const
 void GameplayState::_setMovingSpeed(vec2f speed)
 {
     //m_movingSpeed = speed;
+}
+
+void GameplayState::onButton(bool b)
+{
+    m_star->adjustPosition(b?0.1:-0.1);
 }
