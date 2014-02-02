@@ -23,7 +23,6 @@ public:
 	{
 	};
 
-	// Should be implicit?
 	CVec2(T value)
 		: x(value)
 		, y(value)
@@ -43,28 +42,24 @@ public:
 
 	T x;
 	T y;
-
-	//-- Arifmetics
-
+    
 	CVec2 operator +(const CVec2& value) const
 	{
 		return CVec2(x + value.x, y + value.y);
 	}
 
-	// Should be implicit?
 	CVec2 operator +(T value)
 	{
 		return CVec2(x + value, y + value);
 	}
 
-	CVec2& operator +=(CVec2 value)
+	CVec2& operator +=(const CVec2& value)
 	{
 		x += value.x;
 		y += value.y;
 		return *this;
 	}
 
-	// Should be implicit?
 	CVec2& operator +=(T value)
 	{
 		x += value;
@@ -72,36 +67,59 @@ public:
 		return *this;
 	}
 
-	CVec2 operator -(CVec2 value)
+	CVec2 operator -(const CVec2& value) const
 	{
 		return CVec2(x - value.x, y - value.y);
 	}
 
-	// Should be implicit?
-	CVec2 operator -(T value)
+	CVec2 operator -(T value) const
 	{
 		return CVec2(x - value, y - value);
 	}
 
-	CVec2& operator -=(CVec2 value)
+    CVec2 operator -() const
+    {
+        return CVec2(-x, -y);
+    }
+
+	CVec2& operator -=(const CVec2& value)
 	{
 		x -= value.x;
 		y -= value.y;
 		return *this;
 	}
 
-	// Should be implicit?
-	CVec2& operator -=(T value)
+  	CVec2& operator -=(T value)
 	{
 		x -= value;
 		y -= value;
 		return *this;
 	}
-
-	//-- Comparison
-
+    
 	bool operator ==(const CVec2& value) const
 	{
 		return (x == value.x) && (y == value.y);
 	}
+
+    CVec2 operator /(T value) const
+    {
+        return CVec2(x / value, y / value);
+    }
+
+    T Dot(const CVec2& vec) const
+    {
+        return x*vec.x + y*vec.y;
+    }
+
+    T Length() const
+    {
+        return sqrt(x*x + y*y);
+    }
+
+    void Normalize()
+    {
+        T l = Length*();
+        x /= l;
+        y /= l;
+    }
 };

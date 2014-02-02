@@ -11,6 +11,11 @@ public:
     virtual void                    render();
     virtual void                    bindAttributes();
 
-private:
+    inline const vec2f&             getSize()
+    {
+        return m_size;
+    }
 
+private:
+    vec2f                           m_size;
 };

@@ -1,61 +1,23 @@
 #include "Precompiled.h"
 #include "Sprite.h"
 #include "Controllers/ShaderManager.h"
+#include "Shape/Shape.h"
 
 Sprite::Sprite(Texture tex, vec2f lb, vec2f ur, ShaderProgram sp)
 {
+    m_size = vec2f(abs(lb.x - ur.x), abs(lb.y - ur.y));
     m_texture = tex;
-    m_vertsCount = 4;
-
-    GLushort idx[] = { 0, 1, 2, 3 };
-
-    // pos         texture
-    float verts[] = { -1.0f, -1.0f, lb.x, lb.y,
-        -1.0f, 1.0f, lb.x, ur.y,
-        1.0f, 1.0f, ur.x, ur.y,
-        1.0f, -1.0f, ur.x, lb.y
-    };
-
-    glGenBuffers(1, &m_vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glGenBuffers(1, &m_ibo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort)* 4, idx, GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
-
-    init(sp);
-}
-
-Sprite::Sprite(Texture tex, vec2f lb, vec2f ur)
-{
-    m_texture = tex;
-    m_vertsCount = 4;
-    init(ShaderManager::GetInstance()->getShader(shaders::k_softLight));
-
-    GLushort idx[] = { 0, 1, 2, 3 };
-
-                    // pos         texture
-    float verts[] = {-1.0f, -1.0f, lb.x, lb.y,
-                     -1.0f, +1.0f, lb.x, ur.y,
-                     +1.0f, +1.0f, ur.x, ur.y,
-                     +1.0f, -1.0f, ur.x, lb.y
-                    };
-
-    glGenBuffers(1, &m_vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_DYNAMIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glGenBuffers(1, &m_ibo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort)* 4, idx, GL_DYNAMIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
+    std::vector<vec2f> verts(4);
+    verts[0] = lb;
+    verts[1] = vec2f(lb.x, ur.y);
+    verts[2] = ur;
+    verts[3] = vec2f(ur.x, lb.y);
+    SimpleShape* shape = new SimpleShape(verts);
+    init(sp, shape);
 }
 
 Sprite::~Sprite()
 {
-
 }
 
 void Sprite::render()

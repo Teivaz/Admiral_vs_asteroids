@@ -2,11 +2,12 @@
 
 class State;
 class Shader;
+class Shape;
 
 class GameObject : public has_slots<>
 {
 public:
-    void init(ShaderProgram); 
+    void init(ShaderProgram, Shape*);
     virtual ~GameObject();
     virtual void                    render();
     virtual void                    update(float) = 0;
@@ -21,22 +22,13 @@ public:
     {
         return m_shader;
     }
-    inline Vbo                      getVbo() const
-    {
-        return m_vbo;
-    }
-    inline Ibo                      getIbo() const
-    {
-        return m_ibo;
-    }
     inline DrawMode                 getDrawMode() const
     {
         return m_mode;
     }
-    inline GLsizei                  getVertsCount() const
-    {
-        return m_vertsCount;
-    }
+
+    GLsizei                         getVertsCount() const;
+
     //******************************************************
 
     inline const vec2f&             getPosition() const
@@ -68,19 +60,15 @@ private:
 protected:
     Texture                         m_texture = 0;
     ShaderProgram                   m_shader = 0;
-    Vbo                             m_vbo = 0;
-    Ibo                             m_ibo = 0;
     DrawMode                        m_mode = GL_TRIANGLE_FAN;
-    GLsizei                         m_vertsCount = 0;
+    Shape*                          m_shape = nullptr;
 
     // Shader attributes and uniforms
     GLuint                          m_attributePosition = 0;
     GLuint                          m_attributeTexturePosition = 0;
     GLuint                          m_uniformTexture = 0;
     GLuint                          m_uniformTransformation = 0;
-
-
-
+    
     vec2f                           m_position = 0.0f;
     vec2f                           m_scale = 1.0f;
     float                           m_rotation = 0.0f;

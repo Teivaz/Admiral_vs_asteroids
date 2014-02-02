@@ -2,19 +2,24 @@
 #include "GameObject.h"
 #include "States/State.h"
 #include "Controllers/Painter.h"
+#include "Shape/Shape.h"
 
 GameObject::~GameObject()
 {
     Painter::GetInstance()->remove(this);
+    delete m_shape;
 }
 
-void GameObject::init(ShaderProgram sp)
+void GameObject::init(ShaderProgram shader, Shape* shape)
 {
-    m_shader = sp;
-    m_uniformTexture = glGetUniformLocation(sp, "u_texture");
-    m_uniformTransformation = glGetUniformLocation(sp, "u_transformation");
-    m_attributePosition = glGetAttribLocation(sp, "a_position");
-    m_attributeTexturePosition = glGetAttribLocation(sp, "a_texturePosition");
+    if (m_shape)
+        delete m_shape;
+    m_shape = shape;
+    m_shader = shader;
+    m_uniformTexture = glGetUniformLocation(shader, "u_texture");
+    m_uniformTransformation = glGetUniformLocation(shader, "u_transformation");
+    m_attributePosition = glGetAttribLocation(shader, "a_position");
+    m_attributeTexturePosition = glGetAttribLocation(shader, "a_texturePosition");
 }
 
 void GameObject::render()
@@ -24,11 +29,10 @@ void GameObject::render()
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture);
-    glBindBuffer(GL_ARRAY_BUFFER, getVbo());
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, getIbo());
+    m_shape->bind();
     glUseProgram(getProgram());
     _bindAttributes();
-    glDrawArrays(getDrawMode(), 0, getVertsCount());
+    glDrawArrays(getDrawMode(), 0, m_shape->getCount());
 }
 
 void GameObject::_bindAttributes()
@@ -41,16 +45,16 @@ void GameObject::_bindAttributes()
         2,
         GL_FLOAT,
         GL_FALSE,
-        sizeof(float)* 4,
-        (void*)(sizeof(float)* 0));
+        m_shape->getStride(),
+        m_shape->getVertexOffset());
 
     glVertexAttribPointer(
         m_attributeTexturePosition,
         2,
         GL_FLOAT,
         GL_FALSE,
-        sizeof(float)* 4,
-        (void*)(sizeof(float)* 2));
+        m_shape->getStride(),
+        m_shape->getTextureOffset());
 
     if (m_uniformTexture)
         glUniform1i(m_uniformTexture, 0);
@@ -60,7 +64,6 @@ void GameObject::_bindAttributes()
 
     bindAttributes();
 }
-
 
 void GameObject::setPosition(const vec2f& p)
 {
@@ -96,12 +99,17 @@ void GameObject::adjustRotation(float r)
     setRotation(r + getRotation());
 }
 
+GLsizei GameObject::getVertsCount() const
+{
+    return m_shape->getCount();
+}
+
 void GameObject::_calculateTransformation()
 {
-    m_transformationMatrix.SetRotatation(m_rotation);
-    mat3f scale;
-    scale.SetScale(m_scale);
-    m_transformationMatrix = m_transformationMatrix * scale;
+    m_transformationMatrix.SetScale(m_scale);
+    mat3f rot;
+    rot.SetRotatation(m_rotation);
+    m_transformationMatrix = m_transformationMatrix * rot;
     mat3f translate;
     translate.SetTranslation(m_position);
     m_transformationMatrix = m_transformationMatrix * translate;
