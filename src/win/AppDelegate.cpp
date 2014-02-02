@@ -7,16 +7,20 @@
 #include "Controllers/ShaderManager.h"
 #include "Controllers/TextureManager.h"
 #include "Controllers/Painter.h"
+#include "Controllers/SpriteManager.h"
 
 void AppDelegate::Init()
 {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
 
-    Painter::SetInstance(new Painter(display, surface));
+    Painter::SetInstance(new Painter);
     StateMachine::SetInstance(new StateMachine);
     ShaderManager::SetInstance(new ShaderManager);
     TextureManager::SetInstance(new TextureManager);
+    SpriteManager::SetInstance(new SpriteManager);
+
+    SpriteManager::GetInstance()->loadAtlas("sprites.js");
 
     //GameplayState s;
     StateMachine::GetInstance()->pushState(new GameplayState);

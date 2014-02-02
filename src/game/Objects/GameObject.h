@@ -51,6 +51,15 @@ public:
     void                            adjustRotation(float r);
     //******************************************************
 
+    // sort purpose
+
+    inline bool operator <(const GameObject& obj) const
+    {
+        return m_renderLayer < obj.m_renderLayer;
+    }
+
+    void setRenderLayer(int layer);
+
 private:
     void                            _bindAttributes();
     void                            _calculateTransformation();
@@ -73,4 +82,6 @@ protected:
     vec2f                           m_scale = 1.0f;
     float                           m_rotation = 0.0f;
     mat3f                           m_transformationMatrix;
+
+    int                             m_renderLayer = 0;
 };

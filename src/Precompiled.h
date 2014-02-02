@@ -21,7 +21,7 @@ using std::string;
 
 #ifdef _DEBUG
 #define ASSERT(x) _ASSERT(x)
-#define PLOG(x) printf(x)
+#define PLOG printf
 #else
 #define PLOG(x)
 #define ASSERT(x)

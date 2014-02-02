@@ -22,6 +22,15 @@ void GameObject::init(ShaderProgram shader, Shape* shape)
     m_attributeTexturePosition = glGetAttribLocation(shader, "a_texturePosition");
 }
 
+void GameObject::setRenderLayer(int layer)
+{
+    m_renderLayer = layer;
+    if (Painter::GetInstance()->contains(this))
+    {
+        Painter::GetInstance()->requestSort();
+    }
+}
+
 void GameObject::render()
 {
     if (m_transformationIsDirty)

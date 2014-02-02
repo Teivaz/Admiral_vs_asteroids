@@ -2,36 +2,31 @@
 #include "Painter.h"
 #include "Objects/GameObject.h"
 
-Painter::Painter(EGLDisplay display, EGLSurface surface)
-: m_display(display)
-, m_surface(surface)
+Painter::Painter()
 {
-
 }
 
 Painter::~Painter()
 {
-
 }
 
-void Painter::remove(GameObject* o)
+void Painter::remove(GameObject* obj)
 {
-    auto it = std::find(m_objects.begin(), m_objects.end(), o);
+    auto it = std::find(m_objects.begin(), m_objects.end(), obj);
     if (it != m_objects.end())
     {
         m_objects.erase(it);
     }
 }
 
-void Painter::add(GameObject* o)
+void Painter::add(GameObject* obj)
 {
-    auto it = std::find(m_objects.begin(), m_objects.end(), o);
-    if (it != m_objects.end())
+    if (contains(obj))
     {
         return;
     }
-    m_objects.push_back(o);
-    m_needsSorting = true;
+    m_objects.push_back(obj);
+    requestSort();
 }
 
 void Painter::render()
@@ -48,6 +43,17 @@ void Painter::render()
 
 void Painter::_sort()
 {
-    //std::
+    m_objects.sort();
     m_needsSorting = false;
+}
+
+void Painter::requestSort()
+{
+    m_needsSorting = true;
+}
+
+bool Painter::contains(GameObject* obj) const
+{
+    auto it = std::find(m_objects.begin(), m_objects.end(), obj);
+    return it != m_objects.end();
 }

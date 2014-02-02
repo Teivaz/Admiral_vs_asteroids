@@ -6,6 +6,7 @@
 #include "Controllers/Painter.h"
 #include "Objects/Sprite.h"
 #include "game/Objects/Sprite.h"
+#include "Controllers/SpriteManager.h"
 
 GameplayState::GameplayState()
 {
@@ -31,13 +32,9 @@ void GameplayState::onEnter()
 {
     auto simpleShader = ShaderManager::GetInstance()->getShader(shaders::k_simple);
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
-    auto t = TextureManager::GetInstance()->getTexture(textures::k_stars_back);
+    Sprite* s = SpriteManager::GetInstance()->createSprite(sprites::k_knob);
 
-    Painter::GetInstance()->add(new Sprite(t, vec2f(0), vec2f(1), simpleShader));
-
-    t = TextureManager::GetInstance()->getTexture(textures::k_star_flare_penta);
-
-    m_star = new Sprite(t, vec2f(0), vec2f(1), softShader);
+    m_star = SpriteManager::GetInstance()->createSprite(sprites::k_star_flare_penta);
     m_star->setPosition(-m_star->getSize() / 2);
     m_star->setScale(0.09);
     Painter::GetInstance()->add(m_star);

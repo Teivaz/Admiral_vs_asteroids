@@ -68,6 +68,9 @@
     <ClCompile Include="..\..\src\game\Objects\Stars\Star.cpp">
       <Filter>game\Objects\Stars</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\SpriteManager.cpp">
+      <Filter>game\Controllers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Precompiled.h" />
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\utils\CMat3.h">
       <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\SpriteManager.h">
+      <Filter>game\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

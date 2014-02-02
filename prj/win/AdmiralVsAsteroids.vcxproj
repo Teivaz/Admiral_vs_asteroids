@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\game\Controllers\Painter.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp" />
+    <ClCompile Include="..\..\src\game\Controllers\SpriteManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="..\..\src\game\Controllers\Painter.h" />
     <ClInclude Include="..\..\src\game\Controllers\Shader.h" />
     <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h" />
+    <ClInclude Include="..\..\src\game\Controllers\SpriteManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\TextureManager.h" />
     <ClInclude Include="..\..\src\game\Objects\GameObject.h" />
     <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h" />
