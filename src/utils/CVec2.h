@@ -140,7 +140,7 @@ public:
 
     void Normalize()
     {
-        T l = Length*();
+        T l = Length();
         x /= l;
         y /= l;
     }

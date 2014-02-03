@@ -161,7 +161,7 @@ public:
         return *this;
     }
 
-    CMat3 operator *(const CMat3& mat) explicit const
+    CMat3 operator *(const CMat3& mat) const
     {
         return CMat3(
             ((a1*mat.a1) + (a2*mat.b1) + (a3*mat.c1)), ((a1*mat.a2) + (a2*mat.b2) + (a3*mat.c2)), ((a1*mat.a3) + (a2*mat.b3) + (a3*mat.c3)),
