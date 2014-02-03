@@ -19,6 +19,7 @@ public:
     virtual bool                isFinished() const;
     
     void                        onButton(bool);
+    void                        onSlider(int, float);
 private:
     void                        _setMovingSpeed(vec2f);
 

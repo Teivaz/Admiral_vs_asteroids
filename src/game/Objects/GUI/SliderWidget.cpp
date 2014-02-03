@@ -46,9 +46,9 @@ void SliderWidget::onTouchBegan(Touch* t)
 
 void SliderWidget::onTouchMoved(Touch* t)
 {
-    float toEnd = vec2f(t->currentPoint() - (m_travel + m_origin)).Length();
-    float toStart = vec2f(t->currentPoint() - (m_origin)).Length();
-    float p = (toStart - toEnd) / (toStart + toEnd);
+    vec2f travel = t->currentPoint() - m_origin;
+    float p = m_travel.Dot(travel);
+    p /= m_travel.SqLength();
     setProgress(p);
 }
 

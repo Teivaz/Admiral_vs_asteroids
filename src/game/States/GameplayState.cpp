@@ -10,6 +10,7 @@
 #include "Objects/GUI/GuiManager.h"
 #include "Objects/GUI/Widget.h"
 #include "Objects/GUI/ButtonWidget.h"
+#include "Objects/GUI/SliderWidget.h"
 #include "Controllers/TouchManager.h"
 
 class ButtonCallBack : public ButtonWidget::CallbackFunctor
@@ -24,6 +25,19 @@ private:
     GameplayState* state;
 };
 
+class SliderCallBack : public SliderWidget::CallbackFunctor
+{
+public:
+    SliderCallBack(int _n, GameplayState* _state) : n(_n), state(_state) {}
+    virtual void operator()(float val)
+    {
+        state->onSlider(n, val);
+    }
+private:
+    GameplayState* state;
+    int n;
+};
+
 GameplayState::GameplayState()
 {
 
@@ -36,8 +50,8 @@ GameplayState::~GameplayState()
 
 void GameplayState::update(float dt)
 {
-    m_star->adjustRotation(dt/1000);
-    m_star->adjustPosition(m_movingSpeed * dt);
+    m_star->adjustRotation(m_movingSpeed* dt / 1000);
+    //m_star->adjustPosition(m_movingSpeed * dt);
 }
 
 void GameplayState::render()
@@ -64,6 +78,16 @@ void GameplayState::onEnter()
     {
         btn->setCallback(new ButtonCallBack(this));
     }
+    SliderWidget* sl = static_cast<SliderWidget*>(m_gui->findChildByName("rotate"));
+    if (sl)
+    {
+        sl->setCallback(new SliderCallBack(1, this));
+    }
+    sl = static_cast<SliderWidget*>(m_gui->findChildByName("move"));
+    if (sl)
+    {
+        sl->setCallback(new SliderCallBack(2, this));
+    }
 }
 
 void GameplayState::onFinish()
@@ -89,4 +113,12 @@ void GameplayState::_setMovingSpeed(vec2f speed)
 void GameplayState::onButton(bool b)
 {
     m_star->adjustPosition(b?0.1:-0.1);
+}
+
+void GameplayState::onSlider(int n, float v)
+{
+    if (n == 1)
+    {
+        m_movingSpeed = 2*(v - 0.5);
+    }
 }

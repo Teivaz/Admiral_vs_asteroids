@@ -128,6 +128,11 @@ public:
         return x*vec.x + y*vec.y;
     }
 
+    T SqLength() const
+    {
+        return x*x + y*y;
+    }
+
     T Length() const
     {
         return sqrt(x*x + y*y);
