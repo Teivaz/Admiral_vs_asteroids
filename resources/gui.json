@@ -1,0 +1,165 @@
+[
+	{
+		"type": "BasicWidget",
+		"name": "background",
+		"sprite": "hud.png",
+		"anchor":
+		{
+			"x": 0.5,
+			"y": 0.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "center",
+			"y": "bottom"
+		},
+		"offset":
+		{
+			"x": 0.0,
+			"y": 0.0
+		}
+	},
+	{
+		"type": "BasicWidget",
+		"name": "right_lever_box",
+		"sprite": "lever_box.png",
+		"anchor":
+		{
+			"x": 1.0,
+			"y": 0.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "bottom"
+		},
+		"offset":
+		{
+			"x": 0.0,
+			"y": 0.0
+		}
+	},
+	{
+		"type": "BasicWidget",
+		"name": "left_lever_box",
+		"sprite": "lever_box.png",
+		"anchor":
+		{
+			"x": 1.0,
+			"y": 0.0
+		},
+		"scale":
+		{
+			"x": -1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "left",
+			"y": "bottom"
+		},
+		"offset": // pixels
+		{
+			"x": 0,
+			"y": 0
+		}
+	},
+	{
+		"type": "ButtonWidget",
+		"name": "fire!",
+		"sprite": "button_fire_idle.png",
+		"sprite_selected": "button_fire_pressed.png",
+		"anchor": 
+		{
+			"x": 0.0,
+			"y": 1.0			
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "center",
+			"y": "bottom"
+		},
+		"offset":
+		{
+			"x": -227,
+			"y": 125	
+		}
+	},
+	{
+		"type": "SliderWidget",
+		"name": "rotate",
+		"sprite": "knob.png",
+		"anchor": 
+		{
+			"x": 0.5,
+			"y": 0.5			
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "left",
+			"y": "bottom"
+		},
+		"offset":
+		{
+			"x": 247,
+			"y": 69	
+		},
+		"travel":
+		{
+			"x": -160,
+			"y": 150	
+		},
+		"default": 0.5
+	},
+	{
+		"type": "SliderWidget",
+		"name": "move",
+		"sprite": "knob.png",
+		"anchor": 
+		{
+			"x": 0.5,
+			"y": 0.5			
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "bottom"
+		},
+		"offset":
+		{
+			"x": -247,
+			"y": 69	
+		},
+		"travel":
+		{
+			"x": 160,
+			"y": 150	
+		},
+		"default": 0.5
+	}
+]
