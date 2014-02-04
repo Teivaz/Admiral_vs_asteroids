@@ -4,7 +4,7 @@ class State;
 class Shader;
 class Shape;
 
-class GameObject : public has_slots<>
+class GameObject //: public has_slots<>
 {
 public:
     virtual ~GameObject();

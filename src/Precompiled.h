@@ -1,3 +1,4 @@
+#pragma once
 
 #ifdef WIN32
 
@@ -19,14 +20,27 @@
 #import <Foundation/Foundation.h>
 #endif
 
+template<typename T>
+inline T min(T a, T b)
+{
+    return a < b ? a : b;
+}
+template<typename T>
+inline T max(T a, T b)
+{
+    return a > b ? a : b;
+}
+
 #endif
 
 //#include "sigslot.h"
 #include "lodepng.h"
 #include "json/json.h"
 #include <vector>
+#include <list>
 #include <string>
 #include <map>
+#include <algorithm>
 
 #include "utils/CustomGLTypes.h"
 #include "utils/VectorGeometry.h"

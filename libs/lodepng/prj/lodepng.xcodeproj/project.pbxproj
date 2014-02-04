@@ -7,54 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A84BA7318A041F7000239A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A84BA7218A041F7000239A1 /* Foundation.framework */; };
-		9A84BA7518A041F7000239A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A84BA7418A041F7000239A1 /* CoreGraphics.framework */; };
-		9A84BA7718A041F7000239A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A84BA7618A041F7000239A1 /* UIKit.framework */; };
-		9A84BA8C18A041F7000239A1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A84BA8B18A041F7000239A1 /* XCTest.framework */; };
-		9A84BA8D18A041F8000239A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A84BA7218A041F7000239A1 /* Foundation.framework */; };
-		9A84BA8E18A041F8000239A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A84BA7618A041F7000239A1 /* UIKit.framework */; };
-		9A84BAB918A0428A000239A1 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A84BAB818A0428A000239A1 /* lodepng.cpp */; };
+		9A46A9BF18A13527000188D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A84BA7218A041F7000239A1 /* Foundation.framework */; };
+		9A46AA0618A13AE6000188D1 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A84BAB818A0428A000239A1 /* lodepng.cpp */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9A84BA8F18A041F8000239A1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A84BA6718A041F7000239A1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A84BA6E18A041F7000239A1;
-			remoteInfo = lodepng;
+/* Begin PBXCopyFilesBuildPhase section */
+		9A46A9BC18A13527000188D1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9A84BA6F18A041F7000239A1 /* lodepng.a */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lodepng.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A46A9BE18A13527000188D1 /* liblodepng_d.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblodepng_d.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A84BA7218A041F7000239A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A84BA7418A041F7000239A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9A84BA7618A041F7000239A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9A84BA8A18A041F7000239A1 /* lodepngTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lodepngTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A84BA8B18A041F7000239A1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9A84BAB618A04283000239A1 /* lodepng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lodepng.h; sourceTree = "<group>"; };
 		9A84BAB818A0428A000239A1 /* lodepng.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = lodepng.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9A84BA6C18A041F7000239A1 /* Frameworks */ = {
+		9A46A9BB18A13527000188D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A84BA7518A041F7000239A1 /* CoreGraphics.framework in Frameworks */,
-				9A84BA7718A041F7000239A1 /* UIKit.framework in Frameworks */,
-				9A84BA7318A041F7000239A1 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A84BA8718A041F7000239A1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A84BA8C18A041F7000239A1 /* XCTest.framework in Frameworks */,
-				9A84BA8E18A041F8000239A1 /* UIKit.framework in Frameworks */,
-				9A84BA8D18A041F8000239A1 /* Foundation.framework in Frameworks */,
+				9A46A9BF18A13527000188D1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,8 +58,7 @@
 		9A84BA7018A041F7000239A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A84BA6F18A041F7000239A1 /* lodepng.a */,
-				9A84BA8A18A041F7000239A1 /* lodepngTests.xctest */,
+				9A46A9BE18A13527000188D1 /* liblodepng_d.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,13 +95,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9A84BA6E18A041F7000239A1 /* lodepng */ = {
+		9A46A9BD18A13527000188D1 /* lodepng */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A84BA9B18A041F8000239A1 /* Build configuration list for PBXNativeTarget "lodepng" */;
+			buildConfigurationList = 9A46A9DA18A13528000188D1 /* Build configuration list for PBXNativeTarget "lodepng" */;
 			buildPhases = (
-				9A84BA6B18A041F7000239A1 /* Sources */,
-				9A84BA6C18A041F7000239A1 /* Frameworks */,
-				9A84BA6D18A041F7000239A1 /* Resources */,
+				9A46A9BA18A13527000188D1 /* Sources */,
+				9A46A9BB18A13527000188D1 /* Frameworks */,
+				9A46A9BC18A13527000188D1 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -126,26 +109,8 @@
 			);
 			name = lodepng;
 			productName = lodepng;
-			productReference = 9A84BA6F18A041F7000239A1 /* lodepng.a */;
-			productType = "com.apple.product-type.application";
-		};
-		9A84BA8918A041F7000239A1 /* lodepngTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A84BA9E18A041F8000239A1 /* Build configuration list for PBXNativeTarget "lodepngTests" */;
-			buildPhases = (
-				9A84BA8618A041F7000239A1 /* Sources */,
-				9A84BA8718A041F7000239A1 /* Frameworks */,
-				9A84BA8818A041F7000239A1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A84BA9018A041F8000239A1 /* PBXTargetDependency */,
-			);
-			name = lodepngTests;
-			productName = lodepngTests;
-			productReference = 9A84BA8A18A041F7000239A1 /* lodepngTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			productReference = 9A46A9BE18A13527000188D1 /* liblodepng_d.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -155,11 +120,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Alexander Kuznietsov";
-				TargetAttributes = {
-					9A84BA8918A041F7000239A1 = {
-						TestTargetID = 9A84BA6E18A041F7000239A1;
-					};
-				};
 			};
 			buildConfigurationList = 9A84BA6A18A041F7000239A1 /* Build configuration list for PBXProject "lodepng" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -173,56 +133,63 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9A84BA6E18A041F7000239A1 /* lodepng */,
-				9A84BA8918A041F7000239A1 /* lodepngTests */,
+				9A46A9BD18A13527000188D1 /* lodepng */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		9A84BA6D18A041F7000239A1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A84BA8818A041F7000239A1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		9A84BA6B18A041F7000239A1 /* Sources */ = {
+		9A46A9BA18A13527000188D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A84BAB918A0428A000239A1 /* lodepng.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A84BA8618A041F7000239A1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9A46AA0618A13AE6000188D1 /* lodepng.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		9A84BA9018A041F8000239A1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A84BA6E18A041F7000239A1 /* lodepng */;
-			targetProxy = 9A84BA8F18A041F8000239A1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
+		9A46A9DB18A13528000188D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CONFIGURATION_BUILD_DIR = ../../../release/build;
+				DSTROOT = /tmp/lodepng.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)_d";
+				SKIP_INSTALL = YES;
+				SYMROOT = build;
+			};
+			name = Debug;
+		};
+		9A46A9DC18A13528000188D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CONFIGURATION_BUILD_DIR = ../../../release/build;
+				DSTROOT = /tmp/lodepng.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYMROOT = build;
+			};
+			name = Release;
+		};
 		9A84BA9918A041F8000239A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -256,7 +223,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -289,108 +256,29 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9A84BA9C18A041F8000239A1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "$(SRCROOT)/lodepng-Info.plist";
-				MACH_O_TYPE = staticlib;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = a;
-			};
-			name = Debug;
-		};
-		9A84BA9D18A041F8000239A1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "$(SRCROOT)/lodepng-Info.plist";
-				MACH_O_TYPE = staticlib;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = a;
-			};
-			name = Release;
-		};
-		9A84BA9F18A041F8000239A1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/lodepng.app/lodepng";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "lodepng/lodepng-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "lodepngTests/lodepngTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		9A84BAA018A041F8000239A1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/lodepng.app/lodepng";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "lodepng/lodepng-Prefix.pch";
-				INFOPLIST_FILE = "lodepngTests/lodepngTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9A46A9DA18A13528000188D1 /* Build configuration list for PBXNativeTarget "lodepng" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A46A9DB18A13528000188D1 /* Debug */,
+				9A46A9DC18A13528000188D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9A84BA6A18A041F7000239A1 /* Build configuration list for PBXProject "lodepng" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A84BA9918A041F8000239A1 /* Debug */,
 				9A84BA9A18A041F8000239A1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A84BA9B18A041F8000239A1 /* Build configuration list for PBXNativeTarget "lodepng" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A84BA9C18A041F8000239A1 /* Debug */,
-				9A84BA9D18A041F8000239A1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A84BA9E18A041F8000239A1 /* Build configuration list for PBXNativeTarget "lodepngTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A84BA9F18A041F8000239A1 /* Debug */,
-				9A84BAA018A041F8000239A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

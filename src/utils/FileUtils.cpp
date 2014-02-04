@@ -37,13 +37,13 @@ namespace FileUtils
         size = 0;
         *outdata = nullptr;
 
-        NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+//        NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
         CFBundleRef bundle = CFBundleGetMainBundle();
         CFURLRef bundleUrl = CFBundleCopyBundleURL(bundle);
         CFStringRef sr = CFURLCopyFileSystemPath(bundleUrl, kCFURLPOSIXPathStyle);
         char rootPath[1024];
-        CFStringGetCString(sr, rootPath, sizeof(rootPath), kCFStringEncodingASCII)
-            string path = rootPath;
+        CFStringGetCString(sr, rootPath, sizeof(rootPath), kCFStringEncodingASCII);
+        string path = rootPath;
 
         switch (loc)
         {
@@ -67,9 +67,11 @@ namespace FileUtils
         }
         NSString *docPath = [NSString stringWithCString:path.c_str()
         encoding:[NSString defaultCStringEncoding]];
-        NSString *dataFile = [NSString stringWithContentsOfFile:docPath 
-        usedEncoding:NSUTF8StringEncoding 
-                 error:NULL];
+        
+        NSFileHandle* handle = [NSFileHandle fileHandleForReadingAtPath:docPath];
+//        NSString *dataFile = [NSString stringWithContentsOfFile:docPath
+//        usedEncoding:NSUTF8StringEncoding
+//                 error:NULL];
 
 
 
