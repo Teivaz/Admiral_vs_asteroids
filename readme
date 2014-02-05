@@ -1,0 +1,4 @@
+Visual Studio
+ConfigurationProperties/Debugging
+WorkingDirectory - $(TargetDir)
+Environment - PATH=($ProjectDir)\..\..\libs\PowerVR\bin\;%PATH%

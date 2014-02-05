@@ -38,11 +38,13 @@ void AppDelegate::Init()
 
 void AppDelegate::Update(float dt)
 {
+    dt = min(34.0f, dt);
     if (!m_initialized)
     {
         return;
     }
     StateMachine::GetInstance()->update(dt);
+    Painter::GetInstance()->update(dt);
 }
 
 void AppDelegate::Render()

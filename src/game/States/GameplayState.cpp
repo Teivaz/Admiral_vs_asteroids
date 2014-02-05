@@ -12,6 +12,8 @@
 #include "Objects/GUI/ButtonWidget.h"
 #include "Objects/GUI/SliderWidget.h"
 #include "Controllers/TouchManager.h"
+#include "Objects/Scene/LaserBeam.h"
+
 
 class ButtonCallBack : public ButtonWidget::CallbackFunctor
 {
@@ -52,11 +54,15 @@ void GameplayState::update(float dt)
 {
     m_star->adjustRotation(m_movingSpeed* dt / 1000);
     //m_star->adjustPosition(m_movingSpeed * dt);
+    if (m_laserBeam)
+        m_laserBeam->update(dt);
 }
 
 void GameplayState::render()
 {
     m_gui->render();
+    if (m_laserBeam)
+        m_laserBeam->render();
 }
 
 void GameplayState::onEnter()
@@ -66,10 +72,10 @@ void GameplayState::onEnter()
 
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
 
-    m_star = SpriteManager::GetInstance()->createSprite(sprites::k_star_flare_penta, 0, 1.1, true, 0);
+    m_star = SpriteManager::GetInstance()->createSprite(sprites::k_star_flare_penta, 0, 1.1, false, 0);
     m_star->setPosition(-m_star->getSize() / 2);
     m_star->setShader(softShader);
-    Painter::GetInstance()->add(m_star);
+    //Painter::GetInstance()->add(m_star);
 
     m_gui = GuiManager::GetInstance()->LoadGui("gui.json");
     TouchManager::GetInstance()->addReceiever(m_gui);
@@ -88,6 +94,8 @@ void GameplayState::onEnter()
     {
         sl->setCallback(new SliderCallBack(2, this));
     }
+
+
 }
 
 void GameplayState::onFinish()
@@ -113,6 +121,8 @@ void GameplayState::_setMovingSpeed(vec2f speed)
 void GameplayState::onButton(bool b)
 {
     m_star->adjustPosition(b?0.1:-0.1);
+    if (b)
+        LaserBeam::create(0.0f, 0.001f, m_star->getRotation(), 1000);
 }
 
 void GameplayState::onSlider(int n, float v)
@@ -120,5 +130,9 @@ void GameplayState::onSlider(int n, float v)
     if (n == 1)
     {
         m_movingSpeed = 2*(v - 0.5);
+    }
+    else
+    {
+        //static_cast<Animation*>(m_laserBeam)->setFps(v * 20);
     }
 }

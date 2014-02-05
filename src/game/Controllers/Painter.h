@@ -9,6 +9,7 @@ public:
     ~Painter();
 
     void                    render();
+    void                    update(float);
     void                    add(GameObject*);
     void                    remove(GameObject*);
     void                    requestSort();

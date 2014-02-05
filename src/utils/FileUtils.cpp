@@ -20,7 +20,7 @@ namespace FileUtils
         {
             size = 0;
             *outdata = nullptr;
-            string fileName("../../resources_built/bundle/");
+            string fileName("../resources_built/bundle/");
             AppendPath(fileName, file);
             FILE* f = fopen(fileName.c_str(), "rb");
             if (f == nullptr)

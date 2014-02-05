@@ -23,7 +23,7 @@ public:
     //******************************************************
     void init(ShaderProgram, Shape*, Texture);
     void setShader(ShaderProgram);
-    virtual void                    bindAttributes() = 0;
+    virtual void                    bindAttributes() {}
 
     inline Texture                  getTexture() const
     {

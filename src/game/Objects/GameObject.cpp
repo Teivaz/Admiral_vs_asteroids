@@ -126,7 +126,7 @@ void GameObject::_calculateTransformation()
     rot.SetRotatation(m_rotation);
     mat3f translate;
     translate.SetTranslation(m_position);
-    m_transformationMatrix = m_transformationMatrix * rot;
-    m_transformationMatrix = m_transformationMatrix * translate;
+    m_transformationMatrix = rot * m_transformationMatrix;
+    m_transformationMatrix = translate * m_transformationMatrix;
     m_transformationIsDirty = false;
 }

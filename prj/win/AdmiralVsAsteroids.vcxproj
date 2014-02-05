@@ -17,12 +17,14 @@
     <ClCompile Include="..\..\src\game\Controllers\TextureManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\TouchManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\TouchReceiver.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Animations\Animation.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\BasicWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\ButtonWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\GuiManager.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\SliderWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\Widget.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Scene\LaserBeam.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Sprite.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Stars\Star.cpp" />
@@ -47,12 +49,14 @@
     <ClInclude Include="..\..\src\game\Controllers\Touch.h" />
     <ClInclude Include="..\..\src\game\Controllers\TouchManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\TouchReceiver.h" />
+    <ClInclude Include="..\..\src\game\Objects\Animations\Animation.h" />
     <ClInclude Include="..\..\src\game\Objects\GameObject.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\BasicWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\ButtonWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\GuiManager.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\SliderWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\Widget.h" />
+    <ClInclude Include="..\..\src\game\Objects\Scene\LaserBeam.h" />
     <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h" />
     <ClInclude Include="..\..\src\game\Objects\Sprite.h" />
     <ClInclude Include="..\..\src\game\Objects\Stars\Star.h" />
@@ -131,6 +135,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)/../../libs/PowerVR/bin/</AdditionalLibraryDirectories>
       <AdditionalDependencies>libEGL.lib;libGLESv2.lib;libGLES_CM.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

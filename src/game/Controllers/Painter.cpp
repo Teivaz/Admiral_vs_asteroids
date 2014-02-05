@@ -57,3 +57,16 @@ bool Painter::contains(GameObject* obj) const
     auto it = std::find(m_objects.begin(), m_objects.end(), obj);
     return it != m_objects.end();
 }
+
+void Painter::update(float dt)
+{
+    // Game object can delete itself in update so this is needed to prevent iterator invalidation
+
+    auto it = m_objects.begin(), end = m_objects.end();
+    while (it != end)
+    {
+        auto object = *it;
+        ++it;
+        object->update(dt);
+    }
+}

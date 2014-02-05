@@ -58,3 +58,5 @@ using std::string;
 #endif
 
 #include "utils/Singleton.h"
+
+const float PI = 3.14;

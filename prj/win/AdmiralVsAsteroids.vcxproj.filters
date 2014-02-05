@@ -47,6 +47,12 @@
     <Filter Include="game\Controllers\Touch">
       <UniqueIdentifier>{15023c84-a648-4780-908d-eab2cdc5bdfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\Objects\Animations">
+      <UniqueIdentifier>{eb64f686-ef22-4490-b694-66797d0917b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Sounds">
+      <UniqueIdentifier>{1e3b699d-9ce0-4204-933f-3bcc38545c32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -112,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game\Controllers\TouchManager.cpp">
       <Filter>game\Controllers\Touch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Animations\Animation.cpp">
+      <Filter>game\Objects\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Scene\LaserBeam.cpp">
+      <Filter>game\Objects\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +214,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Controllers\TouchManager.h">
       <Filter>game\Controllers\Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Animations\Animation.h">
+      <Filter>game\Objects\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Scene\LaserBeam.h">
+      <Filter>game\Objects\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
