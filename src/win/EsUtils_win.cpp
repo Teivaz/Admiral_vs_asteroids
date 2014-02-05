@@ -2,9 +2,9 @@
 #include "EsUtils_win.h"
 #include "AppDelegate.h"
 #include <windowsx.h>
+#include <stdio.h>
 
 #define WINDOW_CLASS "opengles2.0"
-
 
 
 LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -16,11 +16,16 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     switch (uMsg)
     {
     case WM_CREATE:
+    {
+              //auto a = GetStdHandle(STD_OUTPUT_HANDLE);
+              //SetStdHandle(STD_OUTPUT_HANDLE, GetModuleHandle(NULL));
+              //a = GetStdHandle(STD_OUTPUT_HANDLE);
+              //freopen("CON", "a", stdout);
+    }
         break;
 
     case WM_PAINT:
     {
-                     ad->Render();
                      ValidateRect(ad->window, NULL);
     }
         break;
@@ -71,6 +76,8 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
 
 GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, int w, int h, HINSTANCE hInstance)
 {
+    // Alert! Lousy winapi programming ahead.
+
     WNDCLASS wndclass = { 0 };
     DWORD wStyle = 0;
     RECT windowRect;
@@ -81,7 +88,8 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
     wndclass.lpfnWndProc = (WNDPROC)ESWindowProc;
     wndclass.hInstance = hInstance;
     wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-    wndclass.lpszClassName = "ogles2.0";
+    wndclass.lpszClassName = WINDOW_CLASS;
+    wndclass;
 
     if (!RegisterClass(&wndclass))
         return FALSE;
@@ -96,7 +104,7 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
     AdjustWindowRect(&windowRect, wStyle, FALSE);
 
     delegate->window = CreateWindow(
-        "ogles2.0",
+        WINDOW_CLASS,
         title,
         wStyle,
         10,
@@ -192,10 +200,13 @@ void WindowLoop(AppDelegate* delegate)
             }
         }
         else
+        {
             SendMessage(delegate->window, WM_PAINT, 0, 0);
-
+            //SendMessage(delegate->window, 0, 0, 0);
+            delegate->Render();
+            delegate->Update(deltaTime);
+        }
         // Call update function if registered
-        delegate->Update(deltaTime);
     }
 
 }

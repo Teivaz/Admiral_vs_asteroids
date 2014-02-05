@@ -49,11 +49,11 @@ inline T max(T a, T b)
 
 using std::string;
 
-#ifdef _DEBUG
+#if defined _DEBUG && defined _WIN32
 #define ASSERT(x) _ASSERT(x)
-#define PLOG printf
+void PLOG(const char* x, ...);
 #else
-#define PLOG(x)
+void PLOG(const char* x, ...){}
 #define ASSERT(x)
 #endif
 

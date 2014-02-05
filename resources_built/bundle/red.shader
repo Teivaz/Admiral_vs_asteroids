@@ -1,8 +1,9 @@
 {
 "VertexShader":"
 	attribute vec2 a_position;
+	attribute vec2 a_texturePosition;
 
-	uniform vec3 u_blendColor;
+	uniform mat3 u_transformation;
 	
 	void main()
 	{

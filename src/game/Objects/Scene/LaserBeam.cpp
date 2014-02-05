@@ -68,5 +68,6 @@ void LaserBeam::setRotation(float r)
 void LaserBeam::create(const vec2f& position, float speed, float direction, float lifetime)
 {
     LaserBeam* l = new LaserBeam(position, speed, direction, lifetime);
+    l->setRenderLayer(100);
     Painter::GetInstance()->add(l);
 }

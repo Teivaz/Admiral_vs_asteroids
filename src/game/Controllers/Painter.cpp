@@ -43,7 +43,7 @@ void Painter::render()
 
 void Painter::_sort()
 {
-    m_objects.sort();
+    m_objects.sort(GameObject::less);
     m_needsSorting = false;
 }
 

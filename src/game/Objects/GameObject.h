@@ -53,12 +53,14 @@ public:
     //******************************************************
 
     // sort purpose
-    inline bool operator <(const GameObject& obj) const
+
+    static bool less(GameObject* obj1, GameObject* obj2)
     {
-        return m_renderLayer < obj.m_renderLayer;
+        return obj1->getRenderLayer() < obj2->getRenderLayer();
     }
 
     void setRenderLayer(int layer);
+    int getRenderLayer(){ return m_renderLayer; }
 
 private:
     void                            _bindAttributes();
