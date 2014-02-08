@@ -10,7 +10,10 @@ ShaderManager::ShaderManager()
 
 ShaderManager::~ShaderManager()
 {
-
+    for (auto shader : m_shaders)
+    {
+        delete shader.second;
+    }
 }
 
 void ShaderManager::loadShader(const string& name)

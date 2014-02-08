@@ -15,7 +15,14 @@ GameDelegate::GameDelegate()
 {}
 
 GameDelegate::~GameDelegate()
-{    
+{
+    StateMachine::DeleteInstance();
+    Painter::DeleteInstance();
+    ShaderManager::DeleteInstance();
+    TextureManager::DeleteInstance();
+    SpriteManager::DeleteInstance();
+    GuiManager::DeleteInstance();
+    TouchManager::DeleteInstance();
 }
 
 void GameDelegate::init(int width, int height)

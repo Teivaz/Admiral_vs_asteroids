@@ -16,6 +16,7 @@ SliderWidget::SliderWidget(Sprite* sprite, const string& name, const vec2f& trav
 SliderWidget::~SliderWidget()
 {
     delete m_sprite;
+    delete m_callback;
 }
 
 void SliderWidget::setPosition(const vec2f& p)

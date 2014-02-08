@@ -8,6 +8,11 @@ StateMachine::StateMachine()
 
 StateMachine::~StateMachine()
 {
+    delete m_currentState;
+    for (auto state : m_states)
+    {
+        delete state;
+    }
 }
 
 void StateMachine::pushState(State* st)

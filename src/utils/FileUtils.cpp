@@ -22,7 +22,9 @@ namespace FileUtils
             *outdata = nullptr;
             string fileName("../resources_built/bundle/");
             AppendPath(fileName, file);
-            FILE* f = fopen(fileName.c_str(), "rb");
+            //FILE* f = fopen(fileName.c_str(), "rb");
+            FILE* f = nullptr;
+            fopen_s(&f, fileName.c_str(), "rb");
             if (f == nullptr)
                 return;
             fseek(f, 0, SEEK_END);

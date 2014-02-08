@@ -27,6 +27,7 @@ Texture TextureManager::_loadTexture(const string& name)
     _loadTexture(name, &pixels, &w, &h);
     Texture tex = _attachTexture(pixels, w, h);
     m_textures[name] = tex;
+    free(pixels);
     return tex;
 }
 

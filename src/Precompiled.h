@@ -45,6 +45,7 @@ inline T max(T a, T b)
 #include <string>
 #include <map>
 #include <algorithm>
+#include <memory>
 
 #include "utils/CustomGLTypes.h"
 #include "utils/VectorGeometry.h"
@@ -63,4 +64,4 @@ void PLOG(const char* x, ...){}
 
 #include "utils/Singleton.h"
 
-const float PI = 3.14;
+const float PI = 3.1416f;

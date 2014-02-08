@@ -37,5 +37,5 @@ private:
     bool                            m_loop = true;
     bool                            m_pause = false;
 
-    int                             m_frameNum;
+    unsigned int                    m_frameNum;
 };
