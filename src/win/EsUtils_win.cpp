@@ -26,7 +26,7 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_PAINT:
     {
-                     ValidateRect(ad->window, NULL);
+                        ValidateRect(ad->window, NULL);
     }
         break;
     case WM_KEYDOWN:
@@ -61,6 +61,22 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                          // Touch drag
                          if (MK_LBUTTON & wParam)
                              ad->onTouchMoved(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+    }
+        break;
+    case WM_CLOSE:
+    {
+                        ad->ApplicationWillTerminate();
+                        ad->done = true;
+    }
+        break;
+    case WM_KILLFOCUS:
+    {
+                         ad->OnSuspend();
+    }
+        break;
+    case WM_SETFOCUS:
+    {
+                        ad->OnResume();
     }
         break;
     }
@@ -177,10 +193,9 @@ GLboolean CreateGLWindowWithContext(AppDelegate *delegate, const char *title, in
 void WindowLoop(AppDelegate* delegate)
 {
     MSG msg = { 0 };
-    int done = 0;
     DWORD lastTime = GetTickCount();
 
-    while (!done)
+    while (!delegate->done)
     {
         int gotMsg = (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) != 0);
         DWORD curTime = GetTickCount();
@@ -189,24 +204,15 @@ void WindowLoop(AppDelegate* delegate)
 
         if (gotMsg)
         {
-            if (msg.message == WM_QUIT)
-            {
-                done = 1;
-            }
-            else
-            {
-                TranslateMessage(&msg);
-                DispatchMessage(&msg);
-            }
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
         }
         else
         {
             SendMessage(delegate->window, WM_PAINT, 0, 0);
-            //SendMessage(delegate->window, 0, 0, 0);
-            delegate->Render();
             delegate->Update(deltaTime);
+            delegate->Render();
         }
-        // Call update function if registered
     }
 
 }

@@ -48,6 +48,8 @@ void GameObject::render()
     glUseProgram(getProgram());
     _bindAttributes();
     glDrawArrays(getDrawMode(), 0, m_shape->getCount());
+    //glDrawArrays(GL_LINE_LOOP, 0, m_shape->getCount());
+    
 }
 
 void GameObject::_bindAttributes()

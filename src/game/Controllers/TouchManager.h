@@ -12,15 +12,15 @@ public:
     ~TouchManager();
 
     void                onTouchBegan(const vec2f&);
-    void                onTouchMoved(const vec2f&);
-    void                onTouchEnded(const vec2f&);
+    void                onTouchMoved(const vec2f& position, const vec2f& previousPosition);
+    void                onTouchEnded(const vec2f& position, const vec2f& previousPosition);
 
     void                addReceiever(TouchReceiver*);
     void                removeReceiever(TouchReceiver*);
 
 private:
 
-    Touch*              _resolveTouch(const vec2f&, bool erase = false);
+    Touch*              _resolveTouch(const vec2f& position, const vec2f& previousPosition, bool erase = false);
 
 private:
     Kinestetics_t       m_receievers;

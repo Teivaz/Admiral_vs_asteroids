@@ -62,9 +62,6 @@
     <ClCompile Include="..\..\src\win\EsUtils_win.cpp">
       <Filter>win</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\win\AppDelegate.cpp">
-      <Filter>win</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\utils\FileUtils.cpp">
       <Filter>utils</Filter>
     </ClCompile>
@@ -125,13 +122,16 @@
     <ClCompile Include="..\..\src\game\Objects\Scene\LaserBeam.cpp">
       <Filter>game\Objects\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\win\AppDelegate.cpp">
+      <Filter>win</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\GameDelegate.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Precompiled.h" />
     <ClInclude Include="..\..\src\win\EsUtils_win.h">
-      <Filter>win</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\win\AppDelegate.h">
       <Filter>win</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\CustomGLTypes.h">
@@ -220,6 +220,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\Scene\LaserBeam.h">
       <Filter>game\Objects\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\win\AppDelegate.h">
+      <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\GameDelegate.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

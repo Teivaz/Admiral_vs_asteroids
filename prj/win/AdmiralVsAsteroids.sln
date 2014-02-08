@@ -12,34 +12,29 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lodepng", "..\..\libs\lodep
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib_json", "..\..\libs\jsoncpp\prj\lib_json.vcxproj", "{B84F7231-16CE-41D8-8C08-7B523FF4225B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{11E6B889-6960-4EFB-B590-55C62390AB52}"
-	ProjectSection(SolutionItems) = preProject
-		Performance1.psess = Performance1.psess
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Analyze|Win32 = Analyze|Win32
 		Debug|Win32 = Debug|Win32
-		dummy|Win32 = dummy|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{267D0E83-D511-4249-BFD2-1E9BED056562}.Analyze|Win32.ActiveCfg = Analize|Win32
+		{267D0E83-D511-4249-BFD2-1E9BED056562}.Analyze|Win32.Build.0 = Analize|Win32
 		{267D0E83-D511-4249-BFD2-1E9BED056562}.Debug|Win32.ActiveCfg = Debug|Win32
 		{267D0E83-D511-4249-BFD2-1E9BED056562}.Debug|Win32.Build.0 = Debug|Win32
-		{267D0E83-D511-4249-BFD2-1E9BED056562}.dummy|Win32.ActiveCfg = Debug|Win32
-		{267D0E83-D511-4249-BFD2-1E9BED056562}.dummy|Win32.Build.0 = Debug|Win32
 		{267D0E83-D511-4249-BFD2-1E9BED056562}.Release|Win32.ActiveCfg = Release|Win32
 		{267D0E83-D511-4249-BFD2-1E9BED056562}.Release|Win32.Build.0 = Release|Win32
+		{52BA48B1-BBE8-4140-A315-4249BAEEEC88}.Analyze|Win32.ActiveCfg = Analize|Win32
+		{52BA48B1-BBE8-4140-A315-4249BAEEEC88}.Analyze|Win32.Build.0 = Analize|Win32
 		{52BA48B1-BBE8-4140-A315-4249BAEEEC88}.Debug|Win32.ActiveCfg = Debug|Win32
 		{52BA48B1-BBE8-4140-A315-4249BAEEEC88}.Debug|Win32.Build.0 = Debug|Win32
-		{52BA48B1-BBE8-4140-A315-4249BAEEEC88}.dummy|Win32.ActiveCfg = Debug|Win32
-		{52BA48B1-BBE8-4140-A315-4249BAEEEC88}.dummy|Win32.Build.0 = Debug|Win32
 		{52BA48B1-BBE8-4140-A315-4249BAEEEC88}.Release|Win32.ActiveCfg = Release|Win32
 		{52BA48B1-BBE8-4140-A315-4249BAEEEC88}.Release|Win32.Build.0 = Release|Win32
+		{B84F7231-16CE-41D8-8C08-7B523FF4225B}.Analyze|Win32.ActiveCfg = Analize|Win32
+		{B84F7231-16CE-41D8-8C08-7B523FF4225B}.Analyze|Win32.Build.0 = Analize|Win32
 		{B84F7231-16CE-41D8-8C08-7B523FF4225B}.Debug|Win32.ActiveCfg = Debug|Win32
 		{B84F7231-16CE-41D8-8C08-7B523FF4225B}.Debug|Win32.Build.0 = Debug|Win32
-		{B84F7231-16CE-41D8-8C08-7B523FF4225B}.dummy|Win32.ActiveCfg = dummy|Win32
-		{B84F7231-16CE-41D8-8C08-7B523FF4225B}.dummy|Win32.Build.0 = dummy|Win32
 		{B84F7231-16CE-41D8-8C08-7B523FF4225B}.Release|Win32.ActiveCfg = Release|Win32
 		{B84F7231-16CE-41D8-8C08-7B523FF4225B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection

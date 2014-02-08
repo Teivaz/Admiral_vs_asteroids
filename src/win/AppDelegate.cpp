@@ -1,50 +1,34 @@
 #include "Precompiled.h"
 #include "AppDelegate.h"
-#include "utils/FileUtils.h"
+#include "GameDelegate.h"
 
-#include "States/StateMachine.h"
-#include "States/GameplayState.h"
-#include "Controllers/ShaderManager.h"
-#include "Controllers/TextureManager.h"
-#include "Controllers/Painter.h"
-#include "Controllers/SpriteManager.h"
-#include "Objects/GUI/GuiManager.h"
-#include "Controllers/TouchManager.h"
+AppDelegate::AppDelegate()
+{
+    m_gameDelegate = new GameDelegate;
+}
+
+AppDelegate::~AppDelegate()
+{
+    delete m_gameDelegate;
+}
 
 void AppDelegate::Init()
 {
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_BLEND);
-
-    Painter::SetInstance(new Painter);
-    StateMachine::SetInstance(new StateMachine);
-    ShaderManager::SetInstance(new ShaderManager);
-    TextureManager::SetInstance(new TextureManager);
-    SpriteManager::SetInstance(new SpriteManager);
-    GuiManager::SetInstance(new GuiManager);
-    TouchManager::SetInstance(new TouchManager);
-
     RECT rectangle;
     GetClientRect(window, &rectangle);
     m_screen = vec2i(rectangle.right - rectangle.left, rectangle.bottom - rectangle.top);
-    GuiManager::GetInstance()->setAppSize(m_screen.x, m_screen.y);
+    m_gameDelegate->init(m_screen.x, m_screen.y);
 
-    SpriteManager::GetInstance()->loadAtlas("sprites.json");
-
-    //GameplayState s;
-    StateMachine::GetInstance()->pushState(new GameplayState);
     m_initialized = true;
 }
 
 void AppDelegate::Update(float dt)
 {
-    dt = min(34.0f, dt);
     if (!m_initialized)
     {
         return;
     }
-    StateMachine::GetInstance()->update(dt);
-    Painter::GetInstance()->update(dt);
+    m_gameDelegate->update(dt);
 }
 
 void AppDelegate::Render()
@@ -53,46 +37,44 @@ void AppDelegate::Render()
     {
         return;
     }
-
-    glClear(GL_COLOR_BUFFER_BIT);
-    Painter::GetInstance()->render();
-    StateMachine::GetInstance()->render();
+    m_gameDelegate->render();
     eglSwapBuffers(display, surface);
 }
 
 
 void AppDelegate::onTouchPressed(int x, int y)
 {
-    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
-    pos.x /= m_screen.x;
-    pos.y /= m_screen.y;
-    pos *= 2.0f;
-    pos -= 1.0f;
-    TouchManager::GetInstance()->onTouchBegan(pos);
+    m_gameDelegate->onTouchPressed(x, y);
 }
 
 void AppDelegate::onTouchMoved(int x, int y)
 {
-    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
-    pos.x /= m_screen.x;
-    pos.y /= m_screen.y;
-    pos *= 2.0f;
-    pos -= 1.0f;
-    TouchManager::GetInstance()->onTouchMoved(pos);
-    pos = abs(pos);
-    if (pos.x > 1 || pos.y > 1)
+    if (x < 0 || y < 0 || x > m_screen.x || y > m_screen.y)
     {
-        TouchManager::GetInstance()->onTouchEnded(pos);
+        m_gameDelegate->onTouchReleased(x, y, 0, 0);
+    }
+    else
+    {
+        m_gameDelegate->onTouchMoved(x, y, 0, 0);
     }
 }
 
 void AppDelegate::onTouchReleased(int x, int y)
 {
-    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
-    pos.x /= m_screen.x;
-    pos.y /= m_screen.y;
-    pos *= 2.0f;
-    pos -= 1.0f;
-    TouchManager::GetInstance()->onTouchEnded(pos);
+    m_gameDelegate->onTouchReleased(x, y, 0, 0);
 }
 
+void AppDelegate::ApplicationWillTerminate()
+{
+    m_gameDelegate->applicationWillTerminate();
+}
+
+void AppDelegate::OnSuspend()
+{
+    m_gameDelegate->onSuspend();
+}
+
+void AppDelegate::OnResume()
+{
+    m_gameDelegate->onResume();
+}

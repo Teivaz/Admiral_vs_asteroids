@@ -4,10 +4,10 @@ template <typename T>
 class Singleton
 {
 public:
-    static void SetInstance(T* instance)
+    static void CreateInstance()
     {
         ASSERT(m_singletonInstance == nullptr);
-        m_singletonInstance = instance;
+        m_singletonInstance = new T;
     }
     static T* GetInstance()
     {

@@ -6,6 +6,10 @@
 #include "GLES2/gl2.h"
 #include <Windows.h>
 
+#ifdef _ANALYZE
+#include <vld.h>
+#endif
+
 #else
 
 #import <Availability.h>
