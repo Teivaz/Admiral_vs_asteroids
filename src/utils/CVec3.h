@@ -17,7 +17,14 @@ public:
 		, y(vec.y)
 		, z(vec.z)
 	{
-	};
+    };
+
+    CVec3(const CVec2<T>& vec, T v)
+        : x(vec.x)
+        , y(vec.y)
+        , z(v)
+    {
+    };
 
 	CVec3(T _x, T _y, T _z)
 		: x(_x)

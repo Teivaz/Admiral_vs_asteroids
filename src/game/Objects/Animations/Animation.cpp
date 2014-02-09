@@ -96,12 +96,11 @@ void Animation::setRotation(float r)
         s->setRotation(r);
     }
 }
-void Animation::adjustPosition(const vec2f& p)
+
+void Animation::setCamera(CameraPtr cam)
 {
-}
-void Animation::adjustScale(const vec2f& s)
-{
-}
-void Animation::adjustRotation(float r)
-{
+    for (Sprite* f : m_keyFrames)
+    {
+        f->setCamera(cam);
+    }
 }

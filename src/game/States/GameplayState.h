@@ -3,6 +3,7 @@
 
 class Sprite;
 class Widget;
+MakeShared(Ship);
 
 class GameplayState : public State
 {
@@ -31,4 +32,6 @@ private:
     Sprite*                     m_star = nullptr;
     Widget*                     m_gui = nullptr;
     GameObject*                 m_laserBeam = nullptr;
+
+    ShipPtr                     m_ship;
 };

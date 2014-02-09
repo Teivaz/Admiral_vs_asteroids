@@ -13,7 +13,7 @@
 #include "Objects/GUI/SliderWidget.h"
 #include "Controllers/TouchManager.h"
 #include "Objects/Scene/LaserBeam.h"
-
+#include "Objects/Scene/Ship.h"
 
 class ButtonCallBack : public ButtonWidget::CallbackFunctor
 {
@@ -54,21 +54,18 @@ GameplayState::~GameplayState()
 void GameplayState::update(float dt)
 {
     m_star->adjustRotation(m_movingSpeed* dt / 1000);
-    //m_star->adjustPosition(m_movingSpeed * dt);
-    if (m_laserBeam)
-        m_laserBeam->update(dt);
+
+    m_ship->update(dt);
 }
 
 void GameplayState::render()
 {
-    m_gui->render();
-    if (m_laserBeam)
-        m_laserBeam->render();
+//    m_gui->render();
 }
 
 void GameplayState::onEnter()
 {
-    SpriteManager::GetInstance()->createSprite(sprites::k_stars_back, -1, 2, true, 1);
+    SpriteManager::GetInstance()->createSprite(sprites::k_stars_back, -1, 2, true, -100);
 
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
 
@@ -94,18 +91,18 @@ void GameplayState::onEnter()
     {
         sl->setCallback(new SliderCallBack(2, this));
     }
+    Painter::GetInstance()->add(m_gui);
 
-
+    m_ship.reset(new Ship);
+    Painter::GetInstance()->add(m_ship.get());
 }
 
 void GameplayState::onFinish()
 {
-
 }
 
 void GameplayState::pause(bool)
 {
-
 }
 
 bool GameplayState::isFinished() const
@@ -113,26 +110,21 @@ bool GameplayState::isFinished() const
     return m_isFinished;
 }
 
-void GameplayState::_setMovingSpeed(vec2f speed)
-{
-    //m_movingSpeed = speed;
-}
-
 void GameplayState::onButton(bool b)
 {
     m_star->adjustPosition(b?0.1f:-0.1f);
     if (b)
-        LaserBeam::create(0.0f, 0.001f, m_star->getRotation(), 1000.0f);
+        m_ship->shoot();
 }
 
 void GameplayState::onSlider(int n, float v)
 {
     if (n == 1)
     {
-        m_movingSpeed = 2*(v - 0.5f);
+        m_ship->setRotationSpeed(2 * (v - 0.5f));
     }
     else
     {
-        //static_cast<Animation*>(m_laserBeam)->setFps(v * 20);
+        m_ship->setEnginePower(2 * (v - 0.5f));
     }
 }

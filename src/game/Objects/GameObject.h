@@ -9,7 +9,7 @@ class GameObject //: public has_slots<>
 public:
     virtual ~GameObject();
     virtual void                    render();
-    virtual void                    update(float) = 0;
+    virtual void                    update(float){};
 
     virtual void                    renderDebug();
 

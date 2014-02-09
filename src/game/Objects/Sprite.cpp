@@ -2,6 +2,7 @@
 #include "Sprite.h"
 #include "Controllers/ShaderManager.h"
 #include "Shape/Shape.h"
+#include "Controllers/Camera.h"
 
 Sprite::Sprite(Texture tex, vec2f lb, vec2f ur, ShaderProgram sp)
 {
@@ -77,7 +78,6 @@ void Sprite::render()
     glUseProgram(getProgram());
     _bindAttributes();
     glDrawArrays(getDrawMode(), 0, m_shape->getCount());
-    //glDrawArrays(GL_LINE_LOOP, 0, m_shape->getCount());
 }
 
 void Sprite::_bindAttributes()
@@ -105,7 +105,17 @@ void Sprite::_bindAttributes()
         glUniform1i(m_uniformTexture, 0);
 
     if (m_uniformTransformation)
-        glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &m_transformationMatrix.a1);
+    {
+        if (m_camera)
+        {
+            mat3f transform = m_camera->getTransformationMatrix() * m_transformationMatrix;
+            glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &transform.a1);
+        }
+        else
+        {
+            glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &m_transformationMatrix.a1);
+        }
+    }
 
     bindAttributes();
 }
@@ -130,4 +140,9 @@ GLsizei Sprite::getVertsCount() const
 const vec2f& Sprite::getSize()
 {
     return m_size;
+}
+
+void Sprite::setCamera(CameraPtr cam)
+{
+    m_camera = cam;
 }

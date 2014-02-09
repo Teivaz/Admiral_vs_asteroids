@@ -239,5 +239,8 @@
     <ClInclude Include="..\..\src\game\Objects\Scene\Ship.h">
       <Filter>game\Objects\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\Camera.h">
+      <Filter>game\Controllers\Painter</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

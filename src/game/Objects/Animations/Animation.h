@@ -2,6 +2,8 @@
 
 #include "../Sprite.h"
 
+MakeShared(Camera);
+
 class Animation : public GameObject
 {
 public:
@@ -22,9 +24,8 @@ public:
     virtual void                    setPosition(const vec2f& p);
     virtual void                    setScale(const vec2f& s);
     virtual void                    setRotation(float r);
-    virtual void                    adjustPosition(const vec2f& p);
-    virtual void                    adjustScale(const vec2f& s);
-    virtual void                    adjustRotation(float r);
+
+    void                            setCamera(CameraPtr);
     
 private:
     Sprite*                         _nextFrame();

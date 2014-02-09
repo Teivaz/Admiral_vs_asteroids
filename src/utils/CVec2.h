@@ -152,3 +152,9 @@ CVec2<T> abs(const CVec2<T>& vec)
 {
     return CVec2<T>(abs(vec.x), abs(vec.y));
 }
+
+template<typename T>
+CVec2<T> operator / (T i, CVec2<T> v)
+{
+    return CVec2<T>(i / v.x, i / v.y);
+}

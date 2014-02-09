@@ -1,9 +1,13 @@
 #include "Precompiled.h"
 #include "Painter.h"
 #include "Objects/GameObject.h"
+#include "Camera.h"
 
 Painter::Painter()
 {
+    m_sceneCamera.reset(new Camera);
+    // Screen size divided by 2
+    m_sceneCamera->setViewSize(vec2f(1136, 640)/2);
 }
 
 Painter::~Painter()
@@ -72,4 +76,9 @@ void Painter::update(float dt)
         ++it;
         object->update(dt);
     }
+}
+
+CameraPtr Painter::getSceneCamera() const
+{
+    return m_sceneCamera;
 }

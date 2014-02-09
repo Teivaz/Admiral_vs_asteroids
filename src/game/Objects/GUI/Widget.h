@@ -1,9 +1,10 @@
 #pragma once
 #include "Controllers/TouchReceiver.h"
+#include "Objects/GameObject.h"
 
 class Sprite;
 
-class Widget : public TouchReceiver
+class Widget : public TouchReceiver, public GameObject
 {
 public:
     typedef std::list<Widget*> WidgetList_t;

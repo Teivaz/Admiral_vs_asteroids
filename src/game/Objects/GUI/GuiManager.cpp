@@ -78,7 +78,7 @@ Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::V
         ASSERT(false && "Wrong allign mode");
     }
 
-    Sprite* sprite = SpriteManager::GetInstance()->createSprite(spriteName, -vec2f(relativeSize.x*anchor.x, relativeSize.y*anchor.y), relativeSize, false, -100);
+    Sprite* sprite = SpriteManager::GetInstance()->createSprite(spriteName, -vec2f(relativeSize.x*anchor.x, relativeSize.y*anchor.y), relativeSize, false, 0);
     sprite->setPosition(relativePosition);
     sprite->adjustPosition(relativeOffset);
     return sprite;
@@ -138,6 +138,7 @@ Widget* GuiManager::createWidget(const Json::Value& value)
 Widget* GuiManager::LoadGui(const string& name)
 {
     Widget* rootWidget = new Widget;
+    rootWidget->setRenderLayer(1000);
     char* data;
     size_t size;
     FileUtils::LoadFile(name.c_str(), &data, size, FileUtils::app);
