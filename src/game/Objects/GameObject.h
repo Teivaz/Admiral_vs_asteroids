@@ -11,79 +11,37 @@ public:
     virtual void                    render();
     virtual void                    update(float) = 0;
 
+    virtual void                    renderDebug();
+
     virtual void                    setPosition(const vec2f& p);
     virtual void                    setScale(const vec2f& s);
     virtual void                    setRotation(float r);
     virtual void                    adjustPosition(const vec2f& p);
     virtual void                    adjustScale(const vec2f& s);
     virtual void                    adjustRotation(float r);
+    virtual const vec2f&            getPosition() const;
+    virtual const vec2f&            getScale() const;
+    virtual float                   getRotation() const;
 
-
+    void                            setRenderLayer(int layer);
+    int                             getRenderLayer(){ return m_renderLayer; }
 
     //******************************************************
-    void init(ShaderProgram, Shape*, Texture);
-    void setShader(ShaderProgram);
-    virtual void                    bindAttributes() {}
-
-    inline Texture                  getTexture() const
-    {
-        return m_texture;
-    }
-    inline ShaderProgram            getProgram() const
-    {
-        return m_shader;
-    }
-    inline DrawMode                 getDrawMode() const
-    {
-        return m_mode;
-    }
-    GLsizei                         getVertsCount() const;
-    inline const vec2f&             getPosition() const
-    {
-        return m_position;
-    }
-    inline const vec2f&             getScale() const
-    {
-        return m_scale;
-    }
-    inline float                    getRotation() const
-    {
-        return m_rotation;
-    }
-    //******************************************************
-
     // sort purpose
-
     static bool less(GameObject* obj1, GameObject* obj2)
     {
         return obj1->getRenderLayer() < obj2->getRenderLayer();
     }
-
-    void setRenderLayer(int layer);
-    int getRenderLayer(){ return m_renderLayer; }
-
-private:
-    void                            _bindAttributes();
-    void                            _calculateTransformation();
-
-    bool                            m_transformationIsDirty = true;
+    //******************************************************
 
 protected:
-    Texture                         m_texture = 0;
-    ShaderProgram                   m_shader = 0;
-    DrawMode                        m_mode = GL_TRIANGLE_FAN;
-    Shape*                          m_shape = nullptr;
+    void                            _calculateTransformation();
 
-    // Shader attributes and uniforms
-    GLuint                          m_attributePosition = 0;
-    GLuint                          m_attributeTexturePosition = 0;
-    GLuint                          m_uniformTexture = 0;
-    GLuint                          m_uniformTransformation = 0;
-    
+protected:    
+    bool                            m_transformationIsDirty = true;
     vec2f                           m_position = 0.0f;
     vec2f                           m_scale = 1.0f;
     float                           m_rotation = 0.0f;
     mat3f                           m_transformationMatrix;
-
     int                             m_renderLayer = 0;
 };

@@ -37,6 +37,25 @@ Sprite::Sprite(Texture tex, vec2f textureLeftBottom, vec2f textureUpRight, Shade
 
 Sprite::~Sprite()
 {
+    delete m_shape;
+}
+
+void Sprite::init(ShaderProgram shader, Shape* shape, Texture tex)
+{
+    if (m_shape)
+        delete m_shape;
+    m_shape = shape;
+    setShader(shader);
+    m_texture = tex;
+}
+
+void Sprite::setShader(ShaderProgram shader)
+{
+    m_shader = shader;
+    m_uniformTexture = glGetUniformLocation(shader, "u_texture");
+    m_uniformTransformation = glGetUniformLocation(shader, "u_transformation");
+    m_attributePosition = glGetAttribLocation(shader, "a_position");
+    m_attributeTexturePosition = glGetAttribLocation(shader, "a_texturePosition");
 }
 
 bool Sprite::isPointInside(const vec2f& pt)
@@ -51,6 +70,44 @@ bool Sprite::isPointInside(const vec2f& pt)
 void Sprite::render()
 {
     GameObject::render();
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_texture);
+    m_shape->bind();
+    glUseProgram(getProgram());
+    _bindAttributes();
+    glDrawArrays(getDrawMode(), 0, m_shape->getCount());
+    //glDrawArrays(GL_LINE_LOOP, 0, m_shape->getCount());
+}
+
+void Sprite::_bindAttributes()
+{
+    glEnableVertexAttribArray(m_attributePosition);
+    glEnableVertexAttribArray(m_attributeTexturePosition);
+
+    glVertexAttribPointer(
+        m_attributePosition,
+        2,
+        GL_FLOAT,
+        GL_FALSE,
+        m_shape->getStride(),
+        m_shape->getVertexOffset());
+
+    glVertexAttribPointer(
+        m_attributeTexturePosition,
+        2,
+        GL_FLOAT,
+        GL_FALSE,
+        m_shape->getStride(),
+        m_shape->getTextureOffset());
+
+    if (m_uniformTexture)
+        glUniform1i(m_uniformTexture, 0);
+
+    if (m_uniformTransformation)
+        glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &m_transformationMatrix.a1);
+
+    bindAttributes();
 }
 
 void Sprite::update(float dt)
@@ -63,4 +120,14 @@ void Sprite::bindAttributes()
     auto col = glGetUniformLocation(m_shader, "u_blendColor");
     if(col)
         glUniform3f(col, 1.0f, 0.2f, 0.2f);
+}
+
+GLsizei Sprite::getVertsCount() const
+{
+    return m_shape->getCount();
+}
+
+const vec2f& Sprite::getSize()
+{
+    return m_size;
 }

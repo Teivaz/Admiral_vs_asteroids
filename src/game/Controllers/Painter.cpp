@@ -38,6 +38,9 @@ void Painter::render()
     for (GameObject* o : m_objects)
     {
         o->render();
+#ifdef _DEBUG
+        o->renderDebug();
+#endif
     }
 }
 
