@@ -59,6 +59,7 @@ void TouchManager::removeReceiever(TouchReceiver* r)
 
 TouchPtr TouchManager::_resolveTouch(const vec2f& position, const vec2f& previousPosition, bool erase/* = true*/)
 {
+#ifdef _WIN321
     // This will do for Windows as it has no multitouch
     if (m_touches.empty())
     {
@@ -69,7 +70,26 @@ TouchPtr TouchManager::_resolveTouch(const vec2f& position, const vec2f& previou
     if (erase)
         m_touches.pop_back();
     return touch;
-
-    //for (touch)
-
+#else
+    // Find touch with position closest to incoming touch prevoius position
+    auto result = m_touches.begin();
+    float distance = vec2f((*result)->currentPoint() - previousPosition).SqLength();
+    auto it = result;
+    auto end = m_touches.end();
+    ++it;
+    for (; it != end; ++it)
+    {
+        float newDistance = vec2f((*it)->currentPoint() - previousPosition).SqLength();
+        if (newDistance < distance)
+        {
+            distance = newDistance;
+            result = it;
+        }
+    }
+    if (erase)
+    {
+        m_touches.erase(result);
+    }
+    return *result;
+#endif
 }
