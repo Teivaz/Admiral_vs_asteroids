@@ -21,7 +21,8 @@ public:
     SpriteManager();
     ~SpriteManager();
 
-    vec2i                   getSpriteSize(const string& name);
+    vec2i                   getSpriteSizei(const string& name);
+    vec2f                   getSpriteSize(const string& name);
     Sprite*                 createSprite(const string& name, bool autorender = true, int renderLayer = 0);
     Sprite*                 createSprite(const string& name, vec2f position, vec2f size, bool autorender = true, int renderLayer = 0);
     void                    loadAtlas(const string& name);

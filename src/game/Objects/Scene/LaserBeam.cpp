@@ -11,20 +11,16 @@ LaserBeam::LaserBeam(const vec2f& position, float speed, float direction, float 
 {
     float scale = 300.0f;
     m_animation = new Animation();
-    vec2i size_ = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_1);
-    vec2f size = vec2f(static_cast<float>(size_.x), static_cast<float>(size_.y)) / scale;
+    vec2f size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_1) / scale;
     Sprite* s = SpriteManager::GetInstance()->createSprite(sprites::k_beam_1, size / 2, size, false);
     m_animation->addFrame(s);
-    size_ = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_2);
-    size = vec2f(static_cast<float>(size_.x), static_cast<float>(size_.y)) / scale;
+    size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_2) / scale;
     Sprite* s1 = SpriteManager::GetInstance()->createSprite(sprites::k_beam_2, size / 2, size, false);
     m_animation->addFrame(s1);
-    size_ = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_3);
-    size = vec2f(static_cast<float>(size_.x), static_cast<float>(size_.y)) / scale;
+    size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_3) / scale;
     Sprite* s2 = SpriteManager::GetInstance()->createSprite(sprites::k_beam_3, size / 2, size, false);
     m_animation->addFrame(s2);
-    size_ = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_2);
-    size = vec2f(static_cast<float>(size_.x), static_cast<float>(size_.y)) / scale;
+    size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_2) / scale;
     s1 = SpriteManager::GetInstance()->createSprite(sprites::k_beam_2, size / 2, size, false);
     m_animation->addFrame(s1);
     m_animation->setFps(20);

@@ -131,6 +131,9 @@
     <ClCompile Include="..\..\src\game\Objects\Scene\Collidable.cpp">
       <Filter>game\Objects\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Scene\Ship.cpp">
+      <Filter>game\Objects\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Precompiled.h" />
@@ -231,6 +234,9 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\Scene\Collidable.h">
+      <Filter>game\Objects\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Scene\Ship.h">
       <Filter>game\Objects\Scene</Filter>
     </ClInclude>
   </ItemGroup>

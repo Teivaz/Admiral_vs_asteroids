@@ -40,7 +40,7 @@ Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::V
     const string verticalAllign(widget["allign"]["y"].asString());
     const string horizontalAllign(widget["allign"]["x"].asString());
 
-    vec2i originalSize = SpriteManager::GetInstance()->getSpriteSize(spriteName);
+    vec2f originalSize = SpriteManager::GetInstance()->getSpriteSize(spriteName);
     vec2f relativeSize = _scaleToScreen(vec2f(scale.x * originalSize.x, scale.y * originalSize.y));
     vec2f relativeOffset = _scaleToScreen(offset);
     vec2f relativePosition;

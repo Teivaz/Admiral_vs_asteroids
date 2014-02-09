@@ -32,7 +32,7 @@ Sprite* SpriteManager::createSprite(const string& name, bool autorender/* = true
     return sprite;
 }
 
-vec2i SpriteManager::getSpriteSize(const string& name)
+vec2i SpriteManager::getSpriteSizei(const string& name)
 {
     auto it = m_spriteRectMap.find(name);
     if (it == m_spriteRectMap.end())
@@ -41,6 +41,12 @@ vec2i SpriteManager::getSpriteSize(const string& name)
         return 0;
     }
     return it->second.sizePx;
+}
+
+vec2f SpriteManager::getSpriteSize(const string& name)
+{
+    vec2i sizei = getSpriteSizei(name);
+    return vec2f(static_cast<float>(sizei.x), static_cast<float>(sizei.y));
 }
 
 Sprite* SpriteManager::createSprite(const string& name, vec2f position, vec2f size, bool autorender/* = true*/, int renderLayer/* = 0*/)
