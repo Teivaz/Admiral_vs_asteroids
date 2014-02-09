@@ -34,6 +34,6 @@ private:
     vec2f                           m_rotationV;
     vec2f                           m_cannonPosition = vec2f(-2.0f, 50.0f);
 
-    float                           m_maxSpeedFwd = 300.0f;
+    float                           m_maxSpeedFwd = 200.0f;
     float                           m_maxSpeedBwd = 100.0f;
 };
