@@ -53,6 +53,7 @@ inline T max(T a, T b)
 //using namespace sigslot;
 
 using std::string;
+using std::shared_ptr;
 
 #if defined _DEBUG && defined _WIN32
 #define ASSERT(x) _ASSERT(x)
@@ -65,3 +66,7 @@ void PLOG(const char* x, ...){}
 #include "utils/Singleton.h"
 
 const float PI = 3.1416f;
+
+#define MakeShared(T) \
+    class T; \
+    typedef shared_ptr<T> T##Ptr

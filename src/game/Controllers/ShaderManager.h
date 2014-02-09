@@ -1,11 +1,11 @@
 #pragma once
 #include "shaders.h"
 
-class Shader;
+MakeShared(Shader);
 
 class ShaderManager : public Singleton<ShaderManager>
 {
-    typedef std::map<string, Shader*> ShaderMap_t;
+    typedef std::map<string, ShaderPtr> ShaderMap_t;
 public:
     ShaderManager();
     ~ShaderManager();
@@ -14,10 +14,8 @@ public:
     ShaderProgram                   getShader(const string&);
 
 private:
-    Shader*                         _loadShader(const string& name);
-    Shader*                         _createShader(const char* vs, const char* fs);
-//    void                            _getShader(const string& name, const char* vs, const char* fs, unsigned int* h);
-
+    ShaderPtr                       _loadShader(const string& name);
+    ShaderPtr                       _createShader(const char* vs, const char* fs);
 
 private:
     ShaderMap_t                     m_shaders;

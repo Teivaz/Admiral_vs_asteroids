@@ -13,7 +13,7 @@ TouchManager::~TouchManager()
 
 void TouchManager::onTouchBegan(const vec2f& point)
 {
-    Touch* touch = new Touch(point);
+    TouchPtr touch = TouchPtr(new Touch(point));
     m_touches.push_back(touch);
     for (TouchReceiver* tr : m_receievers)
     {
@@ -23,7 +23,7 @@ void TouchManager::onTouchBegan(const vec2f& point)
 
 void TouchManager::onTouchMoved(const vec2f& position, const vec2f& previousPosition)
 {
-    Touch* touch = _resolveTouch(position, previousPosition);
+    TouchPtr touch = _resolveTouch(position, previousPosition);
     if (touch && touch->isConsumed())
     {
         touch->getOwner()->onTouchMoved(touch);
@@ -32,14 +32,13 @@ void TouchManager::onTouchMoved(const vec2f& position, const vec2f& previousPosi
 
 void TouchManager::onTouchEnded(const vec2f& position, const vec2f& previousPosition)
 {
-    Touch* touch = _resolveTouch(position, previousPosition, true);
+    TouchPtr touch = _resolveTouch(position, previousPosition, true);
     if (!touch)
         return;
     if(touch->isConsumed())
     {
         touch->getOwner()->onTouchEnded(touch);
     }
-    delete touch;
 }
 
 void TouchManager::addReceiever(TouchReceiver* r)
@@ -58,16 +57,19 @@ void TouchManager::removeReceiever(TouchReceiver* r)
     m_receievers.erase(it);
 }
 
-Touch* TouchManager::_resolveTouch(const vec2f& position, const vec2f& previousPosition, bool erase/* = true*/)
+TouchPtr TouchManager::_resolveTouch(const vec2f& position, const vec2f& previousPosition, bool erase/* = true*/)
 {
     // This will do for Windows as it has no multitouch
     if (m_touches.empty())
     {
         return nullptr;
     }
-    Touch* touch = m_touches.back();
+    TouchPtr touch = m_touches.back();
     touch->updateTouch(position);
     if (erase)
         m_touches.pop_back();
     return touch;
+
+    //for (touch)
+
 }

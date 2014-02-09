@@ -29,6 +29,7 @@
     <ClCompile Include="..\..\src\game\Objects\GUI\GuiManager.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\SliderWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\Widget.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Scene\Collidable.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\LaserBeam.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Sprite.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="..\..\src\game\Objects\GUI\GuiManager.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\SliderWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\Widget.h" />
+    <ClInclude Include="..\..\src\game\Objects\Scene\Collidable.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\LaserBeam.h" />
     <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h" />
     <ClInclude Include="..\..\src\game\Objects\Sprite.h" />

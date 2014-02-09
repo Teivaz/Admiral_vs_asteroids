@@ -25,9 +25,9 @@ public:
     }
     void                        setProgress(float);
 
-    virtual void                onTouchBegan(Touch*);
-    virtual void                onTouchMoved(Touch*);
-    virtual void                onTouchEnded(Touch*);
+    virtual void                onTouchBegan(TouchPtr);
+    virtual void                onTouchMoved(TouchPtr);
+    virtual void                onTouchEnded(TouchPtr);
 
     void                        setCallback(CallbackFunctor*);
 

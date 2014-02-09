@@ -1,6 +1,6 @@
 #pragma once
 
-class Touch;
+MakeShared(Touch);
 
 class TouchReceiver
 {
@@ -8,7 +8,7 @@ public:
     TouchReceiver(){};
     virtual ~TouchReceiver();
 
-    virtual void            onTouchBegan(Touch*){};
-    virtual void            onTouchMoved(Touch*){};
-    virtual void            onTouchEnded(Touch*){};
+    virtual void            onTouchBegan(TouchPtr){};
+    virtual void            onTouchMoved(TouchPtr){};
+    virtual void            onTouchEnded(TouchPtr){};
 };

@@ -49,7 +49,7 @@ bool ButtonWidget::_isPointInside(const vec2f& pt)
     return m_spriteIdle->isPointInside(pt);
 }
 
-void ButtonWidget::onTouchBegan(Touch* t)
+void ButtonWidget::onTouchBegan(TouchPtr t)
 {
     if (t->isConsumed())
         return;
@@ -64,11 +64,11 @@ void ButtonWidget::onTouchBegan(Touch* t)
     }
 }
 
-void ButtonWidget::onTouchMoved(Touch* t)
+void ButtonWidget::onTouchMoved(TouchPtr t)
 {
 }
 
-void ButtonWidget::onTouchEnded(Touch* t)
+void ButtonWidget::onTouchEnded(TouchPtr t)
 {
     _onButton(false);
 }

@@ -10,10 +10,6 @@ ShaderManager::ShaderManager()
 
 ShaderManager::~ShaderManager()
 {
-    for (auto shader : m_shaders)
-    {
-        delete shader.second;
-    }
 }
 
 void ShaderManager::loadShader(const string& name)
@@ -35,7 +31,7 @@ ShaderProgram ShaderManager::getShader(const string& name)
     return _loadShader(name)->program;
 }
 
-Shader* ShaderManager::_loadShader(const string& name)
+ShaderPtr ShaderManager::_loadShader(const string& name)
 {
     char* data;
     size_t size;
@@ -48,12 +44,12 @@ Shader* ShaderManager::_loadShader(const string& name)
     delete[] data;
     Json::Value vs = root.get("VertexShader", Json::Value(""));
     Json::Value fs = root.get("FragmentShader", Json::Value(""));
-    Shader* shader = _createShader(vs.asCString(), fs.asCString());
+    ShaderPtr shader = _createShader(vs.asCString(), fs.asCString());
     m_shaders[name] = shader;
     return shader;
 }
 
-Shader* ShaderManager::_createShader(const char* vertexShaderSource, const char* fragmentShaderSource)
+ShaderPtr ShaderManager::_createShader(const char* vertexShaderSource, const char* fragmentShaderSource)
 {
     VertexShader vs = glCreateShader(GL_VERTEX_SHADER);
     FragmentShader fs = glCreateShader(GL_FRAGMENT_SHADER);
@@ -81,6 +77,6 @@ Shader* ShaderManager::_createShader(const char* vertexShaderSource, const char*
     glAttachShader(program, vs);
     glAttachShader(program, fs);
     glLinkProgram(program);
-    Shader* shader = new Shader(vs, fs, program);
+    ShaderPtr shader = ShaderPtr(new Shader(vs, fs, program));
     return shader;
 }

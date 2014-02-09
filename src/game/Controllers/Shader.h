@@ -8,6 +8,12 @@ public:
         , fragment(fs)
         , program(sp)
     {}
+    ~Shader()
+    {
+        glDeleteProgram(program);
+        glDeleteShader(fragment);
+        glDeleteShader(vertex);
+    }
 
     const VertexShader          vertex;
     const FragmentShader        fragment;

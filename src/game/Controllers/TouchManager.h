@@ -1,12 +1,12 @@
 #pragma once
 
-class Touch;
+MakeShared(Touch);
 class TouchReceiver;
 
 class TouchManager : public Singleton<TouchManager>
 {
     typedef std::list<TouchReceiver*> Kinestetics_t;
-    typedef std::list<Touch*> Touches_t;
+    typedef std::list<TouchPtr> Touches_t;
 public:
     TouchManager();
     ~TouchManager();
@@ -20,7 +20,7 @@ public:
 
 private:
 
-    Touch*              _resolveTouch(const vec2f& position, const vec2f& previousPosition, bool erase = false);
+    TouchPtr            _resolveTouch(const vec2f& position, const vec2f& previousPosition, bool erase = false);
 
 private:
     Kinestetics_t       m_receievers;

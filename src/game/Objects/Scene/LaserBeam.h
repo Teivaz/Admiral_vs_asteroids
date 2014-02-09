@@ -1,9 +1,10 @@
 #pragma once
 #include "../GameObject.h"
+#include "Collidable.h"
 
 class Animation;
 
-class LaserBeam : public GameObject
+class LaserBeam : public Collidable
 {
 public:
     static void create(const vec2f& position, float speed, float direction, float lifetime);

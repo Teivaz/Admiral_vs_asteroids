@@ -33,7 +33,7 @@ void SliderWidget::render()
     Widget::render();
 }
 
-void SliderWidget::onTouchBegan(Touch* t)
+void SliderWidget::onTouchBegan(TouchPtr t)
 {
     if (t->isConsumed())
     {
@@ -45,7 +45,7 @@ void SliderWidget::onTouchBegan(Touch* t)
     }
 }
 
-void SliderWidget::onTouchMoved(Touch* t)
+void SliderWidget::onTouchMoved(TouchPtr t)
 {
     vec2f travel = t->currentPoint() - m_origin;
     float p = m_travel.Dot(travel);
@@ -53,7 +53,7 @@ void SliderWidget::onTouchMoved(Touch* t)
     setProgress(p);
 }
 
-void SliderWidget::onTouchEnded(Touch* t)
+void SliderWidget::onTouchEnded(TouchPtr t)
 {
     setProgress(m_default);
 }

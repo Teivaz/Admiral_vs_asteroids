@@ -28,6 +28,7 @@ void AppDelegate::Update(float dt)
     {
         return;
     }
+    dt = min(dt, 34);
     m_gameDelegate->update(dt);
 }
 

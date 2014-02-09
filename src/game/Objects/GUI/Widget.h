@@ -15,9 +15,9 @@ public:
     virtual void                setScale(const vec2f&);
     virtual void                render();
 
-    virtual void                onTouchBegan(Touch*);
-    virtual void                onTouchMoved(Touch*);
-    virtual void                onTouchEnded(Touch*);
+    virtual void                onTouchBegan(TouchPtr);
+    virtual void                onTouchMoved(TouchPtr);
+    virtual void                onTouchEnded(TouchPtr);
 
     const string&               getName() const;
     void                        addChild(Widget*);

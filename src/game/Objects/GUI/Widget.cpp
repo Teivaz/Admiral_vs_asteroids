@@ -93,7 +93,7 @@ void Widget::_setParent(Widget* parent)
     m_parent = parent;
 }
 
-void Widget::onTouchBegan(Touch* t)
+void Widget::onTouchBegan(TouchPtr t)
 {
     if (t->isConsumed())
         return;
@@ -103,10 +103,10 @@ void Widget::onTouchBegan(Touch* t)
     }
 }
 
-void Widget::onTouchMoved(Touch* t)
+void Widget::onTouchMoved(TouchPtr t)
 {
 }
 
-void Widget::onTouchEnded(Touch* t)
+void Widget::onTouchEnded(TouchPtr t)
 {
 }

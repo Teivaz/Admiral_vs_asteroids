@@ -35,7 +35,7 @@ public:
     //******************************************************
 
 protected:
-    void                            _calculateTransformation();
+    virtual void                    _calculateTransformation();
 
 protected:    
     bool                            m_transformationIsDirty = true;

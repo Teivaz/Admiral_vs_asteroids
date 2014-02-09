@@ -9,7 +9,10 @@ TextureManager::TextureManager()
 
 TextureManager::~TextureManager()
 {
-
+    for (auto tex : m_textures)
+    {
+        glDeleteTextures(1, &tex.second);
+    }
 }
 
 void TextureManager::loadTexture(const string& name)
