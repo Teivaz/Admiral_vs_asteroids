@@ -25,7 +25,8 @@
     [super viewDidLoad];
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-
+    self.view.multipleTouchEnabled = YES;
+    
     if (!self.context) {
         NSLog(@"Failed to create ES context");
     }
@@ -88,6 +89,35 @@
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {    
     gameDelegate->render();
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *aTouch in touches)
+    {
+        CGPoint loc = [aTouch locationInView:self.view];
+        gameDelegate->onTouchPressed(loc.x, loc.y);
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *aTouch in touches)
+    {
+        CGPoint loc = [aTouch locationInView:self.view];
+        CGPoint prevloc = [aTouch previousLocationInView:self.view];
+        gameDelegate->onTouchMoved(loc.x, loc.y, prevloc.x, prevloc.y);
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *aTouch in touches)
+    {
+        CGPoint loc = [aTouch locationInView:self.view];
+        CGPoint prevloc = [aTouch previousLocationInView:self.view];
+        gameDelegate->onTouchReleased(loc.x, loc.y, prevloc.x, prevloc.y);
+    }
 }
 @end
 
