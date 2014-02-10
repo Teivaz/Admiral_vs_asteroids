@@ -47,9 +47,7 @@ private:
     Shape*                          m_shape = nullptr;
     CameraPtr                       m_camera;
 
-    // Shader attributes and uniforms
-    GLuint                          m_attributePosition = 0;
-    GLuint                          m_attributeTexturePosition = 0;
+    // Shader uniforms
     GLuint                          m_uniformTexture = 0;
     GLuint                          m_uniformTransformation = 0;
 

@@ -77,7 +77,7 @@
 /* Begin PBXFileReference section */
 		9A056AD918A11217008288DA /* Painter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Painter.cpp; sourceTree = "<group>"; };
 		9A056ADA18A11217008288DA /* Painter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Painter.h; sourceTree = "<group>"; };
-		9A056ADB18A11217008288DA /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		9A056ADB18A11217008288DA /* ShaderAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderAttributes.h; sourceTree = "<group>"; };
 		9A056ADC18A11217008288DA /* ShaderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderManager.cpp; sourceTree = "<group>"; };
 		9A056ADD18A11217008288DA /* ShaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderManager.h; sourceTree = "<group>"; };
 		9A056ADE18A11217008288DA /* SpriteManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteManager.cpp; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 			children = (
 				9A056AD918A11217008288DA /* Painter.cpp */,
 				9A056ADA18A11217008288DA /* Painter.h */,
-				9A056ADB18A11217008288DA /* Shader.h */,
+				9A056ADB18A11217008288DA /* ShaderAttributes.h */,
 				9A056ADC18A11217008288DA /* ShaderManager.cpp */,
 				9A056ADD18A11217008288DA /* ShaderManager.h */,
 				9A056ADE18A11217008288DA /* SpriteManager.cpp */,

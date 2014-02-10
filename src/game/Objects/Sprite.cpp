@@ -3,6 +3,7 @@
 #include "Controllers/ShaderManager.h"
 #include "Shape/Shape.h"
 #include "Controllers/Camera.h"
+#include "Controllers/ShaderAttributes.h"
 
 Sprite::Sprite(Texture tex, vec2f lb, vec2f ur, ShaderProgram sp)
 {
@@ -55,8 +56,6 @@ void Sprite::setShader(ShaderProgram shader)
     m_shader = shader;
     m_uniformTexture = glGetUniformLocation(shader, "u_texture");
     m_uniformTransformation = glGetUniformLocation(shader, "u_transformation");
-    m_attributePosition = glGetAttribLocation(shader, "a_position");
-    m_attributeTexturePosition = glGetAttribLocation(shader, "a_texturePosition");
 }
 
 bool Sprite::isPointInside(const vec2f& pt)
@@ -82,19 +81,19 @@ void Sprite::render()
 
 void Sprite::_bindAttributes()
 {
-    glEnableVertexAttribArray(m_attributePosition);
-    glEnableVertexAttribArray(m_attributeTexturePosition);
+    glEnableVertexAttribArray(Attributes::VERTEX_COORDINATES);
 
     glVertexAttribPointer(
-        m_attributePosition,
+        Attributes::VERTEX_COORDINATES,
         2,
         GL_FLOAT,
         GL_FALSE,
         m_shape->getStride(),
         m_shape->getVertexOffset());
 
+    glEnableVertexAttribArray(Attributes::TEXTURE_COORDINATES);
     glVertexAttribPointer(
-        m_attributeTexturePosition,
+        Attributes::TEXTURE_COORDINATES,
         2,
         GL_FLOAT,
         GL_FALSE,
@@ -121,8 +120,7 @@ void Sprite::_bindAttributes()
 }
 
 void Sprite::update(float dt)
-{
-    
+{    
 }
 
 void Sprite::bindAttributes()

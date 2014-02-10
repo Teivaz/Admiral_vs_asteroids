@@ -200,9 +200,6 @@
     <ClInclude Include="..\..\src\game\Controllers\Painter.h">
       <Filter>game\Controllers\Painter</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\game\Controllers\Shader.h">
-      <Filter>game\Controllers\Shader</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h">
       <Filter>game\Controllers\Shader</Filter>
     </ClInclude>
@@ -241,6 +238,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Controllers\Camera.h">
       <Filter>game\Controllers\Painter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\ShaderAttributes.h">
+      <Filter>game\Controllers\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

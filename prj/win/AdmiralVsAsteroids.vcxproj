@@ -52,7 +52,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\game\Controllers\Camera.h" />
     <ClInclude Include="..\..\src\game\Controllers\Painter.h" />
-    <ClInclude Include="..\..\src\game\Controllers\Shader.h" />
+    <ClInclude Include="..\..\src\game\Controllers\ShaderAttributes.h" />
     <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\SpriteManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\TextureManager.h" />

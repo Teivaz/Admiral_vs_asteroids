@@ -1,6 +1,6 @@
 #include "Precompiled.h"
 #include "ShaderManager.h"
-#include "Shader.h"
+#include "ShaderAttributes.h"
 #include "utils/FileUtils.h"
 
 #ifndef VERBOSE_SHADER_DEBUG
@@ -13,6 +13,10 @@ ShaderManager::ShaderManager()
 
 ShaderManager::~ShaderManager()
 {
+    for (auto p : m_shaders)
+    {
+        glDeleteProgram(p.second);
+    }
 }
 
 void ShaderManager::loadShader(const string& name)
@@ -29,12 +33,12 @@ ShaderProgram ShaderManager::getShader(const string& name)
     auto t = m_shaders.find(name);
     if (t != m_shaders.end())
     {
-        return t->second->program;
+        return t->second;
     }
-    return _loadShader(name)->program;
+    return _loadShader(name);
 }
 
-ShaderPtr ShaderManager::_loadShader(const string& name)
+ShaderProgram ShaderManager::_loadShader(const string& name)
 {
     char* data;
     size_t size;
@@ -47,12 +51,12 @@ ShaderPtr ShaderManager::_loadShader(const string& name)
     delete[] data;
     Json::Value vs = root.get("VertexShader", Json::Value(""));
     Json::Value fs = root.get("FragmentShader", Json::Value(""));
-    ShaderPtr shader = _createShader(vs.asCString(), fs.asCString());
+    ShaderProgram shader = _createShader(vs.asCString(), fs.asCString());
     m_shaders[name] = shader;
     return shader;
 }
 
-ShaderPtr ShaderManager::_createShader(const char* vertexShaderSource, const char* fragmentShaderSource)
+ShaderProgram ShaderManager::_createShader(const char* vertexShaderSource, const char* fragmentShaderSource)
 {
     VertexShader vs = glCreateShader(GL_VERTEX_SHADER);
     FragmentShader fs = glCreateShader(GL_FRAGMENT_SHADER);
@@ -91,6 +95,13 @@ ShaderPtr ShaderManager::_createShader(const char* vertexShaderSource, const cha
     ShaderProgram program = glCreateProgram();
     glAttachShader(program, vs);
     glAttachShader(program, fs);
+
+    glBindAttribLocation(program, Attributes::VERTEX_COORDINATES, "a_position");
+    glBindAttribLocation(program, Attributes::VERTEX_NORMALS, "a_normals");
+    glBindAttribLocation(program, Attributes::TEXTURE_COORDINATES, "a_texturePosition");
+    glBindAttribLocation(program, Attributes::TEXTURE2_COORDINATES, "a_texture2Position");
+    glBindAttribLocation(program, Attributes::TEXTURE3_COORDINATES, "a_texture3Position");
+
     glLinkProgram(program);
     glGetProgramiv(program, GL_LINK_STATUS, &status);
     ASSERT(status && "Error compiling vertex shader.");
@@ -104,6 +115,8 @@ ShaderPtr ShaderManager::_createShader(const char* vertexShaderSource, const cha
         delete[] infoLog;
     }
 #endif
-    ShaderPtr shader = ShaderPtr(new Shader(vs, fs, program));
-    return shader;
+    glDeleteShader(vs);
+    glDeleteShader(fs);
+
+    return program;
 }
