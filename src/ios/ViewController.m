@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "GameDelegate"
+#import "GameDelegate.h"
 
 @interface ViewController () {
     GameDelegate* gameDelegate;
@@ -16,10 +16,6 @@
 
 - (void)tearDownGL;
 
-- (BOOL)loadShaders;
-- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file;
-- (BOOL)linkProgram:(GLuint)prog;
-- (BOOL)validateProgram:(GLuint)prog;
 @end
 
 @implementation ViewController
@@ -73,7 +69,7 @@
 {
     [EAGLContext setCurrentContext:self.context];
 
-    gameDelegate->init(self.view.drawableWidth, self.view.drawableHeight);
+    gameDelegate->init(self.view.bounds.size.width, self.view.bounds.size.height);
     
 }
 
@@ -93,3 +89,5 @@
 {    
     gameDelegate->render();
 }
+@end
+

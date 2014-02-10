@@ -59,7 +59,7 @@ using std::shared_ptr;
 #define ASSERT(x) _ASSERT(x)
 void PLOG(const char* x, ...);
 #else
-void PLOG(const char* x, ...){}
+inline void PLOG(const char* x, ...){}
 #define ASSERT(x)
 #endif
 

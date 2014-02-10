@@ -28,6 +28,11 @@
 		9A056B2C18A11217008288DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A056B0818A11217008288DA /* main.m */; };
 		9A056B2D18A11217008288DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A056B0A18A11217008288DA /* ViewController.m */; };
 		9A056B2F18A11217008288DA /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A056B1518A11217008288DA /* FileUtils.cpp */; };
+		9A220E6518A927C9007250FB /* GameDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6318A927C9007250FB /* GameDelegate.cpp */; };
+		9A220E6C18A928BE007250FB /* Collidable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6618A928BE007250FB /* Collidable.cpp */; };
+		9A220E6D18A928BE007250FB /* LaserBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6818A928BE007250FB /* LaserBeam.cpp */; };
+		9A220E6E18A928BE007250FB /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6A18A928BE007250FB /* Ship.cpp */; };
+		9A220E7218A928E2007250FB /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E7018A928E2007250FB /* Animation.cpp */; };
 		9A29456018902CF4005E4C8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A29455F18902CF4005E4C8B /* Foundation.framework */; };
 		9A29456218902CF4005E4C8B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A29456118902CF4005E4C8B /* CoreGraphics.framework */; };
 		9A29456418902CF4005E4C8B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A29456318902CF4005E4C8B /* UIKit.framework */; };
@@ -125,6 +130,16 @@
 		9A056B1618A11217008288DA /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
 		9A056B1718A11217008288DA /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		9A056B1818A11217008288DA /* VectorGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorGeometry.h; sourceTree = "<group>"; };
+		9A220E6318A927C9007250FB /* GameDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameDelegate.cpp; sourceTree = "<group>"; };
+		9A220E6418A927C9007250FB /* GameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDelegate.h; sourceTree = "<group>"; };
+		9A220E6618A928BE007250FB /* Collidable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collidable.cpp; sourceTree = "<group>"; };
+		9A220E6718A928BE007250FB /* Collidable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collidable.h; sourceTree = "<group>"; };
+		9A220E6818A928BE007250FB /* LaserBeam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LaserBeam.cpp; sourceTree = "<group>"; };
+		9A220E6918A928BE007250FB /* LaserBeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaserBeam.h; sourceTree = "<group>"; };
+		9A220E6A18A928BE007250FB /* Ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ship.cpp; sourceTree = "<group>"; };
+		9A220E6B18A928BE007250FB /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ship.h; sourceTree = "<group>"; };
+		9A220E7018A928E2007250FB /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
+		9A220E7118A928E2007250FB /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		9A29455C18902CF4005E4C8B /* AdmiralVsAsteroids_d.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdmiralVsAsteroids_d.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A29455F18902CF4005E4C8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A29456118902CF4005E4C8B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -173,6 +188,8 @@
 		9A056AD518A11217008288DA /* game */ = {
 			isa = PBXGroup;
 			children = (
+				9A220E6318A927C9007250FB /* GameDelegate.cpp */,
+				9A220E6418A927C9007250FB /* GameDelegate.h */,
 				9A056AD618A11217008288DA /* Controllers */,
 				9A056AE718A11217008288DA /* Objects */,
 				9A056AFE18A11217008288DA /* States */,
@@ -204,6 +221,7 @@
 		9A056AE718A11217008288DA /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				9A220E6F18A928E2007250FB /* Animations */,
 				9A056AE818A11217008288DA /* GameObject.cpp */,
 				9A056AE918A11217008288DA /* GameObject.h */,
 				9A056AEA18A11217008288DA /* GUI */,
@@ -236,6 +254,12 @@
 		9A056AF518A11217008288DA /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				9A220E6618A928BE007250FB /* Collidable.cpp */,
+				9A220E6718A928BE007250FB /* Collidable.h */,
+				9A220E6818A928BE007250FB /* LaserBeam.cpp */,
+				9A220E6918A928BE007250FB /* LaserBeam.h */,
+				9A220E6A18A928BE007250FB /* Ship.cpp */,
+				9A220E6B18A928BE007250FB /* Ship.h */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -298,6 +322,15 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		9A220E6F18A928E2007250FB /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				9A220E7018A928E2007250FB /* Animation.cpp */,
+				9A220E7118A928E2007250FB /* Animation.h */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		9A29455318902CF4005E4C8B = {
 			isa = PBXGroup;
 			children = (
@@ -342,7 +375,7 @@
 		9A84B9F3189FDAF3000239A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A46AA0E18A13D7F000188D1 /* libjsoncpp.a */,
+				9A46AA0E18A13D7F000188D1 /* libjsoncpp_d.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,7 +383,7 @@
 		9A84BAAD18A04248000239A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A84BAB218A04248000239A1 /* liblodepng.a */,
+				9A84BAB218A04248000239A1 /* liblodepng_d.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -425,17 +458,17 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9A46AA0E18A13D7F000188D1 /* libjsoncpp.a */ = {
+		9A46AA0E18A13D7F000188D1 /* libjsoncpp_d.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libjsoncpp.a;
+			path = libjsoncpp_d.a;
 			remoteRef = 9A46AA0D18A13D7F000188D1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A84BAB218A04248000239A1 /* liblodepng.a */ = {
+		9A84BAB218A04248000239A1 /* liblodepng_d.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = liblodepng.a;
+			path = liblodepng_d.a;
 			remoteRef = 9A84BAB118A04248000239A1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -463,10 +496,12 @@
 				9A056B2B18A11217008288DA /* AppDelegate.m in Sources */,
 				9A056B2418A11217008288DA /* SliderWidget.cpp in Sources */,
 				9A056B2618A11217008288DA /* Shape.cpp in Sources */,
+				9A220E6E18A928BE007250FB /* Ship.cpp in Sources */,
 				9A056B2718A11217008288DA /* Sprite.cpp in Sources */,
 				9A056B2918A11217008288DA /* GameplayState.cpp in Sources */,
 				9A056B2818A11217008288DA /* Star.cpp in Sources */,
 				9A056B2F18A11217008288DA /* FileUtils.cpp in Sources */,
+				9A220E6518A927C9007250FB /* GameDelegate.cpp in Sources */,
 				9A056B2518A11217008288DA /* Widget.cpp in Sources */,
 				9A056B2018A11217008288DA /* GameObject.cpp in Sources */,
 				9A056B1C18A11217008288DA /* SpriteManager.cpp in Sources */,
@@ -476,8 +511,11 @@
 				9A056B2A18A11217008288DA /* StateMachine.cpp in Sources */,
 				9A056B1A18A11217008288DA /* Painter.cpp in Sources */,
 				9A056B1D18A11217008288DA /* TextureManager.cpp in Sources */,
+				9A220E6D18A928BE007250FB /* LaserBeam.cpp in Sources */,
 				9A056B2218A11217008288DA /* ButtonWidget.cpp in Sources */,
 				9A056B1F18A11217008288DA /* TouchReceiver.cpp in Sources */,
+				9A220E7218A928E2007250FB /* Animation.cpp in Sources */,
+				9A220E6C18A928BE007250FB /* Collidable.cpp in Sources */,
 				9A056B2318A11217008288DA /* GuiManager.cpp in Sources */,
 				9A056B2118A11217008288DA /* BasicWidget.cpp in Sources */,
 			);
