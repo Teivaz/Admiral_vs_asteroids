@@ -54,6 +54,7 @@ namespace FileUtils
         switch (loc)
         {
         case app:
+            AppendPath(path, "/bundle");
             AppendPath(path, file);
             break;
 
@@ -75,6 +76,12 @@ namespace FileUtils
         encoding:[NSString defaultCStringEncoding]];
         
         NSFileHandle* handle = [NSFileHandle fileHandleForReadingAtPath:docPath];
+        NSData *nsdata = [handle readDataToEndOfFile];
+        size = nsdata.length;
+        *outdata = new char[size];
+        memcpy(*outdata, nsdata.bytes, size*sizeof(char));
+        
+        
 //        NSString *dataFile = [NSString stringWithContentsOfFile:docPath
 //        usedEncoding:NSUTF8StringEncoding
 //                 error:NULL];
