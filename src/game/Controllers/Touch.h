@@ -11,6 +11,15 @@ public:
     {}
     ~Touch(){};
 
+    Touch& operator=(const Touch& t)
+    {
+        m_startPosition = t.m_startPosition;
+        m_currentPostion = t.m_currentPostion;
+        m_owner = nullptr;
+        PLOG("Touch is copied!\n");
+        return *this;
+    }
+
     const vec2f&    startPoint() const
     {
         return m_startPosition;
@@ -31,7 +40,7 @@ public:
     {
         m_owner = r;
     }
-    void            release()
+    void            releaseParent()
     {
         m_owner = nullptr;
     }

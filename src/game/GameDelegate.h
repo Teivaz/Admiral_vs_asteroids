@@ -1,5 +1,7 @@
 #pragma once
 
+#define USE_TEST_TRIANGLE 0
+
 class GameDelegate
 {
 public:
@@ -20,4 +22,9 @@ public:
 
 private:
     vec2i m_screen;
+
+#if USE_TEST_TRIANGLE
+    GLuint vs, fs, prog;
+    GLuint pos;
+#endif
 };

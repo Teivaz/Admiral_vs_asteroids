@@ -17,10 +17,8 @@ public:
     }
 protected:
     void                            _deleteBuffers();
-    void                            _createSequentialIbo();
 protected:
     GLsizei                         m_count = 0;
-    Ibo                             m_ibo = 0;
     Vbo                             m_vbo = 0;
     GLuint                          m_stride = sizeof(vec2f);
     GLuint                          m_textureOffset = 0;

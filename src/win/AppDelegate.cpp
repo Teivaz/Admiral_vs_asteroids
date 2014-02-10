@@ -52,17 +52,17 @@ void AppDelegate::onTouchMoved(int x, int y)
 {
     if (x < 0 || y < 0 || x > m_screen.x || y > m_screen.y)
     {
-        m_gameDelegate->onTouchReleased(x, y, 0, 0);
+        m_gameDelegate->onTouchReleased(x, y, x, y);
     }
     else
     {
-        m_gameDelegate->onTouchMoved(x, y, 0, 0);
+        m_gameDelegate->onTouchMoved(x, y, x, y);
     }
 }
 
 void AppDelegate::onTouchReleased(int x, int y)
 {
-    m_gameDelegate->onTouchReleased(x, y, 0, 0);
+    m_gameDelegate->onTouchReleased(x, y, x, y);
 }
 
 void AppDelegate::ApplicationWillTerminate()

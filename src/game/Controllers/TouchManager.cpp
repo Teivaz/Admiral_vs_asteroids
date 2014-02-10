@@ -59,37 +59,41 @@ void TouchManager::removeReceiever(TouchReceiver* r)
 
 TouchPtr TouchManager::_resolveTouch(const vec2f& position, const vec2f& previousPosition, bool erase/* = true*/)
 {
-#ifdef _WIN321
-    // This will do for Windows as it has no multitouch
-    if (m_touches.empty())
-    {
-        return nullptr;
-    }
-    TouchPtr touch = m_touches.back();
-    touch->updateTouch(position);
-    if (erase)
-        m_touches.pop_back();
-    return touch;
-#else
     // Find touch with position closest to incoming touch prevoius position
-    auto result = m_touches.begin();
-    float distance = vec2f((*result)->currentPoint() - previousPosition).SqLength();
-    auto it = result;
-    auto end = m_touches.end();
-    ++it;
-    for (; it != end; ++it)
+    unsigned int touchesStored = m_touches.size();
+    if (touchesStored == 0)
     {
-        float newDistance = vec2f((*it)->currentPoint() - previousPosition).SqLength();
-        if (newDistance < distance)
+        return TouchPtr();
+    }
+    else if (touchesStored == 1)
+    {
+        TouchPtr touch = m_touches.back();
+        touch->updateTouch(position);
+        if (erase)
+            m_touches.pop_back();
+        return touch;
+    }
+    else
+    {
+        TouchPtr touch = m_touches.front();
+        float distance = vec2f(touch->currentPoint() - previousPosition).SqLength();
+        auto it = m_touches.begin();
+        auto end = m_touches.end();
+        ++it;
+        for (; it != end; ++it)
         {
-            distance = newDistance;
-            result = it;
+            float newDistance = vec2f((*it)->currentPoint() - previousPosition).SqLength();
+            if (newDistance < distance)
+            {
+                distance = newDistance;
+                touch = *it;
+            }
         }
+        touch->updateTouch(position);
+        if (erase)
+        {
+            m_touches.erase(std::find(m_touches.begin(), m_touches.end(), touch));
+        }
+        return touch;
     }
-    if (erase)
-    {
-        m_touches.erase(result);
-    }
-    return *result;
-#endif
 }

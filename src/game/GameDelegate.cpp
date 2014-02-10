@@ -11,6 +11,17 @@
 #include "Objects/GUI/GuiManager.h"
 #include "Controllers/TouchManager.h"
 
+#if USE_TEST_TRIANGLE
+static const char* vsc = "\
+attribute vec2 pos;\
+void main()\
+{ gl_Position =  vec4(pos, 0.0, 1.0); }";
+static const char* fsc = "\
+precision mediump float;\
+void main()\
+{ gl_FragColor =  vec4(1.0, 0.0, 0.0, 1.0); }";
+#endif
+
 GameDelegate::GameDelegate()
 {}
 
@@ -27,6 +38,21 @@ GameDelegate::~GameDelegate()
 
 void GameDelegate::init(int width, int height)
 {
+
+#if USE_TEST_TRIANGLE
+    vs = glCreateShader(GL_VERTEX_SHADER);
+    fs = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(vs, 1, &vsc, NULL);
+    glShaderSource(fs, 1, &fsc, NULL);
+    glCompileShader(vs);
+    glCompileShader(fs);
+    prog = glCreateProgram();
+    glAttachShader(prog, vs);
+    glAttachShader(prog, fs);
+    glLinkProgram(prog);
+    glBindAttribLocation(prog, pos, "pos");
+#endif
+
     m_screen = vec2i(width, height);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
