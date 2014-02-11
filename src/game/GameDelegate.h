@@ -1,6 +1,6 @@
 #pragma once
 
-#define USE_TEST_TRIANGLE 0
+#define USE_TEST_TRIANGLE 1
 
 class GameDelegate
 {

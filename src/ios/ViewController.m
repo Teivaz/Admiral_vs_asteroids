@@ -70,7 +70,7 @@
 {
     [EAGLContext setCurrentContext:self.context];
 
-    gameDelegate->init(self.view.bounds.size.width, self.view.bounds.size.height);
+    gameDelegate->init(self.view.bounds.size.height, self.view.bounds.size.width);
     
 }
 
@@ -87,7 +87,8 @@
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
-{    
+{
+    glClearColor(0.0, 0.2, 0.0, 1.0);
     gameDelegate->render();
 }
 
