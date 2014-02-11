@@ -34,23 +34,41 @@ GameDelegate::~GameDelegate()
     SpriteManager::DeleteInstance();
     GuiManager::DeleteInstance();
     TouchManager::DeleteInstance();
+
+#if USE_TEST_TRIANGLE
+    glDeleteBuffers(1, &buf);
+    glDeleteProgram(prog);
+#endif
 }
 
 void GameDelegate::init(int width, int height)
 {
 
 #if USE_TEST_TRIANGLE
-    vs = glCreateShader(GL_VERTEX_SHADER);
-    fs = glCreateShader(GL_FRAGMENT_SHADER);
+    GLint status;
+    GLuint vs = glCreateShader(GL_VERTEX_SHADER);
+    GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(vs, 1, &vsc, NULL);
     glShaderSource(fs, 1, &fsc, NULL);
     glCompileShader(vs);
+    glGetShaderiv(vs, GL_COMPILE_STATUS, &status);
     glCompileShader(fs);
+    glGetShaderiv(fs, GL_COMPILE_STATUS, &status);
     prog = glCreateProgram();
     glAttachShader(prog, vs);
     glAttachShader(prog, fs);
+    glBindAttribLocation(prog, 10, "pos");
     glLinkProgram(prog);
-    glBindAttribLocation(prog, pos, "pos");
+    glEnableVertexAttribArray(10);
+    glGetProgramiv(prog, GL_LINK_STATUS, &status);
+    glGenBuffers(1, &buf);
+    glBindBuffer(GL_ARRAY_BUFFER, buf);
+    float verts[6] = { -0.5, -0.5, 0, 0.5, 0.5, -0.5 };
+    //float verts[6] = { -1, -1, 0, 1, 1, -1 };
+    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), verts, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glDeleteShader(vs);
+    glDeleteShader(fs);
 #endif
 
     m_screen = vec2i(width, height);
@@ -84,6 +102,18 @@ void GameDelegate::render()
     glClear(GL_COLOR_BUFFER_BIT);
     Painter::GetInstance()->render();
     StateMachine::GetInstance()->render();
+
+#if USE_TEST_TRIANGLE
+    GLint params;
+    glBindBuffer(GL_ARRAY_BUFFER, buf);
+    glGetIntegerv(GL_ARRAY_BUFFER_BINDING, &params);
+    glUseProgram(prog);
+    glEnableVertexAttribArray(10);
+    glVertexAttribPointer(10, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+    glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &params);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+#endif
+
 }
 
 void GameDelegate::onTouchPressed(int x, int y)

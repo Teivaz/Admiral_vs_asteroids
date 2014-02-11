@@ -126,8 +126,8 @@ void Sprite::update(float dt)
 void Sprite::bindAttributes()
 {
     auto col = glGetUniformLocation(m_shader, "u_blendColor");
-    if(col)
-        glUniform3f(col, 1.0f, 0.2f, 0.2f);
+//    if(col)
+//        glUniform3f(col, 1.0f, 0.2f, 0.2f);
 }
 
 GLsizei Sprite::getVertsCount() const

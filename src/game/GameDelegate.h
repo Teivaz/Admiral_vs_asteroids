@@ -24,7 +24,7 @@ private:
     vec2i m_screen;
 
 #if USE_TEST_TRIANGLE
-    GLuint vs, fs, prog;
-    GLuint pos;
+    GLuint prog;
+    GLuint buf;
 #endif
 };

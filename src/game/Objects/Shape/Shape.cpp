@@ -69,7 +69,7 @@ void SimpleShape::create(const std::vector<vec2f>& verts)
     glGenBuffers(1, &m_vbo);
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
     glBufferData(GL_ARRAY_BUFFER, m_count*sizeof(vec2f), verts.data(), GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
     m_normalsOffset = 0;
     m_textureOffset = 0;
     m_vertexOffset = 0;
@@ -101,7 +101,7 @@ void SeparateShape::create(const std::vector<vec2f>& verts, const std::vector<ve
     glGenBuffers(1, &m_vbo);
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
     glBufferData(GL_ARRAY_BUFFER, m_count*sizeof(vec2f)*2, data.data(), GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
     m_normalsOffset = 0;
     m_textureOffset = sizeof(vec2f);
     m_vertexOffset = 0;
