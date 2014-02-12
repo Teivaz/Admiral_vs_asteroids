@@ -71,12 +71,14 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         break;
     case WM_KILLFOCUS:
     {
-                         ad->OnSuspend();
+						 if (ad)
+							ad->OnSuspend();
     }
         break;
     case WM_SETFOCUS:
     {
-                        ad->OnResume();
+						if (ad)
+	                        ad->OnResume();
     }
         break;
     }
