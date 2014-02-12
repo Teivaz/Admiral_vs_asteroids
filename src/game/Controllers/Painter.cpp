@@ -6,12 +6,18 @@
 Painter::Painter()
 {
     m_sceneCamera.reset(new Camera);
-    // Screen size divided by 2
-    m_sceneCamera->setViewSize(vec2f(1136, 640)/2);
 }
 
 Painter::~Painter()
 {
+}
+
+void Painter::init(int width, int height)
+{
+    m_screen.x = static_cast<float>(width);
+    m_screen.y = static_cast<float>(height);
+    // Screen size divided by 2
+    m_sceneCamera->setViewSize(m_screen/2);
 }
 
 void Painter::remove(GameObject* obj)
