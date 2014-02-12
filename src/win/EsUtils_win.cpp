@@ -200,21 +200,17 @@ void WindowLoop(AppDelegate* delegate)
     while (!delegate->done)
     {
         int gotMsg = (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) != 0);
-
         if (gotMsg)
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
-        else
-        {
-			DWORD curTime = GetTickCount();
-			float deltaTime = (float)(curTime - lastTime);
-			lastTime = curTime;
-            SendMessage(delegate->window, WM_PAINT, 0, 0);
-            delegate->Update(deltaTime);
-            delegate->Render();
-        }
+        DWORD curTime = GetTickCount();
+        float deltaTime = (float)(curTime - lastTime);
+        lastTime = curTime;
+		SendMessage(delegate->window, WM_PAINT, 0, 0);
+		delegate->Update(deltaTime);
+		delegate->Render();
     }
 
 }
