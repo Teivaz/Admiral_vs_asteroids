@@ -200,9 +200,6 @@ void WindowLoop(AppDelegate* delegate)
     while (!delegate->done)
     {
         int gotMsg = (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) != 0);
-        DWORD curTime = GetTickCount();
-        float deltaTime = (float)(curTime - lastTime);
-        lastTime = curTime;
 
         if (gotMsg)
         {
@@ -211,6 +208,9 @@ void WindowLoop(AppDelegate* delegate)
         }
         else
         {
+			DWORD curTime = GetTickCount();
+			float deltaTime = (float)(curTime - lastTime);
+			lastTime = curTime;
             SendMessage(delegate->window, WM_PAINT, 0, 0);
             delegate->Update(deltaTime);
             delegate->Render();
