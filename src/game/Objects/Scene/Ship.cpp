@@ -82,7 +82,7 @@ void Ship::shoot()
     }
     vec3f beamPos3 = m_transformationMatrix * vec3f(m_cannonPosition, 1.0f);
     vec2f beamPos(beamPos3.x, beamPos3.y);
-    LaserBeam::create(beamPos, 0.5f, m_rotation + PI / 2, 1000.0f);
+    LaserBeam::create(beamPos, 400.0f, m_rotation + PI / 2, 1000.0f);
 }
 
 void Ship::createFire()
@@ -92,8 +92,8 @@ void Ship::createFire()
     vec2f sizes[5] = { flameSize, flameSize, flameSize, flameSize, flameSize };
     sizes[0].y *= 1.0f;
     sizes[1].y *= 0.9f;
-    sizes[2].y *= 0.7f;
-    sizes[3].y *= 0.8f;
+    sizes[2].y *= 0.8f;
+    sizes[3].y *= 0.85f;
     sizes[4].y *= 0.9f;
     vec2f pos[5] = { sizes[0]/2, sizes[1]/2, sizes[2]/2, sizes[3]/2, sizes[4]/2 };
     pos[0].y *= 2.0f;

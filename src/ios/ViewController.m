@@ -70,7 +70,10 @@
 {
     [EAGLContext setCurrentContext:self.context];
 
-    gameDelegate->init(self.view.bounds.size.height, self.view.bounds.size.width);
+    int width = self.view.frame.size.width;
+    int height = self.view.frame.size.height;
+    float scale = self.view.contentScaleFactor;
+    gameDelegate->init(height*scale, width*scale);
     
 }
 
@@ -97,7 +100,11 @@
     for (UITouch *aTouch in touches)
     {
         CGPoint loc = [aTouch locationInView:self.view];
-        gameDelegate->onTouchPressed(loc.x, loc.y);
+        float scale = self.view.contentScaleFactor;
+        int height = self.view.frame.size.height;
+        int width = self.view.frame.size.width;
+        gameDelegate->onTouchPressed((height - loc.y) * scale,
+                                     (width - loc.x) * scale);
     }
 }
 
@@ -107,7 +114,13 @@
     {
         CGPoint loc = [aTouch locationInView:self.view];
         CGPoint prevloc = [aTouch previousLocationInView:self.view];
-        gameDelegate->onTouchMoved(loc.x, loc.y, prevloc.x, prevloc.y);
+        float scale = self.view.contentScaleFactor;
+        int height = self.view.frame.size.height;
+        int width = self.view.frame.size.width;
+        gameDelegate->onTouchMoved((height - loc.y) * scale,
+                                   (width - loc.x) * scale,
+                                   (height - prevloc.y) * scale,
+                                   (width - prevloc.x) * scale);
     }
 }
 
@@ -117,7 +130,13 @@
     {
         CGPoint loc = [aTouch locationInView:self.view];
         CGPoint prevloc = [aTouch previousLocationInView:self.view];
-        gameDelegate->onTouchReleased(loc.x, loc.y, prevloc.x, prevloc.y);
+        float scale = self.view.contentScaleFactor;
+        int height = self.view.frame.size.height;
+        int width = self.view.frame.size.width;
+        gameDelegate->onTouchReleased((height - loc.y) * scale,
+                                      (width - loc.x) * scale,
+                                      (height - prevloc.y) * scale,
+                                      (width - prevloc.x) * scale);
     }
 }
 @end

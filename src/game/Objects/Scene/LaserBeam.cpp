@@ -40,7 +40,7 @@ LaserBeam::~LaserBeam()
 void LaserBeam::update(float dt)
 {
     m_animation->update(dt);
-    m_position += m_directionV * m_speed;
+    m_position += m_directionV * m_speed * dt / 1000.0f;
     setPosition(m_position);
     m_lifetime -= dt;
     if (m_lifetime < 0)

@@ -13,7 +13,7 @@
 	{
 		v_texturePosition = a_texturePosition;
 		vec3 pos = vec3(a_position, 1.0) * u_transformation;
-		gl_Position =  vec4(pos, 1.0);
+		gl_Position =  vec4(-pos.y, pos.x, 1.0);
 	}
 "
 ,

@@ -118,7 +118,7 @@ void GameDelegate::render()
 
 void GameDelegate::onTouchPressed(int x, int y)
 {
-    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
+    vec2f pos = vec2f(static_cast<float>(x), static_cast<float>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;
@@ -128,12 +128,12 @@ void GameDelegate::onTouchPressed(int x, int y)
 
 void GameDelegate::onTouchMoved(int x, int y, int prevX, int prevY)
 {
-    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
+    vec2f pos = vec2f(static_cast<float>(x), static_cast<float>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;
     pos -= 1.0f;
-    vec2f prevPos = vec2f(static_cast<float>(prevX), m_screen.y - static_cast<float>(prevY));
+    vec2f prevPos = vec2f(static_cast<float>(prevX), static_cast<float>(prevY));
     prevPos.x /= m_screen.x;
     prevPos.y /= m_screen.y;
     prevPos *= 2.0f;
@@ -143,12 +143,12 @@ void GameDelegate::onTouchMoved(int x, int y, int prevX, int prevY)
 
 void GameDelegate::onTouchReleased(int x, int y, int prevX, int prevY)
 {
-    vec2f pos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
+    vec2f pos = vec2f(static_cast<float>(x), static_cast<float>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;
     pos -= 1.0f;
-    vec2f prevPos = vec2f(static_cast<float>(x), m_screen.y - static_cast<float>(y));
+    vec2f prevPos = vec2f(static_cast<float>(x), static_cast<float>(y));
     prevPos.x /= m_screen.x;
     prevPos.y /= m_screen.y;
     prevPos *= 2.0f;

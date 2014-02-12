@@ -617,6 +617,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Valeri Vuchov (WDTMDP2J2J)";
 				CONFIGURATION_BUILD_DIR = ../../release/;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
@@ -632,6 +633,7 @@
 					"-ljsoncpp_d",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)_d";
+				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
 				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -646,6 +648,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Valeri Vuchov (WDTMDP2J2J)";
 				CONFIGURATION_BUILD_DIR = ../../release/;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
@@ -661,6 +664,7 @@
 					"-ljsoncpp",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
 				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
