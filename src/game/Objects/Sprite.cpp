@@ -103,17 +103,15 @@ void Sprite::_bindAttributes()
     if (m_uniformTexture)
         glUniform1i(m_uniformTexture, 0);
 
-    if (m_uniformTransformation)
+
+    if (m_camera)
     {
-        if (m_camera)
-        {
-            mat3f transform = m_camera->getTransformationMatrix() * m_transformationMatrix;
-            glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &transform.a1);
-        }
-        else
-        {
-            glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &m_transformationMatrix.a1);
-        }
+        mat3f transform = m_camera->getTransformationMatrix() * m_transformationMatrix;
+        glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &transform.a1);
+    }
+    else
+    {
+        glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &m_transformationMatrix.a1);
     }
 
     bindAttributes();
