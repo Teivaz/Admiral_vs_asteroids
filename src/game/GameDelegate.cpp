@@ -84,6 +84,7 @@ void GameDelegate::init(int width, int height)
     TouchManager::CreateInstance();
 
     GuiManager::GetInstance()->setAppSize(m_screen.x, m_screen.y);
+    Painter::GetInstance()->init(m_screen.x, m_screen.y);
 
     // loading
     SpriteManager::GetInstance()->loadAtlas("sprites.json");

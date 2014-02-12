@@ -11,6 +11,7 @@ public:
 
     void                    render();
     void                    update(float);
+    void                    init(int width, int height);
     void                    add(GameObject*);
     void                    remove(GameObject*);
     void                    requestSort();
@@ -25,4 +26,5 @@ private:
     ObjectsMap_t            m_objects;
     bool                    m_needsSorting = false;
     CameraPtr               m_sceneCamera;
+    vec2f                   m_screen;
 };
