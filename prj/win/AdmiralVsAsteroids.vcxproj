@@ -15,6 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\game\Controllers\CollisionManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\Painter.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\ShaderManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\SpriteManager.cpp" />
@@ -50,7 +51,9 @@
     <ClCompile Include="..\..\src\win\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\collisions.h" />
     <ClInclude Include="..\..\src\game\Controllers\Camera.h" />
+    <ClInclude Include="..\..\src\game\Controllers\CollisionManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\Painter.h" />
     <ClInclude Include="..\..\src\game\Controllers\ShaderAttributes.h" />
     <ClInclude Include="..\..\src\game\Controllers\ShaderManager.h" />

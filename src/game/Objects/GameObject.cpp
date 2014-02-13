@@ -96,3 +96,8 @@ void GameObject::renderDebug()
 {
 
 }
+
+void GameObject::setCamera(CameraPtr cam)
+{
+	m_camera = cam;
+}

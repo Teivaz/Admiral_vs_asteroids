@@ -1,25 +1,36 @@
 #pragma once
 #include "../GameObject.h"
 
-class Animation;
+MakeShared(Shape);
 
 class Collidable : virtual public GameObject
 {
 public:
-    Collidable();
-    virtual ~Collidable();
+	Collidable(const vector<vec2f>& mesh);
+	Collidable(const string& meshName);
+	virtual ~Collidable();
+	
+	virtual void					renderDebug();
+	virtual void                    setPosition(const vec2f& p);
+	virtual void                    setScale(const vec2f& s);
+	virtual void                    setRotation(float r);
 
-    bool isCollidedWith(Collidable* other);
+	virtual void					onCollided(Collidable* other, vec2f point);
 
-    virtual void renderDebug();
+	const std::vector<vec2f>&		getMesh() const;
 
 protected:
-    virtual void _calculateTransformation();
+    virtual void					_calculateTransformation();
 
 private:
     // triangle fan
-    std::vector<vec2f>  m_collisionShape;
-    short*              m_indices = nullptr;
+    vector<vec2f>					m_collisionShape;
+	GLuint							m_uniformTransformation;
+    ShaderProgram					m_debugShader;
+	ShapePtr						m_shape;
 
-    ShaderProgram       m_debugShader;
+	bool							m_hasMoved = true;
+	float							m_mass = 1.0f;
+	float							m_speed = 0.0f;
+	vec2f							m_direction;
 };

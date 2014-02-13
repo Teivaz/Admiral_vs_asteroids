@@ -33,7 +33,6 @@ public:
     
     void                            init(ShaderProgram, Shape*, Texture);
     void                            setShader(ShaderProgram);
-    void                            setCamera(CameraPtr);
     
 private:
     void                            _bindAttributes();
@@ -45,7 +44,6 @@ private:
     ShaderProgram                   m_shader = 0;
     DrawMode                        m_mode = GL_TRIANGLE_FAN;
     Shape*                          m_shape = nullptr;
-    CameraPtr                       m_camera;
 
     // Shader uniforms
     GLuint                          m_uniformTexture = 0;

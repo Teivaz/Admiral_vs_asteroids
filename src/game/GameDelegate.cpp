@@ -10,6 +10,7 @@
 #include "Controllers/SpriteManager.h"
 #include "Objects/GUI/GuiManager.h"
 #include "Controllers/TouchManager.h"
+#include "Controllers/CollisionManager.h"
 
 #if USE_TEST_TRIANGLE
 static const char* vsc = "\
@@ -82,6 +83,7 @@ void GameDelegate::init(int width, int height)
     SpriteManager::CreateInstance();
     GuiManager::CreateInstance();
     TouchManager::CreateInstance();
+	CollisionManager::CreateInstance();
 
     GuiManager::GetInstance()->setAppSize(m_screen.x, m_screen.y);
     Painter::GetInstance()->init(m_screen.x, m_screen.y);
@@ -96,6 +98,7 @@ void GameDelegate::update(float dt)
 {
     StateMachine::GetInstance()->update(dt);
     Painter::GetInstance()->update(dt);
+	CollisionManager::GetInstance()->update(dt);
 }
 
 void GameDelegate::render()

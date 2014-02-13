@@ -25,7 +25,7 @@ public:
     virtual void                    setScale(const vec2f& s);
     virtual void                    setRotation(float r);
 
-    void                            setCamera(CameraPtr);
+	virtual void                    setCamera(CameraPtr);
     
 private:
     Sprite*                         _nextFrame();

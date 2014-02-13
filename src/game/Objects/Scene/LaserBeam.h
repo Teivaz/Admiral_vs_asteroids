@@ -17,7 +17,8 @@ public:
     
     virtual void                    setPosition(const vec2f& p);
     virtual void                    setScale(const vec2f& s);
-    virtual void                    setRotation(float r);
+	virtual void                    setRotation(float r);
+	virtual void                    setCamera(CameraPtr);
 
 private:
     float                           m_lifetime = 0;

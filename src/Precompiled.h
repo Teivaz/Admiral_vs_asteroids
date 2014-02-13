@@ -53,10 +53,11 @@ inline T max(T a, T b)
 //using namespace sigslot;
 
 using std::string;
+using std::vector;
 using std::shared_ptr;
 
 #if defined _DEBUG && defined _WIN32
-#define ASSERT(x) _ASSERT(x)
+#define ASSERT __noop
 void PLOG(const char* x, ...);
 #else
 inline void PLOG(const char* x, ...){}

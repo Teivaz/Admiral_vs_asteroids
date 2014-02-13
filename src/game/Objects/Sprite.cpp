@@ -139,8 +139,3 @@ const vec2f& Sprite::getSize()
 {
     return m_size;
 }
-
-void Sprite::setCamera(CameraPtr cam)
-{
-    m_camera = cam;
-}

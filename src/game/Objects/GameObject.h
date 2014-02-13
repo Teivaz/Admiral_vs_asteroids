@@ -3,6 +3,7 @@
 class State;
 class Shader;
 class Shape;
+MakeShared(Camera);
 
 class GameObject //: public has_slots<>
 {
@@ -24,7 +25,8 @@ public:
     virtual float                   getRotation() const;
 
     void                            setRenderLayer(int layer);
-    int                             getRenderLayer(){ return m_renderLayer; }
+	int                             getRenderLayer(){ return m_renderLayer; }
+	virtual void                    setCamera(CameraPtr);
 
     //******************************************************
     // sort purpose
@@ -38,6 +40,7 @@ protected:
     virtual void                    _calculateTransformation();
 
 protected:    
+	CameraPtr						m_camera;
     bool                            m_transformationIsDirty = true;
     vec2f                           m_position = 0.0f;
     vec2f                           m_scale = 1.0f;

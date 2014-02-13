@@ -53,6 +53,9 @@
     <Filter Include="game\Sounds">
       <UniqueIdentifier>{1e3b699d-9ce0-4204-933f-3bcc38545c32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\Controllers\Collision">
+      <UniqueIdentifier>{e6564826-5b52-4136-b397-c8fda07fc384}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -133,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\Scene\Ship.cpp">
       <Filter>game\Objects\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Controllers\CollisionManager.cpp">
+      <Filter>game\Controllers\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +247,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Controllers\ShaderAttributes.h">
       <Filter>game\Controllers\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Controllers\CollisionManager.h">
+      <Filter>game\Controllers\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\collisions.h">
+      <Filter>game\Controllers\Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

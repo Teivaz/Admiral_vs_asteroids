@@ -5,8 +5,10 @@
 #include "Controllers/Painter.h"
 #include "LaserBeam.h"
 #include "Objects/Animations/Animation.h"
+#include "Controllers/CollisionManager.h"
 
 Ship::Ship()
+: Collidable(collisions::k_she)
 {
     vec2f shipSize = SpriteManager::GetInstance()->getSpriteSize(sprites::k_she);
     m_ship = SpritePtr(SpriteManager::GetInstance()->createSprite(sprites::k_she, -shipSize / 2, shipSize, false, 0));
@@ -21,6 +23,7 @@ Ship::~Ship()
 
 void Ship::render()
 {
+	GameObject::render();
     m_engineFire->render();
     m_ship->render();
 }
@@ -35,21 +38,21 @@ void Ship::update(float dt)
 
 void Ship::setPosition(const vec2f& p)
 {
-    GameObject::setPosition(p);
+	Collidable::setPosition(p);
     m_ship->setPosition(p);
     m_engineFire->setPosition(p);
 }
 
 void Ship::setScale(const vec2f& s)
 {
-    GameObject::setScale(s);
+	Collidable::setScale(s);
     m_ship->setScale(s);
     m_engineFire->setScale(s);
 }
 
 void Ship::setRotation(float r)
 {
-    GameObject::setRotation(r);
+	Collidable::setRotation(r);
     m_rotationV = vec2f(cos(m_rotation + PI / 2), sin(m_rotation + PI / 2));
     m_ship->setRotation(r);
     m_engineFire->setRotation(r);

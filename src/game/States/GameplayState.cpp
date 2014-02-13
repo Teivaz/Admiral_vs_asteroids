@@ -94,6 +94,7 @@ void GameplayState::onEnter()
     Painter::GetInstance()->add(m_gui);
 
     m_ship.reset(new Ship);
+	m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
     Painter::GetInstance()->add(m_ship.get());
 }
 
