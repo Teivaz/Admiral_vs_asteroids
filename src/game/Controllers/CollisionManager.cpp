@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "CollisionManager.h"
 #include "utils/FileUtils.h"
+#include "Objects/Scene/Collidable.h"
 
 CollisionManager::CollisionManager()
 {
@@ -25,19 +26,28 @@ const std::vector<vec2f>& CollisionManager::getMesh(const string& name)
 	}
 }
 
-void CollisionManager::add(Collidable* c)
+void CollisionManager::add(Collidable* obj)
 {
-	
+	if (contains(obj))
+	{
+		return;
+	}
+	m_objects.push_back(obj);
 }
 
-bool CollisionManager::contains(Collidable* c) const
+bool CollisionManager::contains(Collidable* obj) const
 {
-	return false;
+	auto it = std::find(m_objects.begin(), m_objects.end(), obj);
+	return it != m_objects.end();
 }
 
-void CollisionManager::remove(Collidable* c)
+void CollisionManager::remove(Collidable* obj)
 {
-
+	auto it = std::find(m_objects.begin(), m_objects.end(), obj);
+	if (it != m_objects.end())
+	{
+		m_objects.erase(it);
+	}
 }
 
 const std::vector<vec2f>& CollisionManager::_loadMesh(const string& name)
@@ -76,5 +86,44 @@ const std::vector<vec2f>& CollisionManager::_loadMesh(const string& name)
 
 void CollisionManager::update(float dt)
 {
+	for (Collidable* a : m_objects)
+	{
+		if (!a->hasMoved())
+		{
+			continue;
+		}
+		for (Collidable* b : m_objects)
+		{
+			if (a == b)
+			{
+				continue;
+			}
+			vec2f point;
+			if (_checkCollission(a, b, point))
+			{
+				a->onCollided(b, point);
+				b->onCollided(a, point);
+			}
+		}
+	}
+}
 
+bool CollisionManager::_checkCollission(Collidable* a, Collidable* b, const vec2f& point)
+{
+	bool collided = false;
+	const vector<vec2f>& meshA = a->getMesh();
+	const vector<vec2f>& meshB = b->getMesh();
+	for (int i = 1; i < meshA.size() - 1; ++i)
+	{
+		vec2f norm = meshA[i + 1] - meshA[i];
+		norm.SwapElemtns();
+		norm.Normalize();
+	}
+	for (int i = 1; i < meshB.size() - 1; ++i)
+	{
+		vec2f norm = meshB[i + 1] - meshB[i];
+		norm.SwapElemtns();
+		norm.Normalize();
+	}
+	return false;
 }

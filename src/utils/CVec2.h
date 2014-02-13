@@ -145,6 +145,13 @@ public:
         y /= l;
     }
 
+	void SwapElemtns()
+	{
+		float t = x;
+		x = y;
+		y = t;
+	}
+
 };
 
 template<typename T>

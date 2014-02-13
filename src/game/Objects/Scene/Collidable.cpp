@@ -14,6 +14,7 @@ Collidable::Collidable(const vector<vec2f>& mesh)
 	SimpleShape* shape = new SimpleShape;
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
+	CollisionManager::GetInstance()->add(this);
 }
 
 Collidable::Collidable(const string& meshName)
@@ -29,6 +30,7 @@ Collidable::Collidable(const string& meshName)
 	}
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
+	CollisionManager::GetInstance()->add(this);
 }
 
 Collidable::~Collidable()
@@ -110,4 +112,9 @@ const std::vector<vec2f>& Collidable::getMesh() const
 void Collidable::onCollided(Collidable* other, vec2f point)
 {
 
+}
+
+bool Collidable::hasMoved() const
+{
+	return m_hasMoved;
 }

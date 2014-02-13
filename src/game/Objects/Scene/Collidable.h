@@ -18,6 +18,7 @@ public:
 	virtual void					onCollided(Collidable* other, vec2f point);
 
 	const std::vector<vec2f>&		getMesh() const;
+	bool							hasMoved() const;
 
 protected:
     virtual void					_calculateTransformation();

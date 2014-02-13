@@ -6,7 +6,7 @@ class Collidable;
 class CollisionManager : public Singleton<CollisionManager>
 {
     typedef std::map<string, std::vector<vec2f> > MeshMap_t;
-	typedef std::list<Collidable> ObjectList_t;
+	typedef std::list<Collidable*> ObjectList_t;
 
 public:
     CollisionManager();
@@ -19,11 +19,11 @@ public:
 	void							remove(Collidable*);
 
 private:
-
+	bool							_checkCollission(Collidable*, Collidable*, const vec2f& point);
 	const std::vector<vec2f>&		_loadMesh(const string& name);
 private:
 	MeshMap_t                       m_meshes;
-	//ObjectList_t					m_objects;
+	ObjectList_t					m_objects;
 
 };
 
