@@ -101,3 +101,12 @@ void GameObject::setCamera(CameraPtr cam)
 {
 	m_camera = cam;
 }
+
+const mat3f& GameObject::getTransformation()
+{
+	if (m_transformationIsDirty)
+	{
+		_calculateTransformation();
+	}
+	return m_transformationMatrix;
+}

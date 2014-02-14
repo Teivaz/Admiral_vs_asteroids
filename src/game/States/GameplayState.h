@@ -29,7 +29,7 @@ private:
 
     vec2f                       m_movingDirection;
     float                       m_movingSpeed = 0;
-    Sprite*                     m_star = nullptr;
+	GameObject*                 m_star = nullptr;
     Widget*                     m_gui = nullptr;
     GameObject*                 m_laserBeam = nullptr;
 

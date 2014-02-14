@@ -48,8 +48,9 @@ void LaserBeam::update(float dt)
     m_animation->update(dt);
     adjustPosition(m_directionV * m_speed * dt / 1000.0f);
     m_lifetime -= dt;
-    if (m_lifetime < 0)
-        delete this;
+	m_toRemove |= m_lifetime < 0;
+	if (m_toRemove)
+		delete this;
 }
 
 void LaserBeam::render()

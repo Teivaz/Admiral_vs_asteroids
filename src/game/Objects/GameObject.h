@@ -27,6 +27,7 @@ public:
     void                            setRenderLayer(int layer);
 	int                             getRenderLayer(){ return m_renderLayer; }
 	virtual void                    setCamera(CameraPtr);
+	const mat3f&					getTransformation();
 
     //******************************************************
     // sort purpose

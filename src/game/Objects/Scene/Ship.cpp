@@ -85,7 +85,7 @@ void Ship::shoot()
     }
     vec3f beamPos3 = m_transformationMatrix * vec3f(m_cannonPosition, 1.0f);
     vec2f beamPos(beamPos3.x, beamPos3.y);
-    LaserBeam::create(beamPos, 400.0f, m_rotation + PI / 2, 1000.0f);
+    LaserBeam::create(beamPos, 400.0f, m_rotation + PI / 2, 10000.0f);
 }
 
 void Ship::createFire()

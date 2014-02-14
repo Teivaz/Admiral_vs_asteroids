@@ -110,20 +110,66 @@ void CollisionManager::update(float dt)
 
 bool CollisionManager::_checkCollission(Collidable* a, Collidable* b, const vec2f& point)
 {
-	bool collided = false;
-	const vector<vec2f>& meshA = a->getMesh();
-	const vector<vec2f>& meshB = b->getMesh();
+	vector<vec2f> meshA;
+	meshA.reserve(a->getMesh().size());
+	for (auto v : a->getMesh())
+	{
+		vec3f v3(v, 1.0f);
+		v3 = a->getTransformation() * v3;
+		meshA.push_back(vec2f(v3.x, v3.y));
+	}
+
+	vector<vec2f> meshB;
+	meshB.reserve(b->getMesh().size());
+	for (auto v : b->getMesh())
+	{
+		vec3f v3(v, 1.0f);
+		v3 = b->getTransformation() * v3;
+		meshB.push_back(vec2f(v3.x, v3.y));
+	}
+
+	vector<vec2f> normals;
+	normals.reserve(meshA.size() - 2 + meshB.size() - 2);
+
+	// For each edge
 	for (int i = 1; i < meshA.size() - 1; ++i)
 	{
 		vec2f norm = meshA[i + 1] - meshA[i];
 		norm.SwapElemtns();
+		norm.x *= -1.0f;
 		norm.Normalize();
+		normals.push_back(norm);
 	}
 	for (int i = 1; i < meshB.size() - 1; ++i)
 	{
 		vec2f norm = meshB[i + 1] - meshB[i];
 		norm.SwapElemtns();
+		norm.x *= -1.0f;
 		norm.Normalize();
+		normals.push_back(norm);
 	}
-	return false;
+
+	bool collided = true;
+	for (const vec2f& norm : normals)
+	{
+		float maxB = norm.Dot(meshB[1]);
+		float minB = maxB;
+		for (int i = 2; i < meshB.size() - 1; ++i)
+		{
+			float dot = norm.Dot(meshB[i]);
+			maxB = max(maxB, dot);
+			minB = min(minB, dot);
+		}
+		float maxA = norm.Dot(meshA[1]);
+		float minA = maxA;
+		for (int i = 2; i < meshA.size() - 1; ++i)
+		{
+			float dot = norm.Dot(meshA[i]);
+			maxA = max(maxA, dot);
+			minA = min(minA, dot);
+		}
+		bool overlapping = ((minA > minB) & (minA < maxB)) | ((minB > minA) & (minB < maxA));
+		collided &= overlapping;
+	}
+	return collided;
 }

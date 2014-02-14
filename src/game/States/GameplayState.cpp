@@ -69,9 +69,12 @@ void GameplayState::onEnter()
 
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
 
-    m_star = SpriteManager::GetInstance()->createSprite(sprites::k_star_flare_penta, 0, 1.1f, false, 0);
-    m_star->setPosition(-m_star->getSize() / 2);
-    m_star->setShader(softShader);
+	m_star = new Ship;
+	m_star->setCamera(Painter::GetInstance()->getSceneCamera());
+	m_star->adjustPosition(100);
+	Painter::GetInstance()->add(m_star);
+    //m_star->setPosition(-m_star->getSize() / 2);
+    //m_star->setShader(softShader);
     //Painter::GetInstance()->add(m_star);
 
     m_gui = GuiManager::GetInstance()->LoadGui("gui.json");
