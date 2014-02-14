@@ -132,7 +132,7 @@ bool CollisionManager::_checkCollission(Collidable* a, Collidable* b, const vec2
 	normals.reserve(meshA.size() - 2 + meshB.size() - 2);
 
 	// For each edge
-	for (int i = 1; i < meshA.size() - 1; ++i)
+	for (unsigned int i = 1; i < meshA.size() - 1; ++i)
 	{
 		vec2f norm = meshA[i + 1] - meshA[i];
 		norm.SwapElemtns();
@@ -140,7 +140,7 @@ bool CollisionManager::_checkCollission(Collidable* a, Collidable* b, const vec2
 		norm.Normalize();
 		normals.push_back(norm);
 	}
-	for (int i = 1; i < meshB.size() - 1; ++i)
+	for (unsigned int i = 1; i < meshB.size() - 1; ++i)
 	{
 		vec2f norm = meshB[i + 1] - meshB[i];
 		norm.SwapElemtns();
@@ -154,7 +154,7 @@ bool CollisionManager::_checkCollission(Collidable* a, Collidable* b, const vec2
 	{
 		float maxB = norm.Dot(meshB[1]);
 		float minB = maxB;
-		for (int i = 2; i < meshB.size() - 1; ++i)
+		for (unsigned int i = 2; i < meshB.size() - 1; ++i)
 		{
 			float dot = norm.Dot(meshB[i]);
 			maxB = max(maxB, dot);
@@ -162,7 +162,7 @@ bool CollisionManager::_checkCollission(Collidable* a, Collidable* b, const vec2
 		}
 		float maxA = norm.Dot(meshA[1]);
 		float minA = maxA;
-		for (int i = 2; i < meshA.size() - 1; ++i)
+		for (unsigned int i = 2; i < meshA.size() - 1; ++i)
 		{
 			float dot = norm.Dot(meshA[i]);
 			maxA = max(maxA, dot);

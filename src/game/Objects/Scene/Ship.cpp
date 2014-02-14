@@ -15,6 +15,8 @@ Ship::Ship()
     m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
     createFire();
     setFireScale(0);
+	setDirection(vec2f(0.0f, 1.0f));
+	setMass(1000);
 }
 
 Ship::~Ship()
@@ -30,6 +32,7 @@ void Ship::render()
 
 void Ship::update(float dt)
 {
+	Collidable::update(dt);
     float step = dt / 1000.0f;
     adjustRotation(m_rotationSpeed * step);
     adjustPosition(m_rotationV * m_enginePower * step);
@@ -122,4 +125,18 @@ void Ship::createFire()
 void Ship::setFireScale(float s)
 {
     m_engineFire->setScale(vec2f(1.0f + 0.1*s, s));
+}
+
+void Ship::onCollided(Collidable* other, vec2f point)
+{
+	vec2f dir = m_position - other->getPosition();
+	dir.Normalize();
+	vec2f resultVector = dir * other->getEnergy() + getDirection() * getEnergy();
+	setSpeed(resultVector.Normalize() / (2.0f * getMass()));
+	setDirection(resultVector);
+}
+
+float Ship::getSpeed() const
+{
+	return m_enginePower * getMass();
 }

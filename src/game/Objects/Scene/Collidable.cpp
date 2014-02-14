@@ -38,6 +38,12 @@ Collidable::~Collidable()
 	CollisionManager::GetInstance()->remove(this);
 }
 
+void Collidable::update(float dt)
+{
+	vec2f delta = m_direction * m_speed * dt / 1000.f;
+	adjustPosition(delta);
+}
+
 void Collidable::renderDebug()
 {
 	GameObject::render();
@@ -116,4 +122,33 @@ void Collidable::onCollided(Collidable* other, vec2f point)
 bool Collidable::hasMoved() const
 {
 	return m_hasMoved;
+}
+
+float Collidable::getEnergy() const
+{
+	return getSpeed() * getMass();
+}
+void Collidable::setMass(float mass)
+{
+	m_mass = mass;
+}
+float Collidable::getMass() const
+{
+	return m_mass;
+}
+void Collidable::setDirection(const vec2f& dir)
+{
+	m_direction = dir;
+}
+const vec2f& Collidable::getDirection() const
+{
+	return m_direction;
+}
+void Collidable::setSpeed(float speed)
+{
+	m_speed = speed;
+}
+float Collidable::getSpeed() const
+{
+	return m_speed;
 }

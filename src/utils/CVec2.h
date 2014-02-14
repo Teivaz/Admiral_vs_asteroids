@@ -138,11 +138,12 @@ public:
         return sqrt(x*x + y*y);
     }
 
-    void Normalize()
+    T Normalize()
     {
         T l = Length();
         x /= l;
         y /= l;
+		return l;
     }
 
 	void SwapElemtns()

@@ -20,7 +20,9 @@ public:
                                     // -1...+1
     void                            setRotationSpeed(float);
     void                            setEnginePower(float);
-    void                            shoot();
+	void                            shoot();
+	virtual void					onCollided(Collidable* other, vec2f point);
+	virtual float					getSpeed() const;
 
 protected:
     void                            createFire();

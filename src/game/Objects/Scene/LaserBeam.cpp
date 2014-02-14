@@ -29,7 +29,11 @@ LaserBeam::LaserBeam(const vec2f& position, float speed, float direction, float 
     m_directionV = vec2f(cos(m_directionF), sin(m_directionF));
     setRotation(m_directionF + PI/2);
     setPosition(position);
+	setDirection(m_directionV);
+	setSpeed(speed);
 
+
+	setMass(1);
 }
 
 LaserBeam::~LaserBeam()
@@ -45,8 +49,9 @@ void LaserBeam::setCamera(CameraPtr c)
 
 void LaserBeam::update(float dt)
 {
+	Collidable::update(dt);
     m_animation->update(dt);
-    adjustPosition(m_directionV * m_speed * dt / 1000.0f);
+    //adjustPosition(m_directionV * m_speed * dt / 1000.0f);
     m_lifetime -= dt;
 	m_toRemove |= m_lifetime < 0;
 	if (m_toRemove)

@@ -14,16 +14,26 @@ public:
 	virtual void                    setPosition(const vec2f& p);
 	virtual void                    setScale(const vec2f& s);
 	virtual void                    setRotation(float r);
+	virtual void					update(float dt);
 
 	virtual void					onCollided(Collidable* other, vec2f point);
 
 	const std::vector<vec2f>&		getMesh() const;
 	bool							hasMoved() const;
 
+	virtual void					setMass(float mass);
+	virtual float					getMass() const;
+	virtual void					setDirection(const vec2f& dir);
+	virtual const vec2f&			getDirection() const;
+	virtual void					setSpeed(float speed);
+	virtual float					getSpeed() const;
+
+	virtual float					getEnergy() const;
+
 protected:
     virtual void					_calculateTransformation();
 
-private:
+protected:
     // triangle fan
     vector<vec2f>					m_collisionShape;
 	GLuint							m_uniformTransformation;
