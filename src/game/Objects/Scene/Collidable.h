@@ -23,7 +23,7 @@ public:
 protected:
     virtual void					_calculateTransformation();
 
-protected:
+private:
     // triangle fan
     vector<vec2f>					m_collisionShape;
 	GLuint							m_uniformTransformation;
@@ -34,6 +34,4 @@ protected:
 	float							m_mass = 1.0f;
 	float							m_speed = 0.0f;
 	vec2f							m_direction;
-
-	bool							m_toRemove = false;
 };

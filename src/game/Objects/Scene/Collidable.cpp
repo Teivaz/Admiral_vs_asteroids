@@ -111,8 +111,6 @@ const std::vector<vec2f>& Collidable::getMesh() const
 
 void Collidable::onCollided(Collidable* other, vec2f point)
 {
-	PLOG("Collided!\n");
-	m_toRemove = true;
 }
 
 bool Collidable::hasMoved() const

@@ -81,3 +81,8 @@ void LaserBeam::create(const vec2f& position, float speed, float direction, floa
 	l->setCamera(Painter::GetInstance()->getSceneCamera());
     Painter::GetInstance()->add(l);
 }
+
+void LaserBeam::onCollided(Collidable* other, vec2f point)
+{
+	m_toRemove = true;
+}
