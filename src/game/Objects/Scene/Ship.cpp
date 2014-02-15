@@ -8,15 +8,15 @@
 #include "Controllers/CollisionManager.h"
 
 Ship::Ship()
-: Collidable(collisions::k_she)
+: Collidable(collisions::k_ship_pixelart)
 {
-    vec2f shipSize = SpriteManager::GetInstance()->getSpriteSize(sprites::k_she);
-    m_ship = SpritePtr(SpriteManager::GetInstance()->createSprite(sprites::k_she, -shipSize / 2, shipSize, false, 0));
+    vec2f shipSize = SpriteManager::GetInstance()->getSpriteSize(sprites::k_ship_pixelart);
+    m_ship = SpritePtr(SpriteManager::GetInstance()->createSprite(sprites::k_ship_pixelart, -shipSize / 2, shipSize, false, 0));
     m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
     createFire();
     setFireScale(0);
 	setDirection(vec2f(0.0f, 1.0f));
-	setMass(1000);
+	setMass(30);
 }
 
 Ship::~Ship()

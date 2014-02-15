@@ -78,8 +78,8 @@ void SpriteManager::loadAtlas(const string& name)
     bool result = reader.parse(data, data + size, root, false);
     ASSERT(result && "Error parsing atlas description file");
     delete[] data;
-    Json::Value meta = root.get("meta", Json::Value(""));
-    Json::Value texName = meta.get("image", Json::Value(""));
+    Json::Value meta = root["meta"];
+    Json::Value texName = meta["image"];
     vec2f texSize = vec2f(static_cast<float>(meta["size"]["w"].asInt()), 
                           static_cast<float>(meta["size"]["h"].asInt()));
     Texture tex = TextureManager::GetInstance()->getTexture(texName.asString());

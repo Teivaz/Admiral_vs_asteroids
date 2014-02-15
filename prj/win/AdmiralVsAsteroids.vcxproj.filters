@@ -254,5 +254,8 @@
     <ClInclude Include="..\..\src\collisions.h">
       <Filter>game\Controllers\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\sprites.h">
+      <Filter>game\Controllers\Sprite</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
