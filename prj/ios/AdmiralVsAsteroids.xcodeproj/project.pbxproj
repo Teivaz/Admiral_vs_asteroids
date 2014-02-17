@@ -33,6 +33,7 @@
 		9A220E6D18A928BE007250FB /* LaserBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6818A928BE007250FB /* LaserBeam.cpp */; };
 		9A220E6E18A928BE007250FB /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6A18A928BE007250FB /* Ship.cpp */; };
 		9A220E7218A928E2007250FB /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E7018A928E2007250FB /* Animation.cpp */; };
+		9A269B3218B26EB3001A0D8D /* CollisionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A269B3018B26EB3001A0D8D /* CollisionManager.cpp */; };
 		9A29456018902CF4005E4C8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A29455F18902CF4005E4C8B /* Foundation.framework */; };
 		9A29456218902CF4005E4C8B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A29456118902CF4005E4C8B /* CoreGraphics.framework */; };
 		9A29456418902CF4005E4C8B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A29456318902CF4005E4C8B /* UIKit.framework */; };
@@ -140,6 +141,9 @@
 		9A220E6B18A928BE007250FB /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ship.h; sourceTree = "<group>"; };
 		9A220E7018A928E2007250FB /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		9A220E7118A928E2007250FB /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		9A269B2F18B26EB3001A0D8D /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		9A269B3018B26EB3001A0D8D /* CollisionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionManager.cpp; sourceTree = "<group>"; };
+		9A269B3118B26EB3001A0D8D /* CollisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionManager.h; sourceTree = "<group>"; };
 		9A29455C18902CF4005E4C8B /* AdmiralVsAsteroids_d.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdmiralVsAsteroids_d.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A29455F18902CF4005E4C8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A29456118902CF4005E4C8B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -200,6 +204,9 @@
 		9A056AD618A11217008288DA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9A269B2F18B26EB3001A0D8D /* Camera.h */,
+				9A269B3018B26EB3001A0D8D /* CollisionManager.cpp */,
+				9A269B3118B26EB3001A0D8D /* CollisionManager.h */,
 				9A056AD918A11217008288DA /* Painter.cpp */,
 				9A056ADA18A11217008288DA /* Painter.h */,
 				9A056ADB18A11217008288DA /* ShaderAttributes.h */,
@@ -511,6 +518,7 @@
 				9A056B2A18A11217008288DA /* StateMachine.cpp in Sources */,
 				9A056B1A18A11217008288DA /* Painter.cpp in Sources */,
 				9A056B1D18A11217008288DA /* TextureManager.cpp in Sources */,
+				9A269B3218B26EB3001A0D8D /* CollisionManager.cpp in Sources */,
 				9A220E6D18A928BE007250FB /* LaserBeam.cpp in Sources */,
 				9A056B2218A11217008288DA /* ButtonWidget.cpp in Sources */,
 				9A056B1F18A11217008288DA /* TouchReceiver.cpp in Sources */,
