@@ -69,8 +69,6 @@ bool Sprite::isPointInside(const vec2f& pt)
 
 void Sprite::render()
 {
-    GameObject::render();
-
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture);
     m_shape->bind();
@@ -108,12 +106,12 @@ void Sprite::_bindAttributes()
 
     if (m_camera)
     {
-        mat3f transform = m_camera->getTransformationMatrix() * m_transformationMatrix;
+		mat3f transform = m_camera->getTransformationMatrix() * getTransformation();
         glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &transform.a1);
     }
     else
     {
-        glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &m_transformationMatrix.a1);
+		glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &getTransformation().a1);
     }
 
     bindAttributes();

@@ -6,24 +6,23 @@
 
 GameObject::~GameObject()
 {
-    Painter::GetInstance()->remove(this);
+	if (m_painter)
+	{
+		m_painter->remove(this);
+	}
 }
 
 void GameObject::setRenderLayer(int layer)
 {
     m_renderLayer = layer;
-    if (Painter::GetInstance()->contains(this))
+    if (m_painter && m_painter->contains(this))
     {
-        Painter::GetInstance()->requestSort();
+        m_painter->requestSort();
     }
 }
 
 void GameObject::render()
 {
-    if (m_transformationIsDirty)
-    {
-        _calculateTransformation();
-    }
 }
 
 void GameObject::setPosition(const vec2f& p)
@@ -109,4 +108,11 @@ const mat3f& GameObject::getTransformation()
 		_calculateTransformation();
 	}
 	return m_transformationMatrix;
+}
+
+void GameObject::setPainter(Painter* p)
+{
+	if (m_painter)
+		m_painter->remove(this);
+	m_painter = p;
 }

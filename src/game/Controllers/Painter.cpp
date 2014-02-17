@@ -10,6 +10,10 @@ Painter::Painter()
 
 Painter::~Painter()
 {
+	for (auto obj : m_objects)
+	{
+		obj->setPainter(nullptr);
+	}
 }
 
 void Painter::init(int width, int height)
@@ -35,6 +39,7 @@ void Painter::add(GameObject* obj)
     {
         return;
     }
+	obj->setPainter(this);
     m_objects.push_back(obj);
     requestSort();
 }

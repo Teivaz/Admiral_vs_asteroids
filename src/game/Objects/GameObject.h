@@ -3,6 +3,7 @@
 class State;
 class Shader;
 class Shape;
+class Painter;
 MakeShared(Camera);
 
 class GameObject //: public has_slots<>
@@ -28,6 +29,7 @@ public:
 	int                             getRenderLayer(){ return m_renderLayer; }
 	virtual void                    setCamera(CameraPtr);
 	const mat3f&					getTransformation();
+	void							setPainter(Painter*);
 
     //******************************************************
     // sort purpose
@@ -42,6 +44,7 @@ protected:
 
 protected:    
 	CameraPtr						m_camera;
+	Painter*						m_painter = nullptr;
     bool                            m_transformationIsDirty = true;
     vec2f                           m_position = 0.0f;
     vec2f                           m_scale = 1.0f;
