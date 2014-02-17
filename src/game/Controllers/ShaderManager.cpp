@@ -60,7 +60,14 @@ ShaderProgram ShaderManager::_createShader(const char* vertexShaderSource, const
 {
     VertexShader vs = glCreateShader(GL_VERTEX_SHADER);
     FragmentShader fs = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(vs, 1, &vertexShaderSource, NULL);
+
+#ifdef _WIN32
+	glShaderSource(vs, 1, &vertexShaderSource, NULL);
+#else // IOS
+	string vertexShaderSourceString(string("#define IOS\n") + vertexShaderSource);
+	const char* vertexShaderSourceCstring = vertexShaderSourceString.c_str();
+	glShaderSource(vs, 1, &vertexShaderSourceCstring, NULL);
+#endif
     glShaderSource(fs, 1, &fragmentShaderSource, NULL);
     GLint status = 0;
 

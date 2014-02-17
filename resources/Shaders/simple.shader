@@ -12,7 +12,11 @@
 	{
 		v_texturePosition = a_texturePosition;
 		vec3 pos = vec3(a_position, 1.0) * u_transformation;
-		gl_Position =  vec4(pos, 1.0);
+	#ifdef IOS
+		gl_Position =  vec4(-pos.y, pos.x, 0.0, 1.0);
+	#else
+		gl_Position =  vec4(pos.x, pos.y, 0.0, 1.0);
+	#endif
 	}
 "
 ,

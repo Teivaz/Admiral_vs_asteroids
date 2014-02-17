@@ -1,13 +1,18 @@
 {
 "VertexShader":"
 	attribute vec2 a_position;
+	attribute vec2 a_texturePosition;
 
-	uniform vec3 u_blendColor;
+	uniform mat3 u_transformation;
 	
 	void main()
 	{
 		vec3 pos = vec3(a_position, 1.0) * u_transformation;
-		gl_Position =  vec4(pos, 1.0);
+	#ifdef IOS
+		gl_Position =  vec4(-pos.y, pos.x, 0.0, 1.0);
+	#else
+		gl_Position =  vec4(pos.x, pos.y, 0.0, 1.0);
+	#endif
 	}
 "
 ,
