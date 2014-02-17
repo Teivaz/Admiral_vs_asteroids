@@ -4,6 +4,11 @@
 #include "Controllers/Painter.h"
 #include "Shape/Shape.h"
 
+GameObject::GameObject()
+{
+	m_AdditionalTransformation.SetIdentity();
+}
+
 GameObject::~GameObject()
 {
 	if (m_painter)
@@ -73,6 +78,7 @@ void GameObject::_calculateTransformation()
     translate.SetTranslation(m_position);
     m_transformationMatrix = rot * m_transformationMatrix;
     m_transformationMatrix = translate * m_transformationMatrix;
+	m_transformationMatrix = m_AdditionalTransformation * m_transformationMatrix;
     m_transformationIsDirty = false;
 }
 
@@ -110,10 +116,10 @@ const mat3f& GameObject::getTransformation()
 	return m_transformationMatrix;
 }
 
-void GameObject::setTransformation(const mat3f& mat)
+void GameObject::setAdditionalTransformation(const mat3f& mat)
 {
-	m_transformationMatrix = mat;
-	m_transformationIsDirty = false;
+	m_AdditionalTransformation = mat;
+	m_transformationIsDirty = true;
 }
 
 void GameObject::setPainter(Painter* p)

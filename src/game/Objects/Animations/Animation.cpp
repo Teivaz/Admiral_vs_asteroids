@@ -36,8 +36,7 @@ void Animation::render()
     if (m_currentFrame)
     {
 		mat3f transform = getTransformation();
-		transform = transform * m_currentFrame->getTransformation();
-		m_currentFrame->setTransformation(transform);
+		m_currentFrame->setAdditionalTransformation(transform);
         m_currentFrame->render();
     }
 }
@@ -81,26 +80,14 @@ void Animation::addFrame(Sprite* s)
 void Animation::setPosition(const vec2f& p)
 {
 	GameObject::setPosition(p);
-    for (Sprite* s : m_keyFrames)
-    {
-        //s->setPosition(p);
-    }
 }
 void Animation::setScale(const vec2f& s)
 {
 	GameObject::setScale(s);
-    for (Sprite* sp : m_keyFrames)
-    {
-        //sp->setScale(s);
-    }
 }
 void Animation::setRotation(float r)
 {
 	GameObject::setRotation(r);
-    for (Sprite* s : m_keyFrames)
-    {
-        //s->setRotation(r);
-    }
 }
 
 void Animation::setCamera(CameraPtr cam)

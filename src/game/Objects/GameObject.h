@@ -9,6 +9,7 @@ MakeShared(Camera);
 class GameObject //: public has_slots<>
 {
 public:
+	GameObject();
     virtual ~GameObject();
     virtual void                    render();
     virtual void                    update(float){};
@@ -29,7 +30,7 @@ public:
 	int                             getRenderLayer(){ return m_renderLayer; }
 	virtual void                    setCamera(CameraPtr);
 	const mat3f&					getTransformation();
-	void							setTransformation(const mat3f&);
+	void							setAdditionalTransformation(const mat3f&);
 	void							setPainter(Painter*);
 
     //******************************************************
@@ -50,6 +51,7 @@ protected:
     vec2f                           m_position = 0.0f;
     vec2f                           m_scale = 1.0f;
     float                           m_rotation = 0.0f;
-    mat3f                           m_transformationMatrix;
+	mat3f                           m_transformationMatrix;
+	mat3f                           m_AdditionalTransformation;
     int                             m_renderLayer = 0;
 };

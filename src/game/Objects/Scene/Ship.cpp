@@ -25,7 +25,6 @@ Ship::~Ship()
 
 void Ship::render()
 {
-	GameObject::render();
     m_engineFire->render();
     m_ship->render();
 }
