@@ -109,6 +109,7 @@ void CollisionManager::update(float dt)
 				b->onCollided(a, point);
 			}
 		}
+        a->setColliosionChecked();
 	}
 }
 

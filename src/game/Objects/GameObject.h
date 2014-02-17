@@ -19,6 +19,7 @@ public:
     virtual void                    setPosition(const vec2f& p);
     virtual void                    setScale(const vec2f& s);
     virtual void                    setRotation(float r);
+    virtual void					setAdditionalTransformation(const mat3f&);
     virtual void                    adjustPosition(const vec2f& p);
     virtual void                    adjustScale(const vec2f& s);
     virtual void                    adjustRotation(float r);
@@ -30,7 +31,6 @@ public:
 	int                             getRenderLayer(){ return m_renderLayer; }
 	virtual void                    setCamera(CameraPtr);
 	const mat3f&					getTransformation();
-	void							setAdditionalTransformation(const mat3f&);
 	void							setPainter(Painter*);
 
     //******************************************************

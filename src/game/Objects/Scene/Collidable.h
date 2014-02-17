@@ -13,7 +13,8 @@ public:
 	virtual void					renderDebug();
 	virtual void                    setPosition(const vec2f& p);
 	virtual void                    setScale(const vec2f& s);
-	virtual void                    setRotation(float r);
+    virtual void                    setRotation(float r);
+    virtual void					setAdditionalTransformation(const mat3f&);
 	virtual void					update(float dt);
 
 	virtual void					onCollided(Collidable* other, vec2f point);
@@ -28,7 +29,8 @@ public:
 	virtual void					setSpeed(float speed);
 	virtual float					getSpeed() const;
 
-	virtual float					getEnergy() const;
+    void                            setColliosionChecked();
+    virtual float					getEnergy() const;
     float                           getSqBoundingRadius() const 
     { 
         return m_squareBoundingRadius * getScale().SqLength();

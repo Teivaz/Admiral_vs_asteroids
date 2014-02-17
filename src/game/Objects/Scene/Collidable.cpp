@@ -73,7 +73,6 @@ void Collidable::renderDebug()
 		0);
 
 	glDrawArrays(GL_LINE_LOOP, 0, m_collisionShape.size());
-	//glDrawArrays(GL_TRIANGLE_FAN, 0, m_collisionShape.size());
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
@@ -86,7 +85,6 @@ void Collidable::_calculateTransformation()
         v = m_transformationMatrix * v;
         vertex.x = v.x;
         vertex.y = v.y;
-        //vertex = m_transformationMatrix * vertex;
     }
 }
 
@@ -96,6 +94,7 @@ void Collidable::setPosition(const vec2f& p)
 		return;
 	m_position = p;
 	m_transformationIsDirty = true;
+    m_hasMoved = true;
 }
 
 void Collidable::setScale(const vec2f& s)
@@ -103,7 +102,8 @@ void Collidable::setScale(const vec2f& s)
 	if (s == m_scale)
 		return;
 	m_scale = s;
-	m_transformationIsDirty = true;
+    m_transformationIsDirty = true;
+    m_hasMoved = true;
 }
 
 void Collidable::setRotation(float r)
@@ -111,7 +111,8 @@ void Collidable::setRotation(float r)
 	if (r == m_rotation)
 		return;
 	m_rotation = r;
-	m_transformationIsDirty = true;
+    m_transformationIsDirty = true;
+    m_hasMoved = true;
 }
 
 const std::vector<vec2f>& Collidable::getMesh() const
@@ -155,4 +156,14 @@ void Collidable::setSpeed(float speed)
 float Collidable::getSpeed() const
 {
 	return m_speed;
+}
+void Collidable::setColliosionChecked()
+{
+    m_hasMoved = false;
+}
+void Collidable::setAdditionalTransformation(const mat3f& mat)
+{
+    m_AdditionalTransformation = mat;
+    m_transformationIsDirty = true;
+    m_hasMoved = true;
 }
