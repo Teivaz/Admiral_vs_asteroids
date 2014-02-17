@@ -29,6 +29,10 @@ public:
 	virtual float					getSpeed() const;
 
 	virtual float					getEnergy() const;
+    float                           getSqBoundingRadius() const 
+    { 
+        return m_squareBoundingRadius * getScale().SqLength();
+    }
 
 protected:
     virtual void					_calculateTransformation();
@@ -44,4 +48,5 @@ protected:
 	float							m_mass = 1.0f;
 	float							m_speed = 0.0f;
 	vec2f							m_direction;
+    float                           m_squareBoundingRadius = 0.0f;
 };

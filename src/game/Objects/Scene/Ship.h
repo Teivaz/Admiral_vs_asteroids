@@ -34,7 +34,7 @@ private:
     float                           m_rotationSpeed = 0.0f;
     float                           m_enginePower = 0.0f;
     vec2f                           m_rotationV;
-    vec2f                           m_cannonPosition = vec2f(-2.0f, 50.0f);
+    vec2f                           m_cannonPosition = vec2f(-2.0f, 80.0f);
 
     float                           m_maxSpeedFwd = 200.0f;
     float                           m_maxSpeedBwd = 100.0f;

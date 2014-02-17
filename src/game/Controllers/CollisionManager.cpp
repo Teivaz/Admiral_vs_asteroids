@@ -94,10 +94,14 @@ void CollisionManager::update(float dt)
 		}
 		for (Collidable* b : m_objects)
 		{
-			if (a == b)
-			{
+            if (a == b)
+                continue;
+
+            float sqDistance = (a->getPosition() - b->getPosition()).SqLength();
+            float maxSqDistance = a->getSqBoundingRadius() + b->getSqBoundingRadius();
+            if (sqDistance > maxSqDistance)
 				continue;
-			}
+
 			vec2f point;
 			if (_checkCollission(a, b, point))
 			{

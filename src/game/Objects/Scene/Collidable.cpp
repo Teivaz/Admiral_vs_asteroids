@@ -15,6 +15,8 @@ Collidable::Collidable(const vector<vec2f>& mesh)
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
 	CollisionManager::GetInstance()->add(this);
+    for (int i = 1; i < m_collisionShape.size(); ++i)
+        m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
 }
 
 Collidable::Collidable(const string& meshName)
@@ -30,7 +32,9 @@ Collidable::Collidable(const string& meshName)
 	}
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
-	CollisionManager::GetInstance()->add(this);
+    CollisionManager::GetInstance()->add(this);
+    for (int i = 1; i < m_collisionShape.size(); ++i)
+        m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
 }
 
 Collidable::~Collidable()
@@ -51,12 +55,12 @@ void Collidable::renderDebug()
 	m_shape->bind();
 	if (m_camera)
 	{
-		mat3f transform = m_camera->getTransformationMatrix() * m_transformationMatrix;
+		mat3f transform = m_camera->getTransformationMatrix() * getTransformation();
 		glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &transform.a1);
 	}
 	else
 	{
-		glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &m_transformationMatrix.a1);
+		glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &getTransformation().a1);
 	}
 
     glEnableVertexAttribArray(Attributes::VERTEX_COORDINATES);

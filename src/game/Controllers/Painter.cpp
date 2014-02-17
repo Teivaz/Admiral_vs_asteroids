@@ -10,10 +10,13 @@ Painter::Painter()
 
 Painter::~Painter()
 {
-	for (auto obj : m_objects)
-	{
-		obj->setPainter(nullptr);
-	}
+    auto it = m_objects.begin(), end = m_objects.end();
+    while (it != end)
+    {
+        auto object = *it;
+        ++it;
+        object->setPainter(nullptr);
+    }
 }
 
 void Painter::init(int width, int height)
