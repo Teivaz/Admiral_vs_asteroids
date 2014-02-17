@@ -110,6 +110,12 @@ const mat3f& GameObject::getTransformation()
 	return m_transformationMatrix;
 }
 
+void GameObject::setTransformation(const mat3f& mat)
+{
+	m_transformationMatrix = mat;
+	m_transformationIsDirty = false;
+}
+
 void GameObject::setPainter(Painter* p)
 {
 	if (m_painter)

@@ -29,6 +29,7 @@ public:
 	int                             getRenderLayer(){ return m_renderLayer; }
 	virtual void                    setCamera(CameraPtr);
 	const mat3f&					getTransformation();
+	void							setTransformation(const mat3f&);
 	void							setPainter(Painter*);
 
     //******************************************************
