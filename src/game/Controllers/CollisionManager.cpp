@@ -79,7 +79,7 @@ const std::vector<vec2f>& CollisionManager::_loadMesh(const string& name)
 	}
 	else
 	{
-		ASSERT(false, "Error collision file format");
+		ASSERT(false && "Error collision file format");
 	}
 	return mesh;
 }

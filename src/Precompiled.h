@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef WIN32
+#ifdef _WIN32
 
 #include "EGL/egl.h"
 #include "GLES2/gl2.h"
@@ -10,14 +10,11 @@
 #include <vld.h>
 #endif
 
-#else
-
+#else // IOS
 #import <Availability.h>
-
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
-
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
@@ -25,16 +22,9 @@
 #endif
 
 template<typename T>
-inline T min(T a, T b)
-{
-    return a < b ? a : b;
-}
+inline T min(T a, T b){return a < b ? a : b;}
 template<typename T>
-inline T max(T a, T b)
-{
-    return a > b ? a : b;
-}
-
+inline T max(T a, T b){return a > b ? a : b;}
 #endif
 
 //#include "sigslot.h"
