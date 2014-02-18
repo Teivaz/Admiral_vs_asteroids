@@ -642,7 +642,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)_d";
 				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
-				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/";
+				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/ ../../libs/sigslot";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -673,7 +673,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
-				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/";
+				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/ ../../libs/sigslot";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

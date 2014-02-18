@@ -27,7 +27,6 @@ template<typename T>
 inline T max(T a, T b){return a > b ? a : b;}
 #endif
 
-//#include "sigslot.h"
 #include "lodepng.h"
 #include "json/json.h"
 #include <vector>
@@ -55,6 +54,7 @@ inline void PLOG(const char* x, ...){}
 #endif
 
 #include "utils/Singleton.h"
+#include "sigslot.h"
 
 const float PI = 3.1416f;
 
