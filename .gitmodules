@@ -1,0 +1,3 @@
+[submodule "libs/vectry"]
+	path = libs/vectry
+	url = https://github.com/Teivaz/vectry

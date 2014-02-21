@@ -81,13 +81,9 @@
     <ClInclude Include="..\..\src\game\States\StateMachine.h" />
     <ClInclude Include="..\..\src\Precompiled.h" />
     <ClInclude Include="..\..\src\sprites.h" />
-    <ClInclude Include="..\..\src\utils\CMat3.h" />
     <ClInclude Include="..\..\src\utils\CustomGLTypes.h" />
-    <ClInclude Include="..\..\src\utils\CVec2.h" />
-    <ClInclude Include="..\..\src\utils\CVec3.h" />
     <ClInclude Include="..\..\src\utils\FileUtils.h" />
     <ClInclude Include="..\..\src\utils\Singleton.h" />
-    <ClInclude Include="..\..\src\utils\VectorGeometry.h" />
     <ClInclude Include="..\..\src\win\AppDelegate.h" />
     <ClInclude Include="..\..\src\win\EsUtils_win.h" />
   </ItemGroup>
@@ -141,24 +137,26 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)_d</TargetName>
     <OutDir>$(SolutionDir)\..\..\release\</OutDir>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Analize|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)_d</TargetName>
     <OutDir>$(SolutionDir)\..\..\release\</OutDir>
-    <IncludePath>D:\ProgramFiles\Visual Leak Detector\include;$(IncludePath)</IncludePath>
+    <IncludePath>c:\cygwin\usr\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\..\..\release\</OutDir>
+    <IncludePath>c:\cygwin\usr\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>__time_t_defined;WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;$(ProjectDir)../../libs/vectry/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -175,8 +173,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_ANALYZE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>__time_t_defined;WIN32;_DEBUG;_CONSOLE;_LIB;_ANALYZE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;$(ProjectDir)../../libs/vectry/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -198,9 +196,9 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__time_t_defined;WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;$(ProjectDir)../../libs/vectry/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

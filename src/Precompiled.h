@@ -37,7 +37,10 @@ inline T max(T a, T b){return a > b ? a : b;}
 #include <memory>
 
 #include "utils/CustomGLTypes.h"
-#include "utils/VectorGeometry.h"
+
+#define VECTRY_INLINE
+#include "include/vectry.h"
+using namespace vectry;
 
 //using namespace sigslot;
 
