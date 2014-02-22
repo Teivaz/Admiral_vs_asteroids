@@ -1,0 +1,58 @@
+{
+	"mass":100,
+	"sprite":"ship_pixelart1.png"
+	"engines":
+	{
+		"main":
+		[{
+			"power": 10,
+			"position": {"x":0, "y":-100},
+			"direction": {"x":0, "y":-1},
+			"animation": "jet_big.json"
+		}],
+
+		"left_front":
+		[{
+			"power": 1,
+			"position": {"x":-50, "y":-10},
+			"direction": {"x":0, "y":1},
+			"animation": "jet_small.json"
+		}],
+
+		"right_front":
+		[{
+			"power": 1,
+			"position": {"x":50, "y":-10},
+			"direction": {"x":0, "y":1},
+			"animation": "jet_small.json"
+		}],
+
+		"left_back":
+		[{
+			"power": 1,
+			"position": {"x":-60, "y":-90},
+			"direction": {"x":0, "y":-1},
+			"animation": "jet_small.json"
+		},
+		{
+			"power": 1,
+			"position": {"x":-40, "y":-90},
+			"direction": {"x":0, "y":-1},
+			"animation": "jet_small.json"
+		}],
+
+		"right_back":
+		[{
+			"power": 1,
+			"position": {"x":40, "y":-90},
+			"direction": {"x":0, "y":-1},
+			"animation": "jet_small.json"
+		},
+		{
+			"power": 1,
+			"position": {"x":60, "y":-90},
+			"direction": {"x":0, "y":-1},
+			"animation": "jet_small.json"
+		}]
+	}
+}
