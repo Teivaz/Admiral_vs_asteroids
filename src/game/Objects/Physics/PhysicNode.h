@@ -3,12 +3,12 @@
 
 MakeShared(Shape);
 
-class Collidable : virtual public GameObject
+class PhysicNode : virtual public GameObject
 {
 public:
-	Collidable(const vector<vec2f>& mesh);
-	Collidable(const string& meshName);
-	virtual ~Collidable();
+	PhysicNode(const vector<vec2f>& mesh);
+	PhysicNode(const string& meshName);
+	virtual ~PhysicNode();
 	
 	virtual void					renderDebug();
 	virtual void                    setPosition(const vec2f& p);
@@ -17,7 +17,7 @@ public:
     virtual void					setAdditionalTransformation(const mat3f&);
 	virtual void					update(float dt);
 
-	virtual void					onCollided(Collidable* other, vec2f point);
+	virtual void					onCollided(PhysicNode* other, vec2f point);
 
 	const std::vector<vec2f>&		getMesh() const;
 	bool							hasMoved() const;

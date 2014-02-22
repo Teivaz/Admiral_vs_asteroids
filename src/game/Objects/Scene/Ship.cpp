@@ -7,8 +7,9 @@
 #include "Objects/Animations/Animation.h"
 #include "Controllers/CollisionManager.h"
 
-Ship::Ship()
-: Collidable(collisions::k_ship_pixelart)
+Ship::Ship(const string& name)
+: PhysicNode(collisions::k_ship_pixelart)
+, m_name(name)
 {
     vec2f shipSize = SpriteManager::GetInstance()->getSpriteSize(sprites::k_ship_pixelart);
     m_ship = SpritePtr(SpriteManager::GetInstance()->createSprite(sprites::k_ship_pixelart, -shipSize / 2, shipSize, false, 0));
@@ -31,7 +32,7 @@ void Ship::render()
 
 void Ship::update(float dt)
 {
-	Collidable::update(dt);
+    PhysicNode::update(dt);
     float step = dt / 1000.0f;
     adjustRotation(m_rotationSpeed * step);
     adjustPosition(m_rotationV * m_enginePower * step);
@@ -40,21 +41,21 @@ void Ship::update(float dt)
 
 void Ship::setPosition(const vec2f& p)
 {
-	Collidable::setPosition(p);
+    PhysicNode::setPosition(p);
     m_ship->setPosition(p);
     m_engineFire->setPosition(p);
 }
 
 void Ship::setScale(const vec2f& s)
 {
-	Collidable::setScale(s);
+    PhysicNode::setScale(s);
     m_ship->setScale(s);
     m_engineFire->setScale(s);
 }
 
 void Ship::setRotation(float r)
 {
-	Collidable::setRotation(r);
+    PhysicNode::setRotation(r);
     m_rotationV = vec2f(cos(m_rotation + PI / 2), sin(m_rotation + PI / 2));
     m_ship->setRotation(r);
     m_engineFire->setRotation(r);
@@ -126,7 +127,7 @@ void Ship::setFireScale(float s)
     m_engineFire->setScale(vec2f(1.0f + 0.1*s, s));
 }
 
-void Ship::onCollided(Collidable* other, vec2f point)
+void Ship::onCollided(PhysicNode* other, vec2f point)
 {
 	vec2f dir = m_position - other->getPosition();
 	dir.Normalize();

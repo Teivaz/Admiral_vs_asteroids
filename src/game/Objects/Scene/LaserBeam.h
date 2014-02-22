@@ -1,10 +1,10 @@
 #pragma once
 #include "../GameObject.h"
-#include "Collidable.h"
+#include "Objects/Physics/PhysicNode.h"
 
 class Animation;
 
-class LaserBeam : public Collidable
+class LaserBeam : public PhysicNode
 {
 public:
     static void create(const vec2f& position, float speed, float direction, float lifetime);
@@ -19,7 +19,7 @@ public:
     virtual void                    setScale(const vec2f& s);
 	virtual void                    setRotation(float r);
 	virtual void                    setCamera(CameraPtr);
-	virtual void					onCollided(Collidable* other, vec2f point);
+    virtual void					onCollided(PhysicNode* other, vec2f point);
 
 private:
     float                           m_lifetime = 0;

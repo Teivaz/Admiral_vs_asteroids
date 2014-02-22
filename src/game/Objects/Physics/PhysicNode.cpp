@@ -1,12 +1,12 @@
 #include "Precompiled.h"
-#include "Collidable.h"
+#include "PhysicNode.h"
 #include "Controllers/ShaderManager.h"
 #include "Controllers/Camera.h"
 #include "Controllers/CollisionManager.h"
 #include "Controllers/ShaderAttributes.h"
 #include "Objects/Shape/Shape.h"
 
-Collidable::Collidable(const vector<vec2f>& mesh)
+PhysicNode::PhysicNode(const vector<vec2f>& mesh)
 : m_collisionShape(mesh)
 {
     m_debugShader = ShaderManager::GetInstance()->getShader(shaders::k_red);
@@ -19,7 +19,7 @@ Collidable::Collidable(const vector<vec2f>& mesh)
         m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
 }
 
-Collidable::Collidable(const string& meshName)
+PhysicNode::PhysicNode(const string& meshName)
 : m_collisionShape(CollisionManager::GetInstance()->getMesh(meshName))
 {
 	m_debugShader = ShaderManager::GetInstance()->getShader(shaders::k_red);
@@ -37,18 +37,18 @@ Collidable::Collidable(const string& meshName)
         m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
 }
 
-Collidable::~Collidable()
+PhysicNode::~PhysicNode()
 {
 	CollisionManager::GetInstance()->remove(this);
 }
 
-void Collidable::update(float dt)
+void PhysicNode::update(float dt)
 {
 	vec2f delta = m_direction * m_speed * dt / 1000.f;
 	adjustPosition(delta);
 }
 
-void Collidable::renderDebug()
+void PhysicNode::renderDebug()
 {
 	GameObject::render();
     glUseProgram(m_debugShader);
@@ -76,7 +76,7 @@ void Collidable::renderDebug()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void Collidable::_calculateTransformation()
+void PhysicNode::_calculateTransformation()
 {
     GameObject::_calculateTransformation();
     for (vec2f& vertex : m_collisionShape)
@@ -88,7 +88,7 @@ void Collidable::_calculateTransformation()
     }
 }
 
-void Collidable::setPosition(const vec2f& p)
+void PhysicNode::setPosition(const vec2f& p)
 {
 	if (p == m_position)
 		return;
@@ -97,7 +97,7 @@ void Collidable::setPosition(const vec2f& p)
     m_hasMoved = true;
 }
 
-void Collidable::setScale(const vec2f& s)
+void PhysicNode::setScale(const vec2f& s)
 {
 	if (s == m_scale)
 		return;
@@ -106,7 +106,7 @@ void Collidable::setScale(const vec2f& s)
     m_hasMoved = true;
 }
 
-void Collidable::setRotation(float r)
+void PhysicNode::setRotation(float r)
 {
 	if (r == m_rotation)
 		return;
@@ -115,53 +115,53 @@ void Collidable::setRotation(float r)
     m_hasMoved = true;
 }
 
-const std::vector<vec2f>& Collidable::getMesh() const
+const std::vector<vec2f>& PhysicNode::getMesh() const
 {
 	return m_collisionShape;
 }
 
-void Collidable::onCollided(Collidable* other, vec2f point)
+void PhysicNode::onCollided(PhysicNode* other, vec2f point)
 {
 }
 
-bool Collidable::hasMoved() const
+bool PhysicNode::hasMoved() const
 {
 	return m_hasMoved;
 }
 
-float Collidable::getEnergy() const
+float PhysicNode::getEnergy() const
 {
 	return getSpeed() * getMass();
 }
-void Collidable::setMass(float mass)
+void PhysicNode::setMass(float mass)
 {
 	m_mass = mass;
 }
-float Collidable::getMass() const
+float PhysicNode::getMass() const
 {
 	return m_mass;
 }
-void Collidable::setDirection(const vec2f& dir)
+void PhysicNode::setDirection(const vec2f& dir)
 {
 	m_direction = dir;
 }
-const vec2f& Collidable::getDirection() const
+const vec2f& PhysicNode::getDirection() const
 {
 	return m_direction;
 }
-void Collidable::setSpeed(float speed)
+void PhysicNode::setSpeed(float speed)
 {
 	m_speed = speed;
 }
-float Collidable::getSpeed() const
+float PhysicNode::getSpeed() const
 {
 	return m_speed;
 }
-void Collidable::setColliosionChecked()
+void PhysicNode::setColliosionChecked()
 {
     m_hasMoved = false;
 }
-void Collidable::setAdditionalTransformation(const mat3f& mat)
+void PhysicNode::setAdditionalTransformation(const mat3f& mat)
 {
     m_AdditionalTransformation = mat;
     m_transformationIsDirty = true;

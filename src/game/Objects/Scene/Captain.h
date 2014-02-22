@@ -1,0 +1,51 @@
+#pragma once
+#include "Controllers/TouchReceiver.h"
+
+MakeShared(CaptainsBridge);
+MakeShared(CaptainTask);
+
+class Captain : public TouchReceiver, public has_slots<>
+{
+public:
+
+    Captain(const string& name, CaptainsBridgePtr bridge);
+    virtual ~Captain();
+
+//    virtual void                    render();
+    virtual void                    update(float dt);
+    
+    void                            shoot();
+
+    // Set propriate maneuver engine power to rotate in desired direction
+    // -1 ... +1
+    void                            rotate(float speed);
+                                    // 0 ... +1
+    void                            setMainEnginePower(float power);
+    void                            setEnginePower(int engineId, float power);
+
+    // ------------------------------
+    // Tasks
+    // ------------------------------
+
+    // Align ship along specified vector.
+    // Will start a set of enigne manipulation tasks
+    void                            setShipRotation(vec2f direction);
+
+    // Stop ship movement.
+    // Align ship backwards, launch engines to compensate enertia
+    void                            stopShip();
+
+    // Correct moving direction to match specifed vector and speed
+    // Turn ship to compensate enertia in directions not matching desired.
+    void                            setShipMoveDirection(vec2f direction, float targetSpeed);
+
+    void                            cancelCurrentTask();
+    void                            cancelAllTasks();
+
+private:
+    string                          m_name;
+    CaptainsBridgePtr               m_bridge;
+
+    typedef std::list<CaptainTaskPtr> Tasks_t;
+    Tasks_t                         m_tasks;
+};

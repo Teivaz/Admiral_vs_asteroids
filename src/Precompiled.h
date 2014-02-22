@@ -42,8 +42,6 @@ inline T max(T a, T b){return a > b ? a : b;}
 #include "include/vectry.h"
 using namespace vectry;
 
-//using namespace sigslot;
-
 using std::string;
 using std::vector;
 using std::shared_ptr;
@@ -58,6 +56,7 @@ inline void PLOG(const char* x, ...){}
 
 #include "utils/Singleton.h"
 #include "sigslot.h"
+using namespace sigslot;
 
 const float PI = 3.1416f;
 

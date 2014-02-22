@@ -6,7 +6,7 @@
 #include "Controllers/CollisionManager.h"
 
 LaserBeam::LaserBeam(const vec2f& position, float speed, float direction, float lifetime)
-: Collidable(collisions::k_beam_1)
+: PhysicNode(collisions::k_beam_1)
 , m_lifetime(lifetime)
 , m_speed(speed)
 , m_directionF(direction)
@@ -44,12 +44,12 @@ LaserBeam::~LaserBeam()
 void LaserBeam::setCamera(CameraPtr c)
 {
 	m_animation->setCamera(c);
-	Collidable::setCamera(c);
+	PhysicNode::setCamera(c);
 }
 
 void LaserBeam::update(float dt)
 {
-	Collidable::update(dt);
+	PhysicNode::update(dt);
     m_animation->update(dt);
     //adjustPosition(m_directionV * m_speed * dt / 1000.0f);
     m_lifetime -= dt;
@@ -60,22 +60,22 @@ void LaserBeam::update(float dt)
 
 void LaserBeam::render()
 {
-	Collidable::render();
+	PhysicNode::render();
     m_animation->render();
 }
 void LaserBeam::setPosition(const vec2f& p)
 {
-	Collidable::setPosition(p);
+	PhysicNode::setPosition(p);
     m_animation->setPosition(p);
 }
 void LaserBeam::setScale(const vec2f& s)
 {
-	Collidable::setScale(s);
+	PhysicNode::setScale(s);
     m_animation->setScale(s);
 }
 void LaserBeam::setRotation(float r)
 {
-	Collidable::setRotation(r);
+    PhysicNode::setRotation(r);
     m_animation->setRotation(r);
 }
 
@@ -87,7 +87,7 @@ void LaserBeam::create(const vec2f& position, float speed, float direction, floa
     Painter::GetInstance()->add(l);
 }
 
-void LaserBeam::onCollided(Collidable* other, vec2f point)
+void LaserBeam::onCollided(PhysicNode* other, vec2f point)
 {
 	m_toRemove = true;
 }

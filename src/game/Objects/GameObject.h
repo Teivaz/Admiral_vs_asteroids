@@ -6,7 +6,7 @@ class Shape;
 class Painter;
 MakeShared(Camera);
 
-class GameObject //: public has_slots<>
+class GameObject : public has_slots<>
 {
 public:
 	GameObject();

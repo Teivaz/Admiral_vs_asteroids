@@ -56,6 +56,9 @@
     <Filter Include="game\Controllers\Collision">
       <UniqueIdentifier>{e6564826-5b52-4136-b397-c8fda07fc384}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\Objects\Physics">
+      <UniqueIdentifier>{584a4988-e177-40ef-8c29-5fa85a2d91c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -131,14 +134,23 @@
     <ClCompile Include="..\..\src\game\GameDelegate.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\game\Objects\Scene\Collidable.cpp">
-      <Filter>game\Objects\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\Scene\Ship.cpp">
       <Filter>game\Objects\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Controllers\CollisionManager.cpp">
       <Filter>game\Controllers\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Scene\CaptainsBridge.cpp">
+      <Filter>game\Objects\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Scene\Captain.cpp">
+      <Filter>game\Objects\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Scene\CaptainTask.cpp">
+      <Filter>game\Objects\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Physics\PhysicNode.cpp">
+      <Filter>game\Objects\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -224,9 +236,6 @@
     <ClInclude Include="..\..\src\game\GameDelegate.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\game\Objects\Scene\Collidable.h">
-      <Filter>game\Objects\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\Scene\Ship.h">
       <Filter>game\Objects\Scene</Filter>
     </ClInclude>
@@ -244,6 +253,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\sprites.h">
       <Filter>game\Controllers\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Scene\CaptainsBridge.h">
+      <Filter>game\Objects\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Scene\Captain.h">
+      <Filter>game\Objects\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Scene\CaptainTask.h">
+      <Filter>game\Objects\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Physics\PhysicNode.h">
+      <Filter>game\Objects\Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

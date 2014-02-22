@@ -69,7 +69,7 @@ void GameplayState::onEnter()
 
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
 
-	m_star = new Ship;
+	m_star = new Ship("Shepard");
 	m_star->setCamera(Painter::GetInstance()->getSceneCamera());
 	m_star->adjustPosition(100);
 	Painter::GetInstance()->add(m_star);
@@ -96,7 +96,7 @@ void GameplayState::onEnter()
     }
     Painter::GetInstance()->add(m_gui);
 
-    m_ship.reset(new Ship);
+    m_ship.reset(new Ship("Wrungel"));
 	m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
     Painter::GetInstance()->add(m_ship.get());
 }

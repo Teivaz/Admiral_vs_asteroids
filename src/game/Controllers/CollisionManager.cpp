@@ -1,7 +1,7 @@
 #include "Precompiled.h"
 #include "CollisionManager.h"
 #include "utils/FileUtils.h"
-#include "Objects/Scene/Collidable.h"
+#include "Objects/Physics/PhysicNode.h"
 
 CollisionManager::CollisionManager()
 {
@@ -26,7 +26,7 @@ const std::vector<vec2f>& CollisionManager::getMesh(const string& name)
 	}
 }
 
-void CollisionManager::add(Collidable* obj)
+void CollisionManager::add(PhysicNode* obj)
 {
 	if (contains(obj))
 	{
@@ -35,13 +35,13 @@ void CollisionManager::add(Collidable* obj)
 	m_objects.push_back(obj);
 }
 
-bool CollisionManager::contains(Collidable* obj) const
+bool CollisionManager::contains(PhysicNode* obj) const
 {
 	auto it = std::find(m_objects.begin(), m_objects.end(), obj);
 	return it != m_objects.end();
 }
 
-void CollisionManager::remove(Collidable* obj)
+void CollisionManager::remove(PhysicNode* obj)
 {
 	auto it = std::find(m_objects.begin(), m_objects.end(), obj);
 	if (it != m_objects.end())
@@ -86,13 +86,13 @@ const std::vector<vec2f>& CollisionManager::_loadMesh(const string& name)
 
 void CollisionManager::update(float dt)
 {
-	for (Collidable* a : m_objects)
+    for (PhysicNode* a : m_objects)
 	{
 		if (!a->hasMoved())
 		{
 			continue;
 		}
-		for (Collidable* b : m_objects)
+        for (PhysicNode* b : m_objects)
 		{
             if (a == b)
                 continue;
@@ -113,7 +113,7 @@ void CollisionManager::update(float dt)
 	}
 }
 
-bool CollisionManager::_checkCollission(Collidable* a, Collidable* b, const vec2f& point)
+bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, const vec2f& point)
 {
 	vector<vec2f> meshA;
 	meshA.reserve(a->getMesh().size());

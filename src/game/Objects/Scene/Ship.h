@@ -1,13 +1,13 @@
 #pragma once
-#include "Collidable.h"
+#include "Objects/Physics/PhysicNode.h"
 
 MakeShared(Sprite);
 MakeShared(Animation);
 
-class Ship : public Collidable
+class Ship : public PhysicNode
 {
 public:
-    Ship();
+    Ship(const string& name);
     virtual ~Ship();
 
     virtual void                    render();
@@ -21,7 +21,7 @@ public:
     void                            setRotationSpeed(float);
     void                            setEnginePower(float);
 	void                            shoot();
-	virtual void					onCollided(Collidable* other, vec2f point);
+    virtual void					onCollided(PhysicNode* other, vec2f point);
 	virtual float					getSpeed() const;
 
 protected:
@@ -29,6 +29,7 @@ protected:
     void                            setFireScale(float);
 
 private:
+    string                          m_name;
     SpritePtr                       m_ship;
     AnimationPtr                    m_engineFire;
     float                           m_rotationSpeed = 0.0f;
