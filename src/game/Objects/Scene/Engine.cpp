@@ -8,7 +8,7 @@ Engine::Engine(Ship* ship, const Json::Value& value)
 : m_ship(ship)
 , m_power(0.0f)
 {
-    m_flame = SpriteManager::GetInstance()->createAnimation(value["animation"].asString());
+    m_flame.reset(SpriteManager::GetInstance()->createAnimation(value["animation"].asString()));
 
     vec2f position;
     Json::ReadVector(value["position"], position);

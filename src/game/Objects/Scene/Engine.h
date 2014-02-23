@@ -1,8 +1,8 @@
 #pragma once
 #include "Objects/GameObject.h"
 
-class Ship;
-class Animation;
+MakeShared(Ship);
+MakeShared(Animation);
 MakeShared(Camera);
 
 class Engine : public GameObject
@@ -27,8 +27,8 @@ private:
 //    void                            _load
 
 private:
-    Ship*                           m_ship = nullptr;
-    Animation*                      m_flame = nullptr;
+    Ship*                           m_ship;
+    AnimationPtr                    m_flame;
     float                           m_maxPower = 0;
     float                           m_power = 0;
 };

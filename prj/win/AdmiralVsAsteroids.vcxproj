@@ -153,7 +153,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)_d</TargetName>
     <OutDir>$(SolutionDir)\..\..\release\</OutDir>
-    <IncludePath>c:\cygwin\usr\include\;$(IncludePath)</IncludePath>
+    <IncludePath>c:\Program Files D\Visual Leak Detector\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

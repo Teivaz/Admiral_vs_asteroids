@@ -65,7 +65,7 @@ void GameplayState::render()
 
 void GameplayState::onEnter()
 {
-    SpriteManager::GetInstance()->createSprite(sprites::k_stars_back, -1, 2, true, -100);
+//    SpriteManager::GetInstance()->createSprite(sprites::k_stars_back, -1, 2, true, -100);
 
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
 
