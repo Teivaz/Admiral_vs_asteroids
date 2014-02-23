@@ -8,7 +8,7 @@ MakeShared(Camera);
 class Engine : public GameObject
 {
 public:
-    Engine::Engine(Ship* ship, const Json::Value& value);
+    Engine(Ship* ship, const Json::Value& value);
     Engine(Ship* ship, Animation* flame, const vec2f& position);
     ~Engine();
 
@@ -20,6 +20,8 @@ public:
     virtual void                    setRotation(float r);
 
     virtual void                    setCamera(CameraPtr);
+
+    void                            setPower(float);
 
 private:
 //    void                            _load

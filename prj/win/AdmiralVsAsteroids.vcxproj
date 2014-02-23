@@ -31,6 +31,7 @@
     <ClCompile Include="..\..\src\game\Objects\GUI\SliderWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\Widget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Physics\PhysicNode.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Scene\Cannon.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\Captain.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\CaptainsBridge.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\CaptainTask.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="..\..\src\game\Objects\GUI\SliderWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\Widget.h" />
     <ClInclude Include="..\..\src\game\Objects\Physics\PhysicNode.h" />
+    <ClInclude Include="..\..\src\game\Objects\Scene\Cannon.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\Captain.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\CaptainsBridge.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\CaptainTask.h" />
@@ -156,7 +158,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\..\..\release\</OutDir>
-    <IncludePath>c:\cygwin\usr\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

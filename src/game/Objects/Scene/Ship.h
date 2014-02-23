@@ -4,10 +4,21 @@
 MakeShared(Sprite);
 MakeShared(Animation);
 MakeShared(Engine);
+MakeShared(Cannon);
 
 class Ship : public PhysicNode
 {
 public:
+
+    enum EEngines
+    {
+        EMain,
+        ELeftFront,
+        ERightBack,
+        ELeftBack,
+        ERightFront
+    };
+
 
     static Ship*                    create(const string& name);
 
@@ -20,6 +31,8 @@ public:
     void                            setRightBackEngine(const std::vector<EnginePtr>& eng);
     void                            setMainEngine(const std::vector<EnginePtr>& eng);
 
+    void                            setCannons(const std::vector<CannonPtr>& cannons);
+
     virtual void                    render();
     virtual void                    update(float dt);
 
@@ -29,30 +42,25 @@ public:
 
                                     // -1...+1
     void                            setRotationSpeed(float);
-    void                            setEnginePower(float);
+    void                            setEnginePower(EEngines, float);
 	void                            shoot();
     virtual void					onCollided(PhysicNode* other, vec2f point);
 	virtual float					getSpeed() const;
 
 protected:
-    void                            createFire();
-    void                            setFireScale(float);
 
 private:
     string                          m_name;
     SpritePtr                       m_ship;
-    AnimationPtr                    m_engineFire;
-    float                           m_rotationSpeed = 0.0f;
-    float                           m_enginePower = 0.0f;
-    vec2f                           m_rotationV;
-    vec2f                           m_cannonPosition = vec2f(-2.0f, 80.0f);
 
-    float                           m_maxSpeedFwd = 200.0f;
-    float                           m_maxSpeedBwd = 100.0f;
+    float                           m_rotationSpeed = 0.0f;
+    vec2f                           m_rotationV;
 
     vector<EnginePtr>               m_leftFrontEngine;
     vector<EnginePtr>               m_rightFrontEngine;
     vector<EnginePtr>               m_leftBackEngine;
     vector<EnginePtr>               m_rightBackEngine;
     vector<EnginePtr>               m_mainEngine;
+
+    vector<CannonPtr>               m_cannons;
 };

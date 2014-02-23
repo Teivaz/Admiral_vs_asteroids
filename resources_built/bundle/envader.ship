@@ -66,10 +66,18 @@
 	[
 	{
 		"animation": "beam.anim",
-		"position": {"x":0, "y":0},
-		"rotation": 0,
-		"speed": 100,
-		"lifetime": 100,
+		"position": {"x":15, "y":70},
+		"rotation": 90,
+		"speed": 500,
+		"lifetime": 10000,
+		"damage": 100
+	},
+	{
+		"animation": "beam.anim",
+		"position": {"x":-15, "y":70},
+		"rotation": 90,
+		"speed": 500,
+		"lifetime": 10000,
 		"damage": 100
 	}
 	]

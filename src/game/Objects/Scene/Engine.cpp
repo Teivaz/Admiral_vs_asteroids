@@ -65,3 +65,10 @@ void Engine::setScale(const vec2f& scale)
 {
     GameObject::setScale(scale);
 }
+void Engine::setPower(float p)
+{
+    vec2f scale = m_flame->getScale();
+    scale.y = clamp(p);
+    m_flame->setScale(scale);
+    m_power = clamp(p);
+}

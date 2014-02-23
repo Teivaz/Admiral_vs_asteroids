@@ -35,7 +35,7 @@ protected: // Captain only!
     // ******************************
 
     vec2f                           getShipMoveDirection() const;
-    vec2f                           setShipRotation() const;
+    vec2f                           getShipRotation() const;
     float                           getShipRotationSpeed() const;
     float                           getShipRotationSpeedDerivative() const;
     vec2f                           getShipMoveSpeed() const;

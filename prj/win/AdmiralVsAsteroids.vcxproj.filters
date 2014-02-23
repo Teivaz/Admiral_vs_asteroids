@@ -155,6 +155,9 @@
     <ClCompile Include="..\..\src\game\Objects\Scene\Engine.cpp">
       <Filter>game\Objects\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Scene\Cannon.cpp">
+      <Filter>game\Objects\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Precompiled.h" />
@@ -270,6 +273,9 @@
       <Filter>game\Objects\Physics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\Scene\Engine.h">
+      <Filter>game\Objects\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Scene\Cannon.h">
       <Filter>game\Objects\Scene</Filter>
     </ClInclude>
   </ItemGroup>

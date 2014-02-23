@@ -68,3 +68,5 @@ namespace Json
 {
     void ReadVector(const Value& value, vec2f& vec);
 }
+
+float clamp(float);

@@ -25,3 +25,7 @@ namespace Json
     }
 }
 
+float clamp(float a)
+{
+    return max(min(a, 1.0f), 0.0f);
+}

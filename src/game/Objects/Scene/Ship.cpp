@@ -7,6 +7,7 @@
 #include "Objects/Animations/Animation.h"
 #include "Controllers/CollisionManager.h"
 #include "utils/FileUtils.h"
+#include "Cannon.h"
 #include "Engine.h"
 
 Ship* Ship::create(const string& name)
@@ -20,7 +21,6 @@ Ship* Ship::create(const string& name)
     bool result = reader.parse(data, data + size, root, false);
     ASSERT(result && "Error parsing animation file");
     delete[] data;
-    const Json::Value cannons = root["cannons"];
 
     Ship* ship;
 
@@ -110,6 +110,18 @@ Ship* Ship::create(const string& name)
         }
     }
 
+    const Json::Value cannons = root["cannons"];
+    {
+        vector<CannonPtr> cannonsVec;
+        Json::Value::iterator it = cannons.begin();
+        Json::Value::iterator end = cannons.end();
+        for (; it != end; ++it)
+        {
+            cannonsVec.push_back(CannonPtr(new Cannon(*it)));
+        }
+        ship->setCannons(cannonsVec);
+    }
+
     return ship;
 }
 
@@ -119,8 +131,6 @@ Ship::Ship(const string& name, const string& collision, Sprite* body)
 , m_ship(SpritePtr(body))
 {
     m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
-    createFire();
-    setFireScale(0);
 	setDirection(vec2f(0.0f, 1.0f));
 }
 
@@ -132,7 +142,6 @@ void Ship::render()
 {
     m_ship->setAdditionalTransformation(getTransformation());
     m_ship->render();
-    m_engineFire->render();
     for (auto e : m_leftFrontEngine)
         e->render();
     for (auto e : m_rightFrontEngine)
@@ -150,7 +159,13 @@ void Ship::update(float dt)
     PhysicNode::update(dt);
     float step = dt / 1000.0f;
     adjustRotation(m_rotationSpeed * step);
-    adjustPosition(m_rotationV * m_enginePower * step);
+    adjustPosition(m_rotationV * step);
+
+    for (auto c : m_cannons)
+    {
+        c->setAdditionalTransformation(getTransformation());
+        c->update(dt);
+    }
 
     for (auto e : m_leftFrontEngine)
         e->update(dt);
@@ -167,6 +182,7 @@ void Ship::update(float dt)
 void Ship::setPosition(const vec2f& p)
 {
     PhysicNode::setPosition(p);
+
     for (auto e : m_leftFrontEngine)
         e->setPosition(p);
     for (auto e : m_rightFrontEngine)
@@ -182,6 +198,7 @@ void Ship::setPosition(const vec2f& p)
 void Ship::setScale(const vec2f& s)
 {
     PhysicNode::setScale(s);
+
     for (auto e : m_leftFrontEngine)
         e->setScale(s);
     for (auto e : m_rightFrontEngine)
@@ -198,6 +215,10 @@ void Ship::setRotation(float r)
 {
     PhysicNode::setRotation(r);
     m_rotationV = vec2f(cos(m_rotation + PI / 2), sin(m_rotation + PI / 2));
+
+    for (auto c : m_cannons)
+        c->setRotation(r);
+
     for (auto e : m_leftFrontEngine)
         e->setRotation(r);
     for (auto e : m_rightFrontEngine)
@@ -210,47 +231,46 @@ void Ship::setRotation(float r)
         e->setRotation(r);
 }
 
-void Ship::setRotationSpeed(float s)
+void Ship::setRotationSpeed(float speed)
 {
-    m_rotationSpeed = s;
+    setEnginePower(Ship::ELeftFront, speed);
+    setEnginePower(Ship::ERightBack, speed);
+    setEnginePower(Ship::ELeftBack, -speed);
+    setEnginePower(Ship::ERightFront, -speed);
+    m_rotationSpeed += 0.01f*speed;
 }
 
-void Ship::setEnginePower(float p)
+void Ship::setEnginePower(EEngines engine, float p)
 {
-    if (p > 0)
+    switch (engine)
     {
-        m_enginePower = p * m_maxSpeedFwd;
-        setFireScale(p);
-    }
-    else
-    {
-        m_enginePower = p * m_maxSpeedBwd;
-        setFireScale(0.0f);
+    case EMain:
+        for (auto e : m_mainEngine)
+            e->setPower(p);
+        break;
+    case ELeftBack:
+        for (auto e : m_leftBackEngine)
+            e->setPower(p);
+        break;
+    case ELeftFront:
+        for (auto e : m_leftFrontEngine)
+            e->setPower(p);
+        break;
+    case ERightBack:
+        for (auto e : m_rightBackEngine)
+            e->setPower(p);
+        break;
+    case ERightFront:
+        for (auto e : m_rightFrontEngine)
+            e->setPower(p);
+        break;        
     }
 }
 
 void Ship::shoot()
 {
-    if (m_transformationIsDirty)
-    {
-        _calculateTransformation();
-    }
-    vec3f beamPos3 = getTransformation() * vec3f(m_cannonPosition, 1.0f);
-    vec2f beamPos(beamPos3.x, beamPos3.y);
-    LaserBeam::create(beamPos, 0.0f, m_rotation + PI / 2, 10000.0f);
-}
-
-void Ship::createFire()
-{
-    m_engineFire.reset(SpriteManager::GetInstance()->createAnimation("jet_small.anim"));
-    m_engineFire->setFramesPosition(vec2f(0.0, -50));
-
-    m_engineFire->setCamera(Painter::GetInstance()->getSceneCamera());
-}
-
-void Ship::setFireScale(float s)
-{
-    //m_engineFire->setScale(vec2f(1.0f + 0.1f*s, s));
+    for (auto c : m_cannons)
+        c->shoot();
 }
 
 void Ship::onCollided(PhysicNode* other, vec2f point)
@@ -264,7 +284,7 @@ void Ship::onCollided(PhysicNode* other, vec2f point)
 
 float Ship::getSpeed() const
 {
-	return m_enginePower * getMass();
+	return getMass();
 }
 
 void Ship::setLeftFrontEngine(const std::vector<EnginePtr>& eng)
@@ -287,4 +307,8 @@ void Ship::setRightBackEngine(const std::vector<EnginePtr>& eng)
 void Ship::setMainEngine(const std::vector<EnginePtr>& eng)
 {
     m_mainEngine = eng;
+}
+void Ship::setCannons(const std::vector<CannonPtr>& cannons)
+{
+    m_cannons = cannons;
 }
