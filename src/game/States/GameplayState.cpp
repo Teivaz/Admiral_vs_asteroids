@@ -53,7 +53,7 @@ GameplayState::~GameplayState()
 
 void GameplayState::update(float dt)
 {
-    m_star->adjustRotation(m_movingSpeed* dt / 1000);
+//    m_star->adjustRotation(m_movingSpeed* dt / 1000);
 
     m_ship->update(dt);
 }
@@ -69,10 +69,10 @@ void GameplayState::onEnter()
 
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
 
-	m_star = new Ship("Shepard");
-	m_star->setCamera(Painter::GetInstance()->getSceneCamera());
-	m_star->adjustPosition(100);
-	Painter::GetInstance()->add(m_star);
+//	m_star = new Ship("Shepard");
+//	m_star->setCamera(Painter::GetInstance()->getSceneCamera());
+//	m_star->adjustPosition(100);
+//	Painter::GetInstance()->add(m_star);
     //m_star->setPosition(-m_star->getSize() / 2);
     //m_star->setShader(softShader);
     //Painter::GetInstance()->add(m_star);
@@ -96,7 +96,7 @@ void GameplayState::onEnter()
     }
     Painter::GetInstance()->add(m_gui);
 
-    m_ship.reset(new Ship("Wrungel"));
+    m_ship.reset(Ship::create("envader.ship"));
 	m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
     Painter::GetInstance()->add(m_ship.get());
 }
@@ -116,7 +116,7 @@ bool GameplayState::isFinished() const
 
 void GameplayState::onButton(bool b)
 {
-    m_star->adjustPosition(b?0.1f:-0.1f);
+//    m_star->adjustPosition(b?0.1f:-0.1f);
     if (b)
         m_ship->shoot();
 }

@@ -3,31 +3,31 @@
 	"frames":
 [
 	{
-		"sprite": "flame.png",
-		"anchor": {"x":0, "y":0},
+		"sprite": "pix_flame1.png",
+		"anchor": {"x":0.5, "y":1},
 		"scale": {"x":1, "y":1},
-		"offset": {"x":0, "y":-1},
-		"rotate": 90
+		"offset": {"x":0, "y":0},
+		"rotate": 0
 	},
 	{
-		"sprite": "flame.png",
-		"anchor": {"x":0, "y":0},
+		"sprite": "pix_flame1.png",
+		"anchor": {"x":0.5, "y":1},
 		"scale": {"x":1, "y":0.9},
-		"offset": {"x":0, "y":-1},
-		"rotate": 90
+		"offset": {"x":0, "y":0},
+		"rotate": 0
 	},
 	{
-		"sprite": "flame.png",
-		"anchor": {"x":0, "y":0},
+		"sprite": "pix_flame1.png",
+		"anchor": {"x":0.5, "y":1},
 		"scale": {"x":1, "y":0.8},
-		"offset": {"x":0, "y":-1},
-		"rotate": 90
+		"offset": {"x":0, "y":0},
+		"rotate": 0
 	},
 	{
-		"sprite": "flame.png",
-		"anchor": {"x":0, "y":0},
+		"sprite": "pix_flame1.png",
+		"anchor": {"x":0.5, "y":1},
 		"scale": {"x":1, "y":0.9},
-		"offset": {"x":0, "y":-1},
-		"rotate": 90
+		"offset": {"x":0, "y":0},
+		"rotate": 0
 	}
 ]}

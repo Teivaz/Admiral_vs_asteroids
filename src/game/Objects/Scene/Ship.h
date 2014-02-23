@@ -3,12 +3,22 @@
 
 MakeShared(Sprite);
 MakeShared(Animation);
+MakeShared(Engine);
 
 class Ship : public PhysicNode
 {
 public:
-    Ship(const string& name);
+
+    static Ship*                    create(const string& name);
+
+    Ship(const string& name, const string& collision, Sprite* body);
     virtual ~Ship();
+
+    void                            setLeftFrontEngine(const std::vector<EnginePtr>& eng);
+    void                            setRightFrontEngine(const std::vector<EnginePtr>& eng);
+    void                            setLeftBackEngine(const std::vector<EnginePtr>& eng);
+    void                            setRightBackEngine(const std::vector<EnginePtr>& eng);
+    void                            setMainEngine(const std::vector<EnginePtr>& eng);
 
     virtual void                    render();
     virtual void                    update(float dt);
@@ -39,4 +49,10 @@ private:
 
     float                           m_maxSpeedFwd = 200.0f;
     float                           m_maxSpeedBwd = 100.0f;
+
+    vector<EnginePtr>               m_leftFrontEngine;
+    vector<EnginePtr>               m_rightFrontEngine;
+    vector<EnginePtr>               m_leftBackEngine;
+    vector<EnginePtr>               m_rightBackEngine;
+    vector<EnginePtr>               m_mainEngine;
 };

@@ -34,6 +34,7 @@
     <ClCompile Include="..\..\src\game\Objects\Scene\Captain.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\CaptainsBridge.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\CaptainTask.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Scene\Engine.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\LaserBeam.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\Ship.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp" />
@@ -77,6 +78,7 @@
     <ClInclude Include="..\..\src\game\Objects\Scene\Captain.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\CaptainsBridge.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\CaptainTask.h" />
+    <ClInclude Include="..\..\src\game\Objects\Scene\Engine.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\LaserBeam.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\Ship.h" />
     <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h" />

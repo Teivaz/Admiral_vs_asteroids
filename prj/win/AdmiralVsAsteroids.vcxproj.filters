@@ -152,6 +152,9 @@
     <ClCompile Include="..\..\src\game\Objects\Physics\PhysicNode.cpp">
       <Filter>game\Objects\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\Objects\Scene\Engine.cpp">
+      <Filter>game\Objects\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Precompiled.h" />
@@ -265,6 +268,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\Physics\PhysicNode.h">
       <Filter>game\Objects\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Objects\Scene\Engine.h">
+      <Filter>game\Objects\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

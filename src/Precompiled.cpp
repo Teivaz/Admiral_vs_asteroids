@@ -15,3 +15,13 @@ void PLOG(const char* x, ...)
 }
 
 #endif
+
+namespace Json
+{
+    void ReadVector(const Value& value, vec2f& vec)
+    {
+        vec = vec2f(static_cast<float>(value["x"].asDouble()),
+                    static_cast<float>(value["y"].asDouble()));
+    }
+}
+

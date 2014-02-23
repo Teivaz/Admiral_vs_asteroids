@@ -1,0 +1,76 @@
+{
+	"body":
+	{
+		"sprite": "ship_pixelart1.png",
+		"position": {"x":0, "y":15},
+		"scale": {"x":1, "y":1},
+		"rotation": 0,
+		"collision": "ship_pixelart1.ctf",
+		"mass":100
+	},
+	"engines":
+	{
+		"main":
+		[{
+			"power": 10,
+			"position": {"x":0, "y":-31},
+			"rotation": 0,
+			"animation": "jet_big.anim"
+		}],
+
+		"left_front":
+		[{
+			"power": 1,
+			"position": {"x":-36, "y":10},
+			"rotation": 180,
+			"animation": "jet_small.anim"
+		}],
+
+		"right_front":
+		[{
+			"power": 1,
+			"position": {"x":36, "y":10},
+			"rotation": 180,
+			"animation": "jet_small.anim"
+		}],
+
+		"left_back":
+		[{
+			"power": 1,
+			"position": {"x":-55, "y":-26},
+			"rotation": 0,
+			"animation": "jet_small.anim"
+		},
+		{
+			"power": 1,
+			"position": {"x":-39, "y":-26},
+			"rotation": 0,
+			"animation": "jet_small.anim"
+		}],
+
+		"right_back":
+		[{
+			"power": 1,
+			"position": {"x":39, "y":-26},
+			"rotation": 0,
+			"animation": "jet_small.anim"
+		},
+		{
+			"power": 1,
+			"position": {"x":55, "y":-26},
+			"rotation": 0,
+			"animation": "jet_small.anim"
+		}]
+	},
+	"cannons":
+	[
+	{
+		"animation": "beam.anim",
+		"position": {"x":0, "y":0},
+		"rotation": 0,
+		"speed": 100,
+		"lifetime": 100,
+		"damage": 100
+	}
+	]
+}

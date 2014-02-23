@@ -101,3 +101,11 @@ void Animation::setCamera(CameraPtr cam)
         f->setCamera(cam);
     }
 }
+
+void Animation::setFramesPosition(const vec2f& pos)
+{
+    for (Sprite* f : m_keyFrames)
+    {
+        f->setPosition(pos);
+    }
+}

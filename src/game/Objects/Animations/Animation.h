@@ -27,6 +27,8 @@ public:
 
 	virtual void                    setCamera(CameraPtr);
     
+    void                            setFramesPosition(const vec2f& pos);
+
 private:
     Sprite*                         _nextFrame();
 

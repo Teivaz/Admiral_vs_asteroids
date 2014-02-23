@@ -139,6 +139,7 @@ Animation* SpriteManager::createAnimation(const string& name)
             frameData.offset = vec2f(static_cast<float>((*it)["offset"]["x"].asDouble()),
                                      static_cast<float>((*it)["offset"]["y"].asDouble()));
             frameData.rotation = static_cast<float>((*it)["rotate"].asDouble());
+            frameData.rotation = (PI * frameData.rotation) / 180.0f;
             animData.frames.push_back(frameData);
         }
     }
@@ -156,9 +157,9 @@ Animation* SpriteManager::_animationFromFramesData(const AnimationData& data)
         vec2f size = getSpriteSize(frameData.sprite);
         vec2f anchor(frameData.anchor.x * size.x, frameData.anchor.y * size.y);
         Sprite* frame = createSprite(frameData.sprite, -anchor, size, false, 0);
-        vec2f position(frameData.offset.x / size.x, frameData.offset.y / size.y);
-        frame->setPosition(position);
+        frame->setPosition(frameData.offset);
         frame->setRotation(frameData.rotation);
+        frame->setScale(frameData.scale);
         frames.push_back(frame);
     }
      Animation* anim = new Animation(frames);
