@@ -1,0 +1,34 @@
+{
+	"fps":20,
+	"frames":
+[
+	{
+		"sprite": "beam1.png",
+		"anchor": {"x":0.5, "y":0.5},
+		"scale": {"x":1, "y":1},
+		"offset": {"x":0, "y":0},
+		"rotate": 0
+	},
+	{
+		"sprite": "beam2.png",
+		"anchor": {"x":0.5, "y":0.5},
+		"scale": {"x":1, "y":1},
+		"offset": {"x":0, "y":0},
+		"rotate": 0
+	},
+	{
+		"sprite": "beam3.png",
+		"anchor": {"x":0.5, "y":0.5},
+		"scale": {"x":1, "y":1},
+		"offset": {"x":0, "y":0},
+		"rotate": 0
+	},
+	{
+		"sprite": "beam2.png",
+		"anchor": {"x":0.5, "y":0.5},
+		"scale": {"x":1, "y":1},
+		"offset": {"x":0, "y":0},
+		"rotate": 0
+	}
+]
+}

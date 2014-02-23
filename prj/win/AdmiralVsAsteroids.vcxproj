@@ -140,7 +140,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)_d</TargetName>
     <OutDir>$(SolutionDir)\..\..\release\</OutDir>
     <IncludePath>$(IncludePath)</IncludePath>
@@ -165,6 +165,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)../../libs/jsoncpp/include/;$(ProjectDir)../../libs/lodepng/include/;$(ProjectDir)../../libs/PowerVR/include/;$(ProjectDir)../../src/;$(ProjectDir)../../src/win/;$(ProjectDir)../../src/game/;$(ProjectDir)../../libs/sigslot/;$(ProjectDir)../../libs/vectry/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -172,6 +173,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)/../../libs/PowerVR/bin/;</AdditionalLibraryDirectories>
       <AdditionalDependencies>libEGL.lib;libGLESv2.lib;libGLES_CM.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <Profile>true</Profile>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Analize|Win32'">

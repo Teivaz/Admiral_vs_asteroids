@@ -173,7 +173,7 @@ bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, const vec2
 			maxA = max(maxA, dot);
 			minA = min(minA, dot);
 		}
-		bool overlapping = ((minA > minB) & (minA < maxB)) | ((minB > minA) & (minB < maxA));
+		bool overlapping = ((minA > minB) && (minA < maxB)) || ((minB > minA) && (minB < maxA));
 		collided &= overlapping;
 	}
 	return collided;

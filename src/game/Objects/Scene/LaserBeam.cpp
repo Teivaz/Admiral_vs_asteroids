@@ -11,6 +11,9 @@ LaserBeam::LaserBeam(const vec2f& position, float speed, float direction, float 
 , m_speed(speed)
 , m_directionF(direction)
 {
+#if 1
+    m_animation = SpriteManager::GetInstance()->createAnimation("beam.anim");
+#else
     m_animation = new Animation();
     vec2f size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_1);
     Sprite* s = SpriteManager::GetInstance()->createSprite(sprites::k_beam_1, -size / 2, size, false);
@@ -24,7 +27,9 @@ LaserBeam::LaserBeam(const vec2f& position, float speed, float direction, float 
     size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_beam_2);
     s = SpriteManager::GetInstance()->createSprite(sprites::k_beam_2, -size / 2, size, false);
     m_animation->addFrame(s);
-    m_animation->setFps(20);
+#endif
+//    m_animation->setFps(20);
+
 
     m_directionV = vec2f(cos(m_directionF), sin(m_directionF));
     setRotation(m_directionF + PI/2);

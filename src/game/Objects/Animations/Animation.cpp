@@ -29,6 +29,10 @@ void Animation::update(float dt)
         m_timePassed = 0;
         m_currentFrame = _nextFrame();
     }
+    if (m_currentFrame == nullptr)
+    {
+        m_currentFrame = _nextFrame();
+    }
 }
 
 void Animation::render()

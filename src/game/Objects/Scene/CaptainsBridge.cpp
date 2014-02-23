@@ -43,7 +43,7 @@ void CaptainsBridge::setEnginePower(int engineId, float power)
 {
     // m_ship->setEnginePower(engineId, power);
 }
-//
+
 //vec2f CaptainsBridge::getShipMoveDirection() const
 //{
 //    return m_ship->getMoveDirection();

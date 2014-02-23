@@ -1,0 +1,33 @@
+{
+	"fps":20,
+	"frames":
+[
+	{
+		"sprite": "",
+		"anchor": {"x":0, "y":0},
+		"scale": {"x":1, "y":1},
+		"offset": {"x":0, "y":-1},
+		"rotate": 90
+	},
+	{
+		"sprite": "",
+		"anchor": {"x":0, "y":0},
+		"scale": {"x":1, "y":0.9},
+		"offset": {"x":0, "y":-1},
+		"rotate": 90
+	},
+	{
+		"sprite": "",
+		"anchor": {"x":0, "y":0},
+		"scale": {"x":1, "y":0.8},
+		"offset": {"x":0, "y":-1},
+		"rotate": 90
+	},
+	{
+		"sprite": "",
+		"anchor": {"x":0, "y":0},
+		"scale": {"x":1, "y":0.9},
+		"offset": {"x":0, "y":-1},
+		"rotate": 90
+	}
+]}

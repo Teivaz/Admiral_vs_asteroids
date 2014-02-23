@@ -9,14 +9,22 @@ public:
     PhysicNode(const vector<vec2f>& mesh);
     PhysicNode(const string& meshName);
     virtual ~PhysicNode();
-    
+
+    // GameObject
+//    virtual void                    render();
+    virtual void                    update(float);
+
     virtual void                    renderDebug();
+
     virtual void                    setPosition(const vec2f& p);
     virtual void                    setScale(const vec2f& s);
     virtual void                    setRotation(float r);
-    virtual void                    setAdditionalTransformation(const mat3f&);
-    virtual void                    update(float dt);
+    virtual void					setAdditionalTransformation(const mat3f&);
+//    virtual const vec2f&            getPosition() const;
+//    virtual const vec2f&            getScale() const;
+//    virtual float                   getRotation() const;
     
+    //Physics
     virtual void					onCollided(PhysicNode* other, vec2f point);
     
     const std::vector<vec2f>&		getMesh() const;
@@ -24,6 +32,9 @@ public:
     
     virtual void					setMass(float mass);
     virtual float					getMass() const;
+
+
+
     virtual void					setDirection(const vec2f& dir);
     virtual const vec2f&			getDirection() const;
     virtual void					setSpeed(float speed);

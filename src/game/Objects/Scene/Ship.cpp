@@ -124,7 +124,7 @@ void Ship::createFire()
 
 void Ship::setFireScale(float s)
 {
-    m_engineFire->setScale(vec2f(1.0f + 0.1*s, s));
+    m_engineFire->setScale(vec2f(1.0f + 0.1f*s, s));
 }
 
 void Ship::onCollided(PhysicNode* other, vec2f point)

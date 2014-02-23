@@ -15,7 +15,7 @@ PhysicNode::PhysicNode(const vector<vec2f>& mesh)
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
 	CollisionManager::GetInstance()->add(this);
-    for (int i = 1; i < m_collisionShape.size(); ++i)
+    for (unsigned int i = 1; i < m_collisionShape.size(); ++i)
         m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
 }
 
@@ -33,7 +33,7 @@ PhysicNode::PhysicNode(const string& meshName)
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
     CollisionManager::GetInstance()->add(this);
-    for (int i = 1; i < m_collisionShape.size(); ++i)
+    for (unsigned int i = 1; i < m_collisionShape.size(); ++i)
         m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
 }
 

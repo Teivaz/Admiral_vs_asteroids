@@ -5,6 +5,7 @@
 #include "ShaderManager.h"
 #include "utils/FileUtils.h"
 #include "TextureManager.h"
+#include "Objects/Animations/Animation.h"
 
 SpriteManager::SpriteManager()
 {
@@ -101,4 +102,66 @@ void SpriteManager::loadAtlas(const string& name)
             m_spriteRectMap[spriteName] = SpriteRect(vec2f(x, y), vec2f(x + w, y + h), tex, vec2i(frame["w"].asInt(), frame["h"].asInt()));
         }        
     }
+}
+
+Animation* SpriteManager::createAnimation(const string& name)
+{
+    auto anim = m_animations.find(name);
+    if (anim != m_animations.end())
+    {
+        return _animationFromFramesData(anim->second);
+    }
+
+    char* data;
+    size_t size;
+    FileUtils::LoadFile(name.c_str(), &data, size, FileUtils::app);
+    ASSERT(data && "Error opening animation file");
+    Json::Reader reader;
+    Json::Value root;
+    bool result = reader.parse(data, data + size, root, false);
+    ASSERT(result && "Error parsing animation file");
+
+    AnimationData animData;
+    animData.fps = static_cast<float>(root["fps"].asDouble());
+    Json::Value frames = root["frames"];
+    if (frames.isArray())
+    {
+        Json::Value::iterator it = frames.begin();
+        Json::Value::iterator end = frames.end();
+        for (; it != end; ++it)
+        {
+            AnimationFrameData frameData;
+            frameData.sprite = (*it)["sprite"].asString();
+            frameData.anchor = vec2f(static_cast<float>((*it)["anchor"]["x"].asDouble()),
+                                     static_cast<float>((*it)["anchor"]["y"].asDouble()));
+            frameData.scale = vec2f(static_cast<float>((*it)["scale"]["x"].asDouble()),
+                                    static_cast<float>((*it)["scale"]["y"].asDouble()));
+            frameData.offset = vec2f(static_cast<float>((*it)["offset"]["x"].asDouble()),
+                                     static_cast<float>((*it)["offset"]["y"].asDouble()));
+            frameData.rotation = static_cast<float>((*it)["rotate"].asDouble());
+            animData.frames.push_back(frameData);
+        }
+    }
+
+    m_animations[name] = animData;
+    return _animationFromFramesData(animData);
+}
+
+
+Animation* SpriteManager::_animationFromFramesData(const AnimationData& data)
+{
+    Animation::KeyFrames_t frames;
+    for (auto frameData : data.frames)
+    {
+        vec2f size = getSpriteSize(frameData.sprite);
+        vec2f anchor(frameData.anchor.x * size.x, frameData.anchor.y * size.y);
+        Sprite* frame = createSprite(frameData.sprite, -anchor, size, false, 0);
+        vec2f position(frameData.offset.x / size.x, frameData.offset.y / size.y);
+        frame->setPosition(position);
+        frame->setRotation(frameData.rotation);
+        frames.push_back(frame);
+    }
+     Animation* anim = new Animation(frames);
+     anim->setFps(data.fps);
+     return anim;
 }

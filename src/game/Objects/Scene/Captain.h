@@ -42,6 +42,13 @@ public:
     void                            cancelCurrentTask();
     void                            cancelAllTasks();
 
+    vec2f                           getShipMoveDirection() const;
+    vec2f                           setShipRotation() const;
+    float                           getShipRotationSpeed() const;
+    float                           getShipRotationSpeedDerivative() const;
+    vec2f                           getShipMoveSpeed() const;
+    vec2f                           getShipMoveSpeedDerivative() const;
+
 private:
     string                          m_name;
     CaptainsBridgePtr               m_bridge;
