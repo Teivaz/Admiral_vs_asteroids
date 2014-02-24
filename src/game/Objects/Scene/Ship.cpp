@@ -273,12 +273,12 @@ void Ship::shoot()
         c->shoot();
 }
 
-void Ship::onCollided(PhysicNode* other, vec2f point)
+void Ship::onCollided(PhysicNode* other, const vec2f& point, const vec2f& otherMomentum)
 {
 	vec2f dir = m_position - other->getPosition();
 	dir.Normalize();
-	vec2f resultVector = dir * other->getEnergy() + getDirection() * getEnergy();
-	setSpeed(resultVector.Normalize() / (2.0f * getMass()));
+	vec2f resultVector = dir * getMass() + getDirection() * getMass();
+	setLinearSpeed(resultVector.Normalize() / (2.0f * getMass()));
 	setDirection(resultVector);
 }
 

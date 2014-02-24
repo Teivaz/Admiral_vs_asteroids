@@ -17,7 +17,7 @@ LaserBeam::LaserBeam(const vec2f& position, float speed, float direction, float 
     setRotation(m_directionF + PI/2);
     setPosition(position);
 	setDirection(m_directionV);
-	setSpeed(speed);
+	setLinearSpeed(speed);
 
 	setMass(1);
 }
@@ -73,7 +73,7 @@ void LaserBeam::create(const vec2f& position, float speed, float direction, floa
     Painter::GetInstance()->add(l);
 }
 
-void LaserBeam::onCollided(PhysicNode* other, vec2f point)
+void LaserBeam::onCollided(PhysicNode* other, const vec2f& point, const vec2f& otherMomentum)
 {
 	m_toRemove = true;
 }

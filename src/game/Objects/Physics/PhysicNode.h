@@ -25,27 +25,27 @@ public:
 //    virtual float                   getRotation() const;
     
     //Physics
-    virtual void					onCollided(PhysicNode* other, vec2f point);
+	virtual void					onCollided(PhysicNode* other, const vec2f& point, const vec2f& otherMomentum);
     
     const std::vector<vec2f>&		getMesh() const;
     bool							hasMoved() const;
     
     virtual void					setMass(float mass);
     virtual float					getMass() const;
-
-
-
-    virtual void					setDirection(const vec2f& dir);
-    virtual const vec2f&			getDirection() const;
-    virtual void					setSpeed(float speed);
-    virtual float					getSpeed() const;
+	virtual void					setRotationSpeed(float speed);
+	virtual float					getRotationSpeed() const;
+	virtual void					setLinearSpeed(float speed);
+	virtual float					getLinearSpeed() const;
+	virtual void 					setDirection(const vec2f& dir);
+	virtual const vec2f&			getDirection() const;
     
     void                            setColliosionChecked();
-    virtual float					getEnergy() const;
     float                           getSqBoundingRadius() const 
     { 
         return m_squareBoundingRadius * getScale().SqLength();
     }
+
+	vec2f                           getMomentum(const vec2f& momentum);
 
 protected:
     virtual void					_calculateTransformation();
@@ -59,7 +59,8 @@ protected:
 
 	bool							m_hasMoved = true;
 	float							m_mass = 1.0f;
-	float							m_speed = 0.0f;
+	float							m_linearSpeed = 0.0f;
+	float							m_rotationSpeed = 0.0f;
 	vec2f							m_direction;
     float                           m_squareBoundingRadius = 0.0f;
 };

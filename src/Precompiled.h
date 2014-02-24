@@ -64,6 +64,12 @@ const float PI = 3.1416f;
     class T; \
     typedef shared_ptr<T> T##Ptr
 
+#define ACCESSOR(x)			decltype(x) get##x##() const {return x;}
+#define ACCESSOR_REF(x)		const decltype(x)& get##x##() const {return x;}
+#define MUTATOR(x)			void set##x##(decltype(x) value) {x = value;}
+#define MUTATOR_REF(x)		void set##x##(const decltype(x)& value) {x = value;}
+#define MUTATOR_MOVE(x)		void set##x##(decltype(x)&& value) {x = value;}
+
 namespace Json
 {
     void ReadVector(const Value& value, vec2f& vec);

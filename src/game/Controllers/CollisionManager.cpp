@@ -105,8 +105,10 @@ void CollisionManager::update(float dt)
 			vec2f point;
 			if (_checkCollission(a, b, point))
 			{
-				a->onCollided(b, point);
-				b->onCollided(a, point);
+				vec2f momentumA = a->getMomentum(point);
+				vec2f momentumB = b->getMomentum(point);
+				a->onCollided(b, point, momentumB);
+				b->onCollided(a, point, momentumA);
 			}
 		}
         a->setColliosionChecked();
