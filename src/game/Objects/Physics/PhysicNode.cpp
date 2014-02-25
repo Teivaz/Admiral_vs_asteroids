@@ -9,21 +9,31 @@
 PhysicNode::PhysicNode(const vector<vec2f>& mesh)
 : m_collisionShape(mesh)
 {
+#ifdef _DEBUG
     m_debugShader = ShaderManager::GetInstance()->getShader(shaders::k_red);
-	m_uniformTransformation = glGetUniformLocation(m_debugShader, "u_transformation");
+    m_uniformTransformation = glGetUniformLocation(m_debugShader, "u_transformation");
+#endif
+
+    m_impacts.reserve(10);
 	SimpleShape* shape = new SimpleShape;
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
 	CollisionManager::GetInstance()->add(this);
     for (unsigned int i = 1; i < m_collisionShape.size(); ++i)
+    {
         m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
+    }
 }
 
 PhysicNode::PhysicNode(const string& meshName)
 : m_collisionShape(CollisionManager::GetInstance()->getMesh(meshName))
 {
+#ifdef _DEBUG
 	m_debugShader = ShaderManager::GetInstance()->getShader(shaders::k_red);
-	m_uniformTransformation = glGetUniformLocation(m_debugShader, "u_transformation");
+    m_uniformTransformation = glGetUniformLocation(m_debugShader, "u_transformation");
+#endif
+
+    m_impacts.reserve(10);
 	SimpleShape* shape = new SimpleShape;
 	vec2f offset = - m_collisionShape[0];
 	for (vec2f& v : m_collisionShape)
@@ -34,7 +44,9 @@ PhysicNode::PhysicNode(const string& meshName)
 	m_shape.reset(shape);
     CollisionManager::GetInstance()->add(this);
     for (unsigned int i = 1; i < m_collisionShape.size(); ++i)
+    {
         m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
+    }
 }
 
 PhysicNode::~PhysicNode()
@@ -44,10 +56,35 @@ PhysicNode::~PhysicNode()
 
 void PhysicNode::update(float dt)
 {
+    _pocessImpacts();
 	adjustPosition(getDirection() * getLinearSpeed() * dt / 1000.f);
 	adjustRotation(getRotationSpeed() * dt / 1000.0f);
 }
 
+void PhysicNode::_pocessImpacts()
+{
+    vec2f force(getDirection());
+    force *= getLinearSpeed();
+    float netTorque = getRotationSpeed();
+    for (Impact& impact : m_impacts)
+    {
+        vec3f center3(getMesh()[0], 1.0f);
+        center3 = getTransformation() * center3;
+        vec2f center = (center3.x, center3.y);
+        float torque = impact.momentum.Dot((impact.point - center).GetRightNomal());
+        netTorque += torque / getMass();
+        force += impact.momentum / getMass();
+
+    }
+    PLOG("torque: %f\n", netTorque);
+    setRotationSpeed(netTorque);
+    setLinearSpeed(force.Normalize());
+    if (getLinearSpeed())
+        setDirection(force);
+    m_impacts.clear();
+}
+
+#ifdef _DEBUG
 void PhysicNode::renderDebug()
 {
 	GameObject::render();
@@ -75,7 +112,7 @@ void PhysicNode::renderDebug()
 	glDrawArrays(GL_LINE_LOOP, 0, m_collisionShape.size());
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
-
+#endif
 
 void PhysicNode::_calculateTransformation()
 {
@@ -121,8 +158,14 @@ const std::vector<vec2f>& PhysicNode::getMesh() const
 	return m_collisionShape;
 }
 
-void PhysicNode::onCollided(PhysicNode* other, const vec2f& point, const vec2f& otherMomentum)
+void PhysicNode::onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum)
 {
+    addImpact(point, momentum);
+}
+
+void PhysicNode::addImpact(const vec2f& point, const vec2f& momentum)
+{
+    m_impacts.push_back(Impact(point, momentum));
 }
 
 bool PhysicNode::hasMoved() const
@@ -146,7 +189,7 @@ vec2f PhysicNode::getMomentum(const vec2f& point)
     vec2f toPoint(point - m_collisionShape[0]);
 	toPoint.TurnRight90();
 	vec2f rotationPart = toPoint * getRotationSpeed();
-	vec2f linearPart = getDirection() * m_linearSpeed;
+	vec2f linearPart = getDirection() * getLinearSpeed();
 	vec2f momentum = (linearPart + rotationPart) * getMass();
 	return momentum;
 }

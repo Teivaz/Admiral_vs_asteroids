@@ -107,15 +107,26 @@ void CollisionManager::update(float dt)
 			{
 				vec2f momentumA = a->getMomentum(point);
 				vec2f momentumB = b->getMomentum(point);
-				a->onCollided(b, point, momentumB);
-				b->onCollided(a, point, momentumA);
+                vec2f pointA(momentumA);
+                vec2f pointB(momentumB);
+                if (!(pointA == vec2f()))
+                    pointA.Normalize();
+                if (!(pointB == vec2f()))
+                    pointB.Normalize();
+                vec2f plane = (pointA - pointB) / 2.0f;
+                vec2f normA = plane.Dot(momentumA);
+                vec2f normB = plane.Dot(momentumB);
+                momentumA = momentumA - normA + normB;
+                momentumB = momentumB - normB + normA;
+				a->onCollided(b, point, momentumA);
+				b->onCollided(a, point, momentumB);
 			}
 		}
         a->setColliosionChecked();
 	}
 }
 
-bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, const vec2f& point)
+bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, vec2f& point)
 {
 	vector<vec2f> meshA;
 	meshA.reserve(a->getMesh().size());
@@ -178,5 +189,11 @@ bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, const vec2
 		bool overlapping = ((minA > minB) && (minA < maxB)) || ((minB > minA) && (minB < maxA));
 		collided &= overlapping;
 	}
+    if (collided)
+    {
+        point = meshA[0] + meshB[0];
+        point = point / 2.0f;
+    }
+
 	return collided;
 }

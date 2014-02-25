@@ -157,9 +157,6 @@ void Ship::render()
 void Ship::update(float dt)
 {
     PhysicNode::update(dt);
-    float step = dt / 1000.0f;
-    adjustRotation(m_rotationSpeed * step);
-    adjustPosition(m_rotationV * step);
 
     for (auto c : m_cannons)
     {
@@ -231,13 +228,13 @@ void Ship::setRotation(float r)
         e->setRotation(r);
 }
 
-void Ship::setRotationSpeed(float speed)
+void Ship::setRotationEnginesSpeed(float speed)
 {
     setEnginePower(Ship::ELeftFront, speed);
     setEnginePower(Ship::ERightBack, speed);
     setEnginePower(Ship::ELeftBack, -speed);
     setEnginePower(Ship::ERightFront, -speed);
-    m_rotationSpeed += 0.01f*speed;
+//    m_rotationSpeed += 0.01f*speed;
 }
 
 void Ship::setEnginePower(EEngines engine, float p)
@@ -273,13 +270,14 @@ void Ship::shoot()
         c->shoot();
 }
 
-void Ship::onCollided(PhysicNode* other, const vec2f& point, const vec2f& otherMomentum)
+void Ship::onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum)
 {
-	vec2f dir = m_position - other->getPosition();
-	dir.Normalize();
-	vec2f resultVector = dir * getMass() + getDirection() * getMass();
-	setLinearSpeed(resultVector.Normalize() / (2.0f * getMass()));
-	setDirection(resultVector);
+    PhysicNode::onCollided(other, point, momentum);
+	//vec2f dir = m_position - other->getPosition();
+	//dir.Normalize();
+	//vec2f resultVector = dir * getMass() + getDirection() * getMass();
+	//setLinearSpeed(resultVector.Normalize() / (2.0f * getMass()));
+	//setDirection(resultVector);
 }
 
 float Ship::getSpeed() const

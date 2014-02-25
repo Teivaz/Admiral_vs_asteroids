@@ -19,7 +19,7 @@ public:
     void							remove(PhysicNode*);
 
 private:
-	bool							_checkCollission(PhysicNode*, PhysicNode*, const vec2f& point);
+	bool							_checkCollission(PhysicNode*, PhysicNode*, vec2f& point);
 	const std::vector<vec2f>&		_loadMesh(const string& name);
 private:
 	MeshMap_t                       m_meshes;

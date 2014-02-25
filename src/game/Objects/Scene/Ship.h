@@ -41,10 +41,10 @@ public:
     virtual void                    setRotation(float r);
 
                                     // -1...+1
-    void                            setRotationSpeed(float);
+    void                            setRotationEnginesSpeed(float);
     void                            setEnginePower(EEngines, float);
 	void                            shoot();
-    virtual void					onCollided(PhysicNode* other, const vec2f& point, const vec2f& otherMomentum);
+    virtual void					onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum);
 	virtual float					getSpeed() const;
 
 protected:

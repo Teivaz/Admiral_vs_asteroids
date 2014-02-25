@@ -19,7 +19,7 @@ public:
     virtual void                    setScale(const vec2f& s);
 	virtual void                    setRotation(float r);
 	virtual void                    setCamera(CameraPtr);
-	virtual void					onCollided(PhysicNode* other, const vec2f& point, const vec2f& otherMomentum);
+    virtual void					onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum);
 
 private:
     float                           m_lifetime = 0;

@@ -73,7 +73,8 @@ void LaserBeam::create(const vec2f& position, float speed, float direction, floa
     Painter::GetInstance()->add(l);
 }
 
-void LaserBeam::onCollided(PhysicNode* other, const vec2f& point, const vec2f& otherMomentum)
+void LaserBeam::onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum)
 {
+    PhysicNode::onCollided(other, point, momentum);
 	m_toRemove = true;
 }
