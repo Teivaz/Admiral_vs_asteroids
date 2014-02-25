@@ -49,6 +49,14 @@ void Engine::render()
 void Engine::update(float dt)
 {
     m_flame->update(dt);
+    if (m_power > 0)
+    {
+        vec3f point3(m_flame->getPosition(), 0.0f);
+        point3 = m_flame->getTransformation() * point3;
+        vec2f point(point3.x, point3.y);
+        vec2f rotation(cos(m_flame->getRotation()), sin(m_flame->getRotation()));
+        m_ship->addImpact(point, rotation * m_power * m_maxPower * dt / 1000.0f);
+    }
 }
 
 void Engine::setPosition(const vec2f& pos)
@@ -68,7 +76,7 @@ void Engine::setScale(const vec2f& scale)
 void Engine::setPower(float p)
 {
     vec2f scale = m_flame->getScale();
-    scale.y = clamp(p);
+    scale.x = clamp(p);
     m_flame->setScale(scale);
     m_power = clamp(p);
 }

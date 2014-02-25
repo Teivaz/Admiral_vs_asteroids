@@ -125,7 +125,7 @@ void GameplayState::onSlider(int n, float v)
 {
     if (n == 1)
     {
-        m_ship->setRotationSpeed(2 * (v - 0.5f));
+        m_ship->setRotationEnginesSpeed(2 * (v - 0.5f));
     }
     else
     {
