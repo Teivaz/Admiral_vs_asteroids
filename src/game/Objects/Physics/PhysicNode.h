@@ -37,9 +37,11 @@ public:
     virtual void					setMass(float mass);
     virtual float					getMass() const;
     virtual void					setRadialVelocity(float value);
-	virtual float					getRadialVelocity() const;
+    virtual float					getRadialVelocity() const;
+    virtual float                   getRadialVelocityDerivative() const;
     virtual void					setVelocity(float value);
-	virtual float					getVelocity() const;
+    virtual float					getVelocity() const;
+    virtual float                   getVelocityDerivative() const;
     virtual void 					setMoveDirection(const vec2f& dir);
     virtual const vec2f&			getMoveDirection() const;
     
@@ -62,9 +64,13 @@ protected:
 
 	bool							m_hasMoved = true;
 	float							m_mass = 1.0f;
-	float							m_linearSpeed = 0.0f;
-	float							m_rotationSpeed = 0.0f;
-	vec2f							m_direction;
+	float							m_linearVelocity = 0.0f;
+    float                           m_prevLinearVelocity = 0.0f;
+	float							m_radialVelocity = 0.0f;
+    float                           m_prevRadialVelocity = 0.0f;
+	vec2f							m_moveDirection;
     float                           m_squareBoundingRadius = 0.0f;
     vector<Impact>                  m_impacts;
+    float                           m_linearVelocityDerivative = 0.0f;
+    float                           m_radialVelocityDerivative = 0.0f;
 };

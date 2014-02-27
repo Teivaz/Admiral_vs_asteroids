@@ -55,6 +55,17 @@ void PhysicNode::update(float dt)
     _pocessImpacts();
     adjustPosition(getMoveDirection() * getVelocity() * dt / 1000.f);
     adjustRotation(getRadialVelocity() * dt / 1000.0f);
+    if (dt > 0)
+    {
+        float deltaRadialVelocity = getRadialVelocity() - m_prevRadialVelocity;
+        m_radialVelocityDerivative = deltaRadialVelocity / dt;
+        m_prevRadialVelocity = getRadialVelocity();
+
+        float deltaLinearVelocity = getVelocity() - m_prevLinearVelocity;
+        m_linearVelocityDerivative = deltaLinearVelocity / dt;
+        m_prevLinearVelocity = getVelocity();
+    }
+
 }
 
 void PhysicNode::_pocessImpacts()
@@ -195,26 +206,36 @@ float PhysicNode::getMass() const
 }
 void PhysicNode::setRadialVelocity(float speed)
 {
-	m_rotationSpeed = speed;
+	m_radialVelocity = speed;
 }
 float PhysicNode::getRadialVelocity() const
 {
-	return m_rotationSpeed;
+	return m_radialVelocity;
 }
 void PhysicNode::setVelocity(float speed)
 {
-	m_linearSpeed = speed;
+	m_linearVelocity = speed;
 }
 float PhysicNode::getVelocity() const
 {
-	return m_linearSpeed;
+	return m_linearVelocity;
 }
 void PhysicNode::setMoveDirection(const vec2f& dir)
 {
-	m_direction = dir;
-	m_direction.Normalize();
+	m_moveDirection = dir;
+	m_moveDirection.Normalize();
 }
 const vec2f& PhysicNode::getMoveDirection() const
 {
-	return m_direction;
+	return m_moveDirection;
+}
+
+float PhysicNode::getRadialVelocityDerivative() const
+{
+    return m_linearVelocityDerivative;
+}
+
+float PhysicNode::getVelocityDerivative() const
+{
+    return m_radialVelocityDerivative;
 }

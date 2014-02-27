@@ -29,14 +29,14 @@ void CaptainsBridge::shoot()
 void CaptainsBridge::rotate(float speed)
 {
     m_ship->setEnginePower(Ship::ELeftFront, -speed);
-    m_ship->setEnginePower(Ship::ERightBack, -speed);
-    m_ship->setEnginePower(Ship::ELeftBack, speed);
     m_ship->setEnginePower(Ship::ERightFront, speed);
 }
 
 void CaptainsBridge::setMainEnginePower(float power)
 {
     m_ship->setEnginePower(Ship::EMain, power);
+    m_ship->setEnginePower(Ship::ERightBack, power);
+    m_ship->setEnginePower(Ship::ELeftBack, power);
 }
 
 void CaptainsBridge::setEnginePower(int engineId, float power)
@@ -59,7 +59,7 @@ float CaptainsBridge::getShipRotationSpeed() const
 }
 float CaptainsBridge::getShipRotationSpeedDerivative() const
 {
-    return 0;
+    return m_ship->getRadialVelocityDerivative();
 }
 vec2f CaptainsBridge::getShipMoveSpeedDerivative() const
 {
