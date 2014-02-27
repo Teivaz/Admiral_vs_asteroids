@@ -6,7 +6,7 @@
 
 GameObject::GameObject()
 {
-	m_AdditionalTransformation.SetIdentity();
+	m_additionalTransformation.SetIdentity();
 }
 
 GameObject::~GameObject()
@@ -78,7 +78,7 @@ void GameObject::_calculateTransformation()
     translate.SetTranslation(m_position);
     m_transformationMatrix = rot * m_transformationMatrix;
     m_transformationMatrix = translate * m_transformationMatrix;
-	m_transformationMatrix = m_AdditionalTransformation * m_transformationMatrix;
+	m_transformationMatrix = m_additionalTransformation * m_transformationMatrix;
     m_transformationIsDirty = false;
 }
 
@@ -118,7 +118,7 @@ const mat3f& GameObject::getTransformation()
 
 void GameObject::setAdditionalTransformation(const mat3f& mat)
 {
-	m_AdditionalTransformation = mat;
+	m_additionalTransformation = mat;
 	m_transformationIsDirty = true;
 }
 
