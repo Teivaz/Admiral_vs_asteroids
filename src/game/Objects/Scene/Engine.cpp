@@ -54,6 +54,7 @@ void Engine::update(float dt)
 		vec2f point = Transform(m_flame->getTransformation(), m_flame->getPosition());
         vec2f rotation(cos(m_flame->getRotation()), sin(m_flame->getRotation()));
 		rotation = TransformOuter(m_flame->getTransformation(), rotation);
+		rotation.Normalize();
         m_ship->addImpact(point, rotation * m_power * m_maxPower * dt / 1000.0f);
     }
 }

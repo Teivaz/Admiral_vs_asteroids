@@ -68,7 +68,9 @@ void PhysicNode::_pocessImpacts()
 
         float torque = impact.momentum.Dot((impact.point - center).GetRightNomal());
         netTorque += torque / getMass();
-        force += impact.momentum / getMass();
+		vec2f normal = (impact.point - center);
+		normal.Normalize();
+		force += normal * impact.momentum.Dot(normal) / getMass();
 
     }
     PLOG("torque: %f\n", netTorque);
