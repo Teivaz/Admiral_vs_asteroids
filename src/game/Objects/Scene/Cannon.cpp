@@ -38,8 +38,7 @@ void Cannon::shoot()
     {
         _calculateTransformation();
     }
-    vec3f beamPos3 = getTransformation() * vec3f(0.0f, 0.0f, 1.0f);
-    vec2f beamPos(beamPos3.x, beamPos3.y);
+    vec2f beamPos = Transform(getTransformation(), vec2f());
 
     LaserBeam::create(beamPos, m_speed, getRotation() + m_additionalRotation, m_lifetime);
 }
