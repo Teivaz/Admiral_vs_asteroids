@@ -19,6 +19,9 @@ Engine::Engine(Ship* ship, const Json::Value& value)
     float rotation = static_cast<float>(value["rotation"].asDouble());
     rotation = rotation / 180.0f * PI;
     m_flame->setRotation(rotation);
+
+    Json::ReadVector(value["direction"], m_direction);
+    m_direction.Normalize();
 }
 
 Engine::Engine(Ship* ship, Animation* flame,  const vec2f& pos)
@@ -52,10 +55,18 @@ void Engine::update(float dt)
     if (m_power > 0)
     {		
 		vec2f point = Transform(m_flame->getTransformation(), m_flame->getPosition());
-        vec2f rotation(cos(m_flame->getRotation()), sin(m_flame->getRotation()));
-		rotation = TransformOuter(m_flame->getTransformation(), rotation);
-		rotation.Normalize();
-        m_ship->addImpact(point, rotation * m_power * m_maxPower * dt / 1000.0f);
+
+        mat3f temp;
+        temp.SetRotatation(getRotation());
+
+        vec2f forceDirection = m_direction;
+        forceDirection = Transform(temp, m_direction);
+        forceDirection.Normalize();
+
+        float currentPower = m_power * m_maxPower;
+        float deltaEnergy = currentPower * (dt / 1000.0f);
+
+        m_ship->addImpact(point, forceDirection * deltaEnergy);
     }
 }
 

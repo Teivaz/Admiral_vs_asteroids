@@ -55,7 +55,7 @@ void GameplayState::update(float dt)
 {
 //    m_star->adjustRotation(m_movingSpeed* dt / 1000);
 
-    m_ship->update(dt);
+    //m_ship->update(dt);
 }
 
 void GameplayState::render()

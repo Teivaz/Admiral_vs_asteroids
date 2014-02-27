@@ -12,54 +12,61 @@
 	{
 		"main":
 		[{
-			"power": 10,
+			"power": 1000,
 			"position": {"x":0, "y":-31},
 			"rotation": 0,
-			"animation": "jet_big.anim"
+			"animation": "jet_big.anim",
+			"direction": {"x":0, "y":1}
 		}],
 
 		"left_front":
 		[{
-			"power": 1,
+			"power": 100,
 			"position": {"x":-36, "y":10},
 			"rotation": 180,
-			"animation": "jet_small.anim"
+			"animation": "jet_small.anim",
+			"direction": {"x":0, "y":-1}
 		}],
 
 		"right_front":
 		[{
-			"power": 1,
+			"power": 100,
 			"position": {"x":36, "y":10},
 			"rotation": 180,
-			"animation": "jet_small.anim"
+			"animation": "jet_small.anim",
+			"direction": {"x":0, "y":-1}
 		}],
 
 		"left_back":
 		[{
-			"power": 1,
+			"power": 100,
 			"position": {"x":-55, "y":-26},
 			"rotation": 0,
-			"animation": "jet_small.anim"
+			"animation": "jet_small.anim",
+			"direction": {"x":0, "y":1}
 		},
 		{
-			"power": 1,
+			"power": 100,
 			"position": {"x":-39, "y":-26},
 			"rotation": 0,
-			"animation": "jet_small.anim"
+			"animation": "jet_small.anim",
+			"direction": {"x":0, "y":1}
 		}],
 
 		"right_back":
 		[{
-			"power": 1,
+			"power": 100,
 			"position": {"x":39, "y":-26},
 			"rotation": 0,
-			"animation": "jet_small.anim"
+			"animation": "jet_small.anim",
+			"direction": {"x":0, "y":1}
 		},
 		{
-			"power": 1,
+			"power": 100,
 			"position": {"x":55, "y":-26},
 			"rotation": 0,
-			"animation": "jet_small.anim"
+			"animation": "jet_small.anim",
+			"direction": {"x":0, "y":1}
 		}]
 	},
 	"cannons":

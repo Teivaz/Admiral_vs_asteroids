@@ -66,14 +66,13 @@ void PhysicNode::_pocessImpacts()
     {
         vec2f center = Transform(getTransformation(), getMesh()[0]);
 
-        float torque = impact.momentum.Dot((impact.point - center).GetRightNomal());
-        netTorque += torque / getMass();
+        float torque = impact.momentum.Dot((impact.point - center).GetLeftNormal());
+        netTorque += torque / (getMass() * 2 * PI);
 		vec2f normal = (impact.point - center);
 		normal.Normalize();
 		force += normal * impact.momentum.Dot(normal) / getMass();
 
     }
-    PLOG("torque: %f\n", netTorque);
     setRotationSpeed(netTorque);
     setLinearSpeed(force.Normalize());
     if (getLinearSpeed())

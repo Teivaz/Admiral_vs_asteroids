@@ -31,4 +31,5 @@ private:
     AnimationPtr                    m_flame;
     float                           m_maxPower = 0;
     float                           m_power = 0;
+    vec2f                           m_direction = vec2f(1.0f, 0.0f);
 };
