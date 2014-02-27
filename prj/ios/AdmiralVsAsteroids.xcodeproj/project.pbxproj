@@ -29,7 +29,6 @@
 		9A056B2D18A11217008288DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A056B0A18A11217008288DA /* ViewController.m */; };
 		9A056B2F18A11217008288DA /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A056B1518A11217008288DA /* FileUtils.cpp */; };
 		9A220E6518A927C9007250FB /* GameDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6318A927C9007250FB /* GameDelegate.cpp */; };
-		9A220E6C18A928BE007250FB /* Collidable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6618A928BE007250FB /* Collidable.cpp */; };
 		9A220E6D18A928BE007250FB /* LaserBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6818A928BE007250FB /* LaserBeam.cpp */; };
 		9A220E6E18A928BE007250FB /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E6A18A928BE007250FB /* Ship.cpp */; };
 		9A220E7218A928E2007250FB /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A220E7018A928E2007250FB /* Animation.cpp */; };
@@ -42,6 +41,13 @@
 		9A84B9AC189FC9A4000239A1 /* bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A84B9AB189FC9A4000239A1 /* bundle */; };
 		9A89AECA18902E780033C8C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A89AEC918902E780033C8C4 /* Images.xcassets */; };
 		9A89AECC18902E860033C8C4 /* AdmiralVsAsteroids-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A89AECB18902E860033C8C4 /* AdmiralVsAsteroids-Info.plist */; };
+		9AB71D1A18BFAFA3007237CD /* PhysicNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB71D1818BFAFA3007237CD /* PhysicNode.cpp */; };
+		9AB71D2518BFAFB3007237CD /* Cannon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB71D1B18BFAFB3007237CD /* Cannon.cpp */; };
+		9AB71D2618BFAFB3007237CD /* Captain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB71D1D18BFAFB3007237CD /* Captain.cpp */; };
+		9AB71D2718BFAFB3007237CD /* CaptainsBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB71D1F18BFAFB3007237CD /* CaptainsBridge.cpp */; };
+		9AB71D2818BFAFB3007237CD /* CaptainTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB71D2118BFAFB3007237CD /* CaptainTask.cpp */; };
+		9AB71D2918BFAFB3007237CD /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB71D2318BFAFB3007237CD /* Engine.cpp */; };
+		9AB71D2C18BFB271007237CD /* Precompiled.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AB71D2B18BFB271007237CD /* Precompiled.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,18 +129,12 @@
 		9A056B0D18A11217008288DA /* shaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shaders.h; sourceTree = "<group>"; };
 		9A056B0E18A11217008288DA /* sprites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprites.h; sourceTree = "<group>"; };
 		9A056B0F18A11217008288DA /* textures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textures.h; sourceTree = "<group>"; };
-		9A056B1118A11217008288DA /* CMat3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMat3.h; sourceTree = "<group>"; };
 		9A056B1218A11217008288DA /* CustomGLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGLTypes.h; sourceTree = "<group>"; };
-		9A056B1318A11217008288DA /* CVec2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVec2.h; sourceTree = "<group>"; };
-		9A056B1418A11217008288DA /* CVec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVec3.h; sourceTree = "<group>"; };
 		9A056B1518A11217008288DA /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
 		9A056B1618A11217008288DA /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
 		9A056B1718A11217008288DA /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
-		9A056B1818A11217008288DA /* VectorGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorGeometry.h; sourceTree = "<group>"; };
 		9A220E6318A927C9007250FB /* GameDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameDelegate.cpp; sourceTree = "<group>"; };
 		9A220E6418A927C9007250FB /* GameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDelegate.h; sourceTree = "<group>"; };
-		9A220E6618A928BE007250FB /* Collidable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collidable.cpp; sourceTree = "<group>"; };
-		9A220E6718A928BE007250FB /* Collidable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collidable.h; sourceTree = "<group>"; };
 		9A220E6818A928BE007250FB /* LaserBeam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LaserBeam.cpp; sourceTree = "<group>"; };
 		9A220E6918A928BE007250FB /* LaserBeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaserBeam.h; sourceTree = "<group>"; };
 		9A220E6A18A928BE007250FB /* Ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ship.cpp; sourceTree = "<group>"; };
@@ -156,6 +156,20 @@
 		9A84BAAC18A04248000239A1 /* lodepng.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lodepng.xcodeproj; path = ../../libs/lodepng/prj/lodepng.xcodeproj; sourceTree = "<group>"; };
 		9A89AEC918902E780033C8C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../resources_built/Images.xcassets; sourceTree = "<group>"; };
 		9A89AECB18902E860033C8C4 /* AdmiralVsAsteroids-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AdmiralVsAsteroids-Info.plist"; path = "../../resources_built/AdmiralVsAsteroids-Info.plist"; sourceTree = "<group>"; };
+		9AB71D1818BFAFA3007237CD /* PhysicNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhysicNode.cpp; path = Physics/PhysicNode.cpp; sourceTree = "<group>"; };
+		9AB71D1918BFAFA3007237CD /* PhysicNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicNode.h; path = Physics/PhysicNode.h; sourceTree = "<group>"; };
+		9AB71D1B18BFAFB3007237CD /* Cannon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cannon.cpp; sourceTree = "<group>"; };
+		9AB71D1C18BFAFB3007237CD /* Cannon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cannon.h; sourceTree = "<group>"; };
+		9AB71D1D18BFAFB3007237CD /* Captain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Captain.cpp; sourceTree = "<group>"; };
+		9AB71D1E18BFAFB3007237CD /* Captain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Captain.h; sourceTree = "<group>"; };
+		9AB71D1F18BFAFB3007237CD /* CaptainsBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CaptainsBridge.cpp; sourceTree = "<group>"; };
+		9AB71D2018BFAFB3007237CD /* CaptainsBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptainsBridge.h; sourceTree = "<group>"; };
+		9AB71D2118BFAFB3007237CD /* CaptainTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CaptainTask.cpp; sourceTree = "<group>"; };
+		9AB71D2218BFAFB3007237CD /* CaptainTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptainTask.h; sourceTree = "<group>"; };
+		9AB71D2318BFAFB3007237CD /* Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Engine.cpp; sourceTree = "<group>"; };
+		9AB71D2418BFAFB3007237CD /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		9AB71D2A18BFB271007237CD /* collisions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collisions.h; sourceTree = "<group>"; };
+		9AB71D2B18BFB271007237CD /* Precompiled.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Precompiled.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +194,9 @@
 				9A056AD518A11217008288DA /* game */,
 				9A056B0418A11217008288DA /* ios */,
 				9A056B0C18A11217008288DA /* Precompiled.h */,
+				9AB71D2B18BFB271007237CD /* Precompiled.cpp */,
 				9A056B0D18A11217008288DA /* shaders.h */,
+				9AB71D2A18BFB271007237CD /* collisions.h */,
 				9A056B0E18A11217008288DA /* sprites.h */,
 				9A056B0F18A11217008288DA /* textures.h */,
 				9A056B1018A11217008288DA /* utils */,
@@ -228,6 +244,7 @@
 		9A056AE718A11217008288DA /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				9AB71D1718BFAF90007237CD /* Physics */,
 				9A220E6F18A928E2007250FB /* Animations */,
 				9A056AE818A11217008288DA /* GameObject.cpp */,
 				9A056AE918A11217008288DA /* GameObject.h */,
@@ -261,8 +278,16 @@
 		9A056AF518A11217008288DA /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				9A220E6618A928BE007250FB /* Collidable.cpp */,
-				9A220E6718A928BE007250FB /* Collidable.h */,
+				9AB71D1B18BFAFB3007237CD /* Cannon.cpp */,
+				9AB71D1C18BFAFB3007237CD /* Cannon.h */,
+				9AB71D1D18BFAFB3007237CD /* Captain.cpp */,
+				9AB71D1E18BFAFB3007237CD /* Captain.h */,
+				9AB71D1F18BFAFB3007237CD /* CaptainsBridge.cpp */,
+				9AB71D2018BFAFB3007237CD /* CaptainsBridge.h */,
+				9AB71D2118BFAFB3007237CD /* CaptainTask.cpp */,
+				9AB71D2218BFAFB3007237CD /* CaptainTask.h */,
+				9AB71D2318BFAFB3007237CD /* Engine.cpp */,
+				9AB71D2418BFAFB3007237CD /* Engine.h */,
 				9A220E6818A928BE007250FB /* LaserBeam.cpp */,
 				9A220E6918A928BE007250FB /* LaserBeam.h */,
 				9A220E6A18A928BE007250FB /* Ship.cpp */,
@@ -317,14 +342,10 @@
 		9A056B1018A11217008288DA /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				9A056B1118A11217008288DA /* CMat3.h */,
 				9A056B1218A11217008288DA /* CustomGLTypes.h */,
-				9A056B1318A11217008288DA /* CVec2.h */,
-				9A056B1418A11217008288DA /* CVec3.h */,
 				9A056B1518A11217008288DA /* FileUtils.cpp */,
 				9A056B1618A11217008288DA /* FileUtils.h */,
 				9A056B1718A11217008288DA /* Singleton.h */,
-				9A056B1818A11217008288DA /* VectorGeometry.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -403,6 +424,15 @@
 				9A89AEC918902E780033C8C4 /* Images.xcassets */,
 			);
 			name = resources;
+			sourceTree = "<group>";
+		};
+		9AB71D1718BFAF90007237CD /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				9AB71D1818BFAFA3007237CD /* PhysicNode.cpp */,
+				9AB71D1918BFAFA3007237CD /* PhysicNode.h */,
+			);
+			name = Physics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,28 +532,34 @@
 				9A056B2D18A11217008288DA /* ViewController.m in Sources */,
 				9A056B2B18A11217008288DA /* AppDelegate.m in Sources */,
 				9A056B2418A11217008288DA /* SliderWidget.cpp in Sources */,
+				9AB71D2718BFAFB3007237CD /* CaptainsBridge.cpp in Sources */,
 				9A056B2618A11217008288DA /* Shape.cpp in Sources */,
+				9AB71D2518BFAFB3007237CD /* Cannon.cpp in Sources */,
 				9A220E6E18A928BE007250FB /* Ship.cpp in Sources */,
 				9A056B2718A11217008288DA /* Sprite.cpp in Sources */,
 				9A056B2918A11217008288DA /* GameplayState.cpp in Sources */,
+				9AB71D2818BFAFB3007237CD /* CaptainTask.cpp in Sources */,
+				9AB71D2C18BFB271007237CD /* Precompiled.cpp in Sources */,
 				9A056B2818A11217008288DA /* Star.cpp in Sources */,
 				9A056B2F18A11217008288DA /* FileUtils.cpp in Sources */,
+				9AB71D1A18BFAFA3007237CD /* PhysicNode.cpp in Sources */,
 				9A220E6518A927C9007250FB /* GameDelegate.cpp in Sources */,
 				9A056B2518A11217008288DA /* Widget.cpp in Sources */,
 				9A056B2018A11217008288DA /* GameObject.cpp in Sources */,
 				9A056B1C18A11217008288DA /* SpriteManager.cpp in Sources */,
+				9AB71D2918BFAFB3007237CD /* Engine.cpp in Sources */,
 				9A056B1E18A11217008288DA /* TouchManager.cpp in Sources */,
 				9A056B2C18A11217008288DA /* main.m in Sources */,
 				9A056B1B18A11217008288DA /* ShaderManager.cpp in Sources */,
 				9A056B2A18A11217008288DA /* StateMachine.cpp in Sources */,
 				9A056B1A18A11217008288DA /* Painter.cpp in Sources */,
 				9A056B1D18A11217008288DA /* TextureManager.cpp in Sources */,
+				9AB71D2618BFAFB3007237CD /* Captain.cpp in Sources */,
 				9A269B3218B26EB3001A0D8D /* CollisionManager.cpp in Sources */,
 				9A220E6D18A928BE007250FB /* LaserBeam.cpp in Sources */,
 				9A056B2218A11217008288DA /* ButtonWidget.cpp in Sources */,
 				9A056B1F18A11217008288DA /* TouchReceiver.cpp in Sources */,
 				9A220E7218A928E2007250FB /* Animation.cpp in Sources */,
-				9A220E6C18A928BE007250FB /* Collidable.cpp in Sources */,
 				9A056B2318A11217008288DA /* GuiManager.cpp in Sources */,
 				9A056B2118A11217008288DA /* BasicWidget.cpp in Sources */,
 			);
@@ -642,7 +678,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)_d";
 				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
-				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/ ../../libs/sigslot";
+				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/ ../../libs/sigslot ../../libs/vectry";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -673,7 +709,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
-				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/ ../../libs/sigslot";
+				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/ ../../libs/sigslot ../../libs/vectry";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

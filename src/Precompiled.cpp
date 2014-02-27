@@ -1,8 +1,8 @@
 #include "Precompiled.h"
 
+#if (defined _WIN32 && defined _DEBUG)
 #include <varargs.h>
 
-#if (defined _WIN32 && defined _DEBUG)
 void PLOG(const char* x, ...)
 {
     va_list params;
