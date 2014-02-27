@@ -53,30 +53,27 @@ PhysicNode::~PhysicNode()
 void PhysicNode::update(float dt)
 {
     _pocessImpacts();
-	adjustPosition(getDirection() * getLinearSpeed() * dt / 1000.f);
-	adjustRotation(getRotationSpeed() * dt / 1000.0f);
+    adjustPosition(getMoveDirection() * getVelocity() * dt / 1000.f);
+    adjustRotation(getRadialVelocity() * dt / 1000.0f);
 }
 
 void PhysicNode::_pocessImpacts()
 {
-    vec2f force(getDirection());
-    force *= getLinearSpeed();
-    float netTorque = getRotationSpeed();
+    vec2f force(getMoveDirection() * getVelocity());
+    float netTorque = getRadialVelocity();
     for (Impact& impact : m_impacts)
     {
         vec2f center = Transform(getTransformation(), getMesh()[0]);
-
         float torque = impact.momentum.Dot((impact.point - center).GetLeftNormal());
         netTorque += torque / (getMass() * 2 * PI);
 		vec2f normal = (impact.point - center);
 		normal.Normalize();
 		force += normal * impact.momentum.Dot(normal) / getMass();
-
     }
-    setRotationSpeed(netTorque);
-    setLinearSpeed(force.Normalize());
-    if (getLinearSpeed())
-        setDirection(force);
+    setRadialVelocity(netTorque);
+    setVelocity(force.Normalize());
+    if (getVelocity())
+        setMoveDirection(force);
     m_impacts.clear();
 }
 
@@ -183,8 +180,8 @@ vec2f PhysicNode::getMomentum(const vec2f& point)
 {
     vec2f toPoint(point - Transform(getTransformation(), m_collisionShape[0]));
 	toPoint.TurnRight90();
-	vec2f rotationPart = toPoint * getRotationSpeed();
-	vec2f linearPart = getDirection() * getLinearSpeed();
+	vec2f rotationPart = toPoint * getRadialVelocity();
+	vec2f linearPart = getMoveDirection() * getVelocity();
 	vec2f momentum = (linearPart + rotationPart) * getMass();
 	return momentum;
 }
@@ -196,28 +193,28 @@ float PhysicNode::getMass() const
 {
 	return m_mass;
 }
-void PhysicNode::setRotationSpeed(float speed)
+void PhysicNode::setRadialVelocity(float speed)
 {
 	m_rotationSpeed = speed;
 }
-float PhysicNode::getRotationSpeed() const
+float PhysicNode::getRadialVelocity() const
 {
 	return m_rotationSpeed;
 }
-void PhysicNode::setLinearSpeed(float speed)
+void PhysicNode::setVelocity(float speed)
 {
 	m_linearSpeed = speed;
 }
-float PhysicNode::getLinearSpeed() const
+float PhysicNode::getVelocity() const
 {
 	return m_linearSpeed;
 }
-void PhysicNode::setDirection(const vec2f& dir)
+void PhysicNode::setMoveDirection(const vec2f& dir)
 {
 	m_direction = dir;
 	m_direction.Normalize();
 }
-const vec2f& PhysicNode::getDirection() const
+const vec2f& PhysicNode::getMoveDirection() const
 {
 	return m_direction;
 }

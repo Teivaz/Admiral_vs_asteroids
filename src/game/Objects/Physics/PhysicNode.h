@@ -36,12 +36,12 @@ public:
     
     virtual void					setMass(float mass);
     virtual float					getMass() const;
-	virtual void					setRotationSpeed(float speed);
-	virtual float					getRotationSpeed() const;
-	virtual void					setLinearSpeed(float speed);
-	virtual float					getLinearSpeed() const;
-	virtual void 					setDirection(const vec2f& dir);
-	virtual const vec2f&			getDirection() const;
+    virtual void					setRadialVelocity(float value);
+	virtual float					getRadialVelocity() const;
+    virtual void					setVelocity(float value);
+	virtual float					getVelocity() const;
+    virtual void 					setMoveDirection(const vec2f& dir);
+    virtual const vec2f&			getMoveDirection() const;
     
     void                            setColliosionChecked();
     float                           getSqBoundingRadius() const { return m_squareBoundingRadius; }

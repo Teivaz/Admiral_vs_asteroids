@@ -16,8 +16,8 @@ LaserBeam::LaserBeam(const vec2f& position, float speed, float direction, float 
     m_directionV = vec2f(cos(m_directionF), sin(m_directionF));
     setRotation(m_directionF + PI/2);
     setPosition(position);
-	setDirection(m_directionV);
-	setLinearSpeed(speed);
+	setMoveDirection(m_directionV);
+	setVelocity(speed);
 
 	setMass(1);
 }

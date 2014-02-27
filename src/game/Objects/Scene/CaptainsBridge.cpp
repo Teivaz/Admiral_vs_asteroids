@@ -36,27 +36,26 @@ void CaptainsBridge::rotate(float speed)
 
 void CaptainsBridge::setMainEnginePower(float power)
 {
-    // m_ship->setEnginePower(EMain, power);
+    m_ship->setEnginePower(Ship::EMain, power);
 }
 
 void CaptainsBridge::setEnginePower(int engineId, float power)
 {
-    // m_ship->setEnginePower(engineId, power);
+    m_ship->setEnginePower(static_cast<Ship::EEngines>(engineId), power);
 }
 
 vec2f CaptainsBridge::getShipMoveDirection() const
 {
-//    return m_ship->getMoveDirection();
-    return 0;
+    return m_ship->getMoveDirection();
 }
 
 vec2f CaptainsBridge::getShipRotation() const
 {
-    return 0;
+    return m_ship->getRotation();
 }
 float CaptainsBridge::getShipRotationSpeed() const
 {
-    return 0;
+    return m_ship->getRadialVelocity();
 }
 float CaptainsBridge::getShipRotationSpeedDerivative() const
 {

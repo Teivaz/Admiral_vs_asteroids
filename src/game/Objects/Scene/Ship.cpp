@@ -131,7 +131,7 @@ Ship::Ship(const string& name, const string& collision, Sprite* body)
 , m_ship(SpritePtr(body))
 {
     m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
-	setDirection(vec2f(0.0f, 1.0f));
+	setMoveDirection(vec2f(0.0f, 1.0f));
 }
 
 Ship::~Ship()
