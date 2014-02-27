@@ -50,13 +50,17 @@ void Engine::update(float dt)
 {
     m_flame->update(dt);
     if (m_power > 0)
-    {
-        vec3f point3(m_flame->getPosition(), 0.0f);
-        point3 = m_flame->getTransformation() * point3;
-        vec2f point(point3.x, point3.y);
+    {		
+		vec2f point = Transform(m_flame->getTransformation(), m_flame->getPosition());
         vec2f rotation(cos(m_flame->getRotation()), sin(m_flame->getRotation()));
+		rotation = TransformOuter(m_flame->getTransformation(), rotation);
         m_ship->addImpact(point, rotation * m_power * m_maxPower * dt / 1000.0f);
     }
+}
+
+void Engine::_calculateTransformation()
+{
+	GameObject::_calculateTransformation();
 }
 
 void Engine::setPosition(const vec2f& pos)

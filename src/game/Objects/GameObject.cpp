@@ -118,6 +118,8 @@ const mat3f& GameObject::getTransformation()
 
 void GameObject::setAdditionalTransformation(const mat3f& mat)
 {
+	if (mat == m_additionalTransformation)
+		return;
 	m_additionalTransformation = mat;
 	m_transformationIsDirty = true;
 }

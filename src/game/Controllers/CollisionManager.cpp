@@ -149,17 +149,13 @@ bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, vec2f& poi
 	for (unsigned int i = 1; i < meshA.size() - 1; ++i)
 	{
 		vec2f norm = meshA[i + 1] - meshA[i];
-		norm.SwapElemtns();
-		norm.x *= -1.0f;
-		norm.Normalize();
+		norm = norm.GetRightNomal();
 		normals.push_back(norm);
 	}
 	for (unsigned int i = 1; i < meshB.size() - 1; ++i)
 	{
 		vec2f norm = meshB[i + 1] - meshB[i];
-		norm.SwapElemtns();
-		norm.x *= -1.0f;
-		norm.Normalize();
+		norm = norm.GetRightNomal();
 		normals.push_back(norm);
 	}
 

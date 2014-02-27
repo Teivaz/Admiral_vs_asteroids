@@ -113,7 +113,7 @@ void PhysicNode::_calculateTransformation()
 {
     GameObject::_calculateTransformation();
 	m_squareBoundingRadius = 0.0f;
-    for (vec2f& vertex : m_collisionShape)
+    for (vec2f vertex : m_collisionShape)
     {
         vertex = Transform(getTransformation(), vertex);
 		m_squareBoundingRadius = max(m_squareBoundingRadius, (vertex - m_collisionShape[0]).SqLength());
