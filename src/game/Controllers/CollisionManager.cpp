@@ -132,18 +132,14 @@ bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, vec2f& poi
 	meshA.reserve(a->getMesh().size());
 	for (auto v : a->getMesh())
 	{
-		vec3f v3(v, 1.0f);
-		v3 = a->getTransformation() * v3;
-		meshA.push_back(vec2f(v3.x, v3.y));
+		meshA.push_back(Transform(a->getTransformation(), v));
 	}
 
 	vector<vec2f> meshB;
 	meshB.reserve(b->getMesh().size());
 	for (auto v : b->getMesh())
 	{
-		vec3f v3(v, 1.0f);
-		v3 = b->getTransformation() * v3;
-		meshB.push_back(vec2f(v3.x, v3.y));
+		meshB.push_back(Transform(b->getTransformation(), v));
 	}
 
 	vector<vec2f> normals;
@@ -153,17 +149,13 @@ bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, vec2f& poi
 	for (unsigned int i = 1; i < meshA.size() - 1; ++i)
 	{
 		vec2f norm = meshA[i + 1] - meshA[i];
-		norm.SwapElemtns();
-		norm.x *= -1.0f;
-		norm.Normalize();
+		norm = norm.GetRightNomal();
 		normals.push_back(norm);
 	}
 	for (unsigned int i = 1; i < meshB.size() - 1; ++i)
 	{
 		vec2f norm = meshB[i + 1] - meshB[i];
-		norm.SwapElemtns();
-		norm.x *= -1.0f;
-		norm.Normalize();
+		norm = norm.GetRightNomal();
 		normals.push_back(norm);
 	}
 

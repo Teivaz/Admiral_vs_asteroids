@@ -129,6 +129,6 @@ void GameplayState::onSlider(int n, float v)
     }
     else
     {
-        //m_ship->setEnginePower(2 * (v - 0.5f));
+		m_ship->setEnginePower(Ship::EMain, 2 * (v - 0.5f));
     }
 }

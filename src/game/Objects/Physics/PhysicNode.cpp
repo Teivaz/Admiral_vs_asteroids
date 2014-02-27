@@ -19,10 +19,6 @@ PhysicNode::PhysicNode(const vector<vec2f>& mesh)
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
 	CollisionManager::GetInstance()->add(this);
-    for (unsigned int i = 1; i < m_collisionShape.size(); ++i)
-    {
-        m_squareBoundingRadius = max(m_squareBoundingRadius, (m_collisionShape[0] - m_collisionShape[i]).SqLength());
-    }
 }
 
 PhysicNode::PhysicNode(const string& meshName)
@@ -68,12 +64,13 @@ void PhysicNode::_pocessImpacts()
     float netTorque = getRotationSpeed();
     for (Impact& impact : m_impacts)
     {
-        vec3f center3(getMesh()[0], 1.0f);
-        center3 = getTransformation() * center3;
-        vec2f center = (center3.x, center3.y);
+        vec2f center = Transform(getTransformation(), getMesh()[0]);
+
         float torque = impact.momentum.Dot((impact.point - center).GetRightNomal());
         netTorque += torque / getMass();
-        force += impact.momentum / getMass();
+		vec2f normal = (impact.point - center);
+		normal.Normalize();
+		force += normal * impact.momentum.Dot(normal) / getMass();
 
     }
     PLOG("torque: %f\n", netTorque);
@@ -117,12 +114,11 @@ void PhysicNode::renderDebug()
 void PhysicNode::_calculateTransformation()
 {
     GameObject::_calculateTransformation();
-    for (vec2f& vertex : m_collisionShape)
+	m_squareBoundingRadius = 0.0f;
+    for (vec2f vertex : m_collisionShape)
     {
-        vec3f v(vertex.x, vertex.y, 0.0f);
-        v = m_transformationMatrix * v;
-        vertex.x = v.x;
-        vertex.y = v.y;
+        vertex = Transform(getTransformation(), vertex);
+		m_squareBoundingRadius = max(m_squareBoundingRadius, (vertex - m_collisionShape[0]).SqLength());
     }
 }
 
@@ -179,14 +175,14 @@ void PhysicNode::setColliosionChecked()
 }
 void PhysicNode::setAdditionalTransformation(const mat3f& mat)
 {
-    m_AdditionalTransformation = mat;
+    m_additionalTransformation = mat;
     m_transformationIsDirty = true;
     m_hasMoved = true;
 }
 
 vec2f PhysicNode::getMomentum(const vec2f& point)
 {
-    vec2f toPoint(point - m_collisionShape[0]);
+    vec2f toPoint(point - Transform(getTransformation(), m_collisionShape[0]));
 	toPoint.TurnRight90();
 	vec2f rotationPart = toPoint * getRotationSpeed();
 	vec2f linearPart = getDirection() * getLinearSpeed();

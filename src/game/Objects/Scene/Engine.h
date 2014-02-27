@@ -24,7 +24,7 @@ public:
     void                            setPower(float);
 
 private:
-//    void                            _load
+	void                            _calculateTransformation();
 
 private:
     Ship*                           m_ship;

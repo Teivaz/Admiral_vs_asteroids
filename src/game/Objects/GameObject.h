@@ -51,7 +51,7 @@ protected:
     vec2f                           m_position = 0.0f;
     vec2f                           m_scale = 1.0f;
     float                           m_rotation = 0.0f;
+	mat3f                           m_additionalTransformation;
 	mat3f                           m_transformationMatrix;
-	mat3f                           m_AdditionalTransformation;
     int                             m_renderLayer = 0;
 };

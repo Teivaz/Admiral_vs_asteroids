@@ -27,10 +27,7 @@ public:
     virtual void                    setScale(const vec2f& s);
     virtual void                    setRotation(float r);
     virtual void					setAdditionalTransformation(const mat3f&);
-//    virtual const vec2f&            getPosition() const;
-//    virtual const vec2f&            getScale() const;
-//    virtual float                   getRotation() const;
-    
+
     //Physics
     virtual void					onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum);
     
@@ -47,10 +44,7 @@ public:
 	virtual const vec2f&			getDirection() const;
     
     void                            setColliosionChecked();
-    float                           getSqBoundingRadius() const 
-    { 
-        return m_squareBoundingRadius * getScale().SqLength();
-    }
+    float                           getSqBoundingRadius() const { return m_squareBoundingRadius; }
 
 	vec2f                           getMomentum(const vec2f& momentum);
     void                            addImpact(const vec2f& point, const vec2f& momentum);
