@@ -7,10 +7,13 @@ class GameObject;
 class CaptainsBridge : public has_slots<>
 {
     friend Captain;
+
+public:
+    virtual ~CaptainsBridge();
+
 protected: // Captain only!
 
-    CaptainsBridge();
-    virtual ~CaptainsBridge();
+    CaptainsBridge(const string& shipName);
 
     virtual void                    render();
     virtual void                    update(float dt);

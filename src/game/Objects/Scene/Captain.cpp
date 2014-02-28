@@ -4,11 +4,10 @@
 #include "CaptainsBridge.h"
 #include "CaptainTask.h"
 
-Captain::Captain(const string& name, CaptainsBridgePtr bridge)
-: m_name(name)
-, m_bridge(bridge)
+Captain::Captain(const string& captainName, const string& shipName)
+: m_name(captainName)
 {
-
+    m_bridge.reset(new CaptainsBridge(shipName));
 }
 
 Captain::~Captain()
@@ -31,9 +30,10 @@ void Captain::update(float dt)
 }
 
 
-void Captain::shoot()
+void Captain::shoot(bool yes)
 {
-    m_bridge->shoot();
+    if (yes)
+        m_bridge->shoot();
 }
 
 void Captain::rotate(float speed)

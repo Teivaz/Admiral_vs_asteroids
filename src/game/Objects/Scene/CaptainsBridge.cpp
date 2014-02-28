@@ -9,8 +9,11 @@
 #include "Objects/Animations/Animation.h"
 #include "Controllers/CollisionManager.h"
 
-CaptainsBridge::CaptainsBridge()
-{}
+CaptainsBridge::CaptainsBridge(const string& shipName)
+: m_ship(ShipPtr(Ship::create(shipName)))
+{
+    Painter::GetInstance()->add(m_ship.get());
+}
 
 CaptainsBridge::~CaptainsBridge()
 {}
@@ -30,6 +33,8 @@ void CaptainsBridge::rotate(float speed)
 {
     m_ship->setEnginePower(Ship::ELeftFront, -speed);
     m_ship->setEnginePower(Ship::ERightFront, speed);
+    m_ship->setEnginePower(Ship::ERightBack, -speed);
+    m_ship->setEnginePower(Ship::ELeftBack, speed);
 }
 
 void CaptainsBridge::setMainEnginePower(float power)

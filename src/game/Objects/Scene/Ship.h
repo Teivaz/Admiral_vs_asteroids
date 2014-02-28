@@ -35,6 +35,7 @@ public:
 
     virtual void                    render();
     virtual void                    update(float dt);
+    virtual void                    setCamera(CameraPtr);
 
     virtual void                    setPosition(const vec2f& p);
     virtual void                    setScale(const vec2f& s);

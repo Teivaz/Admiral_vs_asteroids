@@ -3,9 +3,9 @@
 
 class Sprite;
 class Widget;
-MakeShared(Ship);
+MakeShared(Captain);
 
-class GameplayState : public State
+class GameplayState : public State, has_slots<>
 {
 public:
     GameplayState();
@@ -19,8 +19,16 @@ public:
     virtual void                pause(bool);
     virtual bool                isFinished() const;
     
-    void                        onButton(bool);
-    void                        onSlider(int, float);
+    void                        addLocalControlledPlayer(CaptainPtr player);
+
+    // Events
+
+    signal1<bool>               onButton;
+    signal1<float>              onSliderLeft;
+    signal1<float>              onSliderRight;
+
+//    signal2<int, 
+
 private:
     void                        _setMovingSpeed(vec2f);
 
@@ -33,5 +41,5 @@ private:
     Widget*                     m_gui = nullptr;
     GameObject*                 m_laserBeam = nullptr;
 
-    ShipPtr                     m_ship;
+    vector<CaptainPtr>          m_players;
 };

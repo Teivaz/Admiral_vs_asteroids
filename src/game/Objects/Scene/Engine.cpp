@@ -22,6 +22,7 @@ Engine::Engine(Ship* ship, const Json::Value& value)
 
     Json::ReadVector(value["direction"], m_direction);
     m_direction.Normalize();
+    setPower(0);
 }
 
 Engine::Engine(Ship* ship, Animation* flame,  const vec2f& pos)
@@ -30,6 +31,7 @@ Engine::Engine(Ship* ship, Animation* flame,  const vec2f& pos)
 {
     m_flame->setFramesPosition(pos);
     setPosition(pos);
+    setPower(0);
 }
 
 Engine::~Engine()
@@ -92,7 +94,7 @@ void Engine::setScale(const vec2f& scale)
 void Engine::setPower(float p)
 {
     vec2f scale = m_flame->getScale();
-    scale.x = clamp(p);
+    scale.y = clamp(p);
     m_flame->setScale(scale);
     m_power = clamp(p);
 }

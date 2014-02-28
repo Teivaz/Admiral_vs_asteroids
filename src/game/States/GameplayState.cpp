@@ -12,8 +12,9 @@
 #include "Objects/GUI/ButtonWidget.h"
 #include "Objects/GUI/SliderWidget.h"
 #include "Controllers/TouchManager.h"
-#include "Objects/Scene/LaserBeam.h"
-#include "Objects/Scene/Ship.h"
+
+#include "Objects/Scene/Captain.h"
+#include "Objects/Scene/CaptainsBridge.h"
 
 class ButtonCallBack : public ButtonWidget::CallbackFunctor
 {
@@ -33,7 +34,10 @@ public:
     SliderCallBack(int _n, GameplayState* _state) : n(_n), state(_state) {}
     virtual void operator()(float val)
     {
-        state->onSlider(n, val);
+        if (n == 1)
+            state->onSliderLeft(val * 2 - 1);
+        else
+            state->onSliderRight(val * 2 - 1);
     }
 private:
     GameplayState* state;
@@ -53,29 +57,23 @@ GameplayState::~GameplayState()
 
 void GameplayState::update(float dt)
 {
-//    m_star->adjustRotation(m_movingSpeed* dt / 1000);
-
-    //m_ship->update(dt);
 }
 
 void GameplayState::render()
 {
-//    m_gui->render();
 }
 
 void GameplayState::onEnter()
 {
+    CaptainPtr player = CaptainPtr(new Captain("Sheppard", "envader.ship"));
+    m_players.push_back(player);
+
+    addLocalControlledPlayer(player);
+
 //    SpriteManager::GetInstance()->createSprite(sprites::k_stars_back, -1, 2, true, -100);
 
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
 
-//	m_star = new Ship("Shepard");
-//	m_star->setCamera(Painter::GetInstance()->getSceneCamera());
-//	m_star->adjustPosition(100);
-//	Painter::GetInstance()->add(m_star);
-    //m_star->setPosition(-m_star->getSize() / 2);
-    //m_star->setShader(softShader);
-    //Painter::GetInstance()->add(m_star);
 
     m_gui = GuiManager::GetInstance()->LoadGui("gui.json");
     TouchManager::GetInstance()->addReceiever(m_gui);
@@ -95,10 +93,6 @@ void GameplayState::onEnter()
         sl->setCallback(new SliderCallBack(2, this));
     }
     Painter::GetInstance()->add(m_gui);
-
-    m_ship.reset(Ship::create("envader.ship"));
-	m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
-    Painter::GetInstance()->add(m_ship.get());
 }
 
 void GameplayState::onFinish()
@@ -114,21 +108,9 @@ bool GameplayState::isFinished() const
     return m_isFinished;
 }
 
-void GameplayState::onButton(bool b)
+void GameplayState::addLocalControlledPlayer(CaptainPtr player)
 {
-//    m_star->adjustPosition(b?0.1f:-0.1f);
-    if (b)
-        m_ship->shoot();
-}
-
-void GameplayState::onSlider(int n, float v)
-{
-    if (n == 1)
-    {
-        m_ship->setRotationEnginesSpeed(2 * (v - 0.5f));
-    }
-    else
-    {
-		m_ship->setEnginePower(Ship::EMain, 2 * (v - 0.5f));
-    }
+    onButton.connect(player.get(), &Captain::shoot);
+    onSliderLeft.connect(player.get(), &Captain::rotate);
+    onSliderRight.connect(player.get(), &Captain::setMainEnginePower);
 }

@@ -8,13 +8,13 @@ class Captain : public TouchReceiver, public has_slots<>
 {
 public:
 
-    Captain(const string& name, CaptainsBridgePtr bridge);
+    Captain(const string& captainName, const string& shipName);
     virtual ~Captain();
 
 //    virtual void                    render();
     virtual void                    update(float dt);
     
-    void                            shoot();
+    void                            shoot(bool);
 
     // Set propriate maneuver engine power to rotate in desired direction
     // -1 ... +1

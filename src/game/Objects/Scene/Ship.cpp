@@ -130,12 +130,18 @@ Ship::Ship(const string& name, const string& collision, Sprite* body)
 , m_name(name)
 , m_ship(SpritePtr(body))
 {
-    m_ship->setCamera(Painter::GetInstance()->getSceneCamera());
+    setCamera(Painter::GetInstance()->getSceneCamera());
 	setMoveDirection(vec2f(0.0f, 1.0f));
 }
 
 Ship::~Ship()
 {
+}
+
+void Ship::setCamera(CameraPtr cam)
+{
+    PhysicNode::setCamera(cam);
+    m_ship->setCamera(cam);
 }
 
 void Ship::render()
