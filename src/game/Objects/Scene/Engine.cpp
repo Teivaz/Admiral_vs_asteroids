@@ -10,13 +10,13 @@ Engine::Engine(Ship* ship, const Json::Value& value)
 {
     m_flame.reset(SpriteManager::GetInstance()->createAnimation(value["animation"].asString()));
 
-    vec2f position;
+    vec2d position;
     Json::ReadVector(value["position"], position);
     m_flame->setPosition(position);
 
-    m_maxPower = static_cast<float>(value["power"].asDouble());
+    m_maxPower = static_cast<double>(value["power"].asDouble());
 
-    float rotation = static_cast<float>(value["rotation"].asDouble());
+    double rotation = static_cast<double>(value["rotation"].asDouble());
     rotation = rotation / 180.0f * PI;
     m_flame->setRotation(rotation);
 
@@ -25,7 +25,7 @@ Engine::Engine(Ship* ship, const Json::Value& value)
     setPower(0);
 }
 
-Engine::Engine(Ship* ship, Animation* flame,  const vec2f& pos)
+Engine::Engine(Ship* ship, Animation* flame,  const vec2d& pos)
 : m_ship(ship)
 , m_flame(flame)
 {
@@ -51,22 +51,22 @@ void Engine::render()
     m_flame->render();
 }
 
-void Engine::update(float dt)
+void Engine::update(double dt)
 {
     m_flame->update(dt);
     if (m_power > 0)
     {		
-		vec2f point = Transform(m_flame->getTransformation(), m_flame->getPosition());
+		vec2d point = Transform(m_flame->getTransformation(), m_flame->getPosition());
 
-        mat3f temp;
+        mat3d temp;
         temp.SetRotatation(getRotation());
 
-        vec2f forceDirection = m_direction;
+        vec2d forceDirection = m_direction;
         forceDirection = Transform(temp, m_direction);
         forceDirection.Normalize();
 
-        float currentPower = m_power * m_maxPower;
-        float deltaEnergy = currentPower * (dt / 1000.0f);
+        double currentPower = m_power * m_maxPower;
+        double deltaEnergy = currentPower * (dt / 1000.0f);
 
         m_ship->addImpact(point, forceDirection * deltaEnergy);
     }
@@ -77,23 +77,23 @@ void Engine::_calculateTransformation()
 	GameObject::_calculateTransformation();
 }
 
-void Engine::setPosition(const vec2f& pos)
+void Engine::setPosition(const vec2d& pos)
 {
     GameObject::setPosition(pos);
 }
 
-void Engine::setRotation(float rot)
+void Engine::setRotation(double rot)
 {
     GameObject::setRotation(rot);
 }
 
-void Engine::setScale(const vec2f& scale)
+void Engine::setScale(const vec2d& scale)
 {
     GameObject::setScale(scale);
 }
-void Engine::setPower(float p)
+void Engine::setPower(double p)
 {
-    vec2f scale = m_flame->getScale();
+    vec2d scale = m_flame->getScale();
     scale.y = clamp(p);
     m_flame->setScale(scale);
     m_power = clamp(p);

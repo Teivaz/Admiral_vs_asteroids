@@ -58,7 +58,7 @@ inline void PLOG(const char* x, ...){}
 #include "sigslot.h"
 using namespace sigslot;
 
-const float PI = 3.1416f;
+const double PI = 3.1416f;
 
 #define MakeShared(T) \
     class T; \
@@ -72,7 +72,7 @@ const float PI = 3.1416f;
 
 namespace Json
 {
-    void ReadVector(const Value& value, vec2f& vec);
+    void ReadVector(const Value& value, vec2d& vec);
 }
 
-float clamp(float);
+double clamp(double);

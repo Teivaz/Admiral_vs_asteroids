@@ -6,15 +6,14 @@
 #include "Controllers/ShaderAttributes.h"
 #include "Objects/Shape/Shape.h"
 
-PhysicNode::PhysicNode(const vector<vec2f>& mesh)
+PhysicNode::PhysicNode(const vector<vec2d>& mesh)
 : m_collisionShape(mesh)
 {
 #ifdef _DEBUG
     m_debugShader = ShaderManager::GetInstance()->getShader(shaders::k_red);
     m_uniformTransformation = glGetUniformLocation(m_debugShader, "u_transformation");
 #endif
-
-    m_impacts.reserve(10);
+        m_impacts.reserve(10);
 	SimpleShape* shape = new SimpleShape;
 	shape->create(m_collisionShape);
 	m_shape.reset(shape);
@@ -31,8 +30,8 @@ PhysicNode::PhysicNode(const string& meshName)
 
     m_impacts.reserve(10);
 	SimpleShape* shape = new SimpleShape;
-	vec2f offset = - m_collisionShape[0];
-	for (vec2f& v : m_collisionShape)
+	vec2d offset = - m_collisionShape[0];
+	for (vec2d& v : m_collisionShape)
 	{
 		v += offset;
 	}
@@ -50,18 +49,18 @@ PhysicNode::~PhysicNode()
 	CollisionManager::GetInstance()->remove(this);
 }
 
-void PhysicNode::update(float dt)
+void PhysicNode::update(double dt)
 {
     _pocessImpacts();
     adjustPosition(getMoveDirection() * getVelocity() * dt / 1000.f);
     adjustRotation(getRadialVelocity() * dt / 1000.0f);
     if (dt > 0)
     {
-        float deltaRadialVelocity = getRadialVelocity() - m_prevRadialVelocity;
+        double deltaRadialVelocity = getRadialVelocity() - m_prevRadialVelocity;
         m_radialVelocityDerivative = deltaRadialVelocity / dt;
         m_prevRadialVelocity = getRadialVelocity();
 
-        float deltaLinearVelocity = getVelocity() - m_prevLinearVelocity;
+        double deltaLinearVelocity = getVelocity() - m_prevLinearVelocity;
         m_linearVelocityDerivative = deltaLinearVelocity / dt;
         m_prevLinearVelocity = getVelocity();
     }
@@ -70,14 +69,14 @@ void PhysicNode::update(float dt)
 
 void PhysicNode::_pocessImpacts()
 {
-    vec2f force(getMoveDirection() * getVelocity());
-    float netTorque = getRadialVelocity();
+    vec2d force(getMoveDirection() * getVelocity());
+    double netTorque = getRadialVelocity();
     for (Impact& impact : m_impacts)
     {
-        vec2f center = Transform(getTransformation(), getMesh()[0]);
-        float torque = impact.momentum.Dot((impact.point - center).GetLeftNormal());
+        vec2d center = Transform(getTransformation(), getMesh()[0]);
+        double torque = impact.momentum.Dot((impact.point - center).GetLeftNormal());
         netTorque += torque / (getMass() * 2 * PI);
-		vec2f normal = (impact.point - center);
+		vec2d normal = (impact.point - center);
 		normal.Normalize();
 		force += normal * impact.momentum.Dot(normal) / getMass();
     }
@@ -101,7 +100,8 @@ void PhysicNode::renderDebug()
 	}
 	else
 	{
-		glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &getTransformation().a1);
+        mat3f transform = getTransformation();
+        glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &transform.a1);
 	}
 
     glEnableVertexAttribArray(Attributes::VERTEX_COORDINATES);
@@ -122,14 +122,14 @@ void PhysicNode::_calculateTransformation()
 {
     GameObject::_calculateTransformation();
 	m_squareBoundingRadius = 0.0f;
-    for (vec2f vertex : m_collisionShape)
+    for (vec2d vertex : m_collisionShape)
     {
         vertex = Transform(getTransformation(), vertex);
 		m_squareBoundingRadius = max(m_squareBoundingRadius, (vertex - m_collisionShape[0]).SqLength());
     }
 }
 
-void PhysicNode::setPosition(const vec2f& p)
+void PhysicNode::setPosition(const vec2d& p)
 {
 	if (p == m_position)
 		return;
@@ -138,7 +138,7 @@ void PhysicNode::setPosition(const vec2f& p)
     m_hasMoved = true;
 }
 
-void PhysicNode::setScale(const vec2f& s)
+void PhysicNode::setScale(const vec2d& s)
 {
 	if (s == m_scale)
 		return;
@@ -147,7 +147,7 @@ void PhysicNode::setScale(const vec2f& s)
     m_hasMoved = true;
 }
 
-void PhysicNode::setRotation(float r)
+void PhysicNode::setRotation(double r)
 {
 	if (r == m_rotation)
 		return;
@@ -156,17 +156,17 @@ void PhysicNode::setRotation(float r)
     m_hasMoved = true;
 }
 
-const std::vector<vec2f>& PhysicNode::getMesh() const
+const std::vector<vec2d>& PhysicNode::getMesh() const
 {
 	return m_collisionShape;
 }
 
-void PhysicNode::onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum)
+void PhysicNode::onCollided(PhysicNode* other, const vec2d& point, const vec2d& momentum)
 {
     addImpact(point, momentum);
 }
 
-void PhysicNode::addImpact(const vec2f& point, const vec2f& momentum)
+void PhysicNode::addImpact(const vec2d& point, const vec2d& momentum)
 {
     m_impacts.push_back(Impact(point, momentum));
 }
@@ -180,62 +180,62 @@ void PhysicNode::setColliosionChecked()
 {
     m_hasMoved = false;
 }
-void PhysicNode::setAdditionalTransformation(const mat3f& mat)
+void PhysicNode::setAdditionalTransformation(const mat3d& mat)
 {
     m_additionalTransformation = mat;
     m_transformationIsDirty = true;
     m_hasMoved = true;
 }
 
-vec2f PhysicNode::getMomentum(const vec2f& point)
+vec2d PhysicNode::getMomentum(const vec2d& point)
 {
-    vec2f toPoint(point - Transform(getTransformation(), m_collisionShape[0]));
+    vec2d toPoint(point - Transform(getTransformation(), m_collisionShape[0]));
 	toPoint.TurnRight90();
-	vec2f rotationPart = toPoint * getRadialVelocity();
-	vec2f linearPart = getMoveDirection() * getVelocity();
-	vec2f momentum = (linearPart + rotationPart) * getMass();
+	vec2d rotationPart = toPoint * getRadialVelocity();
+	vec2d linearPart = getMoveDirection() * getVelocity();
+	vec2d momentum = (linearPart + rotationPart) * getMass();
 	return momentum;
 }
-void PhysicNode::setMass(float mass)
+void PhysicNode::setMass(double mass)
 {
 	m_mass = mass;
 }
-float PhysicNode::getMass() const
+double PhysicNode::getMass() const
 {
 	return m_mass;
 }
-void PhysicNode::setRadialVelocity(float speed)
+void PhysicNode::setRadialVelocity(double speed)
 {
 	m_radialVelocity = speed;
 }
-float PhysicNode::getRadialVelocity() const
+double PhysicNode::getRadialVelocity() const
 {
 	return m_radialVelocity;
 }
-void PhysicNode::setVelocity(float speed)
+void PhysicNode::setVelocity(double speed)
 {
 	m_linearVelocity = speed;
 }
-float PhysicNode::getVelocity() const
+double PhysicNode::getVelocity() const
 {
 	return m_linearVelocity;
 }
-void PhysicNode::setMoveDirection(const vec2f& dir)
+void PhysicNode::setMoveDirection(const vec2d& dir)
 {
 	m_moveDirection = dir;
 	m_moveDirection.Normalize();
 }
-const vec2f& PhysicNode::getMoveDirection() const
+const vec2d& PhysicNode::getMoveDirection() const
 {
 	return m_moveDirection;
 }
 
-float PhysicNode::getRadialVelocityDerivative() const
+double PhysicNode::getRadialVelocityDerivative() const
 {
     return m_linearVelocityDerivative;
 }
 
-float PhysicNode::getVelocityDerivative() const
+double PhysicNode::getVelocityDerivative() const
 {
     return m_radialVelocityDerivative;
 }

@@ -7,8 +7,8 @@ public:
     BasicWidget(Sprite*, const string& name);
     virtual ~BasicWidget();
 
-    virtual void                setPosition(const vec2f&);
-    virtual void                setScale(const vec2f&);
+    virtual void                setPosition(const vec2d&);
+    virtual void                setScale(const vec2d&);
     virtual void                render();
 
 private:

@@ -10,13 +10,13 @@ CaptainTaskStopRotation::CaptainTaskStopRotation(Captain& cap)
 CaptainTaskStopRotation::~CaptainTaskStopRotation()
 {}
 
-bool CaptainTaskStopRotation::update(float dt)
+bool CaptainTaskStopRotation::update(double dt)
 {
     m_captain;
     return false;
 }
 
-CaptainTaskSetRotation::CaptainTaskSetRotation(Captain& cap, const vec2f& direction)
+CaptainTaskSetRotation::CaptainTaskSetRotation(Captain& cap, const vec2d& direction)
 : CaptainTask(cap)
 , m_direction(direction)
 {}
@@ -24,7 +24,7 @@ CaptainTaskSetRotation::CaptainTaskSetRotation(Captain& cap, const vec2f& direct
 CaptainTaskSetRotation::~CaptainTaskSetRotation()
 {}
 
-bool CaptainTaskSetRotation::update(float dt)
+bool CaptainTaskSetRotation::update(double dt)
 {
     m_captain;
     return false;
@@ -37,13 +37,13 @@ CaptainTaskStopShip::CaptainTaskStopShip(Captain& cap)
 CaptainTaskStopShip::~CaptainTaskStopShip()
 {}
 
-bool CaptainTaskStopShip::update(float dt)
+bool CaptainTaskStopShip::update(double dt)
 {
     m_captain;
     return false;
 }
 
-CaptainTaskSetShipMoveDirection::CaptainTaskSetShipMoveDirection(Captain& cap, const vec2f& direction, float speed)
+CaptainTaskSetShipMoveDirection::CaptainTaskSetShipMoveDirection(Captain& cap, const vec2d& direction, double speed)
 : CaptainTask(cap)
 , m_direction(direction)
 , m_speed(speed)
@@ -52,7 +52,7 @@ CaptainTaskSetShipMoveDirection::CaptainTaskSetShipMoveDirection(Captain& cap, c
 CaptainTaskSetShipMoveDirection::~CaptainTaskSetShipMoveDirection()
 {}
 
-bool CaptainTaskSetShipMoveDirection::update(float dt)
+bool CaptainTaskSetShipMoveDirection::update(double dt)
 {
     m_captain;
     return false;

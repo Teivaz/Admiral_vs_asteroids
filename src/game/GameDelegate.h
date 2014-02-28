@@ -9,7 +9,7 @@ public:
     ~GameDelegate();
 
     void init(int screenWidth, int screenHeight);
-    void update(float dt);
+    void update(double dt);
     void render();
 
     void onTouchPressed(int x, int y);

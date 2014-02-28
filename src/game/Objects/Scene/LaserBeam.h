@@ -7,25 +7,25 @@ class Animation;
 class LaserBeam : public PhysicNode
 {
 public:
-    static void create(const vec2f& position, float speed, float direction, float lifetime);
-    LaserBeam(const vec2f& position, float speed, float direction, float lifetime);
+    static void create(const vec2d& position, double speed, double direction, double lifetime);
+    LaserBeam(const vec2d& position, double speed, double direction, double lifetime);
     virtual ~LaserBeam();
 
 
-    virtual void                    update(float);
+    virtual void                    update(double);
     virtual void                    render();
     
-    virtual void                    setPosition(const vec2f& p);
-    virtual void                    setScale(const vec2f& s);
-	virtual void                    setRotation(float r);
+    virtual void                    setPosition(const vec2d& p);
+    virtual void                    setScale(const vec2d& s);
+	virtual void                    setRotation(double r);
 	virtual void                    setCamera(CameraPtr);
-    virtual void					onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum);
+    virtual void					onCollided(PhysicNode* other, const vec2d& point, const vec2d& momentum);
 
 private:
-    float                           m_lifetime = 0;
-    float                           m_speed = 1.0f;
-    vec2f                           m_directionV;
-    float                           m_directionF;
+    double                           m_lifetime = 0;
+    double                           m_speed = 1.0f;
+    vec2d                           m_directionV;
+    double                           m_directionF;
 	Animation*                      m_animation = nullptr;
 
 	bool							m_toRemove = false;

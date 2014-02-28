@@ -9,15 +9,15 @@ public:
 	Sky();
 	~Sky();
 
-	virtual void                    update(float);
+	virtual void                    update(double);
 	virtual void                    render();
 
-	virtual void                    setPosition(const vec2f& p);
-	virtual void                    setScale(const vec2f& s);
-	virtual void                    setRotation(float r);
+	virtual void                    setPosition(const vec2d& p);
+	virtual void                    setScale(const vec2d& s);
+	virtual void                    setRotation(double r);
 	virtual void					setCamera(CameraPtr);
 
-	void							onCameraMoved(const vec2f& newPosition);
+	void							onCameraMoved(const vec2d& newPosition);
 
 private:
 
@@ -25,6 +25,6 @@ private:
 	std::vector<SpritePtr>			m_starsLevel2;
 	SpritePtr						m_back;
 
-	float							m_level1Move = 0.9f;
-	float							m_level2Move = 0.5f;
+	double							m_level1Move = 0.9f;
+	double							m_level2Move = 0.5f;
 };

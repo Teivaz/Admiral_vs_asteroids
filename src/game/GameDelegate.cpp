@@ -18,7 +18,7 @@ attribute vec2 pos;\
 void main()\
 { gl_Position =  vec4(pos, 0.0, 1.0); }";
 static const char* fsc = "\
-precision mediump float;\
+precision mediump double;\
 void main()\
 { gl_FragColor =  vec4(1.0, 0.0, 0.0, 1.0); }";
 #endif
@@ -64,9 +64,9 @@ void GameDelegate::init(int width, int height)
     glGetProgramiv(prog, GL_LINK_STATUS, &status);
     glGenBuffers(1, &buf);
     glBindBuffer(GL_ARRAY_BUFFER, buf);
-    float verts[6] = { -0.5, -0.5, 0, 0.5, 0.5, -0.5 };
-    //float verts[6] = { -1, -1, 0, 1, 1, -1 };
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), verts, GL_STATIC_DRAW);
+    double verts[6] = { -0.5, -0.5, 0, 0.5, 0.5, -0.5 };
+    //double verts[6] = { -1, -1, 0, 1, 1, -1 };
+    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(double), verts, GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glDeleteShader(vs);
     glDeleteShader(fs);
@@ -94,7 +94,7 @@ void GameDelegate::init(int width, int height)
 
 }
 
-void GameDelegate::update(float dt)
+void GameDelegate::update(double dt)
 {
     StateMachine::GetInstance()->update(dt);
     Painter::GetInstance()->update(dt);
@@ -113,7 +113,7 @@ void GameDelegate::render()
     glGetIntegerv(GL_ARRAY_BUFFER_BINDING, &params);
     glUseProgram(prog);
     glEnableVertexAttribArray(10);
-    glVertexAttribPointer(10, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+    glVertexAttribPointer(10, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(double), 0);
     glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &params);
     glDrawArrays(GL_TRIANGLES, 0, 3);
 #endif
@@ -122,7 +122,7 @@ void GameDelegate::render()
 
 void GameDelegate::onTouchPressed(int x, int y)
 {
-    vec2f pos = vec2f(static_cast<float>(x), static_cast<float>(y));
+    vec2d pos = vec2d(static_cast<double>(x), static_cast<double>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;
@@ -132,12 +132,12 @@ void GameDelegate::onTouchPressed(int x, int y)
 
 void GameDelegate::onTouchMoved(int x, int y, int prevX, int prevY)
 {
-    vec2f pos = vec2f(static_cast<float>(x), static_cast<float>(y));
+    vec2d pos = vec2d(static_cast<double>(x), static_cast<double>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;
     pos -= 1.0f;
-    vec2f prevPos = vec2f(static_cast<float>(prevX), static_cast<float>(prevY));
+    vec2d prevPos = vec2d(static_cast<double>(prevX), static_cast<double>(prevY));
     prevPos.x /= m_screen.x;
     prevPos.y /= m_screen.y;
     prevPos *= 2.0f;
@@ -147,12 +147,12 @@ void GameDelegate::onTouchMoved(int x, int y, int prevX, int prevY)
 
 void GameDelegate::onTouchReleased(int x, int y, int prevX, int prevY)
 {
-    vec2f pos = vec2f(static_cast<float>(x), static_cast<float>(y));
+    vec2d pos = vec2d(static_cast<double>(x), static_cast<double>(y));
     pos.x /= m_screen.x;
     pos.y /= m_screen.y;
     pos *= 2.0f;
     pos -= 1.0f;
-    vec2f prevPos = vec2f(static_cast<float>(x), static_cast<float>(y));
+    vec2d prevPos = vec2d(static_cast<double>(x), static_cast<double>(y));
     prevPos.x /= m_screen.x;
     prevPos.y /= m_screen.y;
     prevPos *= 2.0f;

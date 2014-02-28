@@ -6,26 +6,26 @@ MakeShared(Camera);
 class Sprite: public GameObject
 {
 public:
-    Sprite(Texture, vec2f textureLeftBottom, vec2f textureUpRight, ShaderProgram);
-    Sprite(Texture, vec2f textureLeftBottom, vec2f textureUpRight, ShaderProgram, vec2f position, vec2f size);
+    Sprite(Texture, vec2d textureLeftBottom, vec2d textureUpRight, ShaderProgram);
+    Sprite(Texture, vec2d textureLeftBottom, vec2d textureUpRight, ShaderProgram, vec2d position, vec2d size);
     virtual ~Sprite();
 
     virtual void                    render();
-    virtual void                    update(float);
+    virtual void                    update(double);
     virtual void                    bindAttributes();
 
     /*
-    virtual void                    setPosition(const vec2f& p);
-    virtual void                    setScale(const vec2f& s);
-    virtual void                    setRotation(float r);
-    virtual void                    adjustPosition(const vec2f& p);
-    virtual void                    adjustScale(const vec2f& s);
-    virtual void                    adjustRotation(float r);
+    virtual void                    setPosition(const vec2d& p);
+    virtual void                    setScale(const vec2d& s);
+    virtual void                    setRotation(double r);
+    virtual void                    adjustPosition(const vec2d& p);
+    virtual void                    adjustScale(const vec2d& s);
+    virtual void                    adjustRotation(double r);
     */
     virtual GLsizei                 getVertsCount() const;
 
-    virtual bool                    isPointInside(const vec2f& pt);
-    virtual const vec2f&            getSize();
+    virtual bool                    isPointInside(const vec2d& pt);
+    virtual const vec2d&            getSize();
 
     Texture                         getTexture() const;
     ShaderProgram                   getProgram() const;
@@ -38,8 +38,8 @@ private:
     void                            _bindAttributes();
 
 private:
-    vec2f                           m_size;
-    vec2f                           m_origin;
+    vec2d                           m_size;
+    vec2d                           m_origin;
     Texture                         m_texture = 0;
     ShaderProgram                   m_shader = 0;
     DrawMode                        m_mode = GL_TRIANGLE_FAN;

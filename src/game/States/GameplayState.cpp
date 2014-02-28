@@ -33,7 +33,7 @@ class SliderCallBack : public SliderWidget::CallbackFunctor
 {
 public:
     SliderCallBack(int _n, GameplayState* _state) : n(_n), state(_state) {}
-    virtual void operator()(float val)
+    virtual void operator()(double val)
     {
         if (n == 1)
             state->onSliderLeft(val * 2 - 1);
@@ -56,7 +56,7 @@ GameplayState::~GameplayState()
     delete m_star;
 }
 
-void GameplayState::update(float dt)
+void GameplayState::update(double dt)
 {
 	for (auto player : m_players)
 	{

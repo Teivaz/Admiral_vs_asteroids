@@ -8,27 +8,27 @@ public:
     Camera() {}
     ~Camera() {}
 
-    void                    setViewSize(const vec2f&);
-    void                    setPosition(const vec2f&);
-    const mat3f&            getTransformationMatrix();
+    void                    setViewSize(const vec2d&);
+    void                    setPosition(const vec2d&);
+    const mat3d&            getTransformationMatrix();
 
 private:
     void                    _updateTransformation();
 
 private:
-    mat3f                   m_transformation;
+    mat3d                   m_transformation;
     bool                    m_isDirty = false;
-    vec2f                   m_view;
-    vec2f                   m_position;
+    vec2d                   m_view;
+    vec2d                   m_position;
 };
 
-inline void Camera::setViewSize(const vec2f& v)
+inline void Camera::setViewSize(const vec2d& v)
 {
     m_view = v;
     m_isDirty = true;
 }
 
-inline void Camera::setPosition(const vec2f& p)
+inline void Camera::setPosition(const vec2d& p)
 {
     m_position = p;
     m_isDirty = true;
@@ -38,14 +38,14 @@ inline void Camera::_updateTransformation()
 {
     m_isDirty = false;
     m_transformation.SetIdentity();
-    mat3f tmpMat;
+    mat3d tmpMat;
     tmpMat.SetTranslation(-m_position);
     m_transformation = tmpMat * m_transformation;
-    tmpMat.SetScale(1.0f / m_view);
+    tmpMat.SetScale(1.0 / m_view);
     m_transformation = tmpMat * m_transformation;
 }
 
-inline const mat3f& Camera::getTransformationMatrix()
+inline const mat3d& Camera::getTransformationMatrix()
 {
     if (m_isDirty)
     {

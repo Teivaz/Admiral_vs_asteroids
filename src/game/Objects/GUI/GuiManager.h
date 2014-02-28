@@ -24,7 +24,7 @@ protected:
 
     Sprite*                 _loadSpriteForWidget(const string& name, const Json::Value& widget);
 
-    vec2f                   _scaleToScreen(vec2f);
+    vec2d                   _scaleToScreen(vec2d);
 
 private:
     vec2i                   m_screenSize;

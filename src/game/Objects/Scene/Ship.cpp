@@ -27,16 +27,16 @@ Ship* Ship::create(const string& name)
     const Json::Value body = root["body"];
     {
         string sprite = body["sprite"].asString();
-        vec2f position;
+        vec2d position;
         Json::ReadVector(body["position"], position);
-        vec2f scale;
+        vec2d scale;
         Json::ReadVector(body["scale"], scale);
-        float rotation = static_cast<float>(body["rotation"].asDouble());
+        double rotation = static_cast<double>(body["rotation"].asDouble());
         rotation = (rotation / 180.0f) * PI;
         string collision = body["collision"].asString();
-        float mass = static_cast<float>(body["mass"].asDouble());
+        double mass = static_cast<double>(body["mass"].asDouble());
 
-        vec2f shipSize = SpriteManager::GetInstance()->getSpriteSize(sprite);
+        vec2d shipSize = SpriteManager::GetInstance()->getSpriteSize(sprite);
         Sprite* bodySprite = SpriteManager::GetInstance()->createSprite(sprite, -shipSize / 2, shipSize, false, 0);
         bodySprite->setScale(scale);
         bodySprite->setRotation(rotation);
@@ -131,7 +131,7 @@ Ship::Ship(const string& name, const string& collision, Sprite* body)
 , m_ship(SpritePtr(body))
 {
     setCamera(Painter::GetInstance()->getSceneCamera());
-	setMoveDirection(vec2f(0.0f, 1.0f));
+	setMoveDirection(vec2d(0.0f, 1.0f));
 }
 
 Ship::~Ship()
@@ -160,7 +160,7 @@ void Ship::render()
         e->render();
 }
 
-void Ship::update(float dt)
+void Ship::update(double dt)
 {
     PhysicNode::update(dt);
 
@@ -182,7 +182,7 @@ void Ship::update(float dt)
         e->update(dt);
 }
 
-void Ship::setPosition(const vec2f& p)
+void Ship::setPosition(const vec2d& p)
 {
     PhysicNode::setPosition(p);
 
@@ -198,7 +198,7 @@ void Ship::setPosition(const vec2f& p)
         e->setPosition(p);
 }
 
-void Ship::setScale(const vec2f& s)
+void Ship::setScale(const vec2d& s)
 {
     PhysicNode::setScale(s);
 
@@ -214,10 +214,10 @@ void Ship::setScale(const vec2f& s)
         e->setScale(s);
 }
 
-void Ship::setRotation(float r)
+void Ship::setRotation(double r)
 {
     PhysicNode::setRotation(r);
-    m_rotationV = vec2f(cos(m_rotation + PI / 2), sin(m_rotation + PI / 2));
+    m_rotationV = vec2d(cos(m_rotation + PI / 2), sin(m_rotation + PI / 2));
 
     for (auto c : m_cannons)
         c->setRotation(r);
@@ -234,7 +234,7 @@ void Ship::setRotation(float r)
         e->setRotation(r);
 }
 
-void Ship::setRotationEnginesSpeed(float speed)
+void Ship::setRotationEnginesSpeed(double speed)
 {
     setEnginePower(Ship::ELeftFront, speed);
     setEnginePower(Ship::ERightBack, speed);
@@ -243,7 +243,7 @@ void Ship::setRotationEnginesSpeed(float speed)
 //    m_rotationSpeed += 0.01f*speed;
 }
 
-void Ship::setEnginePower(EEngines engine, float p)
+void Ship::setEnginePower(EEngines engine, double p)
 {
     switch (engine)
     {
@@ -276,17 +276,17 @@ void Ship::shoot()
         c->shoot();
 }
 
-void Ship::onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum)
+void Ship::onCollided(PhysicNode* other, const vec2d& point, const vec2d& momentum)
 {
     PhysicNode::onCollided(other, point, momentum);
-	//vec2f dir = m_position - other->getPosition();
+	//vec2d dir = m_position - other->getPosition();
 	//dir.Normalize();
-	//vec2f resultVector = dir * getMass() + getDirection() * getMass();
+	//vec2d resultVector = dir * getMass() + getDirection() * getMass();
 	//setLinearSpeed(resultVector.Normalize() / (2.0f * getMass()));
 	//setDirection(resultVector);
 }
 
-float Ship::getSpeed() const
+double Ship::getSpeed() const
 {
 	return getMass();
 }

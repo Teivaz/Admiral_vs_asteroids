@@ -18,7 +18,7 @@ Animation::~Animation()
     }
 }
 
-void Animation::update(float dt)
+void Animation::update(double dt)
 {
     if (m_pause)
         return;
@@ -39,13 +39,13 @@ void Animation::render()
 {
     if (m_currentFrame)
     {
-		mat3f transform = getTransformation();
+		mat3d transform = getTransformation();
 		m_currentFrame->setAdditionalTransformation(transform);
         m_currentFrame->render();
     }
 }
 
-void Animation::setFps(float fps)
+void Animation::setFps(double fps)
 {
     m_frameTime = 1000.0f / fps;
 }
@@ -81,15 +81,15 @@ void Animation::addFrame(Sprite* s)
     m_keyFrames.push_back(s);
 }
 
-void Animation::setPosition(const vec2f& p)
+void Animation::setPosition(const vec2d& p)
 {
 	GameObject::setPosition(p);
 }
-void Animation::setScale(const vec2f& s)
+void Animation::setScale(const vec2d& s)
 {
 	GameObject::setScale(s);
 }
-void Animation::setRotation(float r)
+void Animation::setRotation(double r)
 {
 	GameObject::setRotation(r);
 }
@@ -102,7 +102,7 @@ void Animation::setCamera(CameraPtr cam)
     }
 }
 
-void Animation::setFramesPosition(const vec2f& pos)
+void Animation::setFramesPosition(const vec2d& pos)
 {
     for (Sprite* f : m_keyFrames)
     {

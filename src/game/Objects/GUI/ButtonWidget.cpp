@@ -17,14 +17,14 @@ ButtonWidget::~ButtonWidget()
     delete m_callback;
 }
 
-void ButtonWidget::setPosition(const vec2f& p)
+void ButtonWidget::setPosition(const vec2d& p)
 {
     m_spriteIdle->setPosition(p);
     m_spritePressed->setPosition(p);
     Widget::setPosition(p);
 }
 
-void ButtonWidget::setScale(const vec2f& s)
+void ButtonWidget::setScale(const vec2d& s)
 {
     m_spriteIdle->setScale(s);
     m_spritePressed->setScale(s);
@@ -44,7 +44,7 @@ void ButtonWidget::render()
     Widget::render();
 }
 
-bool ButtonWidget::_isPointInside(const vec2f& pt)
+bool ButtonWidget::_isPointInside(const vec2d& pt)
 {
     return m_spriteIdle->isPointInside(pt);
 }

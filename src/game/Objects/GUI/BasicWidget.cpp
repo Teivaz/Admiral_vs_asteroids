@@ -13,13 +13,13 @@ BasicWidget::~BasicWidget()
     delete m_sprite;
 }
 
-void BasicWidget::setPosition(const vec2f& p)
+void BasicWidget::setPosition(const vec2d& p)
 {
     m_sprite->setPosition(p);
     Widget::setPosition(p);
 }
 
-void BasicWidget::setScale(const vec2f& s)
+void BasicWidget::setScale(const vec2d& s)
 {
     m_sprite->setScale(s);
     Widget::setScale(s);

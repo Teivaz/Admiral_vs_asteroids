@@ -12,7 +12,7 @@ public:
     GameplayState();
     virtual ~GameplayState();
 
-    virtual void                update(float dt);
+    virtual void                update(double dt);
     virtual void                render();
 
     virtual void                onEnter();
@@ -25,19 +25,19 @@ public:
     // Events
 
     signal1<bool>               onButton;
-    signal1<float>              onSliderLeft;
-    signal1<float>              onSliderRight;
+    signal1<double>              onSliderLeft;
+    signal1<double>              onSliderRight;
 
 //    signal2<int, 
 
 private:
-    void                        _setMovingSpeed(vec2f);
+    void                        _setMovingSpeed(vec2d);
 
 private:
     bool                        m_isFinished = false;
 
-    vec2f                       m_movingDirection;
-    float                       m_movingSpeed = 0;
+    vec2d                       m_movingDirection;
+    double                       m_movingSpeed = 0;
 	GameObject*                 m_star = nullptr;
     Widget*                     m_gui = nullptr;
     GameObject*                 m_laserBeam = nullptr;

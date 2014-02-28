@@ -15,8 +15,8 @@ public:
     ButtonWidget(Sprite* idle, Sprite* pressed, const string& name);
     virtual ~ButtonWidget();
 
-    virtual void                setPosition(const vec2f&);
-    virtual void                setScale(const vec2f&);
+    virtual void                setPosition(const vec2d&);
+    virtual void                setScale(const vec2d&);
     virtual void                render();
 
     bool                        isPressed()
@@ -31,7 +31,7 @@ public:
     void                        setCallback(CallbackFunctor*);
 
 private:
-    bool                        _isPointInside(const vec2f&);
+    bool                        _isPointInside(const vec2d&);
     void                        _onButton(bool);
 
 private:

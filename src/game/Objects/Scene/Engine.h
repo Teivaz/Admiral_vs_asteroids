@@ -9,19 +9,19 @@ class Engine : public GameObject
 {
 public:
     Engine(Ship* ship, const Json::Value& value);
-    Engine(Ship* ship, Animation* flame, const vec2f& position);
+    Engine(Ship* ship, Animation* flame, const vec2d& position);
     ~Engine();
 
-    virtual void                    update(float);
+    virtual void                    update(double);
     virtual void                    render();
 
-    virtual void                    setPosition(const vec2f& p);
-    virtual void                    setScale(const vec2f& s);
-    virtual void                    setRotation(float r);
+    virtual void                    setPosition(const vec2d& p);
+    virtual void                    setScale(const vec2d& s);
+    virtual void                    setRotation(double r);
 
     virtual void                    setCamera(CameraPtr);
 
-    void                            setPower(float);
+    void                            setPower(double);
 
 private:
 	void                            _calculateTransformation();
@@ -29,7 +29,7 @@ private:
 private:
     Ship*                           m_ship;
     AnimationPtr                    m_flame;
-    float                           m_maxPower = 0;
-    float                           m_power = 0;
-    vec2f                           m_direction = vec2f(1.0f, 0.0f);
+    double                           m_maxPower = 0;
+    double                           m_power = 0;
+    vec2d                           m_direction = vec2d(1.0f, 0.0f);
 };
