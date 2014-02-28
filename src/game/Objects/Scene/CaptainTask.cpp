@@ -43,16 +43,16 @@ bool CaptainTaskStopShip::update(float dt)
     return false;
 }
 
-setShipMoveDirection::setShipMoveDirection(Captain& cap, const vec2f& direction, float speed)
+CaptainTaskSetShipMoveDirection::CaptainTaskSetShipMoveDirection(Captain& cap, const vec2f& direction, float speed)
 : CaptainTask(cap)
 , m_direction(direction)
 , m_speed(speed)
 {}
 
-setShipMoveDirection::~setShipMoveDirection()
+CaptainTaskSetShipMoveDirection::~CaptainTaskSetShipMoveDirection()
 {}
 
-bool setShipMoveDirection::update(float dt)
+bool CaptainTaskSetShipMoveDirection::update(float dt)
 {
     m_captain;
     return false;

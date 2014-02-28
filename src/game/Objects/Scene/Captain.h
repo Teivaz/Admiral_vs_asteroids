@@ -49,6 +49,8 @@ public:
     vec2f                           getShipMoveSpeed() const;
     vec2f                           getShipMoveSpeedDerivative() const;
 
+	signal1<const vec2f&>			onMoved;
+
 private:
     string                          m_name;
     CaptainsBridgePtr               m_bridge;

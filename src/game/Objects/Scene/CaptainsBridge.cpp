@@ -66,7 +66,16 @@ float CaptainsBridge::getShipRotationSpeedDerivative() const
 {
     return m_ship->getRadialVelocityDerivative();
 }
-vec2f CaptainsBridge::getShipMoveSpeedDerivative() const
+float CaptainsBridge::getShipMoveSpeedDerivative() const
 {
-    return 0;
+	return m_ship->getVelocityDerivative();
+}
+
+float CaptainsBridge::getShipMoveSpeed() const
+{
+	return m_ship->getVelocity();
+}
+vec2f CaptainsBridge::GetShipPosition() const
+{
+	return m_ship->getTransformation().GetTranslationPart();
 }

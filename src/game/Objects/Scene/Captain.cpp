@@ -27,6 +27,10 @@ void Captain::update(float dt)
             m_tasks.pop_front();
         }
     }
+	if (m_bridge->getShipMoveSpeed() != 0)
+	{
+		onMoved(m_bridge->GetShipPosition());
+	}
 }
 
 
@@ -66,7 +70,7 @@ void Captain::stopShip()
 void Captain::setShipMoveDirection(vec2f direction, float targetSpeed)
 {
     cancelAllTasks();
-    //m_tasks.push_back(CaptainTaskPtr(new CaptainTaskStopShip(*this)));
+	m_tasks.push_back(CaptainTaskPtr(new CaptainTaskSetShipMoveDirection(*this, direction, targetSpeed)));
 }
 
 void Captain::cancelAllTasks()

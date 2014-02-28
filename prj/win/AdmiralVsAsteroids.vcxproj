@@ -38,6 +38,7 @@
     <ClCompile Include="..\..\src\game\Objects\Scene\Engine.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\LaserBeam.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Scene\Ship.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\Scene\Sky.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Shape\Shape.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Sprite.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Stars\Star.cpp" />
@@ -83,6 +84,7 @@
     <ClInclude Include="..\..\src\game\Objects\Scene\Engine.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\LaserBeam.h" />
     <ClInclude Include="..\..\src\game\Objects\Scene\Ship.h" />
+    <ClInclude Include="..\..\src\game\Objects\Scene\Sky.h" />
     <ClInclude Include="..\..\src\game\Objects\Shape\Shape.h" />
     <ClInclude Include="..\..\src\game\Objects\Sprite.h" />
     <ClInclude Include="..\..\src\game\Objects\Stars\Star.h" />

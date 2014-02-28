@@ -39,9 +39,9 @@ inline void Camera::_updateTransformation()
     m_isDirty = false;
     m_transformation.SetIdentity();
     mat3f tmpMat;
-    tmpMat.SetScale(1.0f / m_view);
-    m_transformation = tmpMat * m_transformation;
     tmpMat.SetTranslation(-m_position);
+    m_transformation = tmpMat * m_transformation;
+    tmpMat.SetScale(1.0f / m_view);
     m_transformation = tmpMat * m_transformation;
 }
 

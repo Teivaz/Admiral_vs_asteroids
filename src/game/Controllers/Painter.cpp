@@ -96,3 +96,9 @@ CameraPtr Painter::getSceneCamera() const
 {
     return m_sceneCamera;
 }
+
+void Painter::setSceneCameraPosition(const vec2f& position)
+{
+	m_sceneCamera->setPosition(position);
+	onCameraMoved(position);
+}

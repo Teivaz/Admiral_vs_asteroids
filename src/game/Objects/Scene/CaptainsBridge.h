@@ -41,8 +41,9 @@ protected: // Captain only!
     vec2f                           getShipRotation() const;
     float                           getShipRotationSpeed() const;
     float                           getShipRotationSpeedDerivative() const;
-    vec2f                           getShipMoveSpeed() const;
-    vec2f                           getShipMoveSpeedDerivative() const;
+	float                           getShipMoveSpeed() const;
+	float                           getShipMoveSpeedDerivative() const;
+	vec2f                           GetShipPosition() const;
 	
 private:
     ShipPtr                         m_ship;

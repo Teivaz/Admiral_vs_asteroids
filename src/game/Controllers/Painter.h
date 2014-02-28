@@ -3,7 +3,7 @@
 class GameObject;
 MakeShared(Camera);
 
-class Painter : public Singleton<Painter>
+class Painter : public Singleton<Painter>, public has_slots<>
 {
 public:
     Painter();
@@ -17,6 +17,10 @@ public:
     void                    requestSort();
     bool                    contains(GameObject*) const;
     CameraPtr               getSceneCamera() const;
+	void					setSceneCameraPosition(const vec2f& position);
+
+
+	signal1<const vec2f&>	onCameraMoved;
 
 private:
     void                    _sort();

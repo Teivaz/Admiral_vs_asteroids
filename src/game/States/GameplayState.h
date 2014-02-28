@@ -4,6 +4,7 @@
 class Sprite;
 class Widget;
 MakeShared(Captain);
+MakeShared(Sky);
 
 class GameplayState : public State, has_slots<>
 {
@@ -42,4 +43,5 @@ private:
     GameObject*                 m_laserBeam = nullptr;
 
     vector<CaptainPtr>          m_players;
+	SkyPtr						m_sky;
 };

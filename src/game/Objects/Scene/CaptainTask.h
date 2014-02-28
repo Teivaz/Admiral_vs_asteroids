@@ -39,11 +39,11 @@ public:
     virtual bool            update(float dt);
 };
 
-class setShipMoveDirection : public CaptainTask
+class CaptainTaskSetShipMoveDirection : public CaptainTask
 {
 public:
-    setShipMoveDirection(Captain& cap, const vec2f& direction, float speed);
-    virtual ~setShipMoveDirection();
+	CaptainTaskSetShipMoveDirection(Captain& cap, const vec2f& direction, float speed);
+	virtual ~CaptainTaskSetShipMoveDirection();
     virtual bool            update(float dt);
 private:
     vec2f                   m_direction;

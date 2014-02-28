@@ -15,6 +15,7 @@
 
 #include "Objects/Scene/Captain.h"
 #include "Objects/Scene/CaptainsBridge.h"
+#include "Objects/Scene/Sky.h"
 
 class ButtonCallBack : public ButtonWidget::CallbackFunctor
 {
@@ -57,6 +58,11 @@ GameplayState::~GameplayState()
 
 void GameplayState::update(float dt)
 {
+	for (auto player : m_players)
+	{
+		player->update(dt);
+	}
+	m_sky->update(dt);
 }
 
 void GameplayState::render()
@@ -93,6 +99,11 @@ void GameplayState::onEnter()
         sl->setCallback(new SliderCallBack(2, this));
     }
     Painter::GetInstance()->add(m_gui);
+
+	m_sky.reset(new Sky);
+	Painter::GetInstance()->onCameraMoved.connect(m_sky.get(), &Sky::onCameraMoved);
+	m_sky->setRenderLayer(-1000);
+	Painter::GetInstance()->add(m_sky.get());
 }
 
 void GameplayState::onFinish()
@@ -113,4 +124,5 @@ void GameplayState::addLocalControlledPlayer(CaptainPtr player)
     onButton.connect(player.get(), &Captain::shoot);
     onSliderLeft.connect(player.get(), &Captain::rotate);
     onSliderRight.connect(player.get(), &Captain::setMainEnginePower);
+	player->onMoved.connect(Painter::GetInstance(), &Painter::setSceneCameraPosition);
 }
