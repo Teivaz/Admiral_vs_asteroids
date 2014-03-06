@@ -8,16 +8,13 @@ lock = threading.RLock()
 def listen(sock, clients):
 	while True:
 		try:
-			lock.release()
-		except:
-			None
-		try:
 			(conn, addr) = sock.accept()
 		except:
 			break;
 		lock.acquire()
 		print("connection detected: {0}".format(addr))
 		clients[addr] = conn
+		lock.release()
 		print("connected!")
 		#run = False
 	print("thread exit!")
@@ -26,7 +23,7 @@ sock = socket.socket()
 
 sock.bind(('', PORT))
 
-sock.listen(100)
+sock.listen(5)
 clients = dict()
 
 listenerThread = threading.Thread(target=listen, args=(sock,clients))
@@ -45,7 +42,8 @@ while monitor:
 		except:
 			monitor = False
 			sock.close()
-			sock = None
+			sock.shutdown(socket.SHUT_RDWR)
+			#sock = None
 			print("close")
 	lock.release()
 
