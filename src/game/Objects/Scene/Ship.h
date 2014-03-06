@@ -34,19 +34,19 @@ public:
     void                            setCannons(const std::vector<CannonPtr>& cannons);
 
     virtual void                    render();
-    virtual void                    update(float dt);
+    virtual void                    update(double dt);
     virtual void                    setCamera(CameraPtr);
 
-    virtual void                    setPosition(const vec2f& p);
-    virtual void                    setScale(const vec2f& s);
-    virtual void                    setRotation(float r);
+    virtual void                    setPosition(const vec2d& p);
+    virtual void                    setScale(const vec2d& s);
+    virtual void                    setRotation(double r);
 
                                     // -1...+1
-    void                            setRotationEnginesSpeed(float);
-    void                            setEnginePower(EEngines, float);
+    void                            setRotationEnginesSpeed(double);
+    void                            setEnginePower(EEngines, double);
 	void                            shoot();
-    virtual void					onCollided(PhysicNode* other, const vec2f& point, const vec2f& momentum);
-	virtual float					getSpeed() const;
+    virtual void					onCollided(PhysicNode* other, const vec2d& point, const vec2d& momentum);
+	virtual double					getSpeed() const;
 
 protected:
 
@@ -54,8 +54,8 @@ private:
     string                          m_name;
     SpritePtr                       m_ship;
 
-    float                           m_rotationSpeed = 0.0f;
-    vec2f                           m_rotationV;
+    double                           m_rotationSpeed = 0.0f;
+    vec2d                           m_rotationV;
 
     vector<EnginePtr>               m_leftFrontEngine;
     vector<EnginePtr>               m_rightFrontEngine;

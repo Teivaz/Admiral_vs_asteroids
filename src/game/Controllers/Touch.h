@@ -5,7 +5,7 @@ class TouchReceiver;
 class Touch
 {
 public:
-    Touch(const vec2f& pos)
+    Touch(const vec2d& pos)
         : m_startPosition(pos)
         , m_currentPostion(pos)
     {}
@@ -20,11 +20,11 @@ public:
         return *this;
     }
 
-    const vec2f&    startPoint() const
+    const vec2d&    startPoint() const
     {
         return m_startPosition;
     }
-    const vec2f&    currentPoint() const
+    const vec2d&    currentPoint() const
     {
         return m_currentPostion;
     }
@@ -32,7 +32,7 @@ public:
     {
         return m_owner != nullptr;
     }
-    vec2f           getDelta()
+    vec2d           getDelta()
     {
         return m_currentPostion - m_startPosition;
     }
@@ -48,12 +48,12 @@ public:
     {
         return m_owner;
     }
-    void            updateTouch(const vec2f& position)
+    void            updateTouch(const vec2d& position)
     {
         m_currentPostion = position;
     }
 private:
-    vec2f           m_startPosition;
-    vec2f           m_currentPostion;
+    vec2d           m_startPosition;
+    vec2d           m_currentPostion;
     TouchReceiver*  m_owner = nullptr;
 };

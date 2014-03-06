@@ -24,26 +24,26 @@ void GuiManager::setAppSize(int width, int height)
     m_screenSize = vec2i(width, height);
 }
 
-vec2f GuiManager::_scaleToScreen(vec2f size)
+vec2d GuiManager::_scaleToScreen(vec2d size)
 {
-    return vec2f(size.x / static_cast<float>(m_screenSize.x), size.y / static_cast<float>(m_screenSize.y))*2.0;
+    return vec2d(size.x / static_cast<double>(m_screenSize.x), size.y / static_cast<double>(m_screenSize.y))*2.0;
 }
 
 Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::Value& widget)
 {
-    const vec2f anchor(static_cast<float>(widget["anchor"]["x"].asDouble()),
-                       static_cast<float>(widget["anchor"]["y"].asDouble()));
-    const vec2f scale( static_cast<float>(widget["scale"]["x"].asDouble()),
-                       static_cast<float>(widget["scale"]["y"].asDouble()));
-    const vec2f offset(static_cast<float>(widget["offset"]["x"].asDouble()), 
-                       static_cast<float>(widget["offset"]["y"].asDouble()));
+    const vec2d anchor(static_cast<double>(widget["anchor"]["x"].asDouble()),
+                       static_cast<double>(widget["anchor"]["y"].asDouble()));
+    const vec2d scale( static_cast<double>(widget["scale"]["x"].asDouble()),
+                       static_cast<double>(widget["scale"]["y"].asDouble()));
+    const vec2d offset(static_cast<double>(widget["offset"]["x"].asDouble()), 
+                       static_cast<double>(widget["offset"]["y"].asDouble()));
     const string verticalAllign(widget["allign"]["y"].asString());
     const string horizontalAllign(widget["allign"]["x"].asString());
 
-    vec2f originalSize = SpriteManager::GetInstance()->getSpriteSize(spriteName);
-    vec2f relativeSize = _scaleToScreen(vec2f(scale.x * originalSize.x, scale.y * originalSize.y));
-    vec2f relativeOffset = _scaleToScreen(offset);
-    vec2f relativePosition;
+    vec2d originalSize = SpriteManager::GetInstance()->getSpriteSize(spriteName);
+    vec2d relativeSize = _scaleToScreen(vec2d(scale.x * originalSize.x, scale.y * originalSize.y));
+    vec2d relativeOffset = _scaleToScreen(offset);
+    vec2d relativePosition;
     if (verticalAllign == "top")
     {
         relativePosition.y = 1.0f;
@@ -78,7 +78,7 @@ Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::V
         ASSERT(false && "Wrong allign mode");
     }
 
-    Sprite* sprite = SpriteManager::GetInstance()->createSprite(spriteName, -vec2f(relativeSize.x*anchor.x, relativeSize.y*anchor.y), relativeSize, false, 0);
+    Sprite* sprite = SpriteManager::GetInstance()->createSprite(spriteName, -vec2d(relativeSize.x*anchor.x, relativeSize.y*anchor.y), relativeSize, false, 0);
     sprite->setPosition(relativePosition);
     sprite->adjustPosition(relativeOffset);
     return sprite;
@@ -107,9 +107,9 @@ SliderWidget* GuiManager::_createSliderWidget(const Json::Value& widget)
     const string name(widget["name"].asString());
     const string spriteName(widget["sprite"].asString());
     Sprite* sprite = _loadSpriteForWidget(spriteName, widget);
-    const vec2f travel(static_cast<float>(widget["travel"]["x"].asDouble()),
-                       static_cast<float>(widget["travel"]["y"].asDouble()));
-    float value = static_cast<float>(widget["default"].asDouble());
+    const vec2d travel(static_cast<double>(widget["travel"]["x"].asDouble()),
+                       static_cast<double>(widget["travel"]["y"].asDouble()));
+    double value = static_cast<double>(widget["default"].asDouble());
     return new SliderWidget(sprite, name, _scaleToScreen(travel), value);
 }
 

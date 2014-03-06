@@ -17,7 +17,7 @@ Captain::~Captain()
 //void Captain::render()
 //{}
 
-void Captain::update(float dt)
+void Captain::update(double dt)
 {
     if (m_tasks.size())
     {
@@ -40,22 +40,22 @@ void Captain::shoot(bool yes)
         m_bridge->shoot();
 }
 
-void Captain::rotate(float speed)
+void Captain::rotate(double speed)
 {
     m_bridge->rotate(speed);
 }
 
-void Captain::setMainEnginePower(float power)
+void Captain::setMainEnginePower(double power)
 {
     m_bridge->setMainEnginePower(power);
 }
 
-void Captain::setEnginePower(int id, float power)
+void Captain::setEnginePower(int id, double power)
 {
     m_bridge->setEnginePower(id, power);
 }
 
-void Captain::setShipRotation(vec2f direction)
+void Captain::setShipRotation(vec2d direction)
 {
     cancelAllTasks();
     m_tasks.push_back(CaptainTaskPtr(new CaptainTaskSetRotation(*this, direction)));
@@ -67,7 +67,7 @@ void Captain::stopShip()
     m_tasks.push_back(CaptainTaskPtr(new CaptainTaskStopShip(*this)));
 }
 
-void Captain::setShipMoveDirection(vec2f direction, float targetSpeed)
+void Captain::setShipMoveDirection(vec2d direction, double targetSpeed)
 {
     cancelAllTasks();
 	m_tasks.push_back(CaptainTaskPtr(new CaptainTaskSetShipMoveDirection(*this, direction, targetSpeed)));

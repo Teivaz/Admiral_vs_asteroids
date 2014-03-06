@@ -22,7 +22,7 @@ void AppDelegate::Init()
     m_initialized = true;
 }
 
-void AppDelegate::Update(float dt)
+void AppDelegate::Update(double dt)
 {
     if (!m_initialized)
     {

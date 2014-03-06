@@ -8,22 +8,22 @@ public:
     {
     public:
         virtual ~CallbackFunctor(){}
-        virtual void operator()(float)
+        virtual void operator()(double)
         {}
     };
 public:
-    SliderWidget(Sprite*, const string& name, const vec2f& travel, float value = 0.0f);
+    SliderWidget(Sprite*, const string& name, const vec2d& travel, double value = 0.0f);
     virtual ~SliderWidget();
 
-    virtual void                setPosition(const vec2f&);
-    virtual void                setScale(const vec2f&);
+    virtual void                setPosition(const vec2d&);
+    virtual void                setScale(const vec2d&);
     virtual void                render();
 
-    float                       getProgress()
+    double                       getProgress()
     {
         return m_progress;
     }
-    void                        setProgress(float);
+    void                        setProgress(double);
 
     virtual void                onTouchBegan(TouchPtr);
     virtual void                onTouchMoved(TouchPtr);
@@ -32,13 +32,13 @@ public:
     void                        setCallback(CallbackFunctor*);
 
 private:
-    bool                        _isPointInside(const vec2f&);
+    bool                        _isPointInside(const vec2d&);
 
 private:
     Sprite*                     m_sprite = nullptr;
-    float                       m_progress = 0.0f;
-    float                       m_default = 0.0f;
+    double                       m_progress = 0.0f;
+    double                       m_default = 0.0f;
     CallbackFunctor*            m_callback = nullptr;
-    vec2f                       m_travel;
-    vec2f                       m_origin;
+    vec2d                       m_travel;
+    vec2d                       m_origin;
 };

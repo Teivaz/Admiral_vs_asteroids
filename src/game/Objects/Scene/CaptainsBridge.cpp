@@ -21,7 +21,7 @@ CaptainsBridge::~CaptainsBridge()
 void CaptainsBridge::render()
 {}
 
-void CaptainsBridge::update(float dt)
+void CaptainsBridge::update(double dt)
 {}
 
 void CaptainsBridge::shoot()
@@ -29,7 +29,7 @@ void CaptainsBridge::shoot()
     m_ship->shoot();
 }
 
-void CaptainsBridge::rotate(float speed)
+void CaptainsBridge::rotate(double speed)
 {
     m_ship->setEnginePower(Ship::ELeftFront, -speed);
     m_ship->setEnginePower(Ship::ERightFront, speed);
@@ -37,45 +37,45 @@ void CaptainsBridge::rotate(float speed)
     m_ship->setEnginePower(Ship::ELeftBack, speed);
 }
 
-void CaptainsBridge::setMainEnginePower(float power)
+void CaptainsBridge::setMainEnginePower(double power)
 {
     m_ship->setEnginePower(Ship::EMain, power);
     m_ship->setEnginePower(Ship::ERightBack, power);
     m_ship->setEnginePower(Ship::ELeftBack, power);
 }
 
-void CaptainsBridge::setEnginePower(int engineId, float power)
+void CaptainsBridge::setEnginePower(int engineId, double power)
 {
     m_ship->setEnginePower(static_cast<Ship::EEngines>(engineId), power);
 }
 
-vec2f CaptainsBridge::getShipMoveDirection() const
+vec2d CaptainsBridge::getShipMoveDirection() const
 {
     return m_ship->getMoveDirection();
 }
 
-vec2f CaptainsBridge::getShipRotation() const
+vec2d CaptainsBridge::getShipRotation() const
 {
     return m_ship->getRotation();
 }
-float CaptainsBridge::getShipRotationSpeed() const
+double CaptainsBridge::getShipRotationSpeed() const
 {
     return m_ship->getRadialVelocity();
 }
-float CaptainsBridge::getShipRotationSpeedDerivative() const
+double CaptainsBridge::getShipRotationSpeedDerivative() const
 {
     return m_ship->getRadialVelocityDerivative();
 }
-float CaptainsBridge::getShipMoveSpeedDerivative() const
+double CaptainsBridge::getShipMoveSpeedDerivative() const
 {
 	return m_ship->getVelocityDerivative();
 }
 
-float CaptainsBridge::getShipMoveSpeed() const
+double CaptainsBridge::getShipMoveSpeed() const
 {
 	return m_ship->getVelocity();
 }
-vec2f CaptainsBridge::GetShipPosition() const
+vec2d CaptainsBridge::GetShipPosition() const
 {
-	return m_ship->getTransformation().GetTranslationPart();
+    return m_ship->getPosition();//getTransformation().GetTranslationPart();
 }

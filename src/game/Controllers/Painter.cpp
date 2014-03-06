@@ -21,8 +21,8 @@ Painter::~Painter()
 
 void Painter::init(int width, int height)
 {
-    m_screen.x = static_cast<float>(width);
-    m_screen.y = static_cast<float>(height);
+    m_screen.x = static_cast<double>(width);
+    m_screen.y = static_cast<double>(height);
     // Screen size divided by 2
     m_sceneCamera->setViewSize(m_screen/2);
 }
@@ -79,7 +79,7 @@ bool Painter::contains(GameObject* obj) const
     return it != m_objects.end();
 }
 
-void Painter::update(float dt)
+void Painter::update(double dt)
 {
     // Game object can delete itself in update so this is needed to prevent iterator invalidation
 
@@ -97,7 +97,7 @@ CameraPtr Painter::getSceneCamera() const
     return m_sceneCamera;
 }
 
-void Painter::setSceneCameraPosition(const vec2f& position)
+void Painter::setSceneCameraPosition(const vec2d& position)
 {
 	m_sceneCamera->setPosition(position);
 	onCameraMoved(position);

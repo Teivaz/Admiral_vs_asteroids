@@ -53,7 +53,7 @@ SimpleShape::SimpleShape()
 {
 }
 
-SimpleShape::SimpleShape(const std::vector<vec2f>& verts)
+SimpleShape::SimpleShape(const std::vector<vec2d>& verts)
 {
     create(verts);
 }
@@ -62,13 +62,17 @@ SimpleShape::~SimpleShape()
 {
 }
 
-void SimpleShape::create(const std::vector<vec2f>& verts)
+void SimpleShape::create(const std::vector<vec2d>& verts)
 {
+    vector<vec2f> vertsf(verts.size());
+    for (auto& v : verts)
+        vertsf.push_back(v);
+
     _deleteBuffers();
-    m_count = verts.size();
+    m_count = vertsf.size();
     glGenBuffers(1, &m_vbo);
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glBufferData(GL_ARRAY_BUFFER, m_count*sizeof(vec2f), verts.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_count*sizeof(vec2f), vertsf.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     m_normalsOffset = 0;
     m_textureOffset = 0;
@@ -81,12 +85,12 @@ void SimpleShape::create(const std::vector<vec2f>& verts)
 // Texture coordinates and vertex coordinates are separate
 //*******************************************************************
 
-SeparateShape::SeparateShape(const std::vector<vec2f>& verts, const std::vector<vec2f>& tex)
+SeparateShape::SeparateShape(const std::vector<vec2d>& verts, const std::vector<vec2d>& tex)
 {
     create(verts, tex);
 }
 
-void SeparateShape::create(const std::vector<vec2f>& verts, const std::vector<vec2f>& tex)
+void SeparateShape::create(const std::vector<vec2d>& verts, const std::vector<vec2d>& tex)
 {
     _deleteBuffers();
     ASSERT(verts.size() == tex.size() && "Should be same size!");

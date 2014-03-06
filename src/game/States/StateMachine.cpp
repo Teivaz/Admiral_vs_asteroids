@@ -20,7 +20,7 @@ void StateMachine::pushState(State* st)
     m_states.push_back(st);
 }
 
-void StateMachine::update(float dt)
+void StateMachine::update(double dt)
 {
     if (!m_currentState)
     {

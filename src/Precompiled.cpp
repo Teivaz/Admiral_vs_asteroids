@@ -18,14 +18,14 @@ void PLOG(const char* x, ...)
 
 namespace Json
 {
-    void ReadVector(const Value& value, vec2f& vec)
+    void ReadVector(const Value& value, vec2d& vec)
     {
-        vec = vec2f(static_cast<float>(value["x"].asDouble()),
-                    static_cast<float>(value["y"].asDouble()));
+        vec = vec2d(static_cast<double>(value["x"].asDouble()),
+                    static_cast<double>(value["y"].asDouble()));
     }
 }
 
-float clamp(float a)
+double clamp(double a)
 {
     return max(min(a, 1.0f), 0.0f);
 }

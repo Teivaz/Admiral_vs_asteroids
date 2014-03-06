@@ -30,7 +30,7 @@ void GameObject::render()
 {
 }
 
-void GameObject::setPosition(const vec2f& p)
+void GameObject::setPosition(const vec2d& p)
 {
     if (p == m_position)
         return;
@@ -38,7 +38,7 @@ void GameObject::setPosition(const vec2f& p)
     m_transformationIsDirty = true;
 }
 
-void GameObject::setScale(const vec2f& s)
+void GameObject::setScale(const vec2d& s)
 {
     if (s == m_scale)
         return;
@@ -46,7 +46,7 @@ void GameObject::setScale(const vec2f& s)
     m_transformationIsDirty = true;
 }
 
-void GameObject::setRotation(float r)
+void GameObject::setRotation(double r)
 {
     if (r == m_rotation)
         return;
@@ -54,17 +54,17 @@ void GameObject::setRotation(float r)
     m_transformationIsDirty = true;
 }
 
-void GameObject::adjustPosition(const vec2f& p)
+void GameObject::adjustPosition(const vec2d& p)
 {
     setPosition(p + getPosition());
 }
 
-void GameObject::adjustScale(const vec2f& s)
+void GameObject::adjustScale(const vec2d& s)
 {
     setScale(s + getScale());
 }
 
-void GameObject::adjustRotation(float r)
+void GameObject::adjustRotation(double r)
 {
     setRotation(r + getRotation());
 }
@@ -72,9 +72,9 @@ void GameObject::adjustRotation(float r)
 void GameObject::_calculateTransformation()
 {
     m_transformationMatrix.SetScale(m_scale);
-    mat3f rot;
+    mat3d rot;
     rot.SetRotatation(m_rotation);
-    mat3f translate;
+    mat3d translate;
     translate.SetTranslation(m_position);
     m_transformationMatrix = rot * m_transformationMatrix;
     m_transformationMatrix = translate * m_transformationMatrix;
@@ -82,17 +82,17 @@ void GameObject::_calculateTransformation()
     m_transformationIsDirty = false;
 }
 
-const vec2f& GameObject::getPosition() const
+const vec2d& GameObject::getPosition() const
 {
     return m_position;
 }
 
-const vec2f& GameObject::getScale() const
+const vec2d& GameObject::getScale() const
 {
     return m_scale;
 }
 
-float GameObject::getRotation() const
+double GameObject::getRotation() const
 {
     return m_rotation;
 }
@@ -107,7 +107,7 @@ void GameObject::setCamera(CameraPtr cam)
 	m_camera = cam;
 }
 
-const mat3f& GameObject::getTransformation()
+const mat3d& GameObject::getTransformation()
 {
 	if (m_transformationIsDirty)
 	{
@@ -116,7 +116,7 @@ const mat3f& GameObject::getTransformation()
 	return m_transformationMatrix;
 }
 
-void GameObject::setAdditionalTransformation(const mat3f& mat)
+void GameObject::setAdditionalTransformation(const mat3d& mat)
 {
 	if (mat == m_additionalTransformation)
 		return;

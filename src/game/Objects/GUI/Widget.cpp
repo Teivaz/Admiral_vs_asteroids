@@ -16,7 +16,7 @@ Widget::~Widget()
     }
 }
 
-void Widget::setPosition(const vec2f& p)
+void Widget::setPosition(const vec2d& p)
 {
     for (Widget* child : m_children)
     {
@@ -24,7 +24,7 @@ void Widget::setPosition(const vec2f& p)
     }
 }
 
-void Widget::setScale(const vec2f& s)
+void Widget::setScale(const vec2d& s)
 {
     for (Widget* child : m_children)
     {

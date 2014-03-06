@@ -13,7 +13,7 @@ CollisionManager::~CollisionManager()
 
 }
 
-const std::vector<vec2f>& CollisionManager::getMesh(const string& name)
+const std::vector<vec2d>& CollisionManager::getMesh(const string& name)
 {
 	auto it = m_meshes.find(name);
 	if (it == m_meshes.end())
@@ -50,7 +50,7 @@ void CollisionManager::remove(PhysicNode* obj)
 	}
 }
 
-const std::vector<vec2f>& CollisionManager::_loadMesh(const string& name)
+const std::vector<vec2d>& CollisionManager::_loadMesh(const string& name)
 {
 	char* data;
 	size_t size;
@@ -62,7 +62,7 @@ const std::vector<vec2f>& CollisionManager::_loadMesh(const string& name)
 	ASSERT(result && "Error parsing collision file");
 	delete[] data;
 
-	std::vector<vec2f>& mesh = m_meshes[name];
+	std::vector<vec2d>& mesh = m_meshes[name];
 	if (root.isArray())
 	{
 		Json::Value::iterator it = root.begin();
@@ -70,9 +70,9 @@ const std::vector<vec2f>& CollisionManager::_loadMesh(const string& name)
 		for (; it != end; ++it)
 		{
 			const Json::Value vertex = *it;
-			float x = static_cast<float>(vertex[1u].asDouble());
-			float y = -static_cast<float>(vertex[0u].asDouble());
-			mesh.push_back(vec2f(x, y));
+			double x = static_cast<double>(vertex[1u].asDouble());
+			double y = -static_cast<double>(vertex[0u].asDouble());
+			mesh.push_back(vec2d(x, y));
 		}
 		ASSERT(mesh.size() > 3 && "Collision mesh should contain at least 3 vertices");
 		mesh.push_back(mesh[1]);
@@ -84,7 +84,7 @@ const std::vector<vec2f>& CollisionManager::_loadMesh(const string& name)
 	return mesh;
 }
 
-void CollisionManager::update(float dt)
+void CollisionManager::update(double dt)
 {
     for (PhysicNode* a : m_objects)
 	{
@@ -97,25 +97,25 @@ void CollisionManager::update(float dt)
             if (a == b)
                 continue;
 
-            float sqDistance = (a->getPosition() - b->getPosition()).SqLength();
-            float maxSqDistance = a->getSqBoundingRadius() + b->getSqBoundingRadius();
+            double sqDistance = (a->getPosition() - b->getPosition()).SqLength();
+            double maxSqDistance = a->getSqBoundingRadius() + b->getSqBoundingRadius();
             if (sqDistance > maxSqDistance)
 				continue;
 
-			vec2f point;
+			vec2d point;
 			if (_checkCollission(a, b, point))
 			{
-				vec2f momentumA = a->getMomentum(point);
-				vec2f momentumB = b->getMomentum(point);
-                vec2f pointA(momentumA);
-                vec2f pointB(momentumB);
-                if (!(pointA == vec2f()))
+				vec2d momentumA = a->getMomentum(point);
+				vec2d momentumB = b->getMomentum(point);
+                vec2d pointA(momentumA);
+                vec2d pointB(momentumB);
+                if (!(pointA == vec2d()))
                     pointA.Normalize();
-                if (!(pointB == vec2f()))
+                if (!(pointB == vec2d()))
                     pointB.Normalize();
-                vec2f plane = (pointA - pointB) / 2.0f;
-                vec2f normA = plane.Dot(momentumA);
-                vec2f normB = plane.Dot(momentumB);
+                vec2d plane = (pointA - pointB) / 2.0f;
+                vec2d normA = plane.Dot(momentumA);
+                vec2d normB = plane.Dot(momentumB);
                 momentumA = momentumA - normA + normB;
                 momentumB = momentumB - normB + normA;
 				a->onCollided(b, point, momentumA);
@@ -126,55 +126,55 @@ void CollisionManager::update(float dt)
 	}
 }
 
-bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, vec2f& point)
+bool CollisionManager::_checkCollission(PhysicNode* a, PhysicNode* b, vec2d& point)
 {
-	vector<vec2f> meshA;
+	vector<vec2d> meshA;
 	meshA.reserve(a->getMesh().size());
 	for (auto v : a->getMesh())
 	{
 		meshA.push_back(Transform(a->getTransformation(), v));
 	}
 
-	vector<vec2f> meshB;
+	vector<vec2d> meshB;
 	meshB.reserve(b->getMesh().size());
 	for (auto v : b->getMesh())
 	{
 		meshB.push_back(Transform(b->getTransformation(), v));
 	}
 
-	vector<vec2f> normals;
+	vector<vec2d> normals;
 	normals.reserve(meshA.size() - 2 + meshB.size() - 2);
 
 	// For each edge
 	for (unsigned int i = 1; i < meshA.size() - 1; ++i)
 	{
-		vec2f norm = meshA[i + 1] - meshA[i];
+		vec2d norm = meshA[i + 1] - meshA[i];
 		norm = norm.GetRightNomal();
 		normals.push_back(norm);
 	}
 	for (unsigned int i = 1; i < meshB.size() - 1; ++i)
 	{
-		vec2f norm = meshB[i + 1] - meshB[i];
+		vec2d norm = meshB[i + 1] - meshB[i];
 		norm = norm.GetRightNomal();
 		normals.push_back(norm);
 	}
 
 	bool collided = true;
-	for (const vec2f& norm : normals)
+	for (const vec2d& norm : normals)
 	{
-		float maxB = norm.Dot(meshB[1]);
-		float minB = maxB;
+		double maxB = norm.Dot(meshB[1]);
+		double minB = maxB;
 		for (unsigned int i = 2; i < meshB.size() - 1; ++i)
 		{
-			float dot = norm.Dot(meshB[i]);
+			double dot = norm.Dot(meshB[i]);
 			maxB = max(maxB, dot);
 			minB = min(minB, dot);
 		}
-		float maxA = norm.Dot(meshA[1]);
-		float minA = maxA;
+		double maxA = norm.Dot(meshA[1]);
+		double minA = maxA;
 		for (unsigned int i = 2; i < meshA.size() - 1; ++i)
 		{
-			float dot = norm.Dot(meshA[i]);
+			double dot = norm.Dot(meshA[i]);
 			maxA = max(maxA, dot);
 			minA = min(minA, dot);
 		}

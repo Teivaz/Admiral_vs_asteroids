@@ -14,7 +14,7 @@ public:
     bool done = false;
 
     void Init();
-    void Update(float dt);
+    void Update(double dt);
     void Render();
     
     void onTouchPressed(int x, int y);

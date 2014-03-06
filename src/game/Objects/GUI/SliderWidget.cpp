@@ -3,7 +3,7 @@
 #include "../Sprite.h"
 #include "Controllers/Touch.h"
 
-SliderWidget::SliderWidget(Sprite* sprite, const string& name, const vec2f& travel, float value/* = 0*/)
+SliderWidget::SliderWidget(Sprite* sprite, const string& name, const vec2d& travel, double value/* = 0*/)
 : m_sprite(sprite)
 , m_default(value)
 , m_travel(travel)
@@ -19,11 +19,11 @@ SliderWidget::~SliderWidget()
     delete m_callback;
 }
 
-void SliderWidget::setPosition(const vec2f& p)
+void SliderWidget::setPosition(const vec2d& p)
 {
     m_sprite->setPosition(p);
 }
-void SliderWidget::setScale(const vec2f& s)
+void SliderWidget::setScale(const vec2d& s)
 {
     m_sprite->setScale(s);
 }
@@ -47,8 +47,8 @@ void SliderWidget::onTouchBegan(TouchPtr t)
 
 void SliderWidget::onTouchMoved(TouchPtr t)
 {
-    vec2f travel = t->currentPoint() - m_origin;
-    float p = m_travel.Dot(travel);
+    vec2d travel = t->currentPoint() - m_origin;
+    double p = m_travel.Dot(travel);
     p /= m_travel.SqLength();
     setProgress(p);
 }
@@ -64,12 +64,12 @@ void SliderWidget::setCallback(CallbackFunctor* c)
     m_callback = c;
 }
 
-bool SliderWidget::_isPointInside(const vec2f& p)
+bool SliderWidget::_isPointInside(const vec2d& p)
 {
     return m_sprite->isPointInside(p);
 }
 
-void SliderWidget::setProgress(float p)
+void SliderWidget::setProgress(double p)
 {
     p = max(0.0f, p);
     p = min(1.0f, p);

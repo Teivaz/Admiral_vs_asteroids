@@ -8,23 +8,25 @@ Sky::Sky()
 {
 	for (int a = 0; a < 50; ++a)
 	{
-		float x = static_cast<float>(rand() % 10000 - 5000);
-		float y = static_cast<float>(rand() % 10000 - 5000);
-		vec2f pos(x, y);
-		vec2f size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_star_flare_penta);
-		Sprite* s = SpriteManager::GetInstance()->createSprite(sprites::k_star_flare_penta, pos, size, false, 0);
-		s->setScale(0.1f);
+		double x = static_cast<double>(rand() % 1000 - 500);
+		double y = static_cast<double>(rand() % 1000 - 500);
+		vec2d pos(x, y);
+		vec2d size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_star_flare_penta);
+        Sprite* s = SpriteManager::GetInstance()->createSprite(sprites::k_star_flare_penta, -size / 2, size, false, 0);
+        s->setScale(0.05f);
+        s->setPosition(pos);
 		m_starsLevel1.push_back(SpritePtr(s));
 	}
 
 	for (int a = 0; a < 50; ++a)
 	{
-		float x = static_cast<float>(rand() % 10000 - 5000);
-		float y = static_cast<float>(rand() % 10000 - 5000);
-		vec2f pos(x, y);
-		vec2f size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_star_flare_penta);
-		Sprite* s = SpriteManager::GetInstance()->createSprite(sprites::k_star_flare_penta, pos, size, false, 0);
-		s->setScale(0.1f);
+		double x = static_cast<double>(rand() % 1000 - 500);
+		double y = static_cast<double>(rand() % 1000 - 500);
+		vec2d pos(x, y);
+		vec2d size = SpriteManager::GetInstance()->getSpriteSize(sprites::k_star_flare_penta);
+		Sprite* s = SpriteManager::GetInstance()->createSprite(sprites::k_star_flare_penta, -size / 2, size, false, 0);
+		s->setScale(0.06f);
+        s->setPosition(pos);
 		m_starsLevel2.push_back(SpritePtr(s));
 	}
 
@@ -49,7 +51,7 @@ void Sky::setCamera(CameraPtr cam)
 	}
 }
 
-void Sky::update(float dt)
+void Sky::update(double dt)
 {
 	GameObject::update(dt);
 }
@@ -67,24 +69,24 @@ void Sky::render()
 	}
 }
 
-void Sky::setPosition(const vec2f& p)
+void Sky::setPosition(const vec2d& p)
 {
 //	GameObject::setPosition(p);
 }
 
-void Sky::setScale(const vec2f& s)
+void Sky::setScale(const vec2d& s)
 {
 //	GameObject::setScale(s);
 }
 
-void Sky::setRotation(float r)
+void Sky::setRotation(double r)
 {
 //	GameObject::setRotation(r);
 }
 
-void Sky::onCameraMoved(const vec2f& newCameraPosition)
+void Sky::onCameraMoved(const vec2d& newCameraPosition)
 {
-	mat3f transform;
+	mat3d transform;
 	transform.SetTranslation(newCameraPosition * m_level1Move);
 	for (auto star : m_starsLevel1)
 	{

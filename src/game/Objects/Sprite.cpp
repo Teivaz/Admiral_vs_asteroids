@@ -5,34 +5,34 @@
 #include "Controllers/Camera.h"
 #include "Controllers/ShaderAttributes.h"
 
-Sprite::Sprite(Texture tex, vec2f lb, vec2f ur, ShaderProgram sp)
+Sprite::Sprite(Texture tex, vec2d lb, vec2d ur, ShaderProgram sp)
 {
     m_size = abs(lb - ur);
-    m_origin = vec2f(min(lb.x, ur.x), min(lb.y, ur.y));
-    std::vector<vec2f> verts(4);
+    m_origin = vec2d(min(lb.x, ur.x), min(lb.y, ur.y));
+    std::vector<vec2d> verts(4);
     verts[1] = lb;
-    verts[0] = vec2f(lb.x, ur.y);
+    verts[0] = vec2d(lb.x, ur.y);
     verts[3] = ur;
-    verts[2] = vec2f(ur.x, lb.y);
+    verts[2] = vec2d(ur.x, lb.y);
     SimpleShape* shape = new SimpleShape(verts);
     init(sp, shape, tex);
 }
 
-Sprite::Sprite(Texture tex, vec2f textureLeftBottom, vec2f textureUpRight, ShaderProgram sp, vec2f position, vec2f size)
+Sprite::Sprite(Texture tex, vec2d textureLeftBottom, vec2d textureUpRight, ShaderProgram sp, vec2d position, vec2d size)
 {
     m_size = size;
     m_origin = position;
-    std::vector<vec2f> texVerts(4);
+    std::vector<vec2d> texVerts(4);
     texVerts[1] = textureLeftBottom;
-    texVerts[0] = vec2f(textureLeftBottom.x, textureUpRight.y);
+    texVerts[0] = vec2d(textureLeftBottom.x, textureUpRight.y);
     texVerts[3] = textureUpRight;
-    texVerts[2] = vec2f(textureUpRight.x, textureLeftBottom.y);
+    texVerts[2] = vec2d(textureUpRight.x, textureLeftBottom.y);
 
-    std::vector<vec2f> verts(4);
+    std::vector<vec2d> verts(4);
     verts[0] = position;
-    verts[1] = vec2f(position.x, position.y + size.y);
+    verts[1] = vec2d(position.x, position.y + size.y);
     verts[2] = position + size;
-    verts[3] = vec2f(position.x + size.x, position.y);
+    verts[3] = vec2d(position.x + size.x, position.y);
     SeparateShape* shape = new SeparateShape(verts, texVerts);
     init(sp, shape, tex);
 }
@@ -58,12 +58,12 @@ void Sprite::setShader(ShaderProgram shader)
     m_uniformTransformation = glGetUniformLocation(shader, "u_transformation");
 }
 
-bool Sprite::isPointInside(const vec2f& pt)
+bool Sprite::isPointInside(const vec2d& pt)
 {
-    vec3f lb = vec3f(m_origin.x, m_origin.y, 1);
-    vec3f ur = vec3f(m_size.x + m_origin.x, m_size.y + m_origin.y, 1);
-    lb = m_transformationMatrix * lb;
-    ur = m_transformationMatrix * ur;
+    vec2d lb = m_origin;
+    vec2d ur = m_size + m_origin;
+    lb = Transform(m_transformationMatrix, lb);
+    ur = Transform(m_transformationMatrix, ur);
     return ((pt.x > lb.x) && (pt.y > lb.y) && (pt.x < ur.x) && (pt.y < ur.y));
 }
 
@@ -111,13 +111,14 @@ void Sprite::_bindAttributes()
     }
     else
     {
-		glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &getTransformation().a1);
+        mat3f transform = getTransformation();
+        glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &transform.a1);
     }
 
     bindAttributes();
 }
 
-void Sprite::update(float dt)
+void Sprite::update(double dt)
 {    
 }
 
@@ -133,7 +134,7 @@ GLsizei Sprite::getVertsCount() const
     return m_shape->getCount();
 }
 
-const vec2f& Sprite::getSize()
+const vec2d& Sprite::getSize()
 {
     return m_size;
 }

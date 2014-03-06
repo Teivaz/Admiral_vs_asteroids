@@ -44,13 +44,13 @@ vec2i SpriteManager::getSpriteSizei(const string& name)
     return it->second.sizePx;
 }
 
-vec2f SpriteManager::getSpriteSize(const string& name)
+vec2d SpriteManager::getSpriteSize(const string& name)
 {
     vec2i sizei = getSpriteSizei(name);
-    return vec2f(static_cast<float>(sizei.x), static_cast<float>(sizei.y));
+    return vec2d(static_cast<double>(sizei.x), static_cast<double>(sizei.y));
 }
 
-Sprite* SpriteManager::createSprite(const string& name, vec2f position, vec2f size, bool autorender/* = true*/, int renderLayer/* = 0*/)
+Sprite* SpriteManager::createSprite(const string& name, vec2d position, vec2d size, bool autorender/* = true*/, int renderLayer/* = 0*/)
 {
     auto it = m_spriteRectMap.find(name);
     if (it == m_spriteRectMap.end())
@@ -81,8 +81,8 @@ void SpriteManager::loadAtlas(const string& name)
     delete[] data;
     Json::Value meta = root["meta"];
     Json::Value texName = meta["image"];
-    vec2f texSize = vec2f(static_cast<float>(meta["size"]["w"].asInt()), 
-                          static_cast<float>(meta["size"]["h"].asInt()));
+    vec2d texSize = vec2d(static_cast<double>(meta["size"]["w"].asInt()), 
+                          static_cast<double>(meta["size"]["h"].asInt()));
     Texture tex = TextureManager::GetInstance()->getTexture(texName.asString());
     ASSERT(tex);
     Json::Value frames = root.get("frames", Json::Value(""));
@@ -95,11 +95,11 @@ void SpriteManager::loadAtlas(const string& name)
             const char* spriteName = it.memberName();
             Json::Value frame = (*it).get("frame", Json::nullValue);
             ASSERT(frame != Json::nullValue);
-            float x = static_cast<float>(frame["x"].asInt()) / texSize.x;
-            float y = static_cast<float>(frame["y"].asInt()) / texSize.y;
-            float w = static_cast<float>(frame["w"].asInt()) / texSize.x;
-            float h = static_cast<float>(frame["h"].asInt()) / texSize.y;
-            m_spriteRectMap[spriteName] = SpriteRect(vec2f(x, y), vec2f(x + w, y + h), tex, vec2i(frame["w"].asInt(), frame["h"].asInt()));
+            double x = static_cast<double>(frame["x"].asInt()) / texSize.x;
+            double y = static_cast<double>(frame["y"].asInt()) / texSize.y;
+            double w = static_cast<double>(frame["w"].asInt()) / texSize.x;
+            double h = static_cast<double>(frame["h"].asInt()) / texSize.y;
+            m_spriteRectMap[spriteName] = SpriteRect(vec2d(x, y), vec2d(x + w, y + h), tex, vec2i(frame["w"].asInt(), frame["h"].asInt()));
         }        
     }
 }
@@ -122,7 +122,7 @@ Animation* SpriteManager::createAnimation(const string& name)
     ASSERT(result && "Error parsing animation file");
 
     AnimationData animData;
-    animData.fps = static_cast<float>(root["fps"].asDouble());
+    animData.fps = static_cast<double>(root["fps"].asDouble());
     Json::Value frames = root["frames"];
     if (frames.isArray())
     {
@@ -132,13 +132,13 @@ Animation* SpriteManager::createAnimation(const string& name)
         {
             AnimationFrameData frameData;
             frameData.sprite = (*it)["sprite"].asString();
-            frameData.anchor = vec2f(static_cast<float>((*it)["anchor"]["x"].asDouble()),
-                                     static_cast<float>((*it)["anchor"]["y"].asDouble()));
-            frameData.scale = vec2f(static_cast<float>((*it)["scale"]["x"].asDouble()),
-                                    static_cast<float>((*it)["scale"]["y"].asDouble()));
-            frameData.offset = vec2f(static_cast<float>((*it)["offset"]["x"].asDouble()),
-                                     static_cast<float>((*it)["offset"]["y"].asDouble()));
-            frameData.rotation = static_cast<float>((*it)["rotate"].asDouble());
+            frameData.anchor = vec2d(static_cast<double>((*it)["anchor"]["x"].asDouble()),
+                                     static_cast<double>((*it)["anchor"]["y"].asDouble()));
+            frameData.scale = vec2d(static_cast<double>((*it)["scale"]["x"].asDouble()),
+                                    static_cast<double>((*it)["scale"]["y"].asDouble()));
+            frameData.offset = vec2d(static_cast<double>((*it)["offset"]["x"].asDouble()),
+                                     static_cast<double>((*it)["offset"]["y"].asDouble()));
+            frameData.rotation = static_cast<double>((*it)["rotate"].asDouble());
             frameData.rotation = (PI * frameData.rotation) / 180.0f;
             animData.frames.push_back(frameData);
         }
@@ -154,8 +154,8 @@ Animation* SpriteManager::_animationFromFramesData(const AnimationData& data)
     Animation::KeyFrames_t frames;
     for (auto frameData : data.frames)
     {
-        vec2f size = getSpriteSize(frameData.sprite);
-        vec2f anchor(frameData.anchor.x * size.x, frameData.anchor.y * size.y);
+        vec2d size = getSpriteSize(frameData.sprite);
+        vec2d anchor(frameData.anchor.x * size.x, frameData.anchor.y * size.y);
         Sprite* frame = createSprite(frameData.sprite, -anchor, size, false, 0);
         frame->setPosition(frameData.offset);
         frame->setRotation(frameData.rotation);

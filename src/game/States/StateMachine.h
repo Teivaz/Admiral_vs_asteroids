@@ -8,7 +8,7 @@ public:
     ~StateMachine();
 
     void                        pushState(State*);
-    void                        update(float dt);
+    void                        update(double dt);
     void                        render();
 
     State*                      getCurrentState()

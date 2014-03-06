@@ -206,7 +206,7 @@ void WindowLoop(AppDelegate* delegate)
             DispatchMessage(&msg);
         }
         DWORD curTime = GetTickCount();
-        float deltaTime = (float)(curTime - lastTime);
+        double deltaTime = (double)(curTime - lastTime);
         lastTime = curTime;
 		SendMessage(delegate->window, WM_PAINT, 0, 0);
 		delegate->Update(deltaTime);

@@ -11,7 +11,7 @@ TouchManager::~TouchManager()
 {
 }
 
-void TouchManager::onTouchBegan(const vec2f& point)
+void TouchManager::onTouchBegan(const vec2d& point)
 {
     TouchPtr touch = TouchPtr(new Touch(point));
     m_touches.push_back(touch);
@@ -21,7 +21,7 @@ void TouchManager::onTouchBegan(const vec2f& point)
     }
 }
 
-void TouchManager::onTouchMoved(const vec2f& position, const vec2f& previousPosition)
+void TouchManager::onTouchMoved(const vec2d& position, const vec2d& previousPosition)
 {
     TouchPtr touch = _resolveTouch(position, previousPosition);
     if (touch && touch->isConsumed())
@@ -30,7 +30,7 @@ void TouchManager::onTouchMoved(const vec2f& position, const vec2f& previousPosi
     }
 }
 
-void TouchManager::onTouchEnded(const vec2f& position, const vec2f& previousPosition)
+void TouchManager::onTouchEnded(const vec2d& position, const vec2d& previousPosition)
 {
     TouchPtr touch = _resolveTouch(position, previousPosition, true);
     if (!touch)
@@ -57,7 +57,7 @@ void TouchManager::removeReceiever(TouchReceiver* r)
     m_receievers.erase(it);
 }
 
-TouchPtr TouchManager::_resolveTouch(const vec2f& position, const vec2f& previousPosition, bool erase/* = true*/)
+TouchPtr TouchManager::_resolveTouch(const vec2d& position, const vec2d& previousPosition, bool erase/* = true*/)
 {
     // Find touch with position closest to incoming touch prevoius position
     unsigned int touchesStored = m_touches.size();
@@ -76,13 +76,13 @@ TouchPtr TouchManager::_resolveTouch(const vec2f& position, const vec2f& previou
     else
     {
         TouchPtr touch = m_touches.front();
-        float distance = vec2f(touch->currentPoint() - previousPosition).SqLength();
+        double distance = vec2d(touch->currentPoint() - previousPosition).SqLength();
         auto it = m_touches.begin();
         auto end = m_touches.end();
         ++it;
         for (; it != end; ++it)
         {
-            float newDistance = vec2f((*it)->currentPoint() - previousPosition).SqLength();
+            double newDistance = vec2d((*it)->currentPoint() - previousPosition).SqLength();
             if (newDistance < distance)
             {
                 distance = newDistance;

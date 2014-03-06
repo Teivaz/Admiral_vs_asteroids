@@ -16,7 +16,7 @@ protected: // Captain only!
     CaptainsBridge(const string& shipName);
 
     virtual void                    render();
-    virtual void                    update(float dt);
+    virtual void                    update(double dt);
     
     // ******************************
     // Captain commands:
@@ -27,23 +27,23 @@ protected: // Captain only!
 
     // Set propriate maneuver engine power to rotate in desired direction
     // -1 ... +1
-    void                            rotate(float speed);
+    void                            rotate(double speed);
                                     // 0 ... +1
-    void                            setMainEnginePower(float power);
-    void                            setEnginePower(int engineId, float power);
+    void                            setMainEnginePower(double power);
+    void                            setEnginePower(int engineId, double power);
 
 
     // ******************************
     // Captain asks:
     // ******************************
 
-    vec2f                           getShipMoveDirection() const;
-    vec2f                           getShipRotation() const;
-    float                           getShipRotationSpeed() const;
-    float                           getShipRotationSpeedDerivative() const;
-	float                           getShipMoveSpeed() const;
-	float                           getShipMoveSpeedDerivative() const;
-	vec2f                           GetShipPosition() const;
+    vec2d                           getShipMoveDirection() const;
+    vec2d                           getShipRotation() const;
+    double                           getShipRotationSpeed() const;
+    double                           getShipRotationSpeedDerivative() const;
+	double                           getShipMoveSpeed() const;
+	double                           getShipMoveSpeedDerivative() const;
+	vec2d                           GetShipPosition() const;
 	
 private:
     ShipPtr                         m_ship;
