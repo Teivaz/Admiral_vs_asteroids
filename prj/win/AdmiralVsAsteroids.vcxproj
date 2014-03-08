@@ -23,6 +23,8 @@
     <ClCompile Include="..\..\src\game\Controllers\TouchManager.cpp" />
     <ClCompile Include="..\..\src\game\Controllers\TouchReceiver.cpp" />
     <ClCompile Include="..\..\src\game\GameDelegate.cpp" />
+    <ClCompile Include="..\..\src\game\Networking\Connection.cpp" />
+    <ClCompile Include="..\..\src\game\Networking\MultiplayerController.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Animations\Animation.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GameObject.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\BasicWidget.cpp" />
@@ -69,6 +71,8 @@
     <ClInclude Include="..\..\src\game\Controllers\TouchManager.h" />
     <ClInclude Include="..\..\src\game\Controllers\TouchReceiver.h" />
     <ClInclude Include="..\..\src\game\GameDelegate.h" />
+    <ClInclude Include="..\..\src\game\Networking\Connection.h" />
+    <ClInclude Include="..\..\src\game\Networking\MultiplayerController.h" />
     <ClInclude Include="..\..\src\game\Objects\Animations\Animation.h" />
     <ClInclude Include="..\..\src\game\Objects\GameObject.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\BasicWidget.h" />

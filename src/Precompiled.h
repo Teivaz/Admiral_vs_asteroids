@@ -5,6 +5,7 @@
 #include "EGL/egl.h"
 #include "GLES2/gl2.h"
 #include <Windows.h>
+#include <winsock2.h>
 
 #ifdef _ANALYZE
 #include <vld.h>
@@ -35,6 +36,7 @@ inline T max(T a, T b){return a > b ? a : b;}
 #include <map>
 #include <algorithm>
 #include <memory>
+#include <thread>
 
 #include "utils/CustomGLTypes.h"
 

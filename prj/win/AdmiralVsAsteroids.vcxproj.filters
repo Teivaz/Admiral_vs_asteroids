@@ -65,6 +65,9 @@
     <Filter Include="game\Objects\Scene\Background">
       <UniqueIdentifier>{f90fb089-b309-4991-ab21-c7ab7a1c627e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\Networking">
+      <UniqueIdentifier>{59633abf-f142-4ede-889c-7a1ce304433a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -166,6 +169,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\Scene\Sky.cpp">
       <Filter>game\Objects\Scene\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Networking\MultiplayerController.cpp">
+      <Filter>game\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Networking\Connection.cpp">
+      <Filter>game\Networking</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +298,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\Scene\Sky.h">
       <Filter>game\Objects\Scene\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Networking\MultiplayerController.h">
+      <Filter>game\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Networking\Connection.h">
+      <Filter>game\Networking</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
