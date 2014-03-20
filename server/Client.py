@@ -9,8 +9,14 @@ class Client:
 		task = threading.Thread(target=Client.Task, args=(self,))
 		task.start()
 
+	def IsReady(self):
+		return False
+
 	def GetLastActivity(self):
-		return self.lastActivity
+		self.lock.acquire()
+		lastActivity = self.lastActivity
+		self.lock.release()
+		return lastActivity
 
 	def GetLastPackage(self):
 		self.lock.acquire()
