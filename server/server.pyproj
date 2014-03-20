@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="Client.py" />
     <Compile Include="server.py" />
+    <Compile Include="ServerMessage.py" />
     <Compile Include="State.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

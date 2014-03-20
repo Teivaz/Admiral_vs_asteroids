@@ -1,6 +1,6 @@
 import select, socket, threading, time
 from Client import Client
-
+from ServerMessage import *
 
 # Base state class
 class BaseServerState:
@@ -25,7 +25,8 @@ class Lobby:
 		None
 
 	def Update(self, clients):
-		None
+		for client in clients:
+			print(client.GetLastPackage()[2])
 
 	def IsFinished(self):
 		return self.isFinished

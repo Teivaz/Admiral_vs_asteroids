@@ -1,4 +1,6 @@
-import time, threading, select
+import time, threading, select, array
+from ServerMessage import *
+
 
 class Client:
 	def __init__(self, connection, address):
@@ -33,9 +35,17 @@ class Client:
 			if inputready:
 				self.lock.acquire()
 				try:
-					self.package = self.conn.recv(25)
+					endiansMatch = array.array('l', self.conn.recv(4))[0] == 1
+					headerSize = array.array('l', self.conn.recv(4))[0]
+					type = array.array('l', self.conn.recv(headerSize*4))[0]
+					payloadSize = array.array('l', self.conn.recv(4))[0]
+					if payloadSize == 0:
+						self.package[type] = True
+					else:
+						self.package[type] = array.array('l', self.conn.recv(payloadSize*4))
 				except:
-					self.alive = False
+					pass
+					#self.alive = False
 				else:
 					self.lastActivity = time.time()
 				self.lock.release()
@@ -48,11 +58,15 @@ class Client:
 			self.alive = False
 			self.lock.release()
 
+	def SendMessage(self, message):
+		if self.alive:
+			self.conn.send(message.message)
+
 	def __del__(self):
 		self.Disconnect()
 
-	package = []
-	conn = 0
+	package = {}
+	conn = None
 	addr = ()
 	lastActivity = 0
 	lock = threading.RLock()
