@@ -1,22 +1,23 @@
-import socket, threading
+import select, socket, threading, time
+from Client import Client
 
 PORT = 1234
 
 
 lock = threading.RLock()
 
-def listen(sock, clients):
+def MonitorNewConnections(sock, clients):
+	timeout = 1 # seconds in float
 	while True:
-		try:
+		inputready, outputready, exceptready = select.select([sock], [], [], timeout)
+		if inputready:
 			(conn, addr) = sock.accept()
-		except:
-			break;
-		lock.acquire()
-		print("connection detected: {0}".format(addr))
-		clients[addr] = conn
-		lock.release()
-		print("connected!")
-		#run = False
+			lock.acquire()
+			print("connection detected: {0}".format(addr))
+			clients.append(Client(conn, addr))
+			lock.release()
+			print("connected!")
+		continue		
 	print("thread exit!")
 
 sock = socket.socket()
@@ -24,27 +25,22 @@ sock = socket.socket()
 sock.bind(('', PORT))
 
 sock.listen(5)
-clients = dict()
+clients = []
 
-listenerThread = threading.Thread(target=listen, args=(sock,clients))
+listenerThread = threading.Thread(target=MonitorNewConnections, args=(sock,clients))
 listenerThread.start()
 #listen(sock,clients, run)
 
 monitor = True
 while monitor:
 	lock.acquire()
-	for addr, conn in clients.iteritems():
-		try:
-			data = conn.recv(25)
-			if not data:
-				break
-			print("{0} : \n\t{1}".format(addr, data))
-		except:
-			monitor = False
-			sock.close()
-			sock.shutdown(socket.SHUT_RDWR)
-			#sock = None
-			print("close")
+	for client in clients:
+		if client.IsActive():
+			print(client.GetLastPackage())
+		else:
+			clients.remove(client)
+
 	lock.release()
+	time.sleep(10)
 
 
