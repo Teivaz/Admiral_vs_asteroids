@@ -2,7 +2,7 @@ import select, socket, threading, time
 from Client import Client
 from State import *
 
-MAX_PING = 9e9
+MAX_PING = 500 # seconds
 
 
 
@@ -31,7 +31,7 @@ class Server:
 		while self.connected == True:			
 			# remove idle clients
 			for client in self.clients:
-				clientAlive = client.IsActive()# and client.GetLastActivity() < (time.time() - MAX_PING)
+				clientAlive = client.IsActive() and client.GetLastActivity() > (time.time() - MAX_PING)
 				if clientAlive == False:
 					self.clients.remove(client)
 
