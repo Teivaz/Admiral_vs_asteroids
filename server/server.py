@@ -28,31 +28,37 @@ class Server:
 		monitor.start()
 
 		# main loop
-		while self.connected == True:
-			self.lock.acquire()
+		while self.connected == True:			
 			# remove idle clients
 			for client in self.clients:
 				clientAlive = client.IsActive()# and client.GetLastActivity() < (time.time() - MAX_PING)
 				if clientAlive == False:
 					self.clients.remove(client)
-			if self.state:
-				self.state.Update(self.clients)
-			self.lock.release()
 
-			if self.state and self.state.IsFinished():
+			# Process pending connections
+			self.lock.acquire()
+			if size(self.pendingConnections) > 0:
+				client = self.pendingConnections[0]
+				self.state.OnConnectionDetected(client)
+				self.pendingConnections.remove(client)
+			self.lock.release()
+			
+			self.state.Update(self.clients)
+
+			if self.state.IsFinished():
 				self.state = self.state.GetNextState()
 
 
 
 	def ConnectionMonitor(self):
 		while self.connected:
-			if self.state and self.state.AllowConnections():
+			if self.state.AllowConnections():
 				inputready, outputready, exceptready = select.select([self.sock], [], [], 1.0)
 				if inputready and self.connected:
 					(conn, addr) = self.sock.accept()
-					self.lock.acquire()
 					print("connection detected: {0}".format(addr))
-					self.clients.append(Client(conn, addr))
+					self.lock.acquire()
+					self.pendingConnections.append(Client(conn, addr))
 					self.lock.release()
 			else:
 				time.sleep(1)
@@ -73,6 +79,7 @@ class Server:
 	lock = threading.RLock()
 	connected = False
 	clients = []
+	pendingConnections = []
 	state = BaseServerState()
 
 def main():

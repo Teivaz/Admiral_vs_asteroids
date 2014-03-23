@@ -17,8 +17,8 @@ class BaseServerState:
 		state = Lobby()
 		return state
 
-	def AllowConnections(self):
-		return False
+	def OnConnectionDetected(self, client):
+		None
 
 class Lobby:
 	def __init__(self):
@@ -35,8 +35,8 @@ class Lobby:
 		state = Loading()
 		return state
 
-	def AllowConnections(self):
-		return True
+	def OnConnectionDetected(self, client):
+		None
 
 	isFinished = False
 
@@ -54,9 +54,9 @@ class Loading:
 	def GetNextState(self):
 		state = GamePlay()
 		return state
-	
-	def AllowConnections(self):
-		return False
+
+	def OnConnectionDetected(self, client):
+		None
 
 	isFinished = False
 
@@ -74,6 +74,6 @@ class GamePlay:
 	def GetNextState(self):
 		state = Lobby()
 		return state
-	
-	def AllowConnections(self):
-		return False
+
+	def OnConnectionDetected(self, client):
+		None
