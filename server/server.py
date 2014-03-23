@@ -37,9 +37,9 @@ class Server:
 
 			# Process pending connections
 			self.lock.acquire()
-			if size(self.pendingConnections) > 0:
+			if len(self.pendingConnections) > 0:
 				client = self.pendingConnections[0]
-				self.state.OnConnectionDetected(client)
+				self.state.OnConnectionDetected(client, self.clients)
 				self.pendingConnections.remove(client)
 			self.lock.release()
 			
@@ -52,16 +52,13 @@ class Server:
 
 	def ConnectionMonitor(self):
 		while self.connected:
-			if self.state.AllowConnections():
-				inputready, outputready, exceptready = select.select([self.sock], [], [], 1.0)
-				if inputready and self.connected:
-					(conn, addr) = self.sock.accept()
-					print("connection detected: {0}".format(addr))
-					self.lock.acquire()
-					self.pendingConnections.append(Client(conn, addr))
-					self.lock.release()
-			else:
-				time.sleep(1)
+			inputready, outputready, exceptready = select.select([self.sock], [], [], 1.0)
+			if inputready and self.connected:
+				(conn, addr) = self.sock.accept()
+				print("connection detected: {0}".format(addr))
+				self.lock.acquire()
+				self.pendingConnections.append(Client(conn, addr))
+				self.lock.release()
 
 	def Disconnect(self):
 		if self.connected:

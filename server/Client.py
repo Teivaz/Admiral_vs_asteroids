@@ -35,14 +35,11 @@ class Client:
 			if inputready:
 				self.lock.acquire()
 				try:
-					endiansMatch = array.array('l', self.conn.recv(4))[0] == 1
-					headerSize = array.array('l', self.conn.recv(4))[0]
-					type = array.array('l', self.conn.recv(headerSize*4))[0]
-					payloadSize = array.array('l', self.conn.recv(4))[0]
-					if payloadSize == 0:
-						self.package[type] = True
+					type, payload = ReadMessage(self.conn)
+					if len(payload) == 0:
+						self.package[type[0]] = True
 					else:
-						self.package[type] = array.array('l', self.conn.recv(payloadSize*4))
+						self.package[type[0]] = payload[0]
 				except:
 					pass
 					#self.alive = False
