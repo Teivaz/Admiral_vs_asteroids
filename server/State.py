@@ -27,7 +27,7 @@ class Lobby:
 	def Update(self, clients):
 		for client in clients:
 			try:
-				print(client.GetLastPackage()[2])
+				print(client.PopPackage())
 			except:
 				None
 

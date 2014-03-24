@@ -37,7 +37,12 @@ class ServerMessage:
 def ReadMessage(connection):
 	lenRaw = array.array('l', connection.recv(4))
 	packLen = socket.ntohl(lenRaw[0])
-	msgRaw = connection.recv(packLen * 4)
+	msgRaw = str()
+	received = 0
+	while received < (packLen * 4):
+		toReceive = packLen * 4 - received
+		msgRaw = msgRaw + connection.recv(toReceive)
+		received = len(msgRaw)
 	return DecodeMessage(msgRaw)
 
 def DecodeMessage(msg):

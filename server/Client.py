@@ -1,4 +1,4 @@
-import time, threading, select, array
+import time, threading, select, array, Queue
 from ServerMessage import *
 
 
@@ -26,6 +26,9 @@ class Client:
 		self.lock.release()
 		return ret
 
+	def PopPackage(self):
+		return self.packQueue.get()
+
 	def IsActive(self):
 		return self.alive
 
@@ -34,16 +37,16 @@ class Client:
 			inputready, outputready, exceptready = select.select([self.conn], [], [], 1.0)
 			if inputready:
 				self.lock.acquire()
-				try:
+				if True: #try:
 					type, payload = ReadMessage(self.conn)
 					if len(payload) == 0:
 						self.package[type[0]] = True
 					else:
 						self.package[type[0]] = payload[0]
-				except:
-					pass
-					#self.alive = False
-				else:
+					self.packQueue.put((type, payload))
+				#except:
+				#	self.alive = False
+				#else:
 					self.lastActivity = time.time()
 				self.lock.release()
 
@@ -68,3 +71,4 @@ class Client:
 	lastActivity = 0
 	lock = threading.RLock()
 	alive = False
+	packQueue = Queue.Queue()
