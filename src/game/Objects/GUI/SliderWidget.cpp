@@ -71,8 +71,8 @@ bool SliderWidget::_isPointInside(const vec2d& p)
 
 void SliderWidget::setProgress(double p)
 {
-    p = max(0.0f, p);
-    p = min(1.0f, p);
+    p = max(0.0, p);
+    p = min(1.0, p);
     m_progress = p;
     m_sprite->setPosition(m_origin + m_travel*p);
     if (m_callback)
