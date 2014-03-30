@@ -83,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BBF05AD18E8C69E00216EF7 /* sigslot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sigslot.h; path = ../libs/sigslot/sigslot.h; sourceTree = "<group>"; };
 		0BE6FB6C18E8B6E000EC822E /* Sky.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sky.cpp; sourceTree = "<group>"; };
 		0BE6FB6D18E8B6E000EC822E /* Sky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sky.h; sourceTree = "<group>"; };
 		9A056AD918A11217008288DA /* Painter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Painter.cpp; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 		9A056AD418A111F7008288DA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0BBF05AD18E8C69E00216EF7 /* sigslot.h */,
 				9A056AD518A11217008288DA /* game */,
 				9A056B0418A11217008288DA /* ios */,
 				9A056B0C18A11217008288DA /* Precompiled.h */,
