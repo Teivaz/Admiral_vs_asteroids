@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0BE6FB6E18E8B6E000EC822E /* Sky.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6FB6C18E8B6E000EC822E /* Sky.cpp */; };
+		0BFB52CA18ECB95600E148DA /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB52C918ECB95600E148DA /* Entitlements.plist */; };
 		9A056B1A18A11217008288DA /* Painter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A056AD918A11217008288DA /* Painter.cpp */; };
 		9A056B1B18A11217008288DA /* ShaderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A056ADC18A11217008288DA /* ShaderManager.cpp */; };
 		9A056B1C18A11217008288DA /* SpriteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A056ADE18A11217008288DA /* SpriteManager.cpp */; };
@@ -86,6 +87,7 @@
 		0BBF05AD18E8C69E00216EF7 /* sigslot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sigslot.h; path = ../libs/sigslot/sigslot.h; sourceTree = "<group>"; };
 		0BE6FB6C18E8B6E000EC822E /* Sky.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sky.cpp; sourceTree = "<group>"; };
 		0BE6FB6D18E8B6E000EC822E /* Sky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sky.h; sourceTree = "<group>"; };
+		0BFB52C918ECB95600E148DA /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		9A056AD918A11217008288DA /* Painter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Painter.cpp; sourceTree = "<group>"; };
 		9A056ADA18A11217008288DA /* Painter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Painter.h; sourceTree = "<group>"; };
 		9A056ADB18A11217008288DA /* ShaderAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderAttributes.h; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 		9A29455318902CF4005E4C8B = {
 			isa = PBXGroup;
 			children = (
+				0BFB52C918ECB95600E148DA /* Entitlements.plist */,
 				9A056AD418A111F7008288DA /* src */,
 				9A84B9AD189FD9F1000239A1 /* Libs */,
 				9A89AEC318902E2C0033C8C4 /* resources */,
@@ -472,6 +475,15 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Alexander Kuznietsov";
+				TargetAttributes = {
+					9A29455B18902CF4005E4C8B = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 9A29455718902CF4005E4C8B /* Build configuration list for PBXProject "AdmiralVsAsteroids" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -523,6 +535,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BFB52CA18ECB95600E148DA /* Entitlements.plist in Resources */,
 				9A89AECA18902E780033C8C4 /* Images.xcassets in Resources */,
 				9A84B9AC189FC9A4000239A1 /* bundle in Resources */,
 				9A89AECC18902E860033C8C4 /* AdmiralVsAsteroids-Info.plist in Resources */,
@@ -669,14 +682,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Valeri Vuchov (WDTMDP2J2J)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = ../../release/;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "../../src/ios/AdmiralVsAsteroids-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/../../resources_built/AdmiralVsAsteroids-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = ../../release/build/;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -685,8 +699,7 @@
 					"-ljsoncpp_d",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)_d";
-				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/ ../../libs/sigslot ../../libs/vectry";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -701,14 +714,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Valeri Vuchov (WDTMDP2J2J)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = ../../release/;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "../../src/ios/AdmiralVsAsteroids-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/../../resources_built/AdmiralVsAsteroids-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = ../../release/build/;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -717,8 +731,7 @@
 					"-ljsoncpp",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../src/ ../../libs/lodepng/include/ ../../libs/jsoncpp/include/ ../../lodepng/include/ ../../src/game/ ../../libs/sigslot ../../libs/vectry";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
