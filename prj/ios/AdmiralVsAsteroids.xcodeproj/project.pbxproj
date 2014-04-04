@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B499F6C18EF6DD700C8684B /* JoystickWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B499F6818EF6DD700C8684B /* JoystickWidget.cpp */; };
+		0B499F6D18EF6DD700C8684B /* ProgressBarWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B499F6A18EF6DD700C8684B /* ProgressBarWidget.cpp */; };
 		0BE6FB6E18E8B6E000EC822E /* Sky.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6FB6C18E8B6E000EC822E /* Sky.cpp */; };
 		0BFB52CA18ECB95600E148DA /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB52C918ECB95600E148DA /* Entitlements.plist */; };
 		9A056B1A18A11217008288DA /* Painter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A056AD918A11217008288DA /* Painter.cpp */; };
@@ -84,6 +86,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B499F6818EF6DD700C8684B /* JoystickWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JoystickWidget.cpp; sourceTree = "<group>"; };
+		0B499F6918EF6DD700C8684B /* JoystickWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickWidget.h; sourceTree = "<group>"; };
+		0B499F6A18EF6DD700C8684B /* ProgressBarWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProgressBarWidget.cpp; sourceTree = "<group>"; };
+		0B499F6B18EF6DD700C8684B /* ProgressBarWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBarWidget.h; sourceTree = "<group>"; };
 		0BBF05AD18E8C69E00216EF7 /* sigslot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sigslot.h; path = ../libs/sigslot/sigslot.h; sourceTree = "<group>"; };
 		0BE6FB6C18E8B6E000EC822E /* Sky.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sky.cpp; sourceTree = "<group>"; };
 		0BE6FB6D18E8B6E000EC822E /* Sky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sky.h; sourceTree = "<group>"; };
@@ -268,6 +274,10 @@
 		9A056AEA18A11217008288DA /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				0B499F6818EF6DD700C8684B /* JoystickWidget.cpp */,
+				0B499F6918EF6DD700C8684B /* JoystickWidget.h */,
+				0B499F6A18EF6DD700C8684B /* ProgressBarWidget.cpp */,
+				0B499F6B18EF6DD700C8684B /* ProgressBarWidget.h */,
 				9A056AEB18A11217008288DA /* BasicWidget.cpp */,
 				9A056AEC18A11217008288DA /* BasicWidget.h */,
 				9A056AED18A11217008288DA /* ButtonWidget.cpp */,
@@ -561,9 +571,11 @@
 				9AB71D2818BFAFB3007237CD /* CaptainTask.cpp in Sources */,
 				9AB71D2C18BFB271007237CD /* Precompiled.cpp in Sources */,
 				9A056B2818A11217008288DA /* Star.cpp in Sources */,
+				0B499F6C18EF6DD700C8684B /* JoystickWidget.cpp in Sources */,
 				9A056B2F18A11217008288DA /* FileUtils.cpp in Sources */,
 				9AB71D1A18BFAFA3007237CD /* PhysicNode.cpp in Sources */,
 				9A220E6518A927C9007250FB /* GameDelegate.cpp in Sources */,
+				0B499F6D18EF6DD700C8684B /* ProgressBarWidget.cpp in Sources */,
 				9A056B2518A11217008288DA /* Widget.cpp in Sources */,
 				9A056B2018A11217008288DA /* GameObject.cpp in Sources */,
 				9A056B1C18A11217008288DA /* SpriteManager.cpp in Sources */,
