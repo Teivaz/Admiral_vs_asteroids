@@ -27,5 +27,5 @@ namespace Json
 
 double clamp(double a)
 {
-    return max(min(a, 1.0f), 0.0f);
+    return max(min(a, 1.0), 0.0);
 }
