@@ -30,6 +30,8 @@
     <ClCompile Include="..\..\src\game\Objects\GUI\BasicWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\ButtonWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\GuiManager.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\GUI\JoystickWidget.cpp" />
+    <ClCompile Include="..\..\src\game\Objects\GUI\ProgressBarWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\SliderWidget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\GUI\Widget.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Physics\PhysicNode.cpp" />
@@ -78,6 +80,8 @@
     <ClInclude Include="..\..\src\game\Objects\GUI\BasicWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\ButtonWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\GuiManager.h" />
+    <ClInclude Include="..\..\src\game\Objects\GUI\JoystickWidget.h" />
+    <ClInclude Include="..\..\src\game\Objects\GUI\ProgressBarWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\SliderWidget.h" />
     <ClInclude Include="..\..\src\game\Objects\GUI\Widget.h" />
     <ClInclude Include="..\..\src\game\Objects\Physics\PhysicNode.h" />

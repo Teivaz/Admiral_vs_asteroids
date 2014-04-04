@@ -8,6 +8,8 @@
 #include "BasicWidget.h"
 #include "ButtonWidget.h"
 #include "SliderWidget.h"
+#include "ProgressBarWidget.h"
+#include "JoystickWidget.h"
 
 GuiManager::GuiManager()
 {
@@ -113,6 +115,32 @@ SliderWidget* GuiManager::_createSliderWidget(const Json::Value& widget)
     return new SliderWidget(sprite, name, _scaleToScreen(travel), value);
 }
 
+ProgressBarWidget* GuiManager::_createProgressBarWidget(const Json::Value& widget)
+{
+    const string name(widget["name"].asString());
+    const string spriteName(widget["sprite"].asString());
+    Sprite* sprite = _loadSpriteForWidget(spriteName, widget);
+    const string spriteFullName(widget["sprite_full"].asString());
+    Sprite* spriteFull = _loadSpriteForWidget(spriteFullName, widget);
+    const vec2d offsetFull(static_cast<double>(widget["offset_full"]["x"].asDouble()),
+                           static_cast<double>(widget["offset_full"]["y"].asDouble()));
+    vec2d relativeOffsetFull = _scaleToScreen(offsetFull);
+    spriteFull->adjustPosition(relativeOffsetFull);
+    double value = static_cast<double>(widget["value"].asDouble());
+    return new ProgressBarWidget(sprite, spriteFull, name, value);
+}
+
+JoystickWidget* GuiManager::_createJoystickWidget(const Json::Value& widget)
+{
+    const string name(widget["name"].asString());
+    const string spriteName(widget["sprite"].asString());
+    Sprite* sprite = _loadSpriteForWidget(spriteName, widget);
+    const vec2d travel(static_cast<double>(widget["travel"]["x"].asDouble()),
+        static_cast<double>(widget["travel"]["y"].asDouble()));
+    double value = static_cast<double>(widget["default"].asDouble());
+    return new JoystickWidget(sprite, sprite, name);
+}
+
 Widget* GuiManager::createWidget(const Json::Value& value)
 {
     const string type(value.get("type","").asString());
@@ -127,6 +155,14 @@ Widget* GuiManager::createWidget(const Json::Value& value)
     else if (type == "SliderWidget")
     {
         return _createSliderWidget(value);
+    }
+    else if (type == "JoystickWidget")
+    {
+        return _createJoystickWidget(value);
+    }
+    else if (type == "ProgressBarWidget")
+    {
+        return _createProgressBarWidget(value);
     }
     else
     {

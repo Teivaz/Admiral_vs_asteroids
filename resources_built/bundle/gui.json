@@ -1,8 +1,8 @@
 [
 	{
 		"type": "BasicWidget",
-		"name": "background",
-		"sprite": "hud.png",
+		"name": "minimap",
+		"sprite": "minimap.png",
 		"anchor":
 		{
 			"x": 0.5,
@@ -77,8 +77,8 @@
 	{
 		"type": "ButtonWidget",
 		"name": "fire!",
-		"sprite": "button_fire_idle.png",
-		"sprite_selected": "button_fire_pressed.png",
+		"sprite": "pix_flame3.png",
+		"sprite_selected": "pix_flame2.png",
 		"anchor": 
 		{
 			"x": 0.0,
@@ -161,5 +161,134 @@
 			"y": 150	
 		},
 		"default": 0.5
+	},
+	{
+		"type": "ProgressBarWidget",
+		"name": "leftBar1",
+		"sprite": "progress_bar_empty.png",
+		"sprite_full": "pb_mustard_full.png",
+		"value": 0.5,
+		"anchor":
+		{
+			"x": 0.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "left",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": 20,
+			"y": -80
+		},
+		"offset_full":
+		{
+			"x": 5,
+			"y": -17
+		}
+	},
+	{
+		"type": "ProgressBarWidget",
+		"name": "leftBar2",
+		"sprite": "progress_bar_empty.png",
+		"sprite_full": "pb_blue_full.png",
+		"value": 0.0,
+		"anchor":
+		{
+			"x": 0.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "left",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": 60,
+			"y": -80
+		},
+		"offset_full":
+		{
+			"x": 5,
+			"y": -17
+		}
+	},
+	{
+		"type": "ProgressBarWidget",
+		"name": "rightBar1",
+		"sprite": "progress_bar_empty.png",
+		"sprite_full": "pb_yellow_full.png",
+		"value": 0.0,
+		"anchor":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -20,
+			"y": -80
+		},
+		"offset_full":
+		{
+			"x": -5,
+			"y": -17
+		}
+	},
+	{
+		"type": "ProgressBarWidget",
+		"name": "rightBar2",
+		"sprite": "progress_bar_empty.png",
+		"sprite_full": "pb_green_full.png",
+		"value": 0.0,
+		"anchor":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -60,
+			"y": -80
+		},
+		"offset_full":
+		{
+			"x": -5,
+			"y": -17
+		}
 	}
+
 ]

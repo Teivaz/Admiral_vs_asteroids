@@ -4,6 +4,8 @@ class Widget;
 class BasicWidget;
 class ButtonWidget;
 class SliderWidget;
+class ProgressBarWidget;
+class JoystickWidget;
 class Sprite;
 
 class GuiManager : public Singleton<GuiManager>
@@ -21,7 +23,8 @@ protected:
     ButtonWidget*           _createButtonWidget(const Json::Value& widget);
     BasicWidget*            _createBasicWidget(const Json::Value& widget);
     SliderWidget*           _createSliderWidget(const Json::Value& widget);
-
+    ProgressBarWidget*      _createProgressBarWidget(const Json::Value& widget);
+    JoystickWidget*         _createJoystickWidget(const Json::Value& widget);
     Sprite*                 _loadSpriteForWidget(const string& name, const Json::Value& widget);
 
     vec2d                   _scaleToScreen(vec2d);
