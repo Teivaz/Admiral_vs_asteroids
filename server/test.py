@@ -13,7 +13,7 @@ while True:
 	data.append(socket.htonl(2)) # type
 	data.append(socket.htonl(1)) # len
 	data.append(socket.htonl(status)) # body
-	data[0] = socket.htonl(len(data))
+	data[0] = socket.htonl(len(data) - 1)
 	sock.send(data)
 	print(data)
 	time.sleep(1)

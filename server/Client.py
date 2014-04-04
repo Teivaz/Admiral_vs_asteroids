@@ -37,16 +37,16 @@ class Client:
 			inputready, outputready, exceptready = select.select([self.conn], [], [], 1.0)
 			if inputready:
 				self.lock.acquire()
-				if True: #try:
+				try:
 					type, payload = ReadMessage(self.conn)
 					if len(payload) == 0:
 						self.package[type[0]] = True
 					else:
 						self.package[type[0]] = payload[0]
 					self.packQueue.put((type, payload))
-				#except:
-				#	self.alive = False
-				#else:
+				except:
+					self.alive = False
+				else:
 					self.lastActivity = time.time()
 				self.lock.release()
 
