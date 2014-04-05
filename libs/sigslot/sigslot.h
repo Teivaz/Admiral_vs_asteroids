@@ -1991,7 +1991,7 @@ namespace sigslot {
 	class signal1 : public _signal_base1<arg1_type, mt_policy>
 	{
 	public:
-        typedef typename signal1::_signal_base1::connections_list::const_iterator const_iterator;
+        typedef typename _signal_base1<arg1_type, mt_policy>::const_iterator const_iterator;
 		signal1()
 		{
 			;
@@ -2052,7 +2052,7 @@ namespace sigslot {
 	class signal2 : public _signal_base2<arg1_type, arg2_type, mt_policy>
 	{
 	public:
-        typedef typename signal2::_signal_base2::connections_list::const_iterator const_iterator;
+        typedef typename _signal_base2<arg1_type, arg2_type, mt_policy>::connections_list::const_iterator const_iterator;
 		signal2()
 		{
 			;
@@ -2114,7 +2114,7 @@ namespace sigslot {
 	class signal3 : public _signal_base3<arg1_type, arg2_type, arg3_type, mt_policy>
 	{
 	public:
-        typedef typename signal3::_signal_base3::connections_list::const_iterator const_iterator;
+        typedef typename _signal_base3<arg1_type, arg2_type, arg3_type, mt_policy>::connections_list::const_iterator const_iterator;
 		signal3()
 		{
 			;
@@ -2178,7 +2178,8 @@ namespace sigslot {
 		arg4_type, mt_policy>
 	{
 	public:
-        typedef typename signal4::_signal_base4::connections_list::const_iterator const_iterator;
+        typedef typename _signal_base4<arg1_type, arg2_type, arg3_type,
+            arg4_type, mt_policy>::connections_list::const_iterator const_iterator;
 		signal4()
 		{
 			;
@@ -2243,7 +2244,8 @@ namespace sigslot {
 		arg4_type, arg5_type, mt_policy>
 	{
 	public:
-        typedef typename signal5::_signal_base5::connections_list::const_iterator const_iterator;
+        typedef typename _signal_base5<arg1_type, arg2_type, arg3_type,
+            arg4_type, arg5_type, mt_policy>::connections_list::const_iterator const_iterator;
 		signal5()
 		{
 			;
@@ -2305,15 +2307,15 @@ namespace sigslot {
 			}
 		}
 	};
-
-
+    
 	template<class arg1_type, class arg2_type, class arg3_type, class arg4_type,
 	class arg5_type, class arg6_type, class mt_policy = SIGSLOT_DEFAULT_MT_POLICY>
 	class signal6 : public _signal_base6<arg1_type, arg2_type, arg3_type,
 		arg4_type, arg5_type, arg6_type, mt_policy>
 	{
 	public:
-        typedef typename signal6::_signal_base6::connections_list::const_iterator const_iterator;
+        typedef typename _signal_base6<arg1_type, arg2_type, arg3_type,
+            arg4_type, arg5_type, arg6_type, mt_policy>::connections_list::const_iterator const_iterator;
 		signal6()
 		{
 			;
@@ -2383,7 +2385,8 @@ namespace sigslot {
 		arg4_type, arg5_type, arg6_type, arg7_type, mt_policy>
 	{
 	public:
-        typedef typename signal7::_signal_base7::connections_list::const_iterator const_iterator;
+        typedef typename _signal_base7<arg1_type, arg2_type, arg3_type,
+            arg4_type, arg5_type, arg6_type, arg7_type, mt_policy>::connections_list::const_iterator const_iterator;
 		signal7()
 		{
 			;
@@ -2454,7 +2457,8 @@ namespace sigslot {
 		arg4_type, arg5_type, arg6_type, arg7_type, arg8_type, mt_policy>
 	{
 	public:
-        typedef typename signal8::_signal_base8::connections_list::const_iterator const_iterator;
+        typedef typename _signal_base8<arg1_type, arg2_type, arg3_type,
+            arg4_type, arg5_type, arg6_type, arg7_type, arg8_type, mt_policy>::connections_list::const_iterator const_iterator;
 		signal8()
 		{
 			;
