@@ -167,7 +167,7 @@
 		"name": "leftBar1",
 		"sprite": "progress_bar_empty.png",
 		"sprite_full": "pb_mustard_full.png",
-		"value": 0.5,
+		"value": 0.1,
 		"anchor":
 		{
 			"x": 0.0,
@@ -199,7 +199,7 @@
 		"name": "leftBar2",
 		"sprite": "progress_bar_empty.png",
 		"sprite_full": "pb_blue_full.png",
-		"value": 0.0,
+		"value": 0.2,
 		"anchor":
 		{
 			"x": 0.0,
@@ -231,7 +231,7 @@
 		"name": "rightBar1",
 		"sprite": "progress_bar_empty.png",
 		"sprite_full": "pb_yellow_full.png",
-		"value": 0.0,
+		"value": 0.3,
 		"anchor":
 		{
 			"x": 1.0,
@@ -263,7 +263,7 @@
 		"name": "rightBar2",
 		"sprite": "progress_bar_empty.png",
 		"sprite_full": "pb_green_full.png",
-		"value": 0.0,
+		"value": 0.4,
 		"anchor":
 		{
 			"x": 1.0,

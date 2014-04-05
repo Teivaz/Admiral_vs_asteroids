@@ -18,8 +18,12 @@ public:
     virtual void                setPosition(const vec2d&);
     virtual void                setScale(const vec2d&);
     virtual void                render();
-
-    double                      getValue()
+    
+    void                        setValue(double value)
+    {
+        m_value = value;
+    }
+    double                      getValue() const
     {
         return m_value;
     }

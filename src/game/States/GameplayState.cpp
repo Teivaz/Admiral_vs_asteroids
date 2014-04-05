@@ -11,6 +11,7 @@
 #include "Objects/GUI/Widget.h"
 #include "Objects/GUI/ButtonWidget.h"
 #include "Objects/GUI/SliderWidget.h"
+#include "Objects/GUI/ProgressBarWidget.h"
 #include "Controllers/TouchManager.h"
 
 #include "Objects/Scene/Captain.h"
@@ -62,6 +63,8 @@ void GameplayState::update(double dt)
 	{
 		player->update(dt);
 	}
+    ProgressBarWidget* pb = static_cast<ProgressBarWidget*>(m_gui->findChildByName("rightBar2"));
+    pb->setValue(m_players.front()->getShipMoveSpeed().Length() / 100.0);
 	m_sky->update(dt);
 }
 

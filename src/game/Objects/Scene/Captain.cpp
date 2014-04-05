@@ -84,3 +84,7 @@ void Captain::cancelCurrentTask()
         m_tasks.pop_front();
 }
 
+vec2d Captain::getShipMoveSpeed() const
+{
+    return m_bridge->getShipMoveDirection() * m_bridge->getShipMoveSpeed();
+}

@@ -65,12 +65,12 @@ protected:
 	bool							m_hasMoved = true;
 	double							m_mass = 1.0f;
 	double							m_linearVelocity = 0.0f;
-    double                           m_prevLinearVelocity = 0.0f;
+    double                          m_prevLinearVelocity = 0.0f;
 	double							m_radialVelocity = 0.0f;
-    double                           m_prevRadialVelocity = 0.0f;
+    double                          m_prevRadialVelocity = 0.0f;
 	vec2d							m_moveDirection;
-    double                           m_squareBoundingRadius = 0.0f;
+    double                          m_squareBoundingRadius = 0.0f;
     vector<Impact>                  m_impacts;
-    double                           m_linearVelocityDerivative = 0.0f;
-    double                           m_radialVelocityDerivative = 0.0f;
+    double                          m_linearVelocityDerivative = 0.0f;
+    double                          m_radialVelocityDerivative = 0.0f;
 };

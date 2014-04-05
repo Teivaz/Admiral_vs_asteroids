@@ -30,7 +30,8 @@ public:
     Texture                         getTexture() const;
     ShaderProgram                   getProgram() const;
     DrawMode                        getDrawMode() const;
-    
+    Shape*                          getShape();
+
     void                            init(ShaderProgram, Shape*, Texture);
     void                            setShader(ShaderProgram);
     
@@ -62,4 +63,8 @@ inline ShaderProgram Sprite::getProgram() const
 inline DrawMode Sprite::getDrawMode() const
 {
     return m_mode;
+}
+inline Shape* Sprite::getShape()
+{
+    return m_shape;
 }

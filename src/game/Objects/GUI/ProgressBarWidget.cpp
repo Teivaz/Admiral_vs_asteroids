@@ -2,12 +2,16 @@
 #include "ProgressBarWidget.h"
 #include "../Sprite.h"
 #include "Controllers/Touch.h"
+#include "Objects/Shape/Shape.h"
+#include "Controllers/ShaderManager.h"
 
 ProgressBarWidget::ProgressBarWidget(Sprite* back, Sprite* full, const string& name, double value)
 : m_spriteBack(back)
 , m_spriteFull(full)
 , m_value(value)
 {
+    ShaderProgram cropped = ShaderManager::GetInstance()->getShader(shaders::k_cropped);
+    m_spriteFull->setShader(cropped);
     m_name = name;
 }
 
@@ -33,7 +37,17 @@ void ProgressBarWidget::setScale(const vec2d& s)
 
 void ProgressBarWidget::render()
 {
-    m_spriteFull->render();
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_spriteFull->getTexture());
+    m_spriteFull->getShape()->bind();    
+    glUseProgram(m_spriteFull->getProgram());
+    GLuint value = glGetUniformLocation(m_spriteFull->getProgram(), "u_value");
+    glUniform1f(value, static_cast<float>(m_value));
+    m_spriteFull->bindAttributes();
+    glDrawArrays(m_spriteFull->getDrawMode(), 0, m_spriteFull->getShape()->getCount());
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
     m_spriteBack->render();
     Widget::render();
 }

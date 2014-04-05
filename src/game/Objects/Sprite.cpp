@@ -114,8 +114,6 @@ void Sprite::_bindAttributes()
         mat3f transform = getTransformation();
         glUniformMatrix3fv(m_uniformTransformation, 1, GL_FALSE, &transform.a1);
     }
-
-    bindAttributes();
 }
 
 void Sprite::update(double dt)
@@ -124,9 +122,7 @@ void Sprite::update(double dt)
 
 void Sprite::bindAttributes()
 {
-    auto col = glGetUniformLocation(m_shader, "u_blendColor");
-//    if(col)
-//        glUniform3f(col, 1.0f, 0.2f, 0.2f);
+    _bindAttributes();
 }
 
 GLsizei Sprite::getVertsCount() const
