@@ -704,7 +704,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/../../resources_built/AdmiralVsAsteroids-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = ../../release/build/;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-llodepng_d",
@@ -736,7 +736,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/../../resources_built/AdmiralVsAsteroids-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = ../../release/build/;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-llodepng",
