@@ -49,7 +49,7 @@ Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::V
         scaleReltiveToScreen = rel.asBool();
     }
     
-    vec2d size = scaleReltiveToScreen ? m_screenSize : SpriteManager::GetInstance()->getSpriteSize(spriteName);
+    vec2d size = scaleReltiveToScreen ? vec2d(m_screenSize) : SpriteManager::GetInstance()->getSpriteSize(spriteName);
 
     vec2d relativeSize = _scaleToScreen(vec2d(scale.x * size.x, scale.y * size.y));
     vec2d relativeOffset = _scaleToScreen(offset);
