@@ -48,7 +48,83 @@
 		"offset":
 		{
 			"x": -150,
+			"y": -100	
+		}
+	},
+	{
+		"type": "BasicWidget",
+		"name": "btn_single_text",
+		"sprite": "text_single.png",
+		"anchor": 
+		{
+			"x": 1.0,
+			"y": 1.0			
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -180,
+			"y": -125	
+		}
+	},
+	{
+		"type": "ButtonWidget",
+		"name": "multi",
+		"sprite": "menu_button_idle.png",
+		"sprite_selected": "menu_button_pressed.png",
+		"anchor": 
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -150,
 			"y": -200	
+		}
+	},
+	{
+		"type": "BasicWidget",
+		"name": "btn_single_text",
+		"sprite": "text_multy.png",
+		"anchor": 
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -180,
+			"y": -225	
 		}
 	},
 	{
@@ -75,6 +151,82 @@
 		{
 			"x": -150,
 			"y": -300	
+		}
+	},
+	{
+		"type": "BasicWidget",
+		"name": "btn_single_text",
+		"sprite": "text_settings.png",
+		"anchor": 
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -180,
+			"y": -325	
+		}
+	},
+	{
+		"type": "ButtonWidget",
+		"name": "multi",
+		"sprite": "menu_button_idle.png",
+		"sprite_selected": "menu_button_pressed.png",
+		"anchor": 
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -150,
+			"y": -400	
+		}
+	},
+	{
+		"type": "BasicWidget",
+		"name": "btn_single_text",
+		"sprite": "text_about.png",
+		"anchor": 
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -180,
+			"y": -425	
 		}
 	}
 ]
