@@ -47,7 +47,10 @@
     <ClCompile Include="..\..\src\game\Objects\Sprite.cpp" />
     <ClCompile Include="..\..\src\game\Objects\Stars\Star.cpp" />
     <ClCompile Include="..\..\src\game\States\GameplayState.cpp" />
+    <ClCompile Include="..\..\src\game\States\MainMenuState.cpp" />
     <ClCompile Include="..\..\src\game\States\StateMachine.cpp" />
+    <ClCompile Include="..\..\src\multiplayer\network\NetworkController.cpp" />
+    <ClCompile Include="..\..\src\multiplayer\network\Package.cpp" />
     <ClCompile Include="..\..\src\Precompiled.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Precompiled.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Analize|Win32'">Precompiled.h</PrecompiledHeaderFile>
@@ -97,8 +100,12 @@
     <ClInclude Include="..\..\src\game\Objects\Sprite.h" />
     <ClInclude Include="..\..\src\game\Objects\Stars\Star.h" />
     <ClInclude Include="..\..\src\game\States\GameplayState.h" />
+    <ClInclude Include="..\..\src\game\States\MainMenuState.h" />
     <ClInclude Include="..\..\src\game\States\State.h" />
     <ClInclude Include="..\..\src\game\States\StateMachine.h" />
+    <ClInclude Include="..\..\src\multiplayer\network\NetworkController.h" />
+    <ClInclude Include="..\..\src\multiplayer\network\Package.h" />
+    <ClInclude Include="..\..\src\multiplayer\network\PackageType.h" />
     <ClInclude Include="..\..\src\Precompiled.h" />
     <ClInclude Include="..\..\src\sprites.h" />
     <ClInclude Include="..\..\src\utils\CustomGLTypes.h" />

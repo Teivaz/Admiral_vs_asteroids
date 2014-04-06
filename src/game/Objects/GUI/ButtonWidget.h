@@ -29,6 +29,7 @@ public:
     virtual void                onTouchEnded(TouchPtr);
 
     void                        setCallback(CallbackFunctor*);
+    signal1<bool>               onChanged;
 
 private:
     bool                        _isPointInside(const vec2d&);

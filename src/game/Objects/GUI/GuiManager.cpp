@@ -42,8 +42,16 @@ Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::V
     const string verticalAllign(widget["allign"]["y"].asString());
     const string horizontalAllign(widget["allign"]["x"].asString());
 
-    vec2d originalSize = SpriteManager::GetInstance()->getSpriteSize(spriteName);
-    vec2d relativeSize = _scaleToScreen(vec2d(scale.x * originalSize.x, scale.y * originalSize.y));
+    bool scaleReltiveToScreen = false;
+    Json::Value rel = widget["scale_relative_to_screen"];
+    if (rel != Json::nullValue)
+    {
+        scaleReltiveToScreen = rel.asBool();
+    }
+    
+    vec2d size = scaleReltiveToScreen ? m_screenSize : SpriteManager::GetInstance()->getSpriteSize(spriteName);
+
+    vec2d relativeSize = _scaleToScreen(vec2d(scale.x * size.x, scale.y * size.y));
     vec2d relativeOffset = _scaleToScreen(offset);
     vec2d relativePosition;
     if (verticalAllign == "top")

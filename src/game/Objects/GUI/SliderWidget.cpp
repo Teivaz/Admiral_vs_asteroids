@@ -75,6 +75,7 @@ void SliderWidget::setProgress(double p)
     p = min(1.0, p);
     m_progress = p;
     m_sprite->setPosition(m_origin + m_travel*p);
+    onChanged(p);
     if (m_callback)
     {
         (*m_callback)(p);

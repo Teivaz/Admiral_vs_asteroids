@@ -3,7 +3,7 @@
 #include "utils/FileUtils.h"
 
 #include "States/StateMachine.h"
-#include "States/GameplayState.h"
+#include "States/MainMenuState.h"
 #include "Controllers/ShaderManager.h"
 #include "Controllers/TextureManager.h"
 #include "Controllers/Painter.h"
@@ -90,7 +90,7 @@ void GameDelegate::init(int width, int height)
 
     // loading
     SpriteManager::GetInstance()->loadAtlas("sprites.json");
-    StateMachine::GetInstance()->pushState(new GameplayState);
+    StateMachine::GetInstance()->pushState(new MainMenuState);
 
 }
 

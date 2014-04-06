@@ -68,6 +68,12 @@
     <Filter Include="game\Networking">
       <UniqueIdentifier>{59633abf-f142-4ede-889c-7a1ce304433a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="multiplayer">
+      <UniqueIdentifier>{fa7fd1b4-7ea2-4a82-ba31-b9b78f8c824c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="multiplayer\network">
+      <UniqueIdentifier>{a554fef0-57ee-4f3b-8da8-ff1fbab31e81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Precompiled.cpp" />
@@ -181,6 +187,15 @@
     </ClCompile>
     <ClCompile Include="..\..\src\game\Objects\GUI\ProgressBarWidget.cpp">
       <Filter>game\Objects\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\multiplayer\network\NetworkController.cpp">
+      <Filter>multiplayer\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\multiplayer\network\Package.cpp">
+      <Filter>multiplayer\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\States\MainMenuState.cpp">
+      <Filter>game\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +331,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Objects\GUI\JoystickWidget.h">
       <Filter>game\Objects\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\multiplayer\network\NetworkController.h">
+      <Filter>multiplayer\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\multiplayer\network\Package.h">
+      <Filter>multiplayer\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\multiplayer\network\PackageType.h">
+      <Filter>multiplayer\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\States\MainMenuState.h">
+      <Filter>game\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

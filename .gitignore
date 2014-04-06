@@ -164,3 +164,10 @@ prj/ios/AdmiralVsAsteroids.xcodeproj/project.xcworkspace/xcuserdata/teivaz.xcuse
 prj/ios/AdmiralVsAsteroids.xcodeproj/xcuserdata/teivaz.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 prj/ios/AdmiralVsAsteroids.xcodeproj/xcuserdata/teivaz.xcuserdatad/xcschemes/AdmiralVsAsteroids.xcscheme
 prj/ios/AdmiralVsAsteroids.xcodeproj/xcuserdata/teivaz.xcuserdatad/xcschemes/xcschememanagement.plist
+
+*.tlog
+
+*.idb
+
+*.lib
+*.pyc

@@ -1,0 +1,104 @@
+[
+	{
+		"type": "BasicWidget",
+		"name": "background",
+		"sprite": "main_menu_bg.png",
+		"anchor":
+		{
+			"x": 0.5,
+			"y": 0.5
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "center",
+			"y": "center"
+		},
+		"offset":
+		{
+			"x": 0.0,
+			"y": 0.0
+		}
+	},
+	{
+		"type": "ButtonWidget",
+		"name": "single",
+		"sprite": "pix_flame3.png",
+		"sprite_selected": "pix_flame2.png",
+		"anchor": 
+		{
+			"x": 0.0,
+			"y": 1.0			
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "center"
+		},
+		"offset":
+		{
+			"x": -227,
+			"y": 125	
+		}
+	},
+	{
+		"type": "ButtonWidget",
+		"name": "multi",
+		"sprite": "menu_button_idle.png",
+		"sprite_selected": "menu_button_pressed.png",
+		"anchor": 
+		{
+			"x": 0.0,
+			"y": 1.0			
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "center"
+		},
+		"offset":
+		{
+			"x": -227,
+			"y": 125	
+		}
+	},
+	{
+		"type": "BasicWidget",
+		"name": "background",
+		"sprite": "main_menu_bg.png",
+		"anchor":
+		{
+			"x": 0.5,
+			"y": 0.5
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "center",
+			"y": "center"
+		},
+		"offset":
+		{
+			"x": 0.0,
+			"y": 0.0
+		}
+	}
+]

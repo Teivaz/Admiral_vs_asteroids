@@ -76,6 +76,7 @@ void ButtonWidget::onTouchEnded(TouchPtr t)
 void ButtonWidget::_onButton(bool value)
 {
     m_pressed = value;
+    onChanged(value);
     if (m_callback)
     {
         (*m_callback)(value);

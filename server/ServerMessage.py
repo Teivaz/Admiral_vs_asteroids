@@ -5,6 +5,7 @@ class MessageType:
 	GET_CLIENT_INFO = 1 # name, w response
 	GET_STATUS = 2		# ready / not ready, w response
 	LOBBY_USERS = 3		# number of users, their names and stauses
+	GET_SERVER_INFO = 4
 	
 
 class ServerMessage:
