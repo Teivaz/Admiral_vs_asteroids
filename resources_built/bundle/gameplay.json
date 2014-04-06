@@ -289,6 +289,32 @@
 			"x": -5,
 			"y": -17
 		}
+	},
+	{
+		"type": "ButtonWidget",
+		"name": "pause",
+		"sprite": "btn_pause1.png",
+		"sprite_selected": "btn_pause2.png",
+		"anchor": 
+		{
+			"x": 1.0,
+			"y": 1.0			
+		},
+		"scale":
+		{
+			"x": 1.0,
+			"y": 1.0
+		},
+		"allign":
+		{
+			"x": "right",
+			"y": "top"
+		},
+		"offset":
+		{
+			"x": -10,
+			"y": -10	
+		}
 	}
 
 ]

@@ -1,19 +1,29 @@
 {
 "frames": {
 	"beam1.png": {
-		"frame": {"x":144, "y":989, "w":14, "h":27},
+		"frame": {"x":30, "y":990, "w":14, "h":27},
 		"spriteSourceSize": {"x":0,"y":0,"w":14,"h":27},
 		"sourceSize": {"w":14,"h":27}
 	},
 	"beam2.png": {
-		"frame": {"x":159, "y":989, "w":14, "h":27},
+		"frame": {"x":0, "y":990, "w":14, "h":27},
 		"spriteSourceSize": {"x":0,"y":0,"w":14,"h":27},
 		"sourceSize": {"w":14,"h":27}
 	},
 	"beam3.png": {
-		"frame": {"x":129, "y":989, "w":14, "h":28},
+		"frame": {"x":15, "y":990, "w":14, "h":28},
 		"spriteSourceSize": {"x":0,"y":0,"w":14,"h":28},
 		"sourceSize": {"w":14,"h":28}
+	},
+	"btn_pause1.png": {
+		"frame": {"x":0, "y":934, "w":72, "h":55},
+		"spriteSourceSize": {"x":0,"y":0,"w":72,"h":55},
+		"sourceSize": {"w":72,"h":55}
+	},
+	"btn_pause2.png": {
+		"frame": {"x":145, "y":934, "w":71, "h":55},
+		"spriteSourceSize": {"x":0,"y":0,"w":71,"h":55},
+		"sourceSize": {"w":71,"h":55}
 	},
 	"button_fire_idle.png": {
 		"frame": {"x":0, "y":139, "w":467, "h":122},
@@ -26,7 +36,7 @@
 		"sourceSize": {"w":447,"h":102}
 	},
 	"flame.png": {
-		"frame": {"x":72, "y":934, "w":56, "h":79},
+		"frame": {"x":268, "y":591, "w":56, "h":79},
 		"spriteSourceSize": {"x":0,"y":0,"w":56,"h":79},
 		"sourceSize": {"w":56,"h":79}
 	},
@@ -51,12 +61,12 @@
 		"sourceSize": {"w":128,"h":128}
 	},
 	"menu_button_idle.png": {
-		"frame": {"x":0, "y":514, "w":267, "h":81},
+		"frame": {"x":0, "y":596, "w":267, "h":81},
 		"spriteSourceSize": {"x":0,"y":0,"w":267,"h":81},
 		"sourceSize": {"w":267,"h":81}
 	},
 	"menu_button_pressed.png": {
-		"frame": {"x":0, "y":596, "w":267, "h":81},
+		"frame": {"x":0, "y":514, "w":267, "h":81},
 		"spriteSourceSize": {"x":0,"y":0,"w":267,"h":81},
 		"sourceSize": {"w":267,"h":81}
 	},
@@ -66,47 +76,47 @@
 		"sourceSize": {"w":348,"h":148}
 	},
 	"pb_blue_full.png": {
-		"frame": {"x":765, "y":628, "w":18, "h":359},
-		"spriteSourceSize": {"x":0,"y":0,"w":18,"h":359},
-		"sourceSize": {"w":18,"h":359}
-	},
-	"pb_green_full.png": {
-		"frame": {"x":746, "y":561, "w":18, "h":359},
-		"spriteSourceSize": {"x":0,"y":0,"w":18,"h":359},
-		"sourceSize": {"w":18,"h":359}
-	},
-	"pb_mustard_full.png": {
 		"frame": {"x":784, "y":268, "w":18, "h":359},
 		"spriteSourceSize": {"x":0,"y":0,"w":18,"h":359},
 		"sourceSize": {"w":18,"h":359}
 	},
-	"pb_yellow_full.png": {
+	"pb_green_full.png": {
 		"frame": {"x":765, "y":268, "w":18, "h":359},
 		"spriteSourceSize": {"x":0,"y":0,"w":18,"h":359},
 		"sourceSize": {"w":18,"h":359}
 	},
+	"pb_mustard_full.png": {
+		"frame": {"x":746, "y":561, "w":18, "h":359},
+		"spriteSourceSize": {"x":0,"y":0,"w":18,"h":359},
+		"sourceSize": {"w":18,"h":359}
+	},
+	"pb_yellow_full.png": {
+		"frame": {"x":765, "y":628, "w":18, "h":359},
+		"spriteSourceSize": {"x":0,"y":0,"w":18,"h":359},
+		"sourceSize": {"w":18,"h":359}
+	},
 	"pix_flame1.png": {
-		"frame": {"x":129, "y":934, "w":49, "h":54},
+		"frame": {"x":268, "y":514, "w":49, "h":54},
 		"spriteSourceSize": {"x":0,"y":0,"w":49,"h":54},
 		"sourceSize": {"w":49,"h":54}
 	},
 	"pix_flame2.png": {
-		"frame": {"x":229, "y":979, "w":47, "h":38},
+		"frame": {"x":217, "y":979, "w":47, "h":38},
 		"spriteSourceSize": {"x":1,"y":0,"w":49,"h":63},
 		"sourceSize": {"w":49,"h":63}
 	},
 	"pix_flame3.png": {
-		"frame": {"x":179, "y":934, "w":49, "h":63},
+		"frame": {"x":325, "y":591, "w":49, "h":63},
 		"spriteSourceSize": {"x":0,"y":0,"w":49,"h":63},
 		"sourceSize": {"w":49,"h":63}
 	},
 	"pix_flame_small1.png": {
-		"frame": {"x":186, "y":998, "w":7, "h":10},
+		"frame": {"x":45, "y":1007, "w":7, "h":10},
 		"spriteSourceSize": {"x":2,"y":6,"w":11,"h":16},
 		"sourceSize": {"w":11,"h":16}
 	},
 	"pix_flame_small2.png": {
-		"frame": {"x":174, "y":998, "w":11, "h":16},
+		"frame": {"x":45, "y":990, "w":11, "h":16},
 		"spriteSourceSize": {"x":0,"y":0,"w":11,"h":16},
 		"sourceSize": {"w":11,"h":16}
 	},
@@ -116,7 +126,7 @@
 		"sourceSize": {"w":28,"h":391}
 	},
 	"she.png": {
-		"frame": {"x":0, "y":934, "w":71, "h":84},
+		"frame": {"x":73, "y":934, "w":71, "h":84},
 		"spriteSourceSize": {"x":0,"y":0,"w":71,"h":84},
 		"sourceSize": {"w":71,"h":84}
 	},

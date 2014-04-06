@@ -88,6 +88,12 @@ Sprite* GuiManager::_loadSpriteForWidget(const string& spriteName, const Json::V
         ASSERT(false && "Wrong allign mode");
     }
     Sprite* sprite = SpriteManager::GetInstance()->createSprite(spriteName, vec2d(), vec2d(1.0), false, 0);
+    
+    if (sprite == nullptr)
+    {
+        PLOG("Sprite %s not found\n", spriteName.c_str());
+        ASSERT(sprite);
+    }
 
     sprite->setScale(relativeSize);
     sprite->setPosition(relativePosition - vec2d(relativeSize.x * anchor.x, relativeSize.y * anchor.y) );

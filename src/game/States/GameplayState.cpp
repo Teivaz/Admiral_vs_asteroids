@@ -1,6 +1,9 @@
 #include "Precompiled.h"
 #include "GameplayState.h"
 
+#include "StateMachine.h"
+#include "MainMenuState.h"
+
 #include "Controllers/ShaderManager.h"
 #include "Controllers/TextureManager.h"
 #include "Controllers/Painter.h"
@@ -84,22 +87,27 @@ void GameplayState::onEnter()
     auto softShader = ShaderManager::GetInstance()->getShader(shaders::k_softLight);
 
 
-    m_gui = GuiManager::GetInstance()->LoadGui("gui.json");
+    m_gui = GuiManager::GetInstance()->LoadGui("gameplay.json");
     TouchManager::GetInstance()->addReceiever(m_gui);
     ButtonWidget* btn = static_cast<ButtonWidget*>(m_gui->findChildByName("fire!"));
     if (btn)
     {
-        btn->setCallback(new ButtonCallBack(this));
+        btn->onChanged.connect(this, &GameplayState::onFireButton);
+    }
+    btn = static_cast<ButtonWidget*>(m_gui->findChildByName("pause"));
+    if (btn)
+    {
+        btn->onChanged.connect(this, &GameplayState::onPauseButton);
     }
     SliderWidget* sl = static_cast<SliderWidget*>(m_gui->findChildByName("rotate"));
     if (sl)
     {
-        sl->setCallback(new SliderCallBack(1, this));
+        sl->onChanged.connect(this, &GameplayState::onLeftSlider);
     }
     sl = static_cast<SliderWidget*>(m_gui->findChildByName("move"));
     if (sl)
     {
-        sl->setCallback(new SliderCallBack(2, this));
+        sl->onChanged.connect(this, &GameplayState::onRightSlider);
     }
     Painter::GetInstance()->add(m_gui);
 
@@ -128,4 +136,25 @@ void GameplayState::addLocalControlledPlayer(CaptainPtr player)
     onSliderLeft.connect(player.get(), &Captain::rotate);
     onSliderRight.connect(player.get(), &Captain::setMainEnginePower);
 	player->onMoved.connect(Painter::GetInstance(), &Painter::setSceneCameraPosition);
+}
+
+void GameplayState::onFireButton(bool p)
+{
+    onButton(p);
+}
+
+void GameplayState::onLeftSlider(double val)
+{
+    onSliderLeft(val * 2 - 1);
+}
+void GameplayState::onRightSlider(double val)
+{
+    onSliderRight(val * 2 - 1);
+}
+void GameplayState::onPauseButton(bool p)
+{
+    if (p)
+        return;
+    StateMachine::GetInstance()->pushState(new MainMenuState);
+    m_isFinished = true;
 }

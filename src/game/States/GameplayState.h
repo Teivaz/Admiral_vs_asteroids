@@ -6,7 +6,7 @@ class Widget;
 MakeShared(Captain);
 MakeShared(Sky);
 
-class GameplayState : public State, has_slots<>
+class GameplayState : public State, public has_slots<>
 {
 public:
     GameplayState();
@@ -23,6 +23,11 @@ public:
     void                        addLocalControlledPlayer(CaptainPtr player);
 
     // Events
+
+    void                        onFireButton(bool);
+    void                        onLeftSlider(double);
+    void                        onRightSlider(double);
+    void                        onPauseButton(bool);
 
     signal1<bool>               onButton;
     signal1<double>              onSliderLeft;

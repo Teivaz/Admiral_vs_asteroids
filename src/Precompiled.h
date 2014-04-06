@@ -49,11 +49,12 @@ using std::vector;
 using std::shared_ptr;
 
 #if defined _DEBUG && defined _WIN32
-#define ASSERT __noop
+#include <assert.h>
+#define ASSERT assert
 void PLOG(const char* x, ...);
 #else
 inline void PLOG(const char* x, ...){}
-#define ASSERT(x)
+#define ASSERT __noop
 #endif
 
 #include "utils/Singleton.h"
