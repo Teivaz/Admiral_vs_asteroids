@@ -88,3 +88,8 @@ vec2d Captain::getShipMoveSpeed() const
 {
     return m_bridge->getShipMoveDirection() * m_bridge->getShipMoveSpeed();
 }
+
+double Captain::getShipRotationSpeed() const
+{
+    return m_bridge->getShipRotationSpeed();
+}

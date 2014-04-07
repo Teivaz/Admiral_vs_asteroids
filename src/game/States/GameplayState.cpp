@@ -68,6 +68,14 @@ void GameplayState::update(double dt)
 	}
     ProgressBarWidget* pb = static_cast<ProgressBarWidget*>(m_gui->findChildByName("rightBar2"));
     pb->setValue(m_players.front()->getShipMoveSpeed().Length() / 100.0);
+    
+    
+    pb = static_cast<ProgressBarWidget*>(m_gui->findChildByName("leftBar1"));
+    pb->setValue(max(0.0, m_players.front()->getShipRotationSpeed()));
+    
+    pb = static_cast<ProgressBarWidget*>(m_gui->findChildByName("leftBar2"));
+    pb->setValue(max(0.0, -m_players.front()->getShipRotationSpeed()));
+    
 	m_sky->update(dt);
 }
 

@@ -44,8 +44,8 @@ public:
 
     vec2d                           getShipMoveDirection() const;
     vec2d                           setShipRotation() const;
-    double                           getShipRotationSpeed() const;
-    double                           getShipRotationSpeedDerivative() const;
+    double                          getShipRotationSpeed() const;
+    double                          getShipRotationSpeedDerivative() const;
     vec2d                           getShipMoveSpeed() const;
     vec2d                           getShipMoveSpeedDerivative() const;
 
