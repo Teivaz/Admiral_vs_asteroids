@@ -4,7 +4,7 @@
 #include "utils/FileUtils.h"
 
 #ifndef VERBOSE_SHADER_DEBUG
-#define VERBOSE_SHADER_DEBUG 1
+#define VERBOSE_SHADER_DEBUG 0
 #endif
 
 ShaderManager::ShaderManager()

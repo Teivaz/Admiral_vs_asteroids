@@ -20,11 +20,11 @@ namespace FileUtils
         {
             size = 0;
             *outdata = nullptr;
-#ifdef _DEBUG
-            string fileName("../resources_built/bundle/");
-#else
+
+            //string fileName("../resources_built/bundle/");
+
             string fileName("bundle/");
-#endif
+
             AppendPath(fileName, file);
             //FILE* f = fopen(fileName.c_str(), "rb");
             FILE* f = nullptr;

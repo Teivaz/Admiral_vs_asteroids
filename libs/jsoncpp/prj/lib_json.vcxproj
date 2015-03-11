@@ -129,7 +129,7 @@
       <AdditionalIncludeDirectories>($ProjectDir)/../../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <DisableLanguageExtensions>true</DisableLanguageExtensions>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
